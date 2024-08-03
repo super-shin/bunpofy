@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_28_175527) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_03_064539) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_28_175527) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "textbooks", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "units", force: :cascade do |t|
+    t.string "name"
+    t.bigint "textbook_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["textbook_id"], name: "index_units_on_textbook_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -54,6 +68,29 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_28_175527) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "word_references", force: :cascade do |t|
+    t.bigint "unit_id", null: false
+    t.bigint "word_id", null: false
+    t.integer "page"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["unit_id"], name: "index_word_references_on_unit_id"
+    t.index ["word_id"], name: "index_word_references_on_word_id"
+  end
+
+  create_table "words", force: :cascade do |t|
+    t.string "english"
+    t.string "japanese"
+    t.string "phrase"
+    t.string "level"
+    t.integer "grade"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "units", "textbooks"
+  add_foreign_key "word_references", "units"
+  add_foreign_key "word_references", "words"
 end
