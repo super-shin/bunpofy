@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_03_071207) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_03_132408) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,12 +42,71 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_03_071207) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "attendances", force: :cascade do |t|
+    t.bigint "classroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["classroom_id"], name: "index_attendances_on_classroom_id"
+    t.index ["user_id"], name: "index_attendances_on_user_id"
+  end
+
   create_table "challenges", force: :cascade do |t|
     t.string "title"
     t.string "directions"
     t.date "due_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.bigint "unit_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "classroom_id", null: false
+    t.index ["classroom_id"], name: "index_challenges_on_classroom_id"
+    t.index ["unit_id"], name: "index_challenges_on_unit_id"
+    t.index ["user_id"], name: "index_challenges_on_user_id"
+  end
+
+  create_table "classrooms", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_classrooms_on_user_id"
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.string "content"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "submission_id", null: false
+    t.index ["submission_id"], name: "index_feedbacks_on_submission_id"
+    t.index ["user_id"], name: "index_feedbacks_on_user_id"
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.string "type"
+    t.string "correct_answer"
+    t.string "question"
+    t.string "student_answer"
+    t.integer "score"
+    t.bigint "submission_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["submission_id"], name: "index_games_on_submission_id"
+  end
+
+  create_table "submissions", force: :cascade do |t|
+    t.string "content"
+    t.string "ai_response"
+    t.integer "score"
+    t.bigint "user_id", null: false
+    t.bigint "challenge_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["challenge_id"], name: "index_submissions_on_challenge_id"
+    t.index ["user_id"], name: "index_submissions_on_user_id"
   end
 
   create_table "textbooks", force: :cascade do |t|
@@ -72,6 +131,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_03_071207) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "role"
+    t.string "school"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -98,6 +161,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_03_071207) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "attendances", "classrooms"
+  add_foreign_key "attendances", "users"
+  add_foreign_key "challenges", "classrooms"
+  add_foreign_key "challenges", "units"
+  add_foreign_key "challenges", "users"
+  add_foreign_key "classrooms", "users"
+  add_foreign_key "feedbacks", "submissions"
+  add_foreign_key "feedbacks", "users"
+  add_foreign_key "games", "submissions"
+  add_foreign_key "submissions", "challenges"
+  add_foreign_key "submissions", "users"
   add_foreign_key "units", "textbooks"
   add_foreign_key "word_references", "units"
   add_foreign_key "word_references", "words"
