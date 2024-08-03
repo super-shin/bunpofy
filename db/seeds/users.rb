@@ -27,16 +27,26 @@ User.create([
 ])
 
 puts "Seeding completed!"
-#Paths to images
+# Paths to images
 male_image_path = Rails.root.join("app/assets/images/male_ninja.webp")
 female_image_path = Rails.root.join("app/assets/images/female_ninja.webp")
+sensei_image_path = Rails.root.join("app/assets/images/sensei.webp")
+# List of male first names
+male_names = %w[Naruto Sasuke Shikamaru Neji Rock Choji Kiba Shino Itachi Tenma Zaku Kabuto Misumi Yoroi]
 # Create users and attach photos
 users = User.all
 users.each do |user|
-  if %w[Kakashi Hiruzen Naruto Sasuke Shikamaru Neji Rock Choji Kiba Shino Itachi Tenma Zaku Kabuto Misumi Yoroi].include?(user.first_name)
-    user.photo.attach(io: File.open(male_image_path), filename: "male_ninja.webp", content_type: "image/webp")
+  if user[:role] == 'student'
+    if male_names.include?(user.first_name)
+      puts "Attaching male ninja image to #{user.first_name} #{user.last_name}"
+      user.photo.attach(io: File.open(male_image_path), filename: "male_ninja.webp", content_type: "image/webp")
+    else
+      puts "Attaching female ninja image to #{user.first_name} #{user.last_name}"
+      user.photo.attach(io: File.open(female_image_path), filename: "female_ninja.webp", content_type: "image/webp")
+    end
   else
-    user.photo.attach(io: File.open(female_image_path), filename: "female_ninja.webp", content_type: "image/webp")
+    puts "Attaching sensei image to #{user.first_name} #{user.last_name}"
+    user.photo.attach(io: File.open(sensei_image_path), filename: "ninja_sensei.png", content_type: "image/png")
   end
   puts "Created user #{user.email} with attached photo"
 end
