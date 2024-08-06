@@ -14,7 +14,7 @@ puts "Destroyed Classrooms"
 # #Destroy all Users
 User.destroy_all
 puts "Destroyed Users"
-# Reset ID key sequences
+# #Reset ID key sequences
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE users, classrooms, attendances RESTART IDENTITY CASCADE")
 puts "RESET ID Numbers"
 

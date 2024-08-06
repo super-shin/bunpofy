@@ -16,13 +16,15 @@ puts "Destroyed Words"
 Textbook.destroy_all
 puts "Destroyed Textbooks"
 
-
 # Reset ID key sequences
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE word_references, units, words, textbooks RESTART IDENTITY CASCADE")
+
 
 #iterate over the file path array for multiple textbooks
 total_rows = 378 + 781 + 786 + 548 + 2016 + 3259 + 663 + 458 + 2466 + 1363 + 2193 + 1625 + 1288 + 2430
 current_index = 0
+
+
 puts "Seeding Textbooks..."
 file_paths.each_with_index do |file_path, index|
   puts "\rSeeding textbook: #{file_names[index]}"
@@ -42,7 +44,7 @@ file_paths.each_with_index do |file_path, index|
     unit = Unit.find_or_create_by!(name: unit_name, textbook: textbook)
     #create wordReference
     word_reference = WordReference.find_or_create_by!(unit: unit, word: word, page: row[:page].to_i)
-    
+
     # Update progress
     current_index = current_index + 1
     percentage = (current_index.to_f / total_rows * 100).round(2)
