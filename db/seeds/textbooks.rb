@@ -1,7 +1,7 @@
 require 'csv'
 #make a file path in an array
 #make sure to add empty column at the start of all csv files under UTF-8
-file_names = ['New Horizon English Course 1-3.csv']
+file_names = ['Blue Sky Elementary 5-6.csv','Blue Sky English Course 1.csv','Blue Sky English Course 2.csv','Blue Sky English Course 3.csv','Columbus 21 English Course 1-3.csv','Here We Go English Course 1-3.csv','Junior Sunshine 5-6.csv','Lets Try 3-4.csv','New Crown English Series 1-3.csv','New Horizon Elementary 5-6.csv','New Horizon English Course 1-3.csv','One World English Series 1-3.csv','One World Smiles Elementary 5-6.csv','Sunshine English Course 1-3.csv']
 file_paths = []
 file_names.each do |file_name|
   file_paths << Rails.root.join('db', 'csv', file_name)
@@ -20,10 +20,11 @@ puts "Destroyed Textbooks"
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE word_references, units, words, textbooks RESTART IDENTITY CASCADE")
 
 #iterate over the file path array for multiple textbooks
-total_rows = 2193
+total_rows = 378 + 781 + 786 + 548 + 2016 + 3259 + 663 + 458 + 2466 + 1363 + 2193 + 1625 + 1288 + 2430
 current_index = 0
 puts "Entering seeds..."
-file_paths.each do |file_path|
+file_paths.each_with_index do |file_path, index|
+  puts "\rSeeding textbook: #{file_names[index]}"
   CSV.foreach(file_path, encoding: 'UTF-8', headers: true, header_converters: :symbol) do |row|
     #find or create the word
     word = Word.find_or_create_by!(english: row[:english], japanese: row[:japanese], phrase: row[:phrase], level: row[:level], grade: row[:grade].to_i)
@@ -44,5 +45,5 @@ file_paths.each do |file_path|
     progress_display = "PROGRESS:" + "/" * progress
     print "\r#{progress_display} #{percentage}%"
   end
-  puts "\nSeeding ALL DONE!"
 end
+puts "\nALL DONE - Seeded ALL Textbooks!"
