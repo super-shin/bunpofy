@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   namespace :teacher do
-    get 'feedbacks/new'
-    get 'feedbacks/create'
     resources :submissions, only: [:index] do
       resources :feedbacks, only: [:new, :create]
     end
