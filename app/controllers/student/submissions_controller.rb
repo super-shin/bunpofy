@@ -2,7 +2,7 @@ class Student::SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show, :new, :create]
 
   def show
-    # @submission is already set by before_action
+    # @submission it's already set by before_action
   end
 
   def new
