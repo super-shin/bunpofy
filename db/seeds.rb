@@ -7,6 +7,14 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-require_relative 'seeds/textbooks'
-require_relative 'seeds/users'
+# require_relative 'seeds/textbooks'
+Classroom.destroy_all
+puts "Destroyed Classrooms"
+# #Destroy all Users
+User.destroy_all
+puts "Destroyed Users"
+# Reset ID key sequences
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE users, classrooms RESTART IDENTITY CASCADE")
+puts "RESET ID Number"
 require_relative 'seeds/classrooms'
+require_relative 'seeds/users'

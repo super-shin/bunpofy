@@ -1,5 +1,3 @@
-#Destroy all Users
-User.destroy_all
 #Create a few new Users
 puts "Seeding user data..."
 User.create([

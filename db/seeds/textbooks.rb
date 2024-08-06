@@ -16,6 +16,7 @@ puts "Destroyed Words"
 Textbook.destroy_all
 puts "Destroyed Textbooks"
 
+
 # Reset ID key sequences
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE word_references, units, words, textbooks RESTART IDENTITY CASCADE")
 
@@ -28,6 +29,10 @@ file_paths.each_with_index do |file_path, index|
   CSV.foreach(file_path, encoding: 'UTF-8', headers: true, header_converters: :symbol) do |row|
     #find or create the word
     word = Word.find_or_create_by!(english: row[:english], japanese: row[:japanese], phrase: row[:phrase], level: row[:level], grade: row[:grade].to_i)
+    #add tags via taggable gem
+    word.status_list.add(row[:status], parse: true) if row[:status].present?
+    word.category_list.add(row[:POS], parse: true) if row[:POS].present?
+    word.save
     #find or create the textbook
     textbook = Textbook.find_or_create_by!(name: row[:textbook])
     #find or create the unit with the textbook
