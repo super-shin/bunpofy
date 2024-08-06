@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema[7.1].define(version: 2024_08_03_132408) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,13 +51,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_03_132408) do
     t.index ["user_id"], name: "index_attendances_on_user_id"
   end
 
-
   create_table "challenges", force: :cascade do |t|
     t.string "title"
     t.string "directions"
     t.date "due_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.bigint "unit_id", null: false
     t.datetime "created_at", null: false
