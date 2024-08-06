@@ -1,5 +1,5 @@
 class Teacher::FeedbacksController < ApplicationController
-  before_action :set_submission, only: [:new :create]
+  before_action :set_submission, only: [:new, :create]
 
   def new
     @feedback = Feedback.new
