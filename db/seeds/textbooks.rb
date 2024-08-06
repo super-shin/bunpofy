@@ -23,7 +23,7 @@ ActiveRecord::Base.connection.execute("TRUNCATE TABLE word_references, units, wo
 #iterate over the file path array for multiple textbooks
 total_rows = 378 + 781 + 786 + 548 + 2016 + 3259 + 663 + 458 + 2466 + 1363 + 2193 + 1625 + 1288 + 2430
 current_index = 0
-puts "Entering seeds..."
+puts "Seeding Textbooks..."
 file_paths.each_with_index do |file_path, index|
   puts "\rSeeding textbook: #{file_names[index]}"
   CSV.foreach(file_path, encoding: 'UTF-8', headers: true, header_converters: :symbol) do |row|
@@ -31,7 +31,7 @@ file_paths.each_with_index do |file_path, index|
     word = Word.find_or_create_by!(english: row[:english], japanese: row[:japanese], phrase: row[:phrase], level: row[:level], grade: row[:grade].to_i)
     #add tags via taggable gem
     word.status_list.add(row[:status], parse: true) if row[:status].present?
-    word.category_list.add(row[:POS], parse: true) if row[:POS].present?
+    word.category_list.add(row[:pos], parse: true) if row[:pos].present?
     word.save
     #find or create the textbook
     textbook = Textbook.find_or_create_by!(name: row[:textbook])
