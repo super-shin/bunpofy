@@ -16,5 +16,5 @@ puts "Destroyed Users"
 # Reset ID key sequences
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE users, classrooms RESTART IDENTITY CASCADE")
 puts "RESET ID Number"
-require_relative 'seeds/classrooms'
 require_relative 'seeds/users'
+require_relative 'seeds/classrooms'
