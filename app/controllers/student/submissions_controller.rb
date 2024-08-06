@@ -6,7 +6,7 @@ class Student::SubmissionsController < ApplicationController
   end
 
   def new
-    # @submission is already set by before_action
+    @submission = Submission.new
   end
 
   def create
@@ -21,7 +21,7 @@ class Student::SubmissionsController < ApplicationController
   private
 
   def set_submission
-    @submission = params[:id] ? Submission.find(params[:id]) : Submission.new
+    @submission = Submission.find(params[:id])
   end
 
   def submission_params
