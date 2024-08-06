@@ -1,7 +1,7 @@
 #Destroy all Users
 User.destroy_all
 #Create a few new Users
-puts "Seeding data..."
+puts "Seeding user data..."
 User.create([
   { email: 'hatakekakashi@hljhs.com', password: '123456', first_name: 'Kakashi', last_name: 'Hatake', role: 'teacher', school: 'Hidden Leaf JHS' },
   { email: 'sarutobihiruzen@hljhs.com', password: '123456', first_name: 'Hiruzen', last_name: 'Sarutobi', role: 'teacher', school: 'Hidden Leaf JHS' },
@@ -50,3 +50,4 @@ users.each do |user|
   end
   puts "Created user #{user.email} with attached photo"
 end
+puts "ALL DONE - Seeded USERS"
