@@ -1,10 +1,12 @@
 class Student::SubmissionsController < ApplicationController
+  before_action :set_submission, only: [:show, :new, :create]
+
   def show
-    @submission = Submission.find(params[:id])
+    # @submission is already set by before_action
   end
 
   def new
-    @submission = Submission.new
+    # @submission is already set by before_action
   end
 
   def create
@@ -18,7 +20,12 @@ class Student::SubmissionsController < ApplicationController
 
   private
 
+  def set_submission
+    @submission = params[:id] ? Submission.find(params[:id]) : Submission.new
+  end
+
   def submission_params
     params.require(:submission).permit(:challenge_id, :user_id, :content, :ai_response, :score)
   end
+
 end
