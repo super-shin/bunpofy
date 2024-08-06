@@ -1,0 +1,10 @@
+<h1>PAGE - teacher/challenges/index</h1>
+<ul class="m-3">
+  <% @challenges.each do |challenge| %>
+    <li><%= challenge.title %> due to - <%= challenge.due_date %></li>
+    <%= link_to "Go to this challenge", teacher_challenge_path(challenge) %>
+  <% end %>
+</ul>
+<div>
+  <%= link_to "Create New Challenge", new_teacher_challenge_path %>
+</div>

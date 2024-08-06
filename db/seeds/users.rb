@@ -3,6 +3,7 @@ User.destroy_all
 #Create a few new Users
 puts "Seeding data..."
 User.create([
+  { email: 'teacher@gmail.com', password: '123456', first_name: 'Teacher', last_name: 'Admin', role: 'teacher', school: 'Hidden Leaf JHS' },
   { email: 'hatakekakashi@hljhs.com', password: '123456', first_name: 'Kakashi', last_name: 'Hatake', role: 'teacher', school: 'Hidden Leaf JHS' },
   { email: 'sarutobihiruzen@hljhs.com', password: '123456', first_name: 'Hiruzen', last_name: 'Sarutobi', role: 'teacher', school: 'Hidden Leaf JHS' },
   { email: 'uzumakinaruto@hljhs.com', password: '123456', first_name: 'Naruto', last_name: 'Uzumaki', role: 'student', school: 'Hidden Leaf JHS' },

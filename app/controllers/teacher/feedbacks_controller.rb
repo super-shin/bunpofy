@@ -10,7 +10,7 @@ class Teacher::FeedbacksController < ApplicationController
     @feedback.user_id = current_user.id
     @feedback.submission = @submission 
     if @feedback.save
-      redirect_to challenge_path(@submission.challenge_id), notice: 'Feedback submitted successfully!'
+      redirect_to challenge_path(@submission.challenge), notice: 'Feedback submitted successfully!'
     else
       render :new
     end

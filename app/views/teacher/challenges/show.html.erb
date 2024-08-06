@@ -1,0 +1,4 @@
+<h1>PAGE - teacher/challenge/:id</h1>
+<p><%= @challenge.title %> - <%= @challenge.due_date %></p>
+<p class="mb-3">USER - <%= @challenge.user.first_name %></p>
+<%= link_to "Edit", edit_teacher_challenge_path(@challenge) %>
