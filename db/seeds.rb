@@ -1,5 +1,10 @@
+# SEEDS for BUNPOFY
+# RULE: Don't change the Order of anything unless checked thoroughly
 
-# require_relative 'seeds/textbooks'
+#STEP 1: Seed TEXTBOOKS (deletions on file)
+require_relative 'seeds/textbooks'
+
+#STEP 2: Destroy Attendance - Classroom - User
 # #Destroy all Attendance
 Attendance.destroy_all
 puts "Destroyed Attendances"
@@ -12,6 +17,8 @@ puts "Destroyed Users"
 # Reset ID key sequences
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE users, classrooms, attendances RESTART IDENTITY CASCADE")
 puts "RESET ID Numbers"
+
+#STEP 3: SEED Users - Classrooms - Attendances
 require_relative 'seeds/users'
 require_relative 'seeds/classrooms'
 require_relative 'seeds/attendance'
