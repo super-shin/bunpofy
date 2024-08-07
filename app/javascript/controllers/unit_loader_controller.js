@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = ['textbookSelect', 'unitSelect'];
 
   connect() {
-    console.log('Unit Select Target:', this.unitSelectTarget);  
     this.unitsByTextbook = JSON.parse(this.element.dataset.unitsByTextbook)
   }
 

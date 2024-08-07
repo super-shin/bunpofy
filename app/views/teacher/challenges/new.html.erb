@@ -1,10 +1,18 @@
 <h1>Create a Challenge</h1>
 <%= simple_form_for [:teacher, @challenge], html: { data: { controller: 'unit-loader', units_by_textbook: @units_by_textbook.to_json.html_safe } }  do |f| %>
   <!-- Choose which Textbook to use -->
-  <%= select_tag :textbook, options_from_collection_for_select(@textbooks, :id, :name), id: 'textbook_select', prompt: 'Select a textbook', data: { unit_loader_target: 'textbookSelect', action: 'change->unit-loader#updateUnits' } %>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Textbook:</span>
+    <% if @textbooks.present? %>
+      <%= select_tag :textbook, options_from_collection_for_select(@textbooks, :id, :name), id: 'textbook_select', class: 'form-control', prompt: 'Select a textbook', name: '', data: { unit_loader_target: 'textbookSelect', action: 'change->unit-loader#updateUnits' } %>
+    <% else %>
+      <p>No textbooks available.</p>
+    <% end %>
+  </div>
   <!-- From Textbook, Units are dynamically loaded. Choose which unit -->
   <%= f.input :unit_id, collection: [], label_method: :name, value_method: :id, prompt: 'Select a unit', id: 'unit_select', input_html: {data: { unit_loader_target: 'unitSelect' }} %>
   <!-- Other challenge information -->
+  <%= f.input :classroom, collection: @classrooms, prompt: 'Select a classroom' %>
   <%= f.input :title %>
   <%= f.input :directions %>
   <%= f.input :due_date, as: :date %>
