@@ -1,1 +1,10 @@
 // Specific CSS for your home-page
+.linear-background {
+    background-image: linear-gradient(
+      180deg,
+      hsl(205deg, 64%, 48%) 0%,
+      hsl(205deg, 61%, 72%) 25%,
+      hsl(0deg, 0%, 100%) 70%
+    );
+  }
+  
