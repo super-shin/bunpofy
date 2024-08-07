@@ -1,5 +1,5 @@
 class Student::SubmissionsController < ApplicationController
-  before_action :set_submission, only: [:show, :new, :create]
+  before_action :set_submission, only: [:show, :create]
 
   def show
     # @submission it's already set by before_action

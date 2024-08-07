@@ -7,4 +7,5 @@
   <p>DIRECTIONS: <%= @challenge.directions %></p>
   <p>DUE DATE: <%= @challenge.due_date %></p>
   <%= link_to "Go Back To Challenges", student_challenges_path %>
+  <%= link_to "Answer", new_student_challenge_submission_path(@challenge), class: 'btn-primary' %>
 </div>
