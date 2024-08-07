@@ -2,7 +2,7 @@ class Student::ChallengesController < ApplicationController
   before_action :set_challenge, only: [:show]
 
   def index
-    @challenges = current_user.challenges
+    @student_classrooms = @current_user.classrooms_as_student
   end
 
   def show
