@@ -1,5 +1,10 @@
 <h1>PAGE - teacher/challenges/new</h1>
 <%= simple_form_for [:teacher, @challenge] do |f| %>
+  <!-- Choose which Textbook to use -->
+  <%= f.input :textbook, as: :select, collection: @textbooks, label_method: name, value_method: id, prompt: 'Select a textbook', id: 'textbook_select' %>
+  <!-- From Textbook, Units are dynamically loaded. Choose which unit -->
+  <%= f.input :unit_id, collection: [], label_method: :name, value_method: :id, prompt: 'Select a unit', id: 'unit_select' %>
+  <!-- Other challenge information -->
   <%= f.input :title %>
   <%= f.input :directions %>
   <%= f.input :due_date, as: :date %>
