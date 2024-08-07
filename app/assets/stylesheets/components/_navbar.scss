@@ -10,3 +10,16 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+.gradient-button a {
+  display: inline-block !important;
+  padding: 10px 20px !important;
+  color: #fff !important;
+  text-transform: capitalize;
+  font-size: 15px;
+  background: rgb(255, 213, 0);
+  background: linear-gradient(105deg, rgba(255, 225, 0, 1) 0%, rgba(255, 180, 0, 1) 100%);
+  border-radius: 23px;
+  font-weight: 500 !important;
+  letter-spacing: 0.3px !important;
+  transition: all .5s;
+}
