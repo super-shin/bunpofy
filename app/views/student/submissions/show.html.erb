@@ -4,16 +4,22 @@
       <div class="col-9">
         <%# GRAMMAR COLUMN %>
         <h1 class="dark-gray">SENTEN<span class="yellow">SENSEI</span></h1>
+        <div class="card text-center my-5 submitted-text">
+          <div class="card-body">
+            <div class="card-title display-6">
+              <%= @submission.content %>
+            </div>
+          </div>
+        </div>
         <p>Challenge ID:<%= @submission.challenge_id %></p>
         <p>User ID:<%= @submission.user_id %></p>
         <p>Score:<%= @submission.score %></p>
-        <p>Content:<%= @submission.content %></p>
       </div>
       <div class="col-3 border border-5">
         <%# ERROR COLUMN %>
+        <%= render "errors" %>
       </div>
     </div>
   </div>
-</div>
 </div>
 <p class="container bg-dark text-white mt-5">AI RESPONSE:<%= @submission.ai_response %></p>

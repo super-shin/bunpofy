@@ -1,0 +1,46 @@
+<%# READABILITY LOGIC %>
+<% levels = {"ES3"=>1,"ES4"=>2,"ES5"=>3,"ES6"=>4, "JHS1"=>5, "JHS2"=>6, "JHS3"=>7 } %>
+<% textbook_level = "#{@textbook.words.first.level}#{@textbook.words.first.grade}" %>
+<% unreadable = [] %>
+<%# GET THE LOWEST GRADE ON EACH WORD %>
+<% word_lowest_levels = Hash.new{"ES3"} %>
+<% @word_details.each do |w| %>
+  <% word_level = "#{w[1]}#{w[2]}" %>
+  <% if word_lowest_levels.key?(w[0])%>
+    <% word_lowest_levels[w[0]] = word_level if word_lowest_levels[w[0]] > word_level %>
+  <% else %>
+    <% word_lowest_levels[w[0]] = word_level %>
+  <% end %>
+<% end %>
+<%# GET WORDS OUTSIDE OF VOCABULARY %>
+<% word_lowest_levels.each do |key, value| %>
+  <% if levels[value] && levels[value] > levels[textbook_level] %>
+    <% unreadable << key  %>
+  <% end %>
+<% end %>
+<% @content_words.each do |w| %>
+  <% unreadable << w if !word_lowest_levels.key?(w) && !word_lowest_levels.key?(w.upcase) %>
+<% end %>
+<%# SHOW READABILITY AFTER LOGIC %>
+<% if unreadable.empty? %>
+  <div class="d-flex align-items-center justify-content-between">
+    <lord-icon
+    src="https://cdn.lordicon.com/zhsxmjgz.json"
+    trigger="hover"
+    state="hover-up"
+    colors="primary:#16c72e,secondary:#f9c9c0"
+    style="width:50px;height:50px">
+    </lord-icon>
+    <p><strong>100% Readability!</strong></p>
+    <p>This is a level appropriate text.</p>
+  </div>
+<% else %>
+  <div class="d-flex align-items-center justify-content-between">
+    <lord-icon
+    src="https://cdn.lordicon.com/zhsxmjgz.json"
+    trigger="hover"
+    style="width:50px;height:50px">
+    </lord-icon>
+    <p class="red">Level inappropriate text detected</p>
+  </div>
+<% end %>

@@ -4,6 +4,12 @@ class Student::SubmissionsController < ApplicationController
 
   def show
     # @submission it's already set by before_action
+    @ai_response = JSON.parse(@submission.ai_response) if @submission.ai_response.present?
+    @textbook = @submission.challenge.unit.textbook
+    @content_words = @submission.content.downcase.scan(/\w+/).uniq
+    @word_details = Word.where("LOWER(english) IN (?)", @content_words).pluck(:english, :level, :grade).uniq
+  rescue JSON::ParserError
+    @ai_response = { "errors" => [] }
   end
 
   def new
