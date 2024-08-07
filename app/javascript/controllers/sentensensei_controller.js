@@ -20,6 +20,7 @@ Sentence: `;
   PROMPT_TWO = `You are a strict grammar checker. Compare the original and corrected sentences, identify, check, and categorize each error (Punctuation, Spelling, Capitalization, Grammar, Style, Usage, Clarity). The sentence is made by a Japanese ESL student; fix words that might come from their native language and properly translate them to the English counterpart or the nearest meaning. Ensure each error is categorized only once. Provide the result in this format:
 
 {
+  "correctedText": {original JSON from corrected sentence},
   "info": {
     "score" : "1-100 score based on erros"
     "chars_count": "information",
