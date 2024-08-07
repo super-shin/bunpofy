@@ -12,17 +12,13 @@ class Teacher::ChallengesController < ApplicationController
     @classrooms = Classroom.all
     # Create an array of all books to be displayed in the form
     @textbooks = Textbook.all
-    @units_by_textbook = Unit.group_by(&:textbook_id)
+    @units_by_textbook = Unit.all.group_by(&:textbook_id)
     @challenge = Challenge.new
   end
 
   def create
     @challenge = Challenge.new(challenge_params)
     @challenge.user = current_user
-    # Associating Textbook and Unit by default, after edit View DELETE this code
-    @challenge.unit = Unit.where(textbook_id: 1).first
-    @challenge.classroom_id = 1
-    # DELETE UNTIL HERE
     if @challenge.save
       redirect_to teacher_challenge_path(@challenge), notice: 'Challenge submitted successfully!'
     else

@@ -1,12 +1,13 @@
-<h1>PAGE - teacher/challenges/new</h1>
-<%= simple_form_for [:teacher, @challenge] do |f| %>
+<h1>Create a Challenge</h1>
+<%= simple_form_for [:teacher, @challenge], html: { data: { controller: 'unit-loader', units_by_textbook: @units_by_textbook.to_json.html_safe } }  do |f| %>
   <!-- Choose which Textbook to use -->
-  <%= f.input :textbook, as: :select, collection: @textbooks, label_method: name, value_method: id, prompt: 'Select a textbook', id: 'textbook_select' %>
+  <%= select_tag :textbook, options_from_collection_for_select(@textbooks, :id, :name), id: 'textbook_select', prompt: 'Select a textbook', data: { unit_loader_target: 'textbookSelect', action: 'change->unit-loader#updateUnits' } %>
   <!-- From Textbook, Units are dynamically loaded. Choose which unit -->
-  <%= f.input :unit_id, collection: [], label_method: :name, value_method: :id, prompt: 'Select a unit', id: 'unit_select' %>
+  <%= f.input :unit_id, collection: [], label_method: :name, value_method: :id, prompt: 'Select a unit', id: 'unit_select', input_html: {data: { unit_loader_target: 'unitSelect' }} %>
   <!-- Other challenge information -->
   <%= f.input :title %>
   <%= f.input :directions %>
   <%= f.input :due_date, as: :date %>
   <%= f.button :submit %>
+  <!-- Stimulus controller (unit_loader_controller.js) -->
 <% end %>
