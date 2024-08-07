@@ -12,6 +12,7 @@ class Teacher::ChallengesController < ApplicationController
     @classrooms = Classroom.all
     # Create an array of all books to be displayed in the form
     @textbooks = Textbook.all
+    @units_by_textbook = Unit.group_by(&:textbook_id)
     @challenge = Challenge.new
   end
 
