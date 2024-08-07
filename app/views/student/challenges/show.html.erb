@@ -1,1 +1,10 @@
 ###We are in the student/controller show##
+<div class="container">
+  <h1>Teacher:<%= @challenge.user.first_name %></h1>
+  <p>Unit: <%= @challenge.unit.name %></p>
+  <p>Classroom: <%= @challenge.classroom.name %></p>
+  <p>TITLE: <%= @challenge.title %></p>
+  <p>DIRECTIONS: <%= @challenge.directions %></p>
+  <p>DUE DATE: <%= @challenge.due_date %></p>
+  <%= link_to "Go Back To Challenges", student_challenges_path %>
+</div>

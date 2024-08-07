@@ -8,5 +8,6 @@
     <p>TITLE: <%= challenge.title %></p>
     <p>DIRECTIONS: <%= challenge.directions %></p>
     <p>DUE DATE: <%= challenge.due_date %></p>
+    <%= link_to "Go to Challenge", student_challenge_path(challenge) %>
   </div>
 <% end %>
