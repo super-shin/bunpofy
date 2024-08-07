@@ -6,7 +6,17 @@
 }
 .btn-outline-danger {
     background-color: rgba(253, 210, 210, 0.493);
+    transition: transform 1s ease, background-color 1s ease;
 }
-.btn-outline-danger:hover {
+.btn-outline-warning {
+    background-color: rgba(255, 255, 179, 0.249);
+    transition: transform 1s ease;
+}
+.btn-outline-info {
+    background-color: rgba(255, 255, 179, 0.249);
+    transition: transform 1s ease;
+}
+.btn-outline-danger:hover, .btn-outline-warning:hover, .btn-outline-info:hover {
     color: white;
+    transform: scale(1.25);
 }

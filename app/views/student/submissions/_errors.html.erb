@@ -1,23 +1,26 @@
-<p class="bold-title blue mt-3 pt-3">READABILITY</p>
-<div class="div d-flex flex-column justify-content-center align-items-center">
+<%# RENDER SCORE PART%>
+<h4 class="bold-title mt-3 pt-3">SCORE</h4>
+<div class="d-flex justify-content-center align-items-center display-4">
+  <lord-icon
+    src="https://cdn.lordicon.com/xjronrda.json"
+    trigger="hover"
+    colors="primary:#fcd74a,secondary:#3a3347,tertiary:#ebe6ef"
+    style="width:100px;height:100px">
+  </lord-icon>
+  <%= @ai_response["info"]["score"]  %>%
+</div>
+<%# RENDER READABILITY PART%>
+<h4 class="bold-title blue border-top mt-3 pt-3">READABILITY</h4>
+<div class="d-flex flex-column justify-content-center align-items-center">
   <%= render "readability" %>
 </div>
-<p class="bold-title red border-top mt-3 pt-3">ALL ALERTS</p>
-<div class="div d-flex flex-column justify-content-center align-items-center">
-  <%# ERRORS DIV %>
-  <% if @ai_response && @ai_response["errors"].empty? %>
-    <p class="text-muted">No errors found</p>
-  <% else %>
-    <%# ERRORS COUNT %>
-    <% error_counts = @ai_response["errors"].each_with_object(Hash.new(0)) do |error, counts| %>
-      <% counts[error["type"]] += 1 %>
-    <% end %>
-    <%# Render buttons with error counts %>
-    <% error_counts.each do |error_type, count| %>
-      <button type="button" class="btn btn-outline-danger rounded-5 py-1 mb-2 d-flex justify-content-between align-items-center" style="min-width: 200px;">
-        <span><%= error_type %></span>
-        <span class="badge bg-danger"><%= count %></span>
-      </button>
-    <% end %>
-  <% end %>
+<%# RENDER ALL ALERTS PART%>
+<h4 class="bold-title red border-top mt-3 pt-3">ALL ALERTS</h4>
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <%= render "all_alerts" %>
+</div>
+<%# RENDER GRAMMAR PART%>
+<h4 class="bold-title green border-top mt-3 pt-3">GRAMMAR TAGS</h4>
+<div class="d-flex flex-column justify-content-center align-items-start">
+  <%= render "grammar" %>
 </div>

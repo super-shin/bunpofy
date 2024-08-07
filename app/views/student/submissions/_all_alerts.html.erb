@@ -1,0 +1,28 @@
+<%# ERRORS DIV %>
+<% if @ai_response && @ai_response["errors"].empty? %>
+  <p class="text-muted">No errors found</p>
+<% else %>
+  <%# ERRORS COUNT %>
+  <% error_counts = @ai_response["errors"].each_with_object(Hash.new(0)) do |error, counts| %>
+    <% counts[error["type"]] += 1 %>
+  <% end %>
+  <%# Render buttons with error counts %>
+  <% error_counts.each do |error_type, count| %>
+    <% if error_type.downcase == "style" %>
+      <button type="button" class="btn btn-outline-info rounded-5 py-1 mb-2 d-flex justify-content-between align-items-center" style="min-width: 200px;">
+        <span><%= error_type %></span>
+        <span class="badge bg-info"><%= count %></span>
+      </button>
+    <% elsif error_type.downcase == "punctuation" %>
+      <button type="button" class="btn btn-outline-info rounded-5 py-1 mb-2 d-flex justify-content-between align-items-center" style="min-width: 200px;">
+        <span><%= error_type %></span>
+        <span class="badge bg-info"><%= count %></span>
+      </button>
+    <% else %>
+      <button type="button" class="btn btn-outline-danger rounded-5 py-1 mb-2 d-flex justify-content-between align-items-center" style="min-width: 200px;">
+        <span><%= error_type %></span>
+        <span class="badge bg-danger"><%= count %></span>
+      </button>
+    <% end %>
+  <% end %>
+<% end %>
