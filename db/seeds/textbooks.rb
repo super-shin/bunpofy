@@ -19,15 +19,22 @@ puts "Destroyed Textbooks"
 # Reset ID key sequences
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE word_references, units, words, textbooks RESTART IDENTITY CASCADE")
 
+
 #iterate over the file path array for multiple textbooks
 total_rows = 378 + 781 + 786 + 548 + 2016 + 3259 + 663 + 458 + 2466 + 1363 + 2193 + 1625 + 1288 + 2430
 current_index = 0
-puts "Entering seeds..."
+
+
+puts "Seeding Textbooks..."
 file_paths.each_with_index do |file_path, index|
   puts "\rSeeding textbook: #{file_names[index]}"
   CSV.foreach(file_path, encoding: 'UTF-8', headers: true, header_converters: :symbol) do |row|
     #find or create the word
     word = Word.find_or_create_by!(english: row[:english], japanese: row[:japanese], phrase: row[:phrase], level: row[:level], grade: row[:grade].to_i)
+    #add tags via taggable gem
+    word.status_list.add(row[:status], parse: true) if row[:status].present?
+    word.category_list.add(row[:pos], parse: true) if row[:pos].present?
+    word.save
     #find or create the textbook
     textbook = Textbook.find_or_create_by!(name: row[:textbook])
     #find or create the unit with the textbook
@@ -37,7 +44,7 @@ file_paths.each_with_index do |file_path, index|
     unit = Unit.find_or_create_by!(name: unit_name, textbook: textbook)
     #create wordReference
     word_reference = WordReference.find_or_create_by!(unit: unit, word: word, page: row[:page].to_i)
-    
+
     # Update progress
     current_index = current_index + 1
     percentage = (current_index.to_f / total_rows * 100).round(2)
