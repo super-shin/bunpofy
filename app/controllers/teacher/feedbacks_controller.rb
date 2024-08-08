@@ -3,12 +3,14 @@ class Teacher::FeedbacksController < ApplicationController
 
   def new
     @feedback = Feedback.new
+    authorize @feedback
   end
 
   def create
     @feedback = Feedback.new(feedback_params)
     @feedback.user_id = current_user.id
     @feedback.submission = @submission
+    authorize @feedback
     if @feedback.save
       redirect_to challenge_path(@submission.challenge), notice: 'Feedback submitted successfully!'
     else

@@ -52,6 +52,7 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 gem "cloudinary"
 gem "acts-as-taggable-on"
+gem "pundit"
 
 group :development, :test do
   gem "dotenv-rails"

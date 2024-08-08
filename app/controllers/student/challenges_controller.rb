@@ -2,12 +2,12 @@ class Student::ChallengesController < ApplicationController
   before_action :set_challenge, only: [:show]
 
   def index
-    student_classrooms = current_user.classrooms_as_student
-    @challenges = Challenge.where(classroom_id: student_classrooms.pluck(:id))
+    @challenges = policy_scope(Challenge)
   end
 
   def show
     # @challenge is already set by before_action
+    authorize @challenge
   end
 
   private

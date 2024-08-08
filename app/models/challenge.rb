@@ -3,5 +3,7 @@ class Challenge < ApplicationRecord
   belongs_to :unit
   belongs_to :classroom
   has_many :submissions
+  has_many :attendances, through: :classroom
+  has_many :students, through: :attendances, source: :user
   validates :title, :directions, presence: true
 end
