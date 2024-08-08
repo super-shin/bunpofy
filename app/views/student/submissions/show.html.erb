@@ -1,21 +1,23 @@
 <div class="container-fluid p-2 bg-white mt-5 border border-light border-5 rounded-5" style="width:90%; min-height:80vh;">
   <div class="row justify-content-center">
-    <div class="col-11 d-flex gap-3">
-      <div class="col-9">
+        <div class="col-11">
+          <h1 class="dark-gray">SENTEN<span class="yellow">SENSEI</span></h1>
+        </div>
+    <div class="col-11 d-flex gap-3" data-controller="card-show">
+      <div class="col-9 d-flex flex-column align-items-center">
         <%# GRAMMAR COLUMN %>
-        <h1 class="dark-gray">SENTEN<span class="yellow">SENSEI</span></h1>
-        <div class="card text-center my-5 submitted-text">
+        <div class="card my-5 submitted-text text-center">
           <div class="card-body">
             <div class="card-title display-6">
               <%= @submission.content %>
             </div>
           </div>
         </div>
-        <p>Challenge ID:<%= @submission.challenge_id %></p>
-        <p>User ID:<%= @submission.user_id %></p>
-        <p>Score:<%= @submission.score %></p>
+        <div class="my-5 col-11" data-card-show-target="cardContainer">
+          <%#THIS IS WHERE ERROR CARDS GET INPUTED WHEN BUTTONS ARE CLICKED%>
+        </div>
       </div>
-      <div class="col-3 border border-5">
+      <div class="col-3 border border-5 mt-2">
         <%# ERROR COLUMN %>
         <%= render "errors" %>
       </div>
