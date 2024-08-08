@@ -3,4 +3,5 @@ class Challenge < ApplicationRecord
   belongs_to :unit
   belongs_to :classroom
   has_many :submissions
+  validates :title, :directions, presence: true
 end
