@@ -11,6 +11,15 @@ puts "Destroyed Attendances"
 # #Destroy all Classrooms
 Classroom.destroy_all
 puts "Destroyed Classrooms"
+# #Destroy all Challenges
+Challenge.destroy_all
+puts "Destroyed Challenges"
+# #Destroy all Submissions
+Submission.destroy_all
+puts "Destroyed Submissions"
+# #Destroy all Games
+Game.destroy_all
+puts "Destroyed Games"
 # #Destroy all Users
 User.destroy_all
 puts "Destroyed Users"
@@ -22,3 +31,6 @@ puts "RESET ID Numbers"
 require_relative 'seeds/users'
 require_relative 'seeds/classrooms'
 require_relative 'seeds/attendance'
+require_relative 'seeds/challenges.rb'
+require_relative 'seeds/submissions.rb'
+require_relative 'seeds/games.rb'
