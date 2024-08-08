@@ -1,10 +1,12 @@
 class Teacher::ChallengesController < ApplicationController
+  before_action :set_challenge, only: [:show, :edit, :update]
+
   def index
-    @challenges = current_user.challenges
+    @challenges = policy_scope(Challenge)
   end
 
   def show
-    @challenge = Challenge.find(params[:id])
+    authorize @challenge
   end
 
   def new
@@ -14,12 +16,14 @@ class Teacher::ChallengesController < ApplicationController
     @textbooks = Textbook.all
     @units_by_textbook = Unit.all.group_by(&:textbook_id)
     @challenge = Challenge.new
+    authorize @challenge
   end
 
   def create
     @challenge = Challenge.new(challenge_params)
     @challenge.user = current_user
     @challenge.classroom = current_user.classrooms.first
+    authorize @challenge
     if @challenge.save
       redirect_to teacher_challenge_path(@challenge), notice: 'Challenge submitted successfully!'
     else
@@ -29,11 +33,11 @@ class Teacher::ChallengesController < ApplicationController
   end
 
   def edit
-    @challenge = Challenge.find(params[:id])
+    authorize @challenge
   end
 
   def update
-    @challenge = Challenge.find(params[:id])
+    authorize @challenge
     @challenge.update(challenge_params)
     redirect_to teacher_challenge_path(@challenge), notice: 'Challenge updated successfully!'
   end
@@ -42,5 +46,9 @@ class Teacher::ChallengesController < ApplicationController
 
   def challenge_params
     params.require(:challenge).permit(:unit_id, :classroom_id, :title, :directions, :due_date)
+  end
+
+  def set_challenge
+    @challenge = Challenge.find(params[:id])
   end
 end

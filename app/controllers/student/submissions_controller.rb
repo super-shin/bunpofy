@@ -4,6 +4,7 @@ class Student::SubmissionsController < ApplicationController
 
   def show
     # @submission it's already set by before_action
+    authorize @submission
     @ai_response = JSON.parse(@submission.ai_response) if @submission.ai_response.present?
     @textbook = @submission.challenge.unit.textbook
     @content_words = @submission.content.downcase.scan(/\w+/).uniq
@@ -14,6 +15,7 @@ class Student::SubmissionsController < ApplicationController
 
   def new
     @submission = @challenge.submissions.build
+    authorize @submission
   end
 
   def create
@@ -21,6 +23,7 @@ class Student::SubmissionsController < ApplicationController
     @submission.user = current_user
     ai_response_data = JSON.parse(@submission.ai_response)
     @submission.score = ai_response_data['info']['score'].to_i
+    authorize @submission
     if @submission.save
       redirect_to student_submission_path(@submission), notice: 'Submission was successfully created.'
     else
