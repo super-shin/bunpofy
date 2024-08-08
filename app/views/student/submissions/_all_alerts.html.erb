@@ -9,17 +9,17 @@
   <%# Render buttons with error counts %>
   <% error_counts.each do |error_type, count| %>
     <% if error_type.downcase == "style" %>
-      <button type="button" class="btn btn-outline-info rounded-5 py-1 mb-2 d-flex justify-content-between align-items-center" style="min-width: 200px;" data-action="click->card-show#toggleCard">
+      <button type="button" class="btn btn-outline-info rounded-5 py-1 mb-2 d-flex justify-content-between align-items-center" style="min-width: 200px;" data-card-show-target="button" data-id="<%= error_type.downcase %>" data-action="click->card-show#toggleCard">
         <span><%= error_type %></span>
-        <span class="badge bg-info"><%= count %></span>
+        <span class="badge bg-info"><%= count %></span>card
       </button>
     <% elsif error_type.downcase == "punctuation" %>
-      <button type="button" class="btn btn-outline-info rounded-5 py-1 mb-2 d-flex justify-content-between align-items-center" style="min-width: 200px;" data-action="click->card-show#toggleCard">
+      <button type="button" class="btn btn-outline-info rounded-5 py-1 mb-2 d-flex justify-content-between align-items-center" style="min-width: 200px;" data-card-show-target="button" data-id="<%= error_type.downcase %>" data-action="click->card-show#toggleCard">
         <span><%= error_type %></span>
         <span class="badge bg-info"><%= count %></span>
       </button>
     <% else %>
-      <button type="button" class="btn btn-outline-danger rounded-5 py-1 mb-2 d-flex justify-content-between align-items-center" style="min-width: 200px;" data-action="click->card-show#toggleCard">
+      <button type="button" class="btn btn-outline-danger rounded-5 py-1 mb-2 d-flex justify-content-between align-items-center" style="min-width: 200px;" data-card-show-target="button" data-id="<%= error_type.downcase %>" data-action="click->card-show#toggleCard">
         <span><%= error_type %></span>
         <span class="badge bg-danger"><%= count %></span>
       </button>
