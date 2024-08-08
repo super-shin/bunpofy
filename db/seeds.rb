@@ -2,21 +2,21 @@
 # RULE: Don't change the Order of anything unless checked thoroughly
 
 #STEP 1: Seed TEXTBOOKS (deletions on file)
-require_relative 'seeds/textbooks'
+# require_relative 'seeds/textbooks'
 
 #STEP 2: Destroy Attendance - Classroom - User
 # #Destroy all Attendance
 Attendance.destroy_all
 puts "Destroyed Attendances"
-# #Destroy all Classrooms
-Classroom.destroy_all
-puts "Destroyed Classrooms"
-# #Destroy all Challenges
-Challenge.destroy_all
-puts "Destroyed Challenges"
 # #Destroy all Submissions
 Submission.destroy_all
 puts "Destroyed Submissions"
+# #Destroy all Challenges
+Challenge.destroy_all
+puts "Destroyed Challenges"
+# #Destroy all Classrooms
+Classroom.destroy_all
+puts "Destroyed Classrooms"
 # #Destroy all Games
 Game.destroy_all
 puts "Destroyed Games"
@@ -32,5 +32,5 @@ require_relative 'seeds/users'
 require_relative 'seeds/classrooms'
 require_relative 'seeds/attendance'
 require_relative 'seeds/challenges.rb'
-require_relative 'seeds/submissions.rb'
+require_relative 'seeds/submission.rb'
 require_relative 'seeds/games.rb'
