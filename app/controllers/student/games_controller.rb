@@ -6,7 +6,17 @@ class Student::GamesController < ApplicationController
   end
 
   def edit
+    # Exemple to try grammar game page.
+    @words_array = ["tomorrow", "next", "banana", "apple", "thanks"]
     # @game is already set by before_action
+    case @game.game_type
+    when "grammar"
+      render "grammar_game"
+    when "spelling"
+      render "spelling_game"
+    when "vocabulary"
+      render "vocabulary_game"
+    end
   end
 
   def update

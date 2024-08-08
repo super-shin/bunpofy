@@ -24,4 +24,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  get 'games/vocab', to: 'games#vocab'
 end

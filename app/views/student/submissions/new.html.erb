@@ -1,1 +1,7 @@
-###We are in the student/controller new##
+<%= simple_form_for [:student, @challenge, @submission], html: { data: { controller: 'sentensensei', action: 'submit->sentensensei#check' } } do |f| %>
+  <%= f.input :content, input_html: { data: { sentensensei_target: 'content' } } %>
+  <%= f.hidden_field :ai_response, { data: { sentensensei_target: 'aiResponse' } } %>
+  <%= f.button :submit %>
+<% end %>
+<pre id="response-prompt1">Response will be shown here.</pre>
+<pre id="response-prompt2">Response will be shown here.</pre>

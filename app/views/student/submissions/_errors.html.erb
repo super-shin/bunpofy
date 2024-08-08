@@ -1,0 +1,26 @@
+<%# RENDER SCORE PART%>
+<h4 class="bold-title mt-3 pt-3">SCORE</h4>
+<div class="d-flex justify-content-center align-items-center display-4">
+  <lord-icon
+    src="https://cdn.lordicon.com/xjronrda.json"
+    trigger="hover"
+    colors="primary:#fcd74a,secondary:#3a3347,tertiary:#ebe6ef"
+    style="width:100px;height:100px">
+  </lord-icon>
+  <%= @ai_response["info"]["score"]  %>%
+</div>
+<%# RENDER READABILITY PART%>
+<h4 class="bold-title blue border-top mt-3 pt-3">READABILITY</h4>
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <%= render "readability" %>
+</div>
+<%# RENDER ALL ALERTS PART%>
+<h4 class="bold-title red border-top mt-3 pt-3">ALL ALERTS</h4>
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <%= render "all_alerts" %>
+</div>
+<%# RENDER GRAMMAR PART%>
+<h4 class="bold-title green border-top mt-3 pt-3">GRAMMAR TAGS</h4>
+<div class="d-flex flex-column justify-content-center align-items-start">
+  <%= render "grammar" %>
+</div>

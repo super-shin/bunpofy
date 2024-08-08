@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_06_103762) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_08_083714) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,16 +53,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_06_103762) do
 
   create_table "challenges", force: :cascade do |t|
     t.string "title"
-    t.string "directions"
+    t.text "directions"
     t.date "due_date"
-    t.bigint "user_id", null: false
-    t.bigint "unit_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "classroom_id", null: false
     t.index ["classroom_id"], name: "index_challenges_on_classroom_id"
-    t.index ["unit_id"], name: "index_challenges_on_unit_id"
-    t.index ["user_id"], name: "index_challenges_on_user_id"
   end
 
   create_table "classrooms", force: :cascade do |t|
@@ -84,7 +80,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_06_103762) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.string "type"
+    t.string "game_type"
     t.string "correct_answer"
     t.string "question"
     t.string "student_answer"
@@ -193,8 +189,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_06_103762) do
   add_foreign_key "attendances", "classrooms"
   add_foreign_key "attendances", "users"
   add_foreign_key "challenges", "classrooms"
-  add_foreign_key "challenges", "units"
-  add_foreign_key "challenges", "users"
   add_foreign_key "classrooms", "users"
   add_foreign_key "feedbacks", "submissions"
   add_foreign_key "feedbacks", "users"

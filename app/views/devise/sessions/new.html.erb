@@ -1,20 +1,39 @@
-<h2>Log in</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+<div class="login-container">
+  <div class="login-image">
+    <%= image_tag "login-ninja.jpg", style: "width: 400px; height: auto;" %>
   </div>
+  <div class="login-form-container">
+    <div class="login-form-content">
+      <h2>Sign In</h2>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'login-form' }) do |f| %>
+        <div class="form-group">
+          <%= f.input :email,
+                      label: false,
+                      placeholder: 'Username',
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email", class: 'form-control' } %>
+        </div>
+        <div class="form-group">
+          <%= f.input :password,
+                      label: false,
+                      placeholder: 'Password',
+                      required: true,
+                      input_html: { autocomplete: "current-password", class: 'form-control' } %>
+        </div>
+        <% if devise_mapping.rememberable? %>
+          <div class="form-group remember-me">
+            <%= f.input :remember_me, as: :boolean, label: 'Remember me', class: 'checkbox' %>
+          </div>
+        <% end %>
+        <div class="form-actions">
+          <%= f.button :submit, "Log In", class: 'btn-primary' %>
+        </div>
+      <% end %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
+      <div class="forgot-password">
+        <%= link_to "Forgot Password?", new_password_path(resource_name), class: 'forgot-pass' %>
+      </div>
+    </div>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
