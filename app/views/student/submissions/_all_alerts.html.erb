@@ -1,0 +1,34 @@
+<%# ERRORS DIV %>
+<% if @ai_response && @ai_response["errors"].empty? %>
+  <p class="text-muted">No errors found</p>
+<% else %>
+  <%# ERRORS COUNT %>
+  <% error_counts = @ai_response["errors"].each_with_object(Hash.new(0)) do |error, counts| %>
+    <% counts[error["type"]] += 1 %>
+  <% end %>
+  <%# Render buttons with error counts %>
+  <% error_counts.each do |error_type, count| %>
+    <% case error_type.downcase
+        when "style"
+          button_class = "btn-outline-info"
+          badge_class = "bg-info"
+        when "punctuation"
+          button_class = "btn-outline-info"
+          badge_class = "bg-info"
+        else
+          button_class = "btn-outline-danger"
+          badge_class = "bg-danger"
+        end %>
+    <button 
+      type="button" 
+      class="btn <%= button_class %> rounded-5 py-1 mb-2 d-flex justify-content-between align-items-center" 
+      style="min-width: 200px;" 
+      data-card-show-target="button" 
+      data-id="<%= error_type.downcase %>"
+      data-action="click->card-show#toggleCard"
+      >
+      <span><%= error_type %></span>
+      <span class="badge <%= badge_class %>"><%= count %></span>
+    </button>
+  <% end %>
+<% end %>
