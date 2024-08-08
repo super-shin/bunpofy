@@ -1,0 +1,141 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #e0ecf9, #ffffff);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-family: 'Lexend', sans-serif;
+}
+
+header p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.create-btn {
+    background-color: #2C86C7;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 30px;
+}
+
+.create-btn:hover {
+    opacity: 0.8;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.categories button {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.categories button:hover {
+    background-color: #f0f0f0;
+}
+
+.challenges {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    width: 90%;
+    max-width: 1200px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-image {
+    background-color: #e0e0e0;
+    height: 180px;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content .topic {
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.card-content .title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.card-content .description {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between; /* Distribute space between school info and date */
+  align-items: center; /* Vertically center the content */
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.card-footer .school {
+    font-weight: bold;
+}
+
+.categories button.active {
+  background-color: #2C86C7; /* Highlight color for the active button */
+  color: #fff; /* Text color for better contrast */
+  border: none; /* Remove border for a cleaner look */
+}
+
+.categories button.active:hover {
+  background-color: #1a6fa0; /* Slightly darker shade on hover for active button */
+}
+
+.school-info {
+  display: flex;
+  align-items: center; /* Vertically center the school image and name */
+}
+
+.school-image {
+  width: 30px; /* Adjust size as needed */
+  height: 30px; /* Adjust size as needed */
+  border-radius: 50%; /* Make the image round */
+  margin-right: 10px; /* Space between the image and the text */
+}
+
+.school {
+  font-weight: bold;
+}
