@@ -1,0 +1,64 @@
+/* Signup Container */
+.signup-container {
+  max-width: 800px; /* Increased width */
+  margin: 0 auto;
+  padding: 3rem; /* Increased padding */
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Increased shadow for better visibility */
+}
+
+/* Heading Style */
+.signup-heading {
+  margin-bottom: 1.5rem; /* Increased margin for spacing */
+  font-size: 2.5rem; /* Increased font size */
+  color: #0033cc;
+  text-align: center;
+}
+
+/* Form Inputs */
+.form-inputs {
+  margin-bottom: 1.5rem; /* Increased margin for spacing */
+}
+
+.form-inputs .form-control {
+  width: 100%;
+  padding: 1rem; /* Increased padding */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 1rem; /* Increased font size */
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.25rem rgba(38, 143, 255, 0.25); /* Increased focus shadow */
+}
+
+/* Error Notification */
+.error-notification {
+  color: #dc3545;
+  margin-bottom: 1.5rem; /* Increased margin for spacing */
+}
+
+/* Button Style */
+.btn-primary {
+  width: 100%;
+  padding: 1rem; /* Increased padding */
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #ffffff;
+  font-size: 1.25rem; /* Increased font size */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Form Actions */
+.form-actions {
+  margin-top: 1.5rem; /* Increased margin for spacing */
+}
