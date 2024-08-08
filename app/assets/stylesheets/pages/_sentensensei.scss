@@ -1,0 +1,32 @@
+.submitted-text {
+    border: 10px solid;
+    border-radius: 50px;
+    border-color: $yellow;
+    background-color: rgb(255, 255, 243);
+}
+.btn-outline-danger {
+    background-color: rgba(253, 210, 210, 0.493);
+    transition: transform 1s ease, background-color 1s ease;
+}
+.btn-outline-warning {
+    background-color: rgba(255, 255, 179, 0.249);
+    transition: transform 1s ease;
+}
+.btn-outline-info {
+    background-color: rgba(255, 255, 179, 0.249);
+    transition: transform 1s ease;
+}
+.btn-outline-danger:hover, .btn-outline-warning:hover, .btn-outline-info:hover {
+    color: white;
+    transform: scale(1.25);
+}
+.embossed {
+    border-radius: 30px;
+    background: #ffffff;
+    box-shadow: 15px 15px 30px #dbdbdb,
+               -15px -15px 30px #ffffff;
+    transition: background 1s ease;
+}
+.embossed:hover {
+    background: rgba(205, 205, 205, 0.369);
+}
