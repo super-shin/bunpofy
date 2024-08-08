@@ -1,4 +1,4 @@
-class ChallengePolicy < ApplicationPolicy
+class GamePolicy < ApplicationPolicy
   # NOTE: Up to Pundit v2.3.1, the inheritance was declared as
   # `Scope < Scope` rather than `Scope < ApplicationPolicy::Scope`.
   # In most cases the behavior will be identical, but if updating existing
@@ -10,21 +10,8 @@ class ChallengePolicy < ApplicationPolicy
     # def resolve
     #   scope.all
     # end
-    def resolve
-      scope.where(user_id: user.id)
-           .or(scope.where(classroom_id: user.classrooms_as_student))
-    end
   end
-
   def show?
-    true
-  end
-
-  def new?
-    return create?
-  end
-
-  def create?
     true
   end
 
