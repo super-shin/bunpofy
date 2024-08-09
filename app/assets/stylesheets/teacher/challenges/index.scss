@@ -68,13 +68,13 @@ header p {
     margin-bottom: 40px;
 }
 
-.card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+// .card {
+//     background-color: #fff;
+//     border: 1px solid #ddd;
+//     border-radius: 5px;
+//     overflow: hidden;
+//     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+// }
 
 .card-image {
     background-color: #e0e0e0;
@@ -96,23 +96,23 @@ header p {
     margin-bottom: 10px;
 }
 
-.card-content .description {
-    font-size: 0.95rem;
-    color: #666;
-    margin-bottom: 15px;
-}
+// .card-content .description {
+//     font-size: 0.95rem;
+//     color: #666;
+//     margin-bottom: 15px;
+// }
 
-.card-footer {
-  display: flex;
-  justify-content: space-between; /* Distribute space between school info and date */
-  align-items: center; /* Vertically center the content */
-  font-size: 0.85rem;
-  color: #999;
-}
+// .card-footer {
+//   display: flex;
+//   justify-content: space-between; /* Distribute space between school info and date */
+//   align-items: center; /* Vertically center the content */
+//   font-size: 0.85rem;
+//   color: #999;
+// }
 
-.card-footer .school {
-    font-weight: bold;
-}
+// .card-footer .school {
+//     font-weight: bold;
+// }
 
 .categories button.active {
   background-color: #2C86C7; /* Highlight color for the active button */
