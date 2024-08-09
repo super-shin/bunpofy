@@ -1,21 +1,32 @@
-<h1>Create a Challenge</h1>
-<%= simple_form_for [:teacher, @challenge], html: { data: { controller: 'unit-loader', units_by_textbook: @units_by_textbook.to_json.html_safe } }  do |f| %>
-  <!-- Choose which Textbook to use -->
-  <div class="input-group mb-3">
-    <span class="input-group-text" id="basic-addon1">Textbook:</span>
-    <% if @textbooks.present? %>
-      <%= select_tag :textbook, options_from_collection_for_select(@textbooks, :id, :name), id: 'textbook_select', class: 'form-control', prompt: 'Select a textbook', name: '', data: { unit_loader_target: 'textbookSelect', action: 'change->unit-loader#updateUnits' } %>
-    <% else %>
-      <p>No textbooks available.</p>
-    <% end %>
+<div class="new-challenge-bg">
+  <div class="row new-challenge-content d-flex justify-content-center mx-4">
+    <div class="col-12 text-center mb-5">
+      <p class="display-5 text-white">Create your Bunpofy Challenge</p>
+    </div>
+    <div class="col-6 bg-light rounded-3 py-4">
+      <%= simple_form_for [:teacher, @challenge], html: { data: { controller: 'unit-loader', units_by_textbook: @units_by_textbook.to_json.html_safe } } do |f| %>
+        <!-- Choose which Textbook to use -->
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Textbook:</span>
+          <% if @textbooks.present? %>
+            <%= select_tag :textbook, options_from_collection_for_select(@textbooks, :id, :name), id: 'textbook_select', class: 'form-control', prompt: 'Select a textbook', name: '', data: { unit_loader_target: 'textbookSelect', action: 'change->unit-loader#updateUnits' } %>
+          <% else %>
+            <p>No textbooks available.</p>
+          <% end %>
+        </div>
+        <!-- From Textbook, Units are dynamically loaded. Choose which unit. DONT EDIT!!! STYLING VERY WEIRD -->
+        <%= f.input :unit_id, collection: [], class: 'form-control input-selection', label_method: :name, value_method: :id, prompt: 'Select a unit', id: 'unit_select', input_html: {data: { unit_loader_target: 'unitSelect' }} %>
+        <!-- Other challenge information -->
+        <%= f.input :title %>
+        <%= f.input :directions %>
+        <div class="d-flex align-items-center row">
+          <div class="col-6">
+            <%= f.input :classroom, collection: @classrooms, prompt: 'Select a classroom' %>
+          </div>
+          <div class="col-6"><%= f.input :due_date, as: :date %></div>
+        </div>
+        <%= f.button :submit %>
+      <% end %>
+    </div>
   </div>
-  <!-- From Textbook, Units are dynamically loaded. Choose which unit -->
-  <%= f.input :unit_id, collection: [], label_method: :name, value_method: :id, prompt: 'Select a unit', id: 'unit_select', input_html: {data: { unit_loader_target: 'unitSelect' }} %>
-  <!-- Other challenge information -->
-  <%= f.input :classroom, collection: @classrooms, prompt: 'Select a classroom' %>
-  <%= f.input :title %>
-  <%= f.input :directions %>
-  <%= f.input :due_date, as: :date %>
-  <%= f.button :submit %>
-  <!-- Stimulus controller (unit_loader_controller.js) -->
-<% end %>
+</div>

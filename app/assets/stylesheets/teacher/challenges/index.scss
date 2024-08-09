@@ -138,3 +138,17 @@ header p {
 .school {
   font-weight: bold;
 }
+
+.new-challenge-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background: url('https://res.cloudinary.com/ddzvfukq6/image/upload/v1723197028/Untitled_design_1_ua1p26.jpg') no-repeat center center; /* Background image */
+    background-size: cover;
+    z-index: -1;
+}
+.new-challenge-content {
+    margin-top: 5em;
+}
