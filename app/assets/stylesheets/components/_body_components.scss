@@ -1,19 +1,19 @@
 a {
-  text-decoration: none !important;
+	text-decoration: none !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  margin-top: 0px;
-  margin-bottom: 0px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
 ul {
-  margin-bottom: 0px;
-}
-
-img {
-  width: 100%;
-  overflow: hidden;
+	margin-bottom: 0px;
 }
 
 /*
@@ -23,6 +23,6 @@ global styles
 */
 html,
 body {
-  background: #fff;
-  font-family: 'Roboto', sans-serif;
+	background: #fff;
+	font-family: "Roboto", sans-serif;
 }

@@ -3,6 +3,16 @@ class Teacher::ChallengesController < ApplicationController
 
   def index
     @challenges = policy_scope(Challenge)
+    @classrooms = current_user.classrooms
+    @submissions = current_user.challenges.flat_map(&:submissions)
+    # Calculating Submissions % for Pie Chart
+    # @submissions_content = @submissions.select { |submission| submission.content.present? }
+    # @submissions_percantage = (@submissions_content.count/@submissions.count)*100
+    # Number of students being taught by this professor
+    @students = @classrooms.flat_map(&:students)
+    # Number of feedbacks to be done
+    @pending_feedbacks = @submissions.select { |submission| submission.feedbacks.first.nil? }.count
+
   end
 
   def show
