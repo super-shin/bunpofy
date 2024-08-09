@@ -28,5 +28,12 @@
         <%= f.button :submit %>
       <% end %>
     </div>
+    <div class="col-5 d-flex justify-content-center align-items-center bg-dark">
+      <!-- Display textbook image -->
+      <div id="textbook-image-container" class="mb-3 col-5 text-center">
+        <img data-unit-loader-target="image" src="https://res.cloudinary.com/ddzvfukq6/image/upload/v1723206796/www.bunpofy.me_po61ps.png" alt="Textbook Image" class="img-fluid textbook-img">
+        <div class="treasure-container col-5"><%= render "treasure_gif" %></div>
+      </div>
+    </div>
   </div>
 </div>
