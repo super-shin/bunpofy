@@ -33,11 +33,3 @@
     </button>
   <% end %>
 <% end %>
-<% @ai_response['errors'].each do |error| %>
-  <% if error['type'].downcase === "spelling" %>
-    <p><%= error['type'] %></p>
-    <p><%= error['subcategory'] %></p>
-    <p><%= error['problematic_segment'] %></p>
-    <p><%= error['suggested_alternative'] %></p>
-  <% end %>
-<% end %>
