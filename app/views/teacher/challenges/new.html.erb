@@ -1,9 +1,10 @@
 <div class="new-challenge-bg">
   <div class="row new-challenge-content d-flex justify-content-center mx-4">
-    <div class="col-12 text-center mb-5">
-      <p class="display-5 text-white">Create your Bunpofy Challenge</p>
+    <div class="col-12 text-center mb-3">
+      <p class="display-5 text-white mt-3 mb-0">Create your <span class="yellow">Bunpofy</span> Challenge</p>
+      <p class="text-white">Ready to train your student ninjas, sensei?</p>
     </div>
-    <div class="col-6 bg-light rounded-3 py-4">
+    <div class="col-md-6 col-sm-12 rounded-3 p-4 create-form">
       <%= simple_form_for [:teacher, @challenge], html: { data: { controller: 'unit-loader', units_by_textbook: @units_by_textbook.to_json.html_safe } } do |f| %>
         <!-- Choose which Textbook to use -->
         <div class="input-group mb-3">
@@ -20,19 +21,20 @@
         <%= f.input :title %>
         <%= f.input :directions %>
         <div class="d-flex align-items-center row">
-          <div class="col-6">
+          <div class="col-5">
             <%= f.input :classroom, collection: @classrooms, prompt: 'Select a classroom' %>
           </div>
-          <div class="col-6"><%= f.input :due_date, as: :date %></div>
+          <div class="col-7"><%= f.input :due_date, as: :date, start_year: Date.today.year,
+                              end_year: Date.today.year + 1,
+                              order: [:day, :month, :year] %></div>
         </div>
         <%= f.button :submit %>
       <% end %>
     </div>
-    <div class="col-5 d-flex justify-content-center align-items-center bg-dark">
+    <div class="col-md-3 col-sm-10 d-flex flex-column justify-content-center align-items-center">
       <!-- Display textbook image -->
-      <div id="textbook-image-container" class="mb-3 col-5 text-center">
+      <div id="textbook-image-container" class="p-3 col-10 d-flex justify-content-center align-items-center">
         <img data-unit-loader-target="image" src="https://res.cloudinary.com/ddzvfukq6/image/upload/v1723206796/www.bunpofy.me_po61ps.png" alt="Textbook Image" class="img-fluid textbook-img">
-        <div class="treasure-container col-5"><%= render "treasure_gif" %></div>
       </div>
     </div>
   </div>
