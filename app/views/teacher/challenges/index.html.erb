@@ -1,34 +1,38 @@
 <header>
-    <h1>My Challenges</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    <button class="create-btn" onClick="window.location.href='/teacher/challenges/new'">Create New Challenge</button>
+  <h1>My Challenges</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  <button class="create-btn" onClick="window.location.href='/teacher/challenges/new'">Create New Challenge</button>
 </header>
-
 <nav class="categories">
-    <button class="active">View all</button>
-    <button>Category one</button>
-    <button>Category two</button>
-    <button>Category three</button>
-    <button>Category four</button>
+  <button class="active">View all</button>
+  <button>Category one</button>
+  <button>Category two</button>
+  <button>Category three</button>
+  <button>Category four</button>
 </nav>
-
 <section class="challenges">
 <% @challenges.each do |challenge| %>
 <a href="<%= teacher_challenge_path(challenge) %>" class="card-link">
-    <div class="card">
-        <div class="card-image"></div>
+    <div id="challenge-card">
+        <div id="challenge-card-image">
+            <% if challenge.photo.attached? %>
+            <%= cl_image_tag challenge.photo.key, id: "challenge-card-image" %>
+            <% else %>
+            <%= image_tag 'https://img.freepik.com/premium-vector/cute-black-ninja-read-book-illustration_295036-487.jpg', id: "challenge-card-image"%>
+            <% end %>
+
+        </div>
         <div class="card-content">
             <p class="topic">Topic</p>
             <h2 class="title"><%= challenge.title %></h2>
-            <p class="description"><%= challenge.directions %></p>
-            <div class="card-footer">
+            <p class="challenge-card-description"><%= challenge.directions %></p>
+            <div class="challenge-card-footer">
                 <div class="school-info">
                     <img src="https://cdn.readawrite.com/articles/4705/4704259/thumbnail/small.gif" alt="School Profile" class="school-image">
                     <span class="school"><%= challenge.classroom.name %></span>
                 </div>
                 <span class="date">Due <%= challenge.due_date %></span>
             </div>
-        </div>
     </div>
 </a>
 <% end %>
