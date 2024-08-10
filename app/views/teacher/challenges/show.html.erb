@@ -1,6 +1,43 @@
-<h1>PAGE - teacher/challenge/:id</h1>
-<p><%= @challenge.title %> - <%= @challenge.due_date %></p>
-<p class="mb-3">USER - <%= @challenge.user.first_name %></p>
-<%= @challenge.classroom.name %>
-<%= link_to "Edit", edit_teacher_challenge_path(@challenge) %>
-<%= link_to "Challenges", teacher_challenges_path %>
+<div id="challenge-container">
+        <div id="challenge-main-content">
+            <h1 id="challenge-title"><%= @challenge.title %></h1>
+            <p id="challenge-description"><%= @challenge.directions %></p>
+
+            <div id="challenge-info-box">
+                <h2 id="challenge-info-title">Short Information:</h2>
+                <ul id="challenge-features-list">
+                    <li>Classroom: <%= @challenge.classroom.name %></li>
+                    <li>Due Date: <%= @challenge.due_date %></li>
+                </ul>
+            </div>
+
+            <h2 id="challenge-submissions-title">Submissions</h2>
+
+            <div id="challenge-submission">
+                <details>
+                    <summary>Submission 1 - <%= @challenge.user.first_name %></summary>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+                </details>
+            </div>
+
+            <div id="challenge-submission">
+                <details>
+                    <summary>Details Two</summary>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+                </details>
+            </div>
+
+            <div id="challenge-submission">
+                <details>
+                    <summary>Details Three</summary>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+                </details>
+            </div>
+        </div>
+
+        <aside id="challenge-sidebar">
+            <div id="challenge-profile-picture"></div>
+            <a href="/teacher/challenges" id="challenge-back-button">Back</a>
+            <a href="<%= edit_teacher_challenge_path(@challenge) %>" id="challenge-edit-button">Edit</a>
+        </aside>
+    </div>
