@@ -2,7 +2,7 @@
 # RULE: Don't change the Order of anything unless checked thoroughly
 
 #STEP 1: Seed TEXTBOOKS (deletions on file)
-# require_relative 'seeds/textbooks'
+require_relative 'seeds/textbooks'
 
 #STEP 2: Destroy Attendance - Classroom - User
 # #Destroy all Attendance

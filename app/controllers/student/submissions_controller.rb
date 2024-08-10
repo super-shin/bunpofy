@@ -16,6 +16,7 @@ class Student::SubmissionsController < ApplicationController
   def new
     @submission = @challenge.submissions.build
     authorize @submission
+    @api_key = ENV['GEMINI_KEY']
   end
 
   def create

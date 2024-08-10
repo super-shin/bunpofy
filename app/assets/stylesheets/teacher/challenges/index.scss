@@ -1,11 +1,17 @@
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #e0ecf9, #ffffff);
+    background: linear-gradient(
+        180deg,
+        hsl(205deg, 64%, 48%) 0%,
+        hsl(205deg, 61%, 72%) 25%,
+        hsl(0deg, 0%, 100%) 70%
+      );
     margin: 0;
+    background-repeat: no-repeat;
     padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100%;
 }
 
 header {
@@ -68,13 +74,13 @@ header p {
     margin-bottom: 40px;
 }
 
-.card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+// .card {
+//     background-color: #fff;
+//     border: 1px solid #ddd;
+//     border-radius: 5px;
+//     overflow: hidden;
+//     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+// }
 
 .card-image {
     background-color: #e0e0e0;
@@ -96,23 +102,23 @@ header p {
     margin-bottom: 10px;
 }
 
-.card-content .description {
-    font-size: 0.95rem;
-    color: #666;
-    margin-bottom: 15px;
-}
+// .card-content .description {
+//     font-size: 0.95rem;
+//     color: #666;
+//     margin-bottom: 15px;
+// }
 
-.card-footer {
-  display: flex;
-  justify-content: space-between; /* Distribute space between school info and date */
-  align-items: center; /* Vertically center the content */
-  font-size: 0.85rem;
-  color: #999;
-}
+// .card-footer {
+//   display: flex;
+//   justify-content: space-between; /* Distribute space between school info and date */
+//   align-items: center; /* Vertically center the content */
+//   font-size: 0.85rem;
+//   color: #999;
+// }
 
-.card-footer .school {
-    font-weight: bold;
-}
+// .card-footer .school {
+//     font-weight: bold;
+// }
 
 .categories button.active {
   background-color: #2C86C7; /* Highlight color for the active button */
@@ -138,4 +144,67 @@ header p {
 
 .school {
   font-weight: bold;
+}
+
+.new-challenge-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background: url('https://res.cloudinary.com/ddzvfukq6/image/upload/v1723197028/Untitled_design_1_ua1p26.jpg') no-repeat center center; /* Background image */
+    background-size: cover;
+    z-index: -1;
+}
+@media (max-width: 768px) {
+    .new-challenge-bg {
+        background-position: center center;
+        height: 200%;
+    }
+}
+
+@media (max-width: 480px) {
+    .new-challenge-bg {
+        background-position: center center;
+    }
+}
+.new-challenge-content {
+    margin-top: 4em;
+}
+.create-form {
+    background: rgba(255, 255, 255, 0.178);
+    backdrop-filter: blur(20px);
+}
+.textbook-img {
+    transform: scale(1.0);
+    transition: transform 0.5s ease;
+}
+
+.textbook-img:hover {
+    transform: scale(1.2);
+}
+.create-form input {
+    background: black;
+}
+.create-form input,
+.create-form select,
+.create-form textarea {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    padding: 8px;
+    color: #333;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.create-form input:focus,
+.create-form select:focus,
+.create-form textarea:focus {
+    border-color: $yellow;
+    background-color: #ffffff;
+    outline: none;
+}
+.create-form button:hover {
+    background-color: $yellow;
 }

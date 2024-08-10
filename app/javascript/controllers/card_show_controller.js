@@ -25,28 +25,18 @@ export default class extends Controller {
 
   createCard(id, cardId) {
     const cardContainer = this.cardContainerTarget;
+    let card = document.getElementById(`error-card-${id}`);
 
-    // Create a new card element
-    const card = document.createElement('div');
-    card.id = cardId;
-    card.className = "card embossed border-light d-none mt-3"; // Hide the card initially
-    card.innerHTML = `
-      <div class="card-body position-relative">
-        <button class="btn-close position-absolute top-0 end-0 m-4" aria-label="Close"></button>
-        <h5 class="card-title">${id.toUpperCase()} Error</h5>
-        <p class="card-text">This is some content inside the card.</p>
-        <p>Challenge ID:<%= @submission.challenge_id %></p>
-        <p>User ID:<%= @submission.user_id %></p>
-        <p>Score:<%= @submission.score %></p>
-      </div>
-    `;
+    if (card) {
+      card.id = cardId; // Set the new ID
+      card.classList.toggle('d-none', false); // Make sure card is visible
+      cardContainer.appendChild(card);
 
-    cardContainer.appendChild(card);
-
-    card.querySelector('.btn-close').addEventListener('click', () => {
-      this.hideCard(cardId);
-      this.cardStates.set(cardId, false); // Update the state to hidden
-    });
+      card.querySelector('.btn-close').addEventListener('click', () => {
+        this.hideCard(cardId);
+        this.cardStates.set(cardId, false); // Update the state to hidden
+      });
+    }
   }
 
   showCard(cardId) {

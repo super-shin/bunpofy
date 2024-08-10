@@ -30,3 +30,31 @@
 .embossed:hover {
     background: rgba(205, 205, 205, 0.369);
 }
+.btn-close {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+.embossed:hover .btn-close {
+    opacity: 1;
+    visibility: visible;
+}
+.double-strike {
+    text-decoration: line-through;
+    text-decoration-style: double;
+    text-decoration-color: rgba(205, 53, 53, 0.558);
+    text-decoration-thickness: 2px;
+}
+.bg-correct {
+    background-color: rgb(33, 147, 241);
+    box-shadow: 0 10px 15px -3px rgba(33,150,243,.4),0 4px 6px -4px rgba(33,150,243,.4);
+}
+.card-show-title {
+    color: $dark-gray;
+}
+.card-show-sub {
+    text-decoration: underline;
+    text-decoration-color: rgba(240, 91, 91, 0.882);
+    text-decoration-thickness: 4px;
+    text-decoration-skip-ink: none;
+}
