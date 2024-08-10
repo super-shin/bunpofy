@@ -1,43 +1,39 @@
 <div id="challenge-container">
         <div id="challenge-main-content">
             <h1 id="challenge-title"><%= @challenge.title %></h1>
-            <p id="challenge-description"><%= @challenge.directions %></p>
+            <p id="challenge-description"></p>
 
             <div id="challenge-info-box">
-                <h2 id="challenge-info-title">Short Information:</h2>
+                <h2 id="challenge-info-title">Details:</h2>
                 <ul id="challenge-features-list">
                     <li>Classroom: <%= @challenge.classroom.name %></li>
                     <li>Due Date: <%= @challenge.due_date %></li>
                 </ul>
+                <p><br>Description: <%= @challenge.directions %></p>
             </div>
-
             <h2 id="challenge-submissions-title">Submissions</h2>
 
+            <% @submissions.each do |submission| %>
             <div id="challenge-submission">
                 <details>
-                    <summary>Submission 1 - <%= @challenge.user.first_name %></summary>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+                    <summary>Submission - <%= submission.user.last_name %> <%= submission.user.first_name %></summary>
+                    <p><%= submission.content %></p>
                 </details>
             </div>
+            <% end %>
 
-            <div id="challenge-submission">
-                <details>
-                    <summary>Details Two</summary>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
-                </details>
-            </div>
 
-            <div id="challenge-submission">
-                <details>
-                    <summary>Details Three</summary>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
-                </details>
-            </div>
-        </div>
 
         <aside id="challenge-sidebar">
-            <div id="challenge-profile-picture"></div>
+            <div id="challenge-profile-picture">
+            <% if @challenge.photo.attached? %>
+            <%= cl_image_tag @challenge.photo.key, id: "challenge-card-image" %>
+            <% else %>
+            <%= image_tag 'https://img.freepik.com/premium-vector/cute-black-ninja-read-book-illustration_295036-487.jpg', id: "challenge-card-image"%>
+            <% end %>
+            </div>
             <a href="/teacher/challenges" id="challenge-back-button">Back</a>
-            <a href="<%= edit_teacher_challenge_path(@challenge) %>" id="challenge-edit-button">Edit</a>
+            <button id="challenge-edit-button" onClick="window.location.href='<%= edit_teacher_challenge_path(@challenge) %>'">Edit</button>
         </aside>
+
     </div>

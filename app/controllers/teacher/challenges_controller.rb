@@ -7,6 +7,8 @@ class Teacher::ChallengesController < ApplicationController
 
   def show
     authorize @challenge
+    @challenge = Challenge.find(params[:id])
+    @submissions = @challenge.submissions
   end
 
   def new
@@ -127,7 +129,7 @@ class Teacher::ChallengesController < ApplicationController
   private
 
   def challenge_params
-    params.require(:challenge).permit(:unit_id, :classroom_id, :title, :directions, :due_date)
+    params.require(:challenge).permit(:unit_id, :classroom_id, :title, :directions, :due_date, :photo)
   end
 
   def set_challenge
