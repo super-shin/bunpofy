@@ -7,7 +7,7 @@ Submission.all.each do |submission|
     game_type: "spelling",
   })
   Game.create({submission_id: submission.id,
-    game_type: "vocabulary"
+    game_type: "vocab"
   })
 end
 puts "ALL DONE - Seeded Games"

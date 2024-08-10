@@ -1,6 +1,45 @@
+.dashboard-pie-card {
+	border-radius: 20px;
+	background-color: white;
+	width: 200px;
+}
+
+.dashboard-chart-h4 {
+	margin: 0 0 2.5rem;
+}
+
+.dashboard-chart {
+	display: grid;
+	grid-template-columns: auto;
+	gap: 0.5em 0;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	grid-auto-columns: 1fr;
+}
+
+.dashboard-chart-li {
+	background: #ffd100;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.25rem 0.5rem;
+}
+
+.dashboard-chart-li span {
+	font-weight: bold;
+}
+
 .dashboard-pie-container {
 	height: 150px;
-	width: 400px;
+	width: 500px;
+}
+
+.dashboard-pie-container-text {
+	font-size: 12px;
+	color: black;
+	font-weight: bold;
 }
 
 .dashboard-student-list {
@@ -34,7 +73,6 @@
 .dashboard-container {
 	height: 100%;
 	width: 100%;
-	background-color: rgb(224, 224, 224);
 }
 
 .dashboard-profile-container {
@@ -53,9 +91,6 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	background-blend-mode: overlay;
-}
-
-.dashboard-profile-text-container {
 }
 
 .left-container-dashboard {
@@ -85,7 +120,6 @@
 }
 
 // New Challenge Button Style
-/* From Uiverse.io by vinodjangid07 */
 .dashboard-btn-create {
 	display: flex;
 	align-items: center;
@@ -148,7 +182,7 @@
 	transform: translate(2px, 2px);
 }
 
-// Pie Chart Style
+/* Pie Chart */
 
 @property --p {
 	syntax: "<number>";
@@ -178,6 +212,7 @@
 	position: absolute;
 	border-radius: 50%;
 }
+
 .pie:before {
 	inset: 0;
 	background: radial-gradient(farthest-side, var(--c) 98%, #0000) top/var(--b)

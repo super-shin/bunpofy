@@ -1,81 +1,65 @@
-<div class="d-flex dashboard-container" data-controller="dashboard">
-  <div class="left-container-dashboard shadow d-flex flex-column justify-content-center border-end border-2 mr-auto m-3" >
-    <div class="d-flex justify-content-center m-3">
-      <%= link_to new_teacher_challenge_path do %>
-        <button class="dashboard-btn-create">
-          <div class="sign-create-challenge">+</div>
-          <div class="text-create-challenge">Create</div>
-        </button>
-      <% end %>
-    </div>
-    <div class="d-flex dashboard-text-container justify-content-center border-bottom m-3">
-      <%= image_tag "dashboard.png", width: "30px", height: "30px" %>
-      <div class="align-self-center ms-2">
-        <h3>Dashboard</h3>
-      </div>
-    </div>
-    <div>
-      <% @classrooms.each do |classroom| %>
-        <div class="classroom-container m-3 py-1 px-3 d-flex justify-content-center" data-action="click->dashboard#list" 
-          data-first-name="<%= classroom.students.any? ? classroom.students.map(&:first_name).to_json : '[]' %>" 
-          data-last-name="<%= classroom.students.any? ? classroom.students.map(&:last_name).to_json : '[]' %>">
-          <p><%= classroom.name %></p>
-          <div class= "ms-auto align-self-center">
-            <%= image_tag "eng-flag.png", width: "20px", height: "20px" %>
-          </div>
+<header>
+  <h1>My Challenges</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  <button class="create-btn" onClick="window.location.href='/teacher/challenges/new'">Create New Challenge</button>
+</header>
+<nav class="categories">
+  <button class="active">View all</button>
+  <button>Category one</button>
+  <button>Category two</button>
+  <button>Category three</button>
+  <button>Category four</button>
+</nav>
+<ul class="m-3">
+  <% @challenges.each do |challenge| %>
+    <li><%= challenge.title %> due to - <%= challenge.due_date %></li>
+    <%= link_to "Go to this challenge", teacher_challenge_path(challenge) %>
+  <% end %>
+</ul>
+<section class="challenges">
+  <div class="card">
+    <div class="card-image"></div>
+    <div class="card-content">
+      <p class="topic">Topic</p>
+      <h2 class="title">Challenge title</h2>
+      <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
+      <div class="card-footer">
+        <div class="school-info">
+          <img src="https://cdn.readawrite.com/articles/4705/4704259/thumbnail/small.gif" alt="School Profile" class="school-image">
+          <span class="school">School Name</span>
         </div>
-      <% end %>
-    </div>
-  </div>
-  <div class="d-flex flex-column">
-    <div class="d-flex dashboard-first-column">
-      <div class="d-flex mx-2 my-3 shadow dashboard-profile-container p-3">
-        <div class="d-flex flex-column justify-content-end dashboard-profile-text-container">
-          <h4 class="fw-bold">Hello, <%= current_user.first_name %></h4>
-          <p>Ready to start the day training your little ninjas?</p>
-        </div>
-        <%= image_tag "dashboard_sensei_profile", height: 140, width: 120, class: "ms-auto" %>
-      </div>
-      <div class="d-flex flex-column m-3">
-        <div class="d-flex shadow align-items-center dashboard-student-profile-container mt-1 mb-2">
-          <%= image_tag "dashboard_student_profile", height: 50, width: 50, class: "m-3" %>
-          <div>
-            <p><span class="text-primary"><%= @students.count %></span> - Students</p>
-          </div>
-        </div>
-        <div class="d-flex shadow align-items-center dashboard-feedback-profile-container mt-2">
-          <%= image_tag "feedback.png", height: 50, width: 50, class: "m-3" %>
-          <div>
-            <p><span class="text-danger"><%= @pending_feedbacks %></span> feedbacks pending</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="d-flex">
-      <div class="dashboard-student-list d-flex flex-column align-items-center mx-2 mb-3 shadow p-0" data-dashboard-target="studentListElement">
-        <div class="py-2 fw-bold border-bottom dashboard-student-list-top">
-          <p class="text-center">All Students</p>
-        </div>
-        <% @students.each do |student| %>
-          <div class="p-2 border-bottom">
-            <p><%= student.first_name %> <%= student.last_name %></p>
-          </div>
-        <% end %>
-      </div>
-      <div class="d-flex flex-wrap dashboard-pie-container m-3">
-        <div class="dashboard-pie-card">
-          <div class="pie" style="--p:<%= @submissions_percantage %>; --c:green;"> <%= @submissions_percantage %></div>
-        </div>
-        <div class="dashboard-pie-card">
-          <div class="pie" style="--p:20; --c:darkblue;"> 20%</div>
-        </div>
-        <div class="dashboard-pie-card">
-          <div class="pie" style="--p:20; --c:orange;"> 20%</div>
-        </div>
-        <div class="dashboard-pie-card">
-          <div class="pie" style="--p:20; --c:purple;"> 20%</div>
-        </div>
+        <span class="date">11 Jan 2022</span>
       </div>
     </div>
   </div>
-</div>
+  <div class="card">
+    <div class="card-image"></div>
+    <div class="card-content">
+      <p class="topic">Topic</p>
+      <h2 class="title">Challenge title</h2>
+      <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
+      <div class="card-footer">
+        <div class="school-info">
+          <img src="https://cdn.readawrite.com/articles/4705/4704259/thumbnail/small.gif" alt="School Profile" class="school-image">
+          <span class="school">School Name</span>
+        </div>
+        <span class="date">11 Jan 2022</span>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-image"></div>
+    <div class="card-content">
+      <p class="topic">Topic</p>
+      <h2 class="title">Challenge title</h2>
+      <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
+      <div class="card-footer">
+        <div class="school-info">
+          <img src="https://cdn.readawrite.com/articles/4705/4704259/thumbnail/small.gif" alt="School Profile" class="school-image">
+          <span class="school">School Name</span>
+        </div>
+        <span class="date">11 Jan 2022</span>
+      </div>
+    </div>
+  </div>
+</section>

@@ -6,7 +6,11 @@ Rails.application.routes.draw do
     resources :submissions, only: [:index] do
       resources :feedbacks, only: [:new, :create]
     end
-    resources :challenges
+    resources :challenges do
+      collection do
+        get 'dashboard'
+      end
+    end
   end
 
   namespace :student do
