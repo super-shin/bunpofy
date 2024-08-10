@@ -10,56 +10,26 @@
   <button>Category three</button>
   <button>Category four</button>
 </nav>
-<ul class="m-3">
-  <% @challenges.each do |challenge| %>
-    <li><%= challenge.title %> due to - <%= challenge.due_date %></li>
-    <%= link_to "Go to this challenge", teacher_challenge_path(challenge) %>
-  <% end %>
-</ul>
 <section class="challenges">
-  <div class="card">
-    <div class="card-image"></div>
-    <div class="card-content">
-      <p class="topic">Topic</p>
-      <h2 class="title">Challenge title</h2>
-      <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
-      <div class="card-footer">
-        <div class="school-info">
-          <img src="https://cdn.readawrite.com/articles/4705/4704259/thumbnail/small.gif" alt="School Profile" class="school-image">
-          <span class="school">School Name</span>
+<% @challenges.each do |challenge| %>
+<a href="<%= teacher_challenge_path(challenge) %>" class="card-link">
+    <div class="card">
+        <div class="card-image"></div>
+        <div class="card-content">
+            <p class="topic">Topic</p>
+            <h2 class="title"><%= challenge.title %></h2>
+            <p class="description"><%= challenge.directions %></p>
+            <div class="card-footer">
+                <div class="school-info">
+                    <img src="https://cdn.readawrite.com/articles/4705/4704259/thumbnail/small.gif" alt="School Profile" class="school-image">
+                    <span class="school"><%= challenge.classroom.name %></span>
+                </div>
+                <span class="date">Due <%= challenge.due_date %></span>
+            </div>
         </div>
         <span class="date">11 Jan 2022</span>
       </div>
     </div>
-  </div>
-  <div class="card">
-    <div class="card-image"></div>
-    <div class="card-content">
-      <p class="topic">Topic</p>
-      <h2 class="title">Challenge title</h2>
-      <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
-      <div class="card-footer">
-        <div class="school-info">
-          <img src="https://cdn.readawrite.com/articles/4705/4704259/thumbnail/small.gif" alt="School Profile" class="school-image">
-          <span class="school">School Name</span>
-        </div>
-        <span class="date">11 Jan 2022</span>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-image"></div>
-    <div class="card-content">
-      <p class="topic">Topic</p>
-      <h2 class="title">Challenge title</h2>
-      <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
-      <div class="card-footer">
-        <div class="school-info">
-          <img src="https://cdn.readawrite.com/articles/4705/4704259/thumbnail/small.gif" alt="School Profile" class="school-image">
-          <span class="school">School Name</span>
-        </div>
-        <span class="date">11 Jan 2022</span>
-      </div>
-    </div>
-  </div>
+</a>
+<% end %>
 </section>
