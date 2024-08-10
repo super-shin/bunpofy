@@ -1,0 +1,251 @@
+.dashboard-pie-card {
+	border-radius: 20px;
+	background-color: white;
+	width: 200px;
+}
+
+.dashboard-chart-h4 {
+	margin: 0 0 2.5rem;
+}
+
+.dashboard-chart {
+	display: grid;
+	grid-template-columns: auto;
+	gap: 0.5em 0;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	grid-auto-columns: 1fr;
+}
+
+.dashboard-chart-li {
+	background: #ffd100;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.25rem 0.5rem;
+}
+
+.dashboard-chart-li span {
+	font-weight: bold;
+}
+
+.dashboard-pie-container {
+	height: 150px;
+	width: 500px;
+}
+
+.dashboard-pie-container-text {
+	font-size: 12px;
+	color: black;
+	font-weight: bold;
+}
+
+.dashboard-student-list {
+	width: 200px;
+	background-color: white;
+	border-radius: 20px;
+	max-height: 500px;
+	overflow-y: auto;
+	scrollbar-width: none;
+}
+
+.dashboard-student-list-top {
+	background-color: rgb(241, 236, 134);
+	width: 100%;
+}
+
+.dashboard-student-profile-container {
+	width: 300px;
+	height: 65px;
+	border-radius: 20px;
+	background-color: white;
+}
+
+.dashboard-feedback-profile-container {
+	width: 300px;
+	height: 65px;
+	border-radius: 20px;
+	background-color: white;
+}
+
+.dashboard-container {
+	height: 100%;
+	width: 100%;
+}
+
+.dashboard-profile-container {
+	background: linear-gradient(
+		to right,
+		rgba(250, 250, 210, 0.8),
+		rgba(100, 149, 237, 0.8)
+	);
+
+	border-radius: 20px;
+	height: 150px;
+	width: 600px;
+	background-color: rgba(255, 255, 255, 0.8);
+	background-image: image-url(blue_sky_pattern);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-blend-mode: overlay;
+}
+
+.left-container-dashboard {
+	width: 240px;
+	height: 100vh;
+	border-radius: 25px;
+	background-color: rgba(255, 255, 255, 0.8);
+	background-image: image-url(blue_sky_pattern);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-blend-mode: overlay;
+}
+
+.classroom-container {
+	border-radius: 20px;
+	background-color: #2c86c7;
+	cursor: pointer;
+}
+
+.classroom-container:hover {
+	background-color: #236a9d;
+}
+
+.dashboard-text-container {
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+// New Challenge Button Style
+.dashboard-btn-create {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	width: 45px;
+	height: 45px;
+	border: none;
+	border-radius: 0px;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+	transition-duration: 0.3s;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+	background-color: black;
+}
+
+/* plus sign */
+.sign-create-challenge {
+	width: 100%;
+	font-size: 2em;
+	color: white;
+	transition-duration: 0.3s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+/* text */
+.text-create-challenge {
+	position: absolute;
+	right: 0%;
+	width: 0%;
+	opacity: 0;
+	color: white;
+	font-size: 1.2em;
+	font-weight: 500;
+	transition-duration: 0.3s;
+}
+/* hover effect on button width */
+.dashboard-btn-create:hover {
+	width: 125px;
+	border-radius: 0px;
+	transition-duration: 0.3s;
+}
+
+.dashboard-btn-create:hover .sign-create-challenge {
+	width: 30%;
+	transition-duration: 0.3s;
+	padding-left: 20px;
+	padding-right: 15px;
+}
+/* hover effect button's text */
+.dashboard-btn-create:hover .text-create-challenge {
+	opacity: 1;
+	width: 70%;
+	transition-duration: 0.3s;
+	padding-right: 15px;
+}
+/* button click effect*/
+.dashboard-btn-create:active {
+	transform: translate(2px, 2px);
+}
+
+/* Pie Chart */
+
+@property --p {
+	syntax: "<number>";
+	inherits: true;
+	initial-value: 0;
+}
+
+.pie {
+	--p: 20;
+	--b: 22px;
+	--c: darkred;
+	--w: 150px;
+
+	width: var(--w);
+	aspect-ratio: 1;
+	position: relative;
+	display: inline-grid;
+	margin: 5px;
+	place-content: center;
+	font-size: 25px;
+	font-weight: bold;
+	font-family: sans-serif;
+}
+.pie:before,
+.pie:after {
+	content: "";
+	position: absolute;
+	border-radius: 50%;
+}
+
+.pie:before {
+	inset: 0;
+	background: radial-gradient(farthest-side, var(--c) 98%, #0000) top/var(--b)
+			var(--b) no-repeat,
+		conic-gradient(var(--c) calc(var(--p) * 1%), #0000 0);
+	-webkit-mask: radial-gradient(
+		farthest-side,
+		#0000 calc(99% - var(--b)),
+		#000 calc(100% - var(--b))
+	);
+	mask: radial-gradient(
+		farthest-side,
+		#0000 calc(99% - var(--b)),
+		#000 calc(100% - var(--b))
+	);
+}
+.pie:after {
+	inset: calc(50% - var(--b) / 2);
+	background: var(--c);
+	transform: rotate(calc(var(--p) * 3.6deg))
+		translateY(calc(50% - var(--w) / 2));
+}
+.animate {
+	animation: p 1s 0.5s both;
+}
+.no-round:before {
+	background-size: 0 0, auto;
+}
+.no-round:after {
+	content: none;
+}
+@keyframes p {
+	from {
+		--p: 0;
+	}
+}

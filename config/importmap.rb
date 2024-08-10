@@ -8,3 +8,7 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "@popperjs/core", to: "popper.js", preload: true
 pin "bootstrap", to: "bootstrap.min.js", preload: true
 pin "@google/generative-ai", to: "https://esm.run/@google/generative-ai"  
+pin "echarts", to: "echarts.min.js"
+pin "echarts/theme/dark", to: "echarts/theme/dark.js"
+pin "echarts", to: "echarts.min.js"
+pin "echarts/theme/dark", to: "echarts/theme/dark.js"

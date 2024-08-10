@@ -53,6 +53,7 @@ gem "sassc-rails"
 gem "cloudinary"
 gem "acts-as-taggable-on"
 gem "pundit"
+gem "rails_charts"
 
 group :development, :test do
   gem "dotenv-rails"

@@ -1,17 +1,15 @@
 <header>
-    <h1>My Challenges</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    <button class="create-btn" onClick="window.location.href='/teacher/challenges/new'">Create New Challenge</button>
+  <h1>My Challenges</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  <button class="create-btn" onClick="window.location.href='/teacher/challenges/new'">Create New Challenge</button>
 </header>
-
 <nav class="categories">
-    <button class="active">View all</button>
-    <button>Category one</button>
-    <button>Category two</button>
-    <button>Category three</button>
-    <button>Category four</button>
+  <button class="active">View all</button>
+  <button>Category one</button>
+  <button>Category two</button>
+  <button>Category three</button>
+  <button>Category four</button>
 </nav>
-
 <section class="challenges">
 <% @challenges.each do |challenge| %>
 <a href="<%= teacher_challenge_path(challenge) %>" class="card-link">
@@ -28,7 +26,6 @@
                 </div>
                 <span class="date">Due <%= challenge.due_date %></span>
             </div>
-        </div>
     </div>
 </a>
 <% end %>
