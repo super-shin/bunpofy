@@ -20,7 +20,7 @@
 .navbar-name:hover {
     color: $yellow;
 }
-.modal-content {
+.modal-content, .signup-container {
     background: rgba(255, 255, 255, 0.796);
     backdrop-filter: blur(20px);
     border-radius: 6px;
