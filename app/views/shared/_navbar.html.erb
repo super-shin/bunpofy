@@ -1,23 +1,21 @@
-<nav class="navbar">
-  <div class="container">
-    <div class="logo-container">
-      <a href="<%= root_path %>" class="logo">
-        <%= image_tag "bunpofy_logo.PNG", alt: "bunpofy", style: "width: 200px; height: auto;" %>
-      </a>
-    </div>
-    <div class="nav-container">
-      <ul class="nav">
+<nav class="navbar p-0 m-0 w-100" style="height:60px;">
+  <div class="container-fluid">
+    <a href="<%= root_path %>" class="navbar-brand">
+      <%= image_tag "bunpofy_logo.PNG", alt: "bunpofy", style: "width: 200px;" %>
+    </a>
+    <form class="d-flex align-items-center">
+      <ul class="nav gap-2">
         <% if user_signed_in? %>
-          <li><a href="#top">Home</a></li>
-          <li><a href="#services">Features</a></li>
-          <li><a href="#about">Resources</a></li>
+          <li><a href="#top" class="text-white">Home</a></li>
+          <li><a href="#services" class="text-white">Features</a></li>
+          <li><a href="#about" class="text-white">Resources</a></li>
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
+              <%= image_tag "https://res.cloudinary.com/ddzvfukq6/image/upload/v1723270753/square_rnyl2j.png", class: "avatar", alt: "dropdown menu" %>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%= link_to "Dashboard", "#", class: "dropdown-item" %>
+              <%= link_to "Create Challenge", "#" , class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
             </div>
           </li>
@@ -26,6 +24,6 @@
           <li class="gradient-button"><a href="<%= new_user_registration_path %>"><i class="fa fa-sign-in-alt"></i> Sign Up</a></li>
         <% end %>
       </ul>
-    </div>
+    </form>
   </div>
 </nav>

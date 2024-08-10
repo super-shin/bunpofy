@@ -1,5 +1,6 @@
 class Teacher::FeedbacksController < ApplicationController
-  before_action :set_submission, only: [:new, :create]
+  before_action :set_submission, only: [:new, :create, :update]
+  before_action :set_feedback, only: [:edit, :update]
 
   def new
     @feedback = Feedback.new
@@ -12,9 +13,21 @@ class Teacher::FeedbacksController < ApplicationController
     @feedback.submission = @submission
     authorize @feedback
     if @feedback.save
-      redirect_to challenge_path(@submission.challenge), notice: 'Feedback submitted successfully!'
+      redirect_to teacher_challenge_path(@submission.challenge), notice: 'Feedback submitted successfully!'
     else
       render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    @feedback.update(feedback_params)
+    if @feedback.save
+      redirect_to teacher_challenge_path(@submission.challenge), notice: 'Feedback submitted successfully!'
+    else
+      render :edit
     end
   end
 
@@ -22,6 +35,10 @@ class Teacher::FeedbacksController < ApplicationController
 
   def feedback_params
     params.require(:feedback).permit(:content)
+  end
+
+  def set_feedback
+    @feedback = Feedback.find(params[:feedback_id])
   end
 
   def set_submission
