@@ -16,6 +16,8 @@
     <%= render "shared/navbar"%>
     <%= render "shared/flashes"%>
     <%= yield %>
-    <%= render "shared/footer"%>
+    <% unless current_page?(dashboard_teacher_challenges_path) %>
+      <%= render "shared/footer" %>
+    <% end %>
   </body>
 </html>

@@ -71,7 +71,8 @@
 }
 
 .dashboard-container {
-	height: 100%;
+	overflow: hidden;
+	height: 92vh;
 	width: 100%;
 }
 
