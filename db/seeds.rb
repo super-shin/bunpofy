@@ -22,7 +22,7 @@ Word.destroy_all
 puts "Destroyed Words"
 Textbook.destroy_all
 puts "Destroyed Textbooks"
-# #Destroy all Games
+#Destroy all Games
 Game.destroy_all
 puts "Destroyed Games"
 # #Destroy all Users
@@ -33,8 +33,6 @@ ActiveRecord::Base.connection.execute("TRUNCATE TABLE units, words, textbooks, u
 puts "RESET ID Numbers"
 
 #STEP 2: SEED Textbooks
-
-
 require_relative 'seeds/textbooks'
 
 
