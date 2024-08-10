@@ -7,19 +7,6 @@ file_names.each do |file_name|
   file_paths << Rails.root.join('db', 'csv', file_name)
 end
 
-WordReference.destroy_all
-puts "Destroyed Word References"
-Unit.destroy_all
-puts "Destroyed Units"
-Word.destroy_all
-puts "Destroyed Words"
-Textbook.destroy_all
-puts "Destroyed Textbooks"
-
-# Reset ID key sequences
-ActiveRecord::Base.connection.execute("TRUNCATE TABLE word_references, units, words, textbooks RESTART IDENTITY CASCADE")
-
-
 #iterate over the file path array for multiple textbooks
 total_rows = 378 + 781 + 786 + 548 + 2016 + 3259 + 663 + 458 + 2466 + 1363 + 2193 + 1625 + 1288 + 2430
 current_index = 0
