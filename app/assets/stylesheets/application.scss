@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Carter+One&family=Lexend:wght@100..900&display=swap');
 // Graphical variables
 @import "config/fonts";
 @import "config/colors";
@@ -14,14 +15,57 @@
 @import "teacher/challenges/show";
 @import "components/body_components";
 
-// @import "components/header";
-@import "components/sign_in_form";
-@import "components/signup_form";
-
 // Games CSS partials
 @import "games/index";
 @import "games/grammar";
 
-p {
-	margin: 0;
+
+//GLOBAL CLASSES .teacher .student .guest
+.teacher, .guest {
+    background-image: linear-gradient(
+      180deg,
+      hsl(205deg, 64%, 48%) 0%,
+      hsl(205deg, 61%, 72%) 25%,
+      hsl(0deg, 0%, 100%) 70%
+    );
+    min-height: 100vh;
+}
+body {
+	font-family: "Lexend", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 300;
+	font-style: normal;
+}
+h1 {
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+}
+h2{
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+.bold-title{
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+.yellow {
+  color: $yellow;
+}
+.dark-gray {
+  color: $dark-gray;
+}
+.red {
+  color: $red;
+}
+.blue {
+  color: $blue;
+}
+.green {
+  color: $green;
 }

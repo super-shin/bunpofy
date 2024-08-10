@@ -1,0 +1,38 @@
+<% if user_signed_in? %>
+  <% if current_user.role == 'teacher' %> <!-- TEACHER NAVBAR-->
+    <nav class="navbar navbar-light p-0 bg-primary">
+      <div class="container-fluid">
+        <a href="<%= root_path %>" class="navbar-brand"><%= image_tag "bunpofy_logo.PNG", alt: "bunpofy", style: "width: 150px;" %></a>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+  <% elsif current_user.role == 'student' %> <!-- STUDENT NAVBAR-->
+    <nav class="navbar navbar-light p-0 bg-dark">
+      <div class="container-fluid">
+        <a href="<%= root_path %>" class="navbar-brand"><%= image_tag "bunpofy_logo.PNG", alt: "bunpofy", style: "width: 150px;" %></a>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+  <% end %>
+<% else %>
+  <nav class="navbar navbar-light p-0">
+    <!-- SIGNED OUT NAVBAR -->
+    <div class="container-fluid">
+      <a href="<%= root_path %>" class="navbar-brand">
+        <%= image_tag "bunpofy_logo.PNG", alt: "bunpofy", class: "logo", style: "width: 150px;" %>
+      </a>
+      <div class="d-flex gap-3 text-white fs-6" style="font-weight: 100;">
+        <a class="nav-link" href="#">About</a>
+        <a class="nav-link" href="#">Contact Us</a>
+        <a class="nav-link" href="<%= new_user_session_path %>"> Login</a>
+        <button class="nav-link" href="<%= new_user_registration_path %>"> Sign Up</button>
+      </div>
+    </div>
+  </nav>
+<% end %>
