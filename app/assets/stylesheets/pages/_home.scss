@@ -1,1 +1,27 @@
 // Specific CSS for your home-page
+.nav-button {
+    background-color: $yellow;
+    transition: transform 1s ease;
+}
+.nav-button:hover {
+    transform: scale(1.1);
+}
+.nav-link:hover {
+    color: $yellow;
+}
+.dropdown-menu {
+    background: rgba(255, 255, 255, 0.723);
+    backdrop-filter: blur(20px);
+    border-radius: 6px;
+}
+.dropdown-item:hover {
+    background: rgba(255, 218, 108, 0.515);
+}
+.navbar-name:hover {
+    color: $yellow;
+}
+.modal-content {
+    background: rgba(255, 255, 255, 0.796);
+    backdrop-filter: blur(20px);
+    border-radius: 6px;
+}

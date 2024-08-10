@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
   </head>
-  <body class="<%= current_user ? current_user.role : 'guest' %>">
+  <body>
     <%= render "shared/navbar2" %>
     <%= render "shared/flashes" %>
     <%= yield %>

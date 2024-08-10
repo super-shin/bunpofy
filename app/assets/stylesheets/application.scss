@@ -21,20 +21,18 @@
 
 
 //GLOBAL CLASSES .teacher .student .guest
-.teacher, .guest {
-    background-image: linear-gradient(
-      180deg,
-      hsl(205deg, 64%, 48%) 0%,
-      hsl(205deg, 61%, 72%) 25%,
-      hsl(0deg, 0%, 100%) 70%
-    );
-    min-height: 100vh;
-}
 body {
 	font-family: "Lexend", sans-serif;
 	font-optical-sizing: auto;
 	font-weight: 300;
 	font-style: normal;
+  background-image: linear-gradient(
+    180deg,
+    hsl(205deg, 64%, 48%) 0%,
+    hsl(205deg, 61%, 72%) 25%,
+    hsl(0deg, 0%, 100%) 70%
+  );
+  min-height: 100vh;
 }
 h1 {
   font-family: "Lexend", sans-serif;
