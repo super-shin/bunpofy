@@ -1,11 +1,3 @@
-// .hero-section {
-//   // background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
-//   background-image: linear-gradient(15deg, #0033cc 0%, #66ccff 50%);
-//   position: relative;
-//   overflow: hidden;
-//   padding-top: 150px;
-//   padding-bottom: 150px;
-// }
 .hero-section {
   background-image: linear-gradient(
     180deg,
@@ -41,7 +33,7 @@
   color: var(--white-color);
   max-width: 150px;
 }
-.btn.yellow-gradient {
+.yellow-gradient {
   background: linear-gradient(105deg, rgba(255, 225, 0, 1) 0%, rgba(255, 180, 0, 1) 100%);
   color: #fff; /* White text color */
   border: none; /* Remove default border */
@@ -53,6 +45,6 @@
   transition: background 0.3s ease; /* Smooth transition effect */
 }
 
-.btn.yellow-gradient:hover {
+.yellow-gradient:hover {
   background: linear-gradient(105deg, rgba(255, 180, 0, 1) 0%, rgba(255, 150, 0, 1) 100%);
 }
