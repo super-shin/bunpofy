@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Carter+One&family=Lexend:wght@100..900&display=swap');
 // Specific CSS for your home-page
+body {
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
 .linear-background {
     background-image: linear-gradient(
       180deg,
@@ -25,12 +31,6 @@
   .green {
     color: $green;
   }
-  body {
-    font-family: "Lexend", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-style: normal;
-  }
   h1 {
     font-family: "Lexend", sans-serif;
     font-optical-sizing: auto;
@@ -42,6 +42,9 @@
     font-optical-sizing: auto;
     font-weight: 700;
     font-style: normal;
+  }
+  h3 {
+    
   }
   .bold-title{
     font-family: "Lexend", sans-serif;

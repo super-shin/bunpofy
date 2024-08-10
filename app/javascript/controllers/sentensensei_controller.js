@@ -4,7 +4,7 @@ import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
 // Connects to data-controller="sentensensei"
 export default class extends Controller {
   static targets = ['content', 'aiResponse', 'score']
-  GEMINI_KEY = "AIzaSyCA4aG_yDTjqaBbmiii6ju88J1OGyO0EPg"
+  static values = {apiKey: String}
   JSONRESPONSE = []
 
   // Define the prompts
@@ -42,7 +42,6 @@ Sentence: `;
   ]}`;
   
   connect() {
-    console.log(this.GEMINI_KEY);
     console.log(this.contentTarget);
     console.log(this.aiResponseTarget);
     console.log(this.scoreTarget);
@@ -56,7 +55,7 @@ Sentence: `;
     const promptOne = `${this.PROMPT_ONE} ${content}`;
 
     //INITIALIZE AI
-    const genAI = new GoogleGenerativeAI(this.GEMINI_KEY);
+    const genAI = new GoogleGenerativeAI(this.apiKeyValue);
 
     const generation_config = {
       "temperature": 0.2,
