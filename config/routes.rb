@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   namespace :teacher do
     resources :submissions, only: [:index] do
-      resources :feedbacks, only: [:new, :create]
+      resources :feedbacks, only: [:new, :create, :edit, :update]
     end
     resources :challenges do
       collection do

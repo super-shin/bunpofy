@@ -13,9 +13,9 @@
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
   </head>
   <body>
-    <%= render "shared/navbar"%>
-    <%= render "shared/flashes"%>
-    <%= yield %>
-    <%= render "shared/footer"%>
+    <%= render "shared/navbar" %>
+    <%= render "shared/flashes" %>
+    <div style="min-height: 97vh;"><%= yield %></div>
+    <footer class="mt-auto"><%= render "shared/footer" %></footer>
   </body>
 </html>
