@@ -27,6 +27,7 @@ body {
 	font-optical-sizing: auto;
 	font-weight: 300;
 	font-style: normal;
+  background-color: white;
   background-image: linear-gradient(
     180deg,
     hsl(205, 64%, 48%) 0%,
@@ -35,7 +36,8 @@ body {
     hsl(0, 0%, 100%) 58%,
     hsl(0, 0%, 100%) 99%
   );
-  min-height: 100vh;
+  background-repeat: no-repeat;
+  max-height: 150vh;
   cursor: url('assets/logo/cursor.png'), auto;
 }
 h1 {
@@ -49,6 +51,15 @@ h2{
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
+}
+h3 {
+  font-family: "Lexend", sans-serif;
+}
+h4 {
+  font-family: "Lexend", sans-serif;
+}
+h5 {
+  font-family: "Lexend", sans-serif;
 }
 .bold-title{
   font-family: "Lexend", sans-serif;
@@ -70,6 +81,9 @@ h2{
 }
 .green {
   color: $green;
+}
+.text-gray {
+  color: rgb(161, 161, 161);
 }
 .roboto-bold {
   font-family: "Roboto", sans-serif;

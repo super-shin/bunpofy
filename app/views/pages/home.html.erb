@@ -10,7 +10,7 @@
 <!--FUJI SECTION-->
 <div class="fuji-container"><%= image_tag "homepage/fuji.png", class: 'fuji', data: {controller: "parallax", parallax_target: "image"} %></div>
 <!--TEACHER FEATURES SECTION-->
-<div class="container vh-100 min-vw-75 d-flex flex-column align-items-center text-center teacher-features">
+<div class="container min-vh-100 min-vw-75 d-flex flex-column align-items-center text-center teacher-features">
   <h4 class="blue">Easy for Teachers. Exciting for Students!</h4>
   <h2 class="display-6 roboto-bold">All you need for English Composition.</h2>
   <!--CARDS-->
@@ -68,13 +68,20 @@
     </div>
   </div>
 </div>
+<!--SENTENSENSEI SECTION-->
+<div class="container min-vh-100 min-vw-75 d-flex flex-column align-items-center text-center teacher-features">
+  <h5 class="dark-gray">So Much More Than Just a Composition Activity</h5>
+  <h1 class="roboto-bold">Welcome to <span class="yellow">SentenSensei</span>.</h1>
+  <p class="text-gray mt-5">This technology harnesses the power of advanced AI to elevate your students' writing experiences. Our cutting-edge technology goes beyond basic grammar checks, analyzing your composition with unparalleled precision against an extensive database of standardized textbooks that students themselves use at school. This ensures that they receive insightful, context-rich feedback. With deep-learning capabilities, SentenSensei delivers immediate, actionable guidance, helping learners refine their skills and achieve their writing goals with confidence.</p>
+  <%= image_tag "homepage/sentensensei-display.png", class: "mt-5 container", style: "max-width: 75vw;" %>
+</div>
 <!--CARDS SECTION-->
-<div class="container w-100">
+<div class="container w-100 my-5">
   <div class="secondpart">
     <h2 class= "text-center">Speed Up Your Learning Pace With A Game</h2>
     <div class="card-group mb-5">
       <div class="card">
-        <%= image_tag "grammer.jpg", height: "300", overflow: 'visible' %>
+        <%= image_tag "grammer.jpg", height: "300" %>
         <div class="card-body">
           <h5 class="card-title text-center">Grammer</h5>
           <p class="text-center">The backbone of language, ensuring clear and effective communication.</p>
