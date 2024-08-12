@@ -1,0 +1,18 @@
+.student-challenges-profile-container {
+	height: 250px;
+	width: 140vh;
+	border-radius: 20px;
+	background-color: gray;
+	margin: 20px;
+	position: relative;
+}
+
+.student-challenges-profile-bar {
+	background-color: white;
+	height: 120px;
+	width: 110%;
+	border-radius: 25px;
+	position: absolute;
+	bottom: -10px;
+	left: -10px;
+}
