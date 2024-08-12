@@ -26,6 +26,13 @@ class Student::SubmissionsController < ApplicationController
     @submission.score = ai_response_data['info']['score'].to_i
     authorize @submission
     if @submission.save
+      # Creating the games at the creationg of a NEW submission
+      @game_grammar = @submission.games.build(game_type: "grammar")
+      @game_grammar.save
+      @game_spelling = @submission.games.build(game_type: "spelling")
+      @game_spelling.save
+      @game_vocab = @submission.games.build(game_type: "vocab")
+      @game_vocab.save
       redirect_to student_submission_path(@submission), notice: 'Submission was successfully created.'
     else
       render :new

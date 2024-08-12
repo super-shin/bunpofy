@@ -6,25 +6,23 @@ class Student::GamesController < ApplicationController
   end
 
   def edit
-    # Exemple to try grammar game page.
-    @words_array = ["tomorrow", "next", "banana", "apple", "thanks"]
+    authorize @game
+    @api_key = ENV['GEMINI_API']
+    # Get the ActiveRecord relation of words associated with the unit
+    @words_relation = @game.submission.challenge.unit.words
+    # Sample 5 unique words
+    @words_array = @words_relation.sample(4).map(&:english)
+    #@words_array = ["house", "dog", "friendly"]
+    # Pass the game and submission ID info to the Javascript Controller
+    @game_id = @game.id
+    @submission_id = @game.submission_id
     # @game is already set by before_action
-    case @game.game_type
-    when "grammar"
-      render "grammar_game"
-    when "spelling"
-      render "spelling_game"
-    when "vocabulary"
-      render "vocabulary_game"
-    end
+    render "#{@game.game_type}_game"
   end
 
   def update
-    if @game.update(game_params)
-      redirect_to student_game_path(@game), notice: 'Game was successfully updated.'
-    else
-      render :edit
-    end
+    authorize @game
+    @game.update(game_params)
   end
 
   private
@@ -34,6 +32,6 @@ class Student::GamesController < ApplicationController
   end
 
   def game_params
-    params.require(:game).permit(:submission_id, :type, :correct_answer, :question, :student_answer, :score)
+    params.require(:game).permit(:score, correct_answer: [], question: [], student_answer: [])
   end
 end
