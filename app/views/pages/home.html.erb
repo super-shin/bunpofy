@@ -1,31 +1,37 @@
 <div class="container w-100">
-  <div class="d-flex flex-column justify-content-start align-items-center min-vh-100 title-main">
-    <h1 class="text-center w-100 display-1 roboto-bold">
-      <span>MAKE ENGLISH LEARNING</span><br>
-      <span data-controller="typed" data-typed-target="output" class="text-nowrap yellow"></span>
+  <div class="d-flex flex-column justify-content-start align-items-center title-main fuji" style="min-height: 50vh;">
+    <h1 class="text-center w-100 roboto-bold">
+      <span class="responsive-text" style="font-size: 6vw;">MAKE ENGLISH LEARNING</span><br>
+      <span style="font-size: 6vw;" data-controller="typed" data-typed-target="output" class="yellow"></span>
     </h1>
   </div>
-  <h2 class= "text-center">Speed Up Your Learning Pace With A Game</h2>
-  <div class="card-group mb-5">
-    <div class="card">
-      <%= image_tag "grammer.jpg", height: "300" %>
-      <div class="card-body">
-        <h5 class="card-title text-center">Grammer</h5>
-        <p class="text-center">The backbone of language, ensuring clear and effective communication.</p>
+</div>
+<div class="fuji-container"><%= image_tag "homepage/fuji.png", class: 'fuji', data: {controller: "parallax", parallax_target: "image"} %></div>
+<div class="container w-100">
+  <div class="secondpart">
+    <h2 class= "text-center">Speed Up Your Learning Pace With A Game</h2>
+    <div class="card-group mb-5">
+      <div class="card">
+        <%= image_tag "grammer.jpg", height: "300", overflow: 'visible' %>
+        <div class="card-body">
+          <h5 class="card-title text-center">Grammer</h5>
+          <p class="text-center">The backbone of language, ensuring clear and effective communication.</p>
+        </div>
       </div>
-    </div>
-    <div class="card">
-      <%= image_tag "vocabulary.jpg", height: "300"  %>
-      <div class="card-body">
-        <h5 class="card-title text-center">Vocabulary</h5>
-        <p class="text-center">Expands your expressive range, enabling precise and nuanced</p>
+      <div class="card">
+        <%= image_tag "vocabulary.jpg", height: "300"  %>
+        <div class="card-body">
+          <h5 class="card-title text-center">Vocabulary</h5>
+          <p class="text-center">Expands your expressive range, enabling precise and nuanced</p>
+        </div>
       </div>
-    </div>
-    <div class="card">
-      <%= image_tag "spelling.jpg", height: "300"  %>
-      <div class="card-body">
-        <h5 class="card-title text-center">Spelling</h5>
-        <p class="text-center">The foundation of written language, allowing accurate and confident expression.</p>
+      <div class="card">
+        <%= image_tag "spelling.jpg", height: "300"  %>
+        <div class="card-body">
+          <h5 class="card-title text-center">Spelling</h5>
+          <p class="text-center">The foundation of written language, allowing accurate and confident expression.</p>
+        </div>
       </div>
     </div>
   </div>
+</div>

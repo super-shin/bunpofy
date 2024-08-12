@@ -28,3 +28,17 @@
 .title-main {
     margin-top: 10rem;
 }
+.typed-cursor {
+    font-size: 6vw;
+}
+.fuji {
+    max-width: 100vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+.fuji-container {
+    max-width: 100vw;
+    overflow-x: clip;
+}
