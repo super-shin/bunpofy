@@ -17,7 +17,7 @@ export default class extends Controller {
 
   updateImageSize() {
     const scrollY = window.scrollY;
-    const scaleFactor = 1 + (scrollY / 1000); // Adjust scaling factor as needed
+    const scaleFactor = 1.40 + (scrollY / 1000); // Adjust scaling factor as needed
     this.imageTarget.style.transform = `scale(${Math.min(scaleFactor, 3)})`;
     this.imageTarget.style.transformOrigin = "bottom"; // Keep the scaling anchored at the top
   }

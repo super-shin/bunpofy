@@ -1,3 +1,4 @@
+<!--MAIN TITLE-->
 <div class="container w-100">
   <div class="d-flex flex-column justify-content-start align-items-center title-main fuji" style="min-height: 50vh;">
     <h1 class="text-center w-100 roboto-bold">
@@ -6,7 +7,68 @@
     </h1>
   </div>
 </div>
+<!--FUJI SECTION-->
 <div class="fuji-container"><%= image_tag "homepage/fuji.png", class: 'fuji', data: {controller: "parallax", parallax_target: "image"} %></div>
+<!--TEACHER FEATURES SECTION-->
+<div class="container vh-100 min-vw-75 d-flex flex-column align-items-center text-center teacher-features">
+  <h4 class="blue">Easy for Teachers. Exciting for Students!</h4>
+  <h2 class="display-6 roboto-bold">All you need for English Composition.</h2>
+  <!--CARDS-->
+  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center mt-5">
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm border border-dark">
+        <div class="card-header homepage-card-header">
+          <h5 class="fw-normal text-center">Textbooks Integration</h5>
+        </div>
+        <div class="card-body bg-white pb-5">
+          <lord-icon
+            src="https://cdn.lordicon.com/qwjfapmb.json"
+            trigger="hover"
+            colors="primary:#ebe6ef,secondary:#545454,tertiary:#3a3347,quaternary:#fcd74a,quinary:#2c86c7"
+            style="width:150px;height:150px">
+          </lord-icon>
+          <h6 class="card-title mt-4 bold-title">Seamless Creation</h6>
+          <p class="mt-4 text-muted">No need for manual text entry - our website automatically loads textbooks commonly used in Japan. Just select and start using!</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm border border-dark">
+        <div class="card-header homepage-card-header">
+          <h5 class="fw-normal text-center">Classroom Management</h5>
+        </div>
+        <div class="card-body bg-white pb-5">
+          <lord-icon
+            src="https://cdn.lordicon.com/zneicxkd.json"
+            trigger="hover"
+            colors="primary:#fcd74a,secondary:#3a3347,tertiary:#e4e4e4,quaternary:#2c86c7,quinary:#ebe6ef"
+            style="width:150px;height:150px">
+          </lord-icon>
+          <h6 class="card-title mt-4 bold-title">Effortless Organization</h6>
+          <p class="mt-4 text-muted">Manage various schools and classes simultaneously. Assign challenges to specific classes with ease.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm border border-dark">
+        <div class="card-header homepage-card-header">
+          <h5 class="fw-normal text-center">Feedback and Statistics</h5>
+        </div>
+        <div class="card-body bg-white pb-5">
+          <lord-icon
+            src="https://cdn.lordicon.com/egmlnyku.json"
+            trigger="hover"
+            colors="primary:#2c86c7,secondary:#fcd74a,tertiary:#e4e4e4,quaternary:#ebe6ef"
+            style="width:150px;height:150px">
+          </lord-icon>
+          <h6 class="card-title mt-4 bold-title">Insightful Tracking</h6>
+          <p class="mt-4 text-muted">Provide feedback on challenge submissions as they arrive and track detailed statistics to monitor progress.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--CARDS SECTION-->
 <div class="container w-100">
   <div class="secondpart">
     <h2 class= "text-center">Speed Up Your Learning Pace With A Game</h2>
