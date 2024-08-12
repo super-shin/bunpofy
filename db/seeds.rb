@@ -5,6 +5,9 @@
 #Attendance.destroy_all
 Attendance.destroy_all
 puts "Destroyed Attendances"
+#Destroy all Games
+Game.destroy_all
+puts "Destroyed Games"
 # #Destroy all Submissions
 Submission.destroy_all
 puts "Destroyed Submissions"
@@ -22,9 +25,6 @@ Word.destroy_all
 puts "Destroyed Words"
 Textbook.destroy_all
 puts "Destroyed Textbooks"
-#Destroy all Games
-Game.destroy_all
-puts "Destroyed Games"
 # #Destroy all Users
 User.destroy_all
 puts "Destroyed Users"
