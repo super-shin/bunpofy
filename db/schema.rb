@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_08_083714) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_12_073013) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -74,7 +74,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_08_083714) do
   end
 
   create_table "feedbacks", force: :cascade do |t|
-    t.string "content"
+    t.text "content"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -85,9 +85,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_08_083714) do
 
   create_table "games", force: :cascade do |t|
     t.string "game_type"
-    t.string "correct_answer"
-    t.string "question"
-    t.string "student_answer"
+    t.text "correct_answer", default: [], array: true
+    t.text "question", default: [], array: true
+    t.text "student_answer", default: [], array: true
     t.integer "score"
     t.bigint "submission_id", null: false
     t.datetime "created_at", null: false
