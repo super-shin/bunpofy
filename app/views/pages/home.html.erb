@@ -1,32 +1,154 @@
-<div class="container w-100">
-  <div class="d-flex jutify-content-center align-items-center" style="height: 90vh; width: 100%;">
-    <div>
-      <h1 class="text-center display-3">MASTER THE ART OF PERFECT ENGLISH SENTENCES</h1>
-      <h6 class="text-center text-white">The ninja way!</h6>
+<!--MAIN TITLE-->
+<div class="container">
+  <div class="d-flex flex-column justify-content-start align-items-center title-main fuji" style="min-height: 50vh;">
+    <h1 class="text-center w-100 roboto-bold">
+      <span class="responsive-text" style="font-size: 5vw;">MAKE ENGLISH LEARNING</span><br>
+      <span style="font-size: 6vw;" data-controller="typed" data-typed-target="output" class="yellow text-shadow"></span>
+    </h1>
+  </div>
+</div>
+<!--FUJI SECTION-->
+<div class="fuji-container"><%= image_tag "homepage/fuji.png", class: 'fuji', data: {controller: "parallax", parallax_target: "image"} %></div>
+<!--TEACHER FEATURES SECTION-->
+<div class="container d-flex flex-column align-items-center text-center teacher-features" style="min-height: 75vh;">
+  <h4 class="blue">Easy for Teachers. Exciting for Students!</h4>
+  <h2 class="display-6 roboto-bold">All you need for English Composition.</h2>
+  <!--CARDS-->
+  <div class="row row-cols-1 row-cols-md-3 text-center g-4 mt-5">
+    <div class="col">
+      <div class="card rounded-3 shadow border border-dark h-100">
+        <div class="card-header homepage-card-header">
+          <h5 class="fw-normal text-center">Textbooks Integration</h5>
+        </div>
+        <div class="card-body bg-white pb-5">
+          <lord-icon
+            src="https://cdn.lordicon.com/qwjfapmb.json"
+            trigger="hover"
+            colors="primary:#ebe6ef,secondary:#545454,tertiary:#3a3347,quaternary:#fcd74a,quinary:#2c86c7"
+            style="width:150px;height:150px">
+          </lord-icon>
+          <h6 class="card-title mt-4 bold-title">Seamless Creation</h6>
+          <p class="mt-4 text-muted">No need for manual text entry - our website automatically loads textbooks commonly used in Japan. Just select and start using!</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card rounded-3 shadow border border-dark h-100">
+        <div class="card-header homepage-card-header">
+          <h5 class="fw-normal text-center">Classroom Management</h5>
+        </div>
+        <div class="card-body bg-white pb-5">
+          <lord-icon
+            src="https://cdn.lordicon.com/zneicxkd.json"
+            trigger="hover"
+            colors="primary:#fcd74a,secondary:#3a3347,tertiary:#e4e4e4,quaternary:#2c86c7,quinary:#ebe6ef"
+            style="width:150px;height:150px">
+          </lord-icon>
+          <h6 class="card-title mt-4 bold-title">Effortless Organization</h6>
+          <p class="mt-4 text-muted">Manage various schools and classes simultaneously. Assign challenges to specific classes with ease.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card rounded-3 shadow border border-dark h-100">
+        <div class="card-header homepage-card-header">
+          <h5 class="fw-normal text-center">Feedback and Statistics</h5>
+        </div>
+        <div class="card-body bg-white pb-5">
+          <lord-icon
+            src="https://cdn.lordicon.com/egmlnyku.json"
+            trigger="hover"
+            colors="primary:#2c86c7,secondary:#fcd74a,tertiary:#e4e4e4,quaternary:#ebe6ef"
+            style="width:150px;height:150px">
+          </lord-icon>
+          <h6 class="card-title mt-4 bold-title">Insightful Tracking</h6>
+          <p class="mt-4 text-muted">Provide feedback on challenge submissions as they arrive and track detailed statistics to monitor progress.</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-<h2 class= "text-center">Speed Up Your Learning Pace With A Game</h2>
-<div class="card-group mb-5">
-  <div class="card">
-    <%= image_tag "grammer.jpg", height: "300" %>
-    <div class="card-body">
-      <h5 class="card-title text-center">Grammer</h5>
-      <p class="text-center">The backbone of language, ensuring clear and effective communication.</p>
+<!--SENTENSENSEI SECTION-->
+<div class="container d-flex flex-column align-items-center text-center teacher-features my-5" style="min-height: 75vh;">
+  <h5 class="dark-gray">So Much More Than Just a Composition Activity</h5>
+  <h1 class="roboto-bold">Welcome to <span class="yellow">SentenSensei</span>.</h1>
+  <p class="text-gray mt-5">This technology harnesses the power of advanced AI to elevate your students' writing experiences. Our cutting-edge technology goes beyond basic grammar checks, analyzing your composition with unparalleled precision against an extensive database of standardized textbooks that students themselves use at school. This ensures that they receive insightful, context-rich feedback. With deep-learning capabilities, SentenSensei delivers immediate, actionable guidance, helping learners refine their skills and achieve their writing goals with confidence.</p>
+  <%= image_tag "homepage/sentensensei-display.png", class: "mt-5 container", style: "max-width: 75vw;" %>
+</div>
+<!--CARDS SECTION-->
+<div class="d-flex flex-column justify-content-center align-items-center" style="min-height: 75vh;">
+  <h1 class="roboto-bold text-center">Fun learning with <span class="blue">Ninja-themed </span>missions!</h1>
+  <div class="container row row-cols-1 row-cols-md-3 g-4 mt-5">
+    <div class="col">
+      <div class="card h-100 bg-white shadow">
+        <img src="assets/homepage/spelling-card.jpg" class="card-img-top" alt="spelling-card">
+        <div class="card-body">
+          <h5 class="card-title">Spelling Missions</h5>
+          <p class="card-text dark-gray">Perfect your spelling with missions designed to sharpen your skills. Each spelling task is a new ninja adventure, providing a playful way to practice and excel in spelling.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100 bg-white shadow">
+        <img src="assets/homepage/vocab-card.jpg" class="card-img-top" alt="vocab-card">
+        <div class="card-body">
+          <h5 class="card-title">Vocabulary Missions</h5>
+          <p class="card-text dark-gray">Dive into engaging vocabulary missions where each lesson feels like a ninja quest. Master new words and phrases through interactive, themed challenges that make learning fun and memorable.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100 bg-white shadow">
+        <img src="assets/homepage/grammar-card.jpg" class="card-img-top" alt="grammar-card">
+        <div class="card-body">
+          <h5 class="card-title">Grammar Missions</h5>
+          <p class="card-text dark-gray">Enhance your grammar with our unique ninja-themed missions. Tackle grammar challenges that turn learning into an exciting journey, helping students master grammatical rules in an engaging way.</p>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="card">
-    <%= image_tag "vocabulary.jpg", height: "300"  %>
-    <div class="card-body">
-      <h5 class="card-title text-center">Vocabulary</h5>
-      <p class="text-center">Expands your expressive range, enabling precise and nuanced</p>
+</div>
+<!--FAQ SECTION-->
+<div class="container mt-5" style="min-height: 75vh;">
+  <div class="row d-flex align-items-center g-1">
+    <div class="col-md-5 col-sm-12">
+      <h1 class="display-1">Frequently<br>
+        Asked<br>
+        Questions</h1>
     </div>
-  </div>
-  <div class="card">
-    <%= image_tag "spelling.jpg", height: "300"  %>
-    <div class="card-body">
-      <h5 class="card-title text-center">Spelling</h5>
-      <p class="text-center">The foundation of written language, allowing accurate and confident expression.</p>
+    <div class="col-md-7 col-sm-12">
+      <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+              What is Bunpofy?
+            </button>
+          </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body bg-white">Bunpofy is a unique English language learning platform inspired by Japanese ninja themes. It combines engaging, interactive challenges with innovative tools to make learning English fun and effective. Teachers can use features like SentenSensei for grammar and composition checks, Do-jo for interactive learning activities, and Feedbackatana for giving feedback. Bunpofy transforms traditional English education into an exciting adventure for both educators and students.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingTwo">
+            <button class="accordion-button collapsed bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+              How can I get started?
+            </button>
+          </h2>
+          <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body bg-white">Getting started with Bunpofy is simple! Visit our website and sign up for an account. Once registered, you can explore our various tools and features, such as setting up interactive lessons with the Do-jo or using SentenSensei to refine your students' writing. Our intuitive interface and support resources will guide you through the process. If you have any questions or need assistance, you can contact us at <a href="mailto:contact@bunpofy.me" class="blue">contact@bunpofy.me</a>.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingThree">
+            <button class="accordion-button collapsed bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+              Who created Bunpofy?
+            </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body bg-white">Bunpofy was created by Web Development students at <a href="https://www.lewagon.com/tokyo" class="text-danger">Le Wagon Bootcamp</a> in Tokyo for their final main project as developers in the Summer of 2024.</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Carter+One&family=Lexend:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Carter+One&family=Lexend:wght@100&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 // Graphical variables
 @import "config/fonts";
 @import "config/colors";
@@ -14,10 +16,6 @@
 @import "teacher/challenges/show";
 @import "components/body_components";
 
-// @import "components/header";
-@import "components/sign_in_form";
-@import "components/signup_form";
-
 // Games CSS partials
 @import "games/index";
 @import "games/grammar";
@@ -25,6 +23,70 @@
 // Student related pages
 @import "student/index.scss";
 
-p {
-	margin: 0;
+
+//GLOBAL CLASSES .teacher .student .guest
+body {
+	font-family: "Lexend", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 300;
+	font-style: normal;
+  background-color: white;
+  background-image: linear-gradient(
+    180deg,
+    hsl(205, 64%, 48%) 0%,
+    hsl(205, 64%, 48%) 7%,
+    hsl(213, 47%, 81%) 27%,
+    hsl(0, 0%, 100%) 58%,
+    hsl(0, 0%, 100%) 99%
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 150vh;
+  cursor: url('assets/logo/cursor.png'), auto;
+}
+h1 {
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+}
+h2{
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+h3, h4, h5 {
+  font-family: "Lexend", sans-serif;
+}
+.bold-title{
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+.yellow {
+  color: $yellow;
+}
+.dark-gray {
+  color: $dark-gray;
+}
+.red {
+  color: $red;
+}
+.blue {
+  color: $blue;
+}
+.green {
+  color: $green;
+}
+.text-gray {
+  color: rgb(161, 161, 161);
+}
+.text-shadow {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-weight: 550;
+  font-style: normal;
 }

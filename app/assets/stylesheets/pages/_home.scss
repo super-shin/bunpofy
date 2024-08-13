@@ -1,54 +1,54 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Carter+One&family=Lexend:wght@100..900&display=swap');
 // Specific CSS for your home-page
-body {
-  font-family: "Lexend", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
+.nav-button {
+    background-color: $yellow;
+    transition: transform 1s ease;
 }
-.linear-background {
-    background-image: linear-gradient(
-      180deg,
-      hsl(205deg, 64%, 48%) 0%,
-      hsl(205deg, 61%, 72%) 25%,
-      hsl(0deg, 0%, 100%) 70%
-    );
-    width: 100%;
-    height: 100vh;
-  }
-  .yellow {
+.nav-button:hover {
+    transform: scale(1.1);
+}
+.nav-link:hover {
     color: $yellow;
-  }
-  .dark-gray {
-    color: $dark-gray;
-  }
-  .red {
-    color: $red;
-  }
-  .blue {
-    color: $blue;
-  }
-  .green {
-    color: $green;
-  }
-  h1 {
-    font-family: "Lexend", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 900;
-    font-style: normal;
-  }
-  h2{
-    font-family: "Lexend", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 700;
-    font-style: normal;
-  }
-  h3 {
-    
-  }
-  .bold-title{
-    font-family: "Lexend", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 700;
-    font-style: normal;
-  }
+}
+.dropdown-menu {
+    background: rgba(255, 255, 255, 0.723);
+    backdrop-filter: blur(20px);
+    border-radius: 6px;
+}
+.dropdown-item:hover {
+    background: rgba(255, 218, 108, 0.515);
+}
+.navbar-name:hover {
+    color: $yellow;
+}
+.modal-content, .signup-container {
+    background: rgba(255, 255, 255, 0.796);
+    backdrop-filter: blur(20px);
+    border-radius: 6px;
+}
+.title-main {
+    margin-top: 10rem;
+}
+.typed-cursor {
+    font-size: 6vw;
+}
+.fuji {
+    max-width: 100vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+.fuji-container {
+    max-width: 100vw;
+    overflow-x: clip;
+}
+.homepage-card-header {
+    min-height: 100px;
+    padding: 1rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $yellow;
+    background-color: rgba(0, 0, 0, 0.822);
+}
+
