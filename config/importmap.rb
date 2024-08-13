@@ -13,3 +13,4 @@ pin "echarts/theme/dark", to: "echarts/theme/dark.js"
 pin "echarts", to: "echarts.min.js"
 pin "echarts/theme/dark", to: "echarts/theme/dark.js"
 pin "@rails/ujs", to: "rails-ujs.js"
+pin "typed.js" # @2.1.0

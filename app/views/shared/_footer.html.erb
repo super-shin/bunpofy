@@ -1,52 +1,41 @@
-<div class="row mb-4 mt-2">
-  <div class="col-12 d-flex align-items-start gap-4">
-    <div class="col-3">
-      <a href="root_path" class="">
-        <%= image_tag "bunpofy_logo.PNG", alt: "bunpofy", style: "width: 200px;" %>
-      </a>
-    </div>
-    <div class="col-3">
-      <h6>Resources</h6>
-      <ul>
-        <li>
-          <a href="#">Home</a>
-        </li>
-        <li>
-          <a href="#">How it works</a>
-        </li>
-        <li>
-          <a href="#">FAQs</a>
-        </li>
-        <li>
-          <a href="#">Contact</a>
-        </li>
-      </ul>
-    </div>
-    <div class="col-3">
-      <h6>Information</h6>
-      <p class="text-white">
-        <a href="tel: 305-240-9671">
-          305-240-9671
-        </a>
-      </p>
-      <p class="text-white">
-        <a href="mailto:info@company.com">
-          info@bunpofy.com
-        </a>
-      </p>
-    </div>
-    <div class="col-3">
-      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        English</button>
-      <ul class="dropdown-menu">
-        <li><button class="dropdown-item" type="button">Thai</button></li>
-        <li><button class="dropdown-item" type="button">Myanmar</button></li>
-        <li><button class="dropdown-item" type="button">Arabic</button></li>
-      </ul>
-      <p>
-        Copyright © 2024 Bunpofy. All rights reserved.
-      </p>
+<% unless [dashboard_teacher_challenges_path, new_teacher_challenge_path].include?(request.path) ||
+           (request.path.match(%r{^/student/submissions/\d+/games/\d+})) %> <!--Need to do it like this if path needs and ID-->
+<footer>
+  <div class="container-fluid">
+    <div class="row mt-2 p-4">
+      <div class="col d-flex">
+        <div class="col-8 align-self-end">
+          <a href="<%= root_path %>">
+            <%= image_tag "logo/logo_black.PNG", class: "img-fluid", style: "max-width: 200px;" %>
+          </a>
+          <p class="mb-0">Copyright © 2024 Bunpofy. All rights reserved.</p>
+        </div>
+        <div class="col align-self-start d-none d-sm-inline">
+          <h6>RESOURCES</h6>
+          <ul class="list-unstyled">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="col align-self-start d-none d-sm-inline ms-2">
+          <div class="d-flex flex-column align-items-start">
+            <h6>INFORMATION</h6>
+            <a href="tel:305-240-9671">305-240-9671</a>
+            <a href="mailto:info@company.com">contact@bunpofy.me</a>
+            <button class="btn btn-secondary dropdown-toggle mt-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              English
+            </button>
+            <ul class="dropdown-menu">
+              <li><button class="dropdown-item" type="button">日本語</button></li>
+              <li><button class="dropdown-item" type="button">Chinese</button></li>
+              <li><button class="dropdown-item" type="button">Korean</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-</div>
+</footer>
+<% end %>

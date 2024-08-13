@@ -17,7 +17,7 @@
   <body class="<%= params[:controller].start_with?('student') ? 'body-student' : 'body-teacher' %>">
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
-    <div style="min-height: 97vh;"><%= yield %></div>
-    <footer class="mt-auto"><%= render "shared/footer" %></footer>
+    <div style="min-height: 92vh;"><%= yield %></div>
+    <%= render "shared/footer" %>
   </body>
 </html>
