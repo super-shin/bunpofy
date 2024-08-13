@@ -22,7 +22,7 @@
         <%= f.input :directions %>
         <div class="d-flex align-items-center row">
           <div class="col-5">
-            <%= f.input :classroom, collection: @classrooms, prompt: 'Select a classroom' %>
+            <%= f.input :classroom_id, collection: @classrooms, prompt: 'Select a classroom' %>
           </div>
           <div class="col-7"><%= f.input :due_date, as: :date, start_year: Date.today.year,
                               end_year: Date.today.year + 1,

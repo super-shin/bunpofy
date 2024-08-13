@@ -24,7 +24,6 @@ class Teacher::ChallengesController < ApplicationController
   def create
     @challenge = Challenge.new(challenge_params)
     @challenge.user = current_user
-    @challenge.classroom = current_user.classrooms.first
     authorize @challenge
     if @challenge.save
       redirect_to teacher_challenge_path(@challenge), notice: 'Challenge submitted successfully!'

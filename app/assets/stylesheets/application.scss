@@ -90,3 +90,13 @@ h3, h4, h5 {
   font-weight: 550;
   font-style: normal;
 }
+.btn-yellow {
+  color: white;
+  background-color: $yellow;
+  padding: 10px 20px;
+  border-radius: 50rem;
+  transition: background-color 1s ease;
+}
+.btn-yellow:hover {
+  color: black;
+}
