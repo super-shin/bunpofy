@@ -1,0 +1,13 @@
+<div class="body-container" data-controller="spelling">
+  <div>
+    <h1>Spelling Ninja</h1>
+    <%= image_tag "abc.jpn", style: "height: 400" %>
+    <br>
+    <form>
+      <input type="text" value="spell the word" id="guess" data-spelling-target="Input-Guess">
+      <input type="submit" class="speech" data-action="click->spelling#textToSpeech" >
+    </form>
+      <br>
+      <p id="scattered-words">Hint</p>
+  </div>
+</div>
