@@ -21,16 +21,16 @@
 
 .grammar-game-level-up {
 	position: absolute;
-	left: 170px;
-	top: 100px;
+	left: 700px;
+	top: 430px;
 	opacity: 0;
 	transition: opacity 0.5s ease-in-out;
 }
 
 .grammar-game-broken-sword {
 	position: absolute;
-	left: 170px;
-	top: 100px;
+	left: 700px;
+	top: 430px;
 	opacity: 0;
 	transition: opacity 0.5s ease-in-out;
 }
@@ -165,7 +165,6 @@
 	color: black;
 	font-weight: 300;
 	font-size: 18px;
-	font-family: "go3v2" !important; /* Apply the custom font */
 	z-index: 0;
 	overflow: hidden;
 	transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
@@ -232,11 +231,6 @@ button:hover::after {
 
 .btn-option-grammar-game:hover::after {
 	transform: translate(50%, 0) scale(1.1);
-}
-
-@font-face {
-	font-family: "MyCustomFont";
-	src: url("/app/assets/fonts/go3v2.ttf") format("truetype");
 }
 
 /* Style for sun */

@@ -4,6 +4,7 @@ Challenge.all.each do |challenge|
     Submission.create({
       user_id: student.id,
       challenge_id: challenge.id,
+      score: rand(50..100),
       })
     end
   end
