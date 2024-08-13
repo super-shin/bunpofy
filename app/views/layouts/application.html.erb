@@ -15,9 +15,7 @@
   <body>
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
-    <%= yield %>
-    <% unless current_page?(dashboard_teacher_challenges_path) %>
-      <footer class="mt-auto"><%= render "shared/footer" %></footer>
-    <% end %>
+    <div style="min-height: 92vh;"><%= yield %></div>
+    <%= render "shared/footer" %>
   </body>
 </html>
