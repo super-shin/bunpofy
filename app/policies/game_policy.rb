@@ -20,6 +20,6 @@ class GamePolicy < ApplicationPolicy
   end
 
   def update?
-    return record.user_id == user.id
+    return record.submission.user_id == user.id
   end
 end

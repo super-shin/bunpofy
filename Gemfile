@@ -54,6 +54,7 @@ gem "cloudinary"
 gem "acts-as-taggable-on"
 gem "pundit"
 gem "rails_charts"
+gem 'rails-ujs'
 
 group :development, :test do
   gem "dotenv-rails"

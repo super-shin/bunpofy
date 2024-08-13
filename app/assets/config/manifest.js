@@ -5,3 +5,5 @@
 //= link popper.js
 //= link bootstrap.min.js
 //= link_tree ../audios
+//= link_tree ../fonts
+//= link rails-ujs.js
