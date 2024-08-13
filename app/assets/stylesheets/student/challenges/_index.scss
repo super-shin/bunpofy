@@ -1,18 +1,201 @@
+.student-challenges-ranking-pentagon {
+	width: 35px;
+	height: 30px;
+	position: relative;
+	background: linear-gradient(145deg, #b8860b, #ffd700);
+	clip-path: polygon(50% 0%, 90% 25%, 90% 75%, 50% 100%, 10% 75%, 10% 25%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 20px auto;
+	box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.6),
+		0 0 0px 20px rgba(235, 234, 231, 0.8);
+}
+
+.student-challenges-ranking-level {
+	font-family: "Press Start 2P", cursive;
+	font-size: 18px;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	z-index: 1;
+}
+
+.student-challenges-ranking-card-container {
+	margin-top: 30px !important;
+}
+
+.student-challenges-ranking-card-title {
+	background-color: #2e003e;
+	animation: pulse 2s infinite;
+	width: 180px;
+	height: 40px;
+	background-size: cover;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	top: -20px;
+	border-radius: 20px;
+	overflow: hidden;
+}
+
+@keyframes pulse {
+	0% {
+		filter: brightness(1);
+	}
+	50% {
+		filter: brightness(1.5);
+	}
+	100% {
+		filter: brightness(1);
+	}
+}
+
+.student-challenges-ranking-card-title p {
+	z-index: 2;
+	font-family: "Press Start 2P", cursive;
+	font-size: 14px;
+	color: #00ffff;
+}
+
+.student-challenge-raking-card-photo {
+	border-radius: 50%;
+}
+
+.student-challenges-ranking-container {
+	margin: 20px 30px 0px 15px;
+	border-radius: 20px;
+	background-color: rgba(21, 20, 20, 0.95);
+	position: relative;
+}
+
+.student-challenges-ranking-card {
+	width: 260px;
+	height: 50px;
+	border-radius: 30px;
+	background-color: #00ffff67;
+}
+
+.student-challenges-ranking-card-name {
+	width: 75px;
+	height: auto;
+}
+
+.student-challenges-ranking-card p {
+	font-family: "Orbitron", sans-serif;
+	font-size: 12px;
+}
+
+.student-challenges-card-container {
+	margin: 4px 0px 0px 30px;
+}
+
+.student-challenges-card {
+	width: 340px;
+	height: 480px;
+	border-radius: 20px;
+	overflow: hidden;
+	background-color: rgba(21, 20, 20, 0.95);
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
+}
+
+.student-challenges-card:hover {
+	box-shadow: 0px 8px 20px rgba(167, 167, 167, 0.9);
+}
+
+.student-challenges-card-title {
+	font-family: "Press Start 2P", cursive;
+	font-size: 10px;
+}
+
+.student-challenges-card-experience {
+	font-family: "Press Start 2P", cursive;
+	font-size: 10px;
+}
+
+.student-challenges-card-options {
+	font-family: "Press Start 2P", cursive;
+	font-size: 10px;
+	transition: transform 0.3s ease;
+	border: 1px solid black;
+	border-radius: 20px;
+	background-color: rgb(36, 35, 35);
+}
+
+.student-challenges-card-options:hover {
+	transform: scale(1.05);
+}
+
+.student-challenges-card-date {
+	font-size: 12px;
+	color: gray;
+	width: 70px;
+}
+
+.student-challenges-card-image {
+	object-fit: cover;
+}
+
+.student-challenges-challenges-container {
+	width: 100%;
+	overflow-x: auto;
+}
+
 .student-challenges-profile-container {
-	height: 250px;
+	height: 200px;
 	width: 140vh;
 	border-radius: 20px;
 	background-color: gray;
 	margin: 20px;
 	position: relative;
+	overflow: visible;
+	background-image: image-url(student_challenges_profile_background2);
+	background-size: cover;
+	background-position: center;
 }
 
 .student-challenges-profile-bar {
-	background-color: white;
-	height: 120px;
-	width: 110%;
+	background-color: rgba(21, 20, 20, 0.95);
+	height: 110px;
+	width: 102%;
 	border-radius: 25px;
+	position: absolute; /* Use absolute positioning */
+	bottom: -5px; /* Position it slightly below the bottom of the container */
+	left: -1%;
+}
+
+.student-challenges-profile-photo {
+	width: 100px;
+	height: 100px;
+	background-color: black;
 	position: absolute;
-	bottom: -10px;
-	left: -10px;
+	top: -50px;
+	left: 50%;
+	transform: translateX(-50%);
+	overflow: hidden;
+	border-radius: 20px;
+	box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.5);
+	border: 5px solid;
+	filter: drop-shadow(0px 0px 10px rgb(55, 48, 175)) invert(0%);
+}
+
+.student-challenge-profile-photo-cl {
+	object-fit: cover;
+}
+
+.student-challenges-profile-box {
+	height: 85px;
+	width: 150px;
+	border-right: 1px solid gray;
+}
+
+.student-challenges-profile-box-title {
+	font-size: 14px;
+	color: gray;
+	text-align: center;
+}
+
+.student-challenges-profile-box-last {
+	height: 85px;
+	width: 150px;
 }
