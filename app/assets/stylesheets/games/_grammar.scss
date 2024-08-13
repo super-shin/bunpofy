@@ -11,6 +11,7 @@
 
 .grammar-game-close-btn {
 	opacity: 0.5;
+	cursor: pointer;
 }
 
 .grammar-game-close-btn:hover {
@@ -243,7 +244,7 @@ button:hover::after {
 .sun-container {
 	position: absolute;
 	right: 100px;
-	top: 70px;
+	top: 110px;
 	width: 250px;
 	height: 250px;
 	padding: 10px;
