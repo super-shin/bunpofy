@@ -30,9 +30,9 @@
         <%= image_tag 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723567292/CHALLENGE_2_ytlzm2.jpg',  style: 'max-width: 300px;' %>
       <% end %>
       <% if @challenge.due_date < Date.today %>
-        <button class="btn btn-outline-danger w-75"> ENDED </button>
+        <button class="btn btn-outline-danger w-100"> ENDED </button>
       <% else %>
-        <button class="btn btn-outline-success w-75"> On Going </button>
+        <button class="btn btn-outline-success w-100"> On Going </button>
       <% end %>
     </div>
   </div>
