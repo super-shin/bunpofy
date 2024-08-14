@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { CountUp } from "countup.js";
 
 // Connects to data-controller="game"
 export default class extends Controller {
@@ -175,10 +176,33 @@ export default class extends Controller {
 		});
 		// Validates the game
 		if (this.fullSentence === this.answer.join("")) {
-			// Update the xp gaining in this game
+			// Sum experience animation
 			this.game_xp += 100 / this.wordsArray.length;
-			document.querySelector(".grammar-game-xp-number").innerText =
-				this.game_xp;
+			const options = {
+				duration: 3,
+			};
+			const xpSumElement = document.querySelector(
+				"#grammar-game-xp-number-sum"
+			);
+			const xpSumPlusElement = document.querySelector("#grammar-game-xp-plus");
+			let xpSum = new CountUp(xpSumElement, this.game_xp, options);
+			if (!xpSum.error) {
+				xpSumPlusElement.classList.remove("d-none");
+				xpSum.start();
+				setTimeout(() => {
+					// Update the xp gaining in this game after animation finishes
+					document.querySelector(".grammar-game-xp-number").innerText =
+						this.game_xp;
+				}, options.duration * 1000);
+				setTimeout(() => {
+					xpSumPlusElement.classList.add("d-none");
+					xpSumElement.innerText = "";
+				}, options.duration * 1000 + 500);
+			} else {
+				console.error(xpSum.error);
+			}
+
+			// Update the xp gaining in this game
 			const levelUpImage = document.querySelector(".grammar-game-level-up");
 			this.buttonElementTarget.style.backgroundColor = "#1b4332";
 			this.successAudio.play();
