@@ -11,28 +11,28 @@ puts "Destroyed Attendances"
 #Destroy all Games
 Game.destroy_all
 puts "Destroyed Games"
-# #Destroy all Submissions
+#Destroy all Submissions
 Submission.destroy_all
 puts "Destroyed Submissions"
-# #Destroy all Challenges
+#Destroy all Challenges
 Challenge.destroy_all
 puts "Destroyed Challenges"
 #Destroy all Classrooms
 Classroom.destroy_all
 puts "Destroyed Classrooms"
-#Destroy all WordReferences
-# WordReference.destroy_all
-# puts "Destroyed Word References"
-# # #Destroy all Units
-# Unit.destroy_all
-# puts "Destroyed Units"
-# # #Destroy all Words
-# Word.destroy_all
-# puts "Destroyed Words"
-# #Destroy all Textbooks  ######
-# Textbook.destroy_all
-# puts "Destroyed Textbooks" ######
-# #Destroy all Users
+# Destroy all WordReferences
+WordReference.destroy_all
+puts "Destroyed Word References"
+# #Destroy all Units
+Unit.destroy_all
+puts "Destroyed Units"
+# #Destroy all Words
+Word.destroy_all
+puts "Destroyed Words"
+#Destroy all Textbooks  ######
+Textbook.destroy_all
+puts "Destroyed Textbooks" ######
+#Destroy all Users
 User.destroy_all
 puts "Destroyed Users"
 #Reset ID key sequences
@@ -40,7 +40,7 @@ ActiveRecord::Base.connection.execute("TRUNCATE TABLE units, words, textbooks, u
 puts "RESET ID Numbers"
 
 # STEP 2: SEED Textbooks --- ######
-# require_relative 'seeds/textbooks'
+require_relative 'seeds/textbooks'
 
 
 #STEP 3: SEED Users - Classrooms - Attendances
