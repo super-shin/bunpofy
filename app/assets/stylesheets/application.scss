@@ -43,6 +43,9 @@ body {
   background-size: 100% 150vh;
   cursor: url('assets/logo/cursor.png'), auto;
 }
+.navbar {
+	z-index: 10;
+}
 h1 {
   font-family: "Lexend", sans-serif;
   font-optical-sizing: auto;

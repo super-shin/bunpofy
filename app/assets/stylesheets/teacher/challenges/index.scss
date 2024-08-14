@@ -1,12 +1,15 @@
 .new-challenge-bg {
-	position: fixed;
+	position: absolute;
 	top: 0;
 	left: 0;
-	width: 100vw;
-	height: 100%;
-	background: url("https://res.cloudinary.com/ddzvfukq6/image/upload/v1723197028/Untitled_design_1_ua1p26.jpg")
-		no-repeat center center; /* Background image */
+	background-image: url("https://res.cloudinary.com/ddzvfukq6/image/upload/v1723197028/Untitled_design_1_ua1p26.jpg");
 	background-size: cover;
+	z-index: 1;
+	min-height: 100vh;
+}
+.new-challenge-content {
+	margin-top: 3.5em;
+	z-index: 2;
 }
 @media (max-width: 768px) {
 	.new-challenge-bg {
@@ -19,11 +22,6 @@
 	.new-challenge-bg {
 		background-position: center center;
 	}
-}
-.new-challenge-content {
-	margin-top: 4em;
-	position: relative;
-	z-index: 9999;
 }
 .create-form {
 	background: rgba(255, 255, 255, 0.178);
