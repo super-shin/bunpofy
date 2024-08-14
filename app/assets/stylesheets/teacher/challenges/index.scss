@@ -1,0 +1,64 @@
+.new-challenge-bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100%;
+	background: url("https://res.cloudinary.com/ddzvfukq6/image/upload/v1723197028/Untitled_design_1_ua1p26.jpg")
+		no-repeat center center; /* Background image */
+	background-size: cover;
+}
+@media (max-width: 768px) {
+	.new-challenge-bg {
+		background-position: center center;
+		height: 200%;
+	}
+}
+
+@media (max-width: 480px) {
+	.new-challenge-bg {
+		background-position: center center;
+	}
+}
+.new-challenge-content {
+	margin-top: 4em;
+	position: relative;
+	z-index: 9999;
+}
+.create-form {
+	background: rgba(255, 255, 255, 0.178);
+	backdrop-filter: blur(20px);
+}
+.textbook-img {
+	transform: scale(1);
+	transition: transform 0.5s ease;
+}
+
+.textbook-img:hover {
+	transform: scale(1.2);
+}
+.create-form input {
+	background: black;
+}
+.create-form input,
+.create-form select,
+.create-form textarea {
+	background: rgba(255, 255, 255, 0.6);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	border-radius: 4px;
+	padding: 8px;
+	color: #333;
+	font-size: 16px;
+	width: 100%;
+	box-sizing: border-box;
+}
+.create-form input:focus,
+.create-form select:focus,
+.create-form textarea:focus {
+	border-color: $yellow;
+	background-color: #ffffff;
+	outline: none;
+}
+.create-form button:hover {
+	background-color: $yellow;
+}

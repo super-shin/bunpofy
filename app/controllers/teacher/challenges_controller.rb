@@ -8,7 +8,12 @@ class Teacher::ChallengesController < ApplicationController
   def show
     authorize @challenge
     @challenge = Challenge.find(params[:id])
-    @submissions = @challenge.submissions
+    @submissions = Submission.where(challenge_id: @challenge.id)
+    @students_with_submissions = @challenge.classroom.students.select do |student|
+      @submissions.exists?(user_id: student.id)
+    end
+    @students_without_submissions = @challenge.classroom.students - @students_with_submissions
+    @feedback = Feedback.new
   end
 
   def new

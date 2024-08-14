@@ -1,39 +1,121 @@
-<div id="challenge-container">
-        <div id="challenge-main-content">
-            <h1 id="challenge-title"><%= @challenge.title %></h1>
-            <p id="challenge-description"></p>
-
-            <div id="challenge-info-box">
-                <h2 id="challenge-info-title">Details:</h2>
-                <ul id="challenge-features-list">
-                    <li>Classroom: <%= @challenge.classroom.name %></li>
-                    <li>Due Date: <%= @challenge.due_date %></li>
-                </ul>
-                <p><br>Description: <%= @challenge.directions %></p>
-            </div>
-            <h2 id="challenge-submissions-title">Submissions</h2>
-
-            <% @submissions.each do |submission| %>
-            <div id="challenge-submission">
-                <details>
-                    <summary>Submission - <%= submission.user.last_name %> <%= submission.user.first_name %></summary>
-                    <p><%= submission.content %></p>
-                </details>
-            </div>
-            <% end %>
-
-
-
-        <aside id="challenge-sidebar">
-            <div id="challenge-profile-picture">
-            <% if @challenge.photo.attached? %>
-            <%= cl_image_tag @challenge.photo.key, id: "challenge-card-image" %>
-            <% else %>
-            <%= image_tag 'https://img.freepik.com/premium-vector/cute-black-ninja-read-book-illustration_295036-487.jpg', id: "challenge-card-image"%>
-            <% end %>
-            </div>
-            <a href="/teacher/challenges" id="challenge-back-button">Back</a>
-            <button id="challenge-edit-button" onClick="window.location.href='<%= edit_teacher_challenge_path(@challenge) %>'">Edit</button>
-        </aside>
-
+<div class="container">
+  <div class="row d-flex align-items-start justify-content-between gap-5 my-5">
+    <div class="card col-md-8 col-sm-12 bg-white shadow rounded-5">
+      <div class="card-body p-4">
+        <div class="d-flex justify-content-between">
+          <p><span class="dark-gray fw-bold">Title</span><br>
+            <span class="fs-3"><%= @challenge.title %></span></p>
+          <div class="d-flex align-items-center display-6 blue gap-2">
+            <lord-icon
+                src="https://cdn.lordicon.com/kgvlhryh.json"
+                trigger="hover"
+                colors="primary:#3a3347,secondary:#b4b4b4,tertiary:#fcd74a,quaternary:#fcd74a,quinary:#848484,senary:#08a88a,septenary:#2c86c7,octonary:#fcd74a"
+                style="width:50px;height:50px">
+            </lord-icon>
+            <%= @challenge.classroom.name %>
+          </div>
+        </div>
+        <p><span class="dark-gray fw-bold">Directions</span><br>
+          <%= @challenge.directions %></p>
+      </div>
+      <div class="card-footer text-muted text-end">
+        <%= @challenge.due_date %>
+      </div>
     </div>
+    <div class="col-md-3 col-sm-6 d-flex flex-column align-items-center justify-content-center gap-3">
+      <%#= image_tag(@challenge.photo_url, id: "challenge-card-image", alt: "Challenge Image") %>
+      <% if @challenge.photo.attached? %>
+        <%= cl_image_tag @challenge.photo.key, style: 'max-width: 300px;' %>
+      <% else %>
+        <%= image_tag 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723567292/CHALLENGE_2_ytlzm2.jpg',  style: 'max-width: 300px;' %>
+      <% end %>
+      <% if @challenge.due_date < Date.today %>
+        <button class="btn btn-outline-danger w-75"> ENDED </button>
+      <% else %>
+        <button class="btn btn-outline-success w-75"> On Going </button>
+      <% end %>
+    </div>
+  </div>
+  <!--############################ SUBMISSIONS ############################-->
+  <div class="accordion accordion-flush mb-4" id="accordionFlushExample">
+    <!-- Users with submissions -->
+    <h2 class="mb-4">Student Submissions:</h2>
+    <% @students_with_submissions.each_with_index do |user, index| %>
+      <div class="accordion-item bg-white">
+        <h2 class="accordion-header" id="flush-heading-with-submissions-<%= index %>">
+          <button class="accordion-button collapsed bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-with-submissions-<%= index %>" aria-expanded="false" aria-controls="flush-collapse-with-submissions-<%= index %>">
+            <%= user.first_name %> <%= user.last_name %>
+          </button>
+        </h2>
+        <div id="flush-collapse-with-submissions-<%= index %>" class="accordion-collapse collapse" aria-labelledby="flush-heading-with-submissions-<%= index %>" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <% user_submissions = @submissions.select { |submission| submission.user_id == user.id } %>
+            <% if user_submissions.any? %>
+              <% user_submissions.each do |submission| %>
+                <div class="card mb-2 bg-white">
+                  <div class="card-body row d-flex justify-contents-center align-items-start">
+                    <!--card LEFT side-->
+                    <div class="col-md-10 col-sm-12">
+                      <h3 class="card-title mb-4">"<%= submission.content %>"</h3>
+                      <% if submission.feedback.present? %>
+                        <blockquote class="blockquote mb-0">
+                          <p><%= submission.feedback.content %></p>
+                          <footer class="blockquote-footer"><cite><%= submission.challenge.user.last_name %> sensei</cite></footer>
+                        </blockquote>
+                      <% else %>
+                        <p class="text-muted fs-6">No feedback yet.</p>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#feedbackModal-<%= submission.id %>">
+                          Send Feedback
+                        </button>
+                        <!--RENDER MODAL-->
+                        <%= render 'teacher/feedbacks/new', submission: submission %>
+                      <% end %>
+                      <a href="#" class="btn btn-outline-primary">See Details</a>
+                    </div>
+                    <!--card RIGHT side-->
+                    <div class="col-md-2 d-none d-md-block display-4">
+                      <% if submission.score.present? %>
+                        <lord-icon
+                          src="https://cdn.lordicon.com/xjronrda.json"
+                          trigger="hover"
+                          colors="primary:#fcd74a,secondary:#3a3347,tertiary:#ebe6ef"
+                          style="width:50px;height:50px">
+                        </lord-icon>
+                        <span><%= submission.score %>%</span>
+                      <% else %>
+                        <span class="text-muted fs-5">No score available.</span>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="card-footer text-muted text-end">
+                    Submitted on: <%= submission.created_at.strftime("%B %d, %Y at %I:%M %p") %>
+                  </div>
+                </div>
+              <% end %>
+            <% else %>
+              <p>No submissions available for this user.</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <!-- Users without submissions -->
+    <h2 class="mb-4 mt-5 pale-red">Pending Submissions:</h2>
+    <% @students_without_submissions.each_with_index do |user, index| %>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-heading-without-submissions-<%= index %>">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-without-submissions-<%= index %>" aria-expanded="false" aria-controls="flush-collapse-without-submissions-<%= index %>">
+            <%= user.first_name %> <%= user.last_name %>
+          </button>
+        </h2>
+        <div id="flush-collapse-without-submissions-<%= index %>" class="accordion-collapse collapse" aria-labelledby="flush-heading-without-submissions-<%= index %>" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            No submission yet.
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<!--############################ OLD SUBMISSIONS ############################-->
