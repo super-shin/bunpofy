@@ -4,8 +4,8 @@ puts "Seeding Teachers..."
 User.create!([
   { email: 'teacher@gmail.com', password: '123456', first_name: 'Teacher', last_name: 'Admin', role: 'teacher', school: 'Tokyo Elementary School' },
   { email: 'hatakekakashi@hljhs.com', password: '123456', first_name: 'Kakashi', last_name: 'Hatake', role: 'teacher', school: 'Hidden Leaf JHS' },
-  { email: 'sarutobihiruzen@hljhs.com', password: '123456', first_name: 'Hiruzen', last_name: 'Sarutobi', role: 'teacher', school: 'Minami Elementary School' },
-  { email: 'miyagiken@hljhs.com', password: '123456', first_name: 'Ken', last_name: 'Miyagi', role: 'teacher', school: 'Karasuno JHS' }
+  { email: 'sarutobihiruzen@minami.com', password: '123456', first_name: 'Hiruzen', last_name: 'Sarutobi', role: 'teacher', school: 'Minami Elementary School' },
+  { email: 'miyagiken@karasuno.com', password: '123456', first_name: 'Ken', last_name: 'Miyagi', role: 'teacher', school: 'Karasuno JHS' }
 ])
 
 
@@ -105,29 +105,36 @@ User.create!([
 ])
 
 
-
 puts "Seeding PICTURES...."
-# Paths to images
-male_image_path = Rails.root.join("app/assets/images/male_ninja.webp")
-female_image_path = Rails.root.join("app/assets/images/female_ninja.webp")
-sensei_image_path = Rails.root.join("app/assets/images/sensei.webp")
+# Remote image URLs
+male_image_url = 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723555359/development/afl0gfvruu22fe3jgajtknke2kk5.webp'
+female_image_url = 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723555982/development/7f93bfp053d2mgsmdvwov3nr4r6l.webp'
+sensei_image_url = 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723390824/development/s6q3m4552k0wr7e8v5rd844ho72o.webp'
+
 # List of male first names
 male_names = %w[Naruto Sasuke Shikamaru Neji Rock Choji Kiba Shino Itachi Tenma Zaku Kabuto Misumi Yoroi Kazuo Ryo Hiro Kazu Tomo Taka Sora Shin Ichi Haru Shun Yuto Ki Geko Kai Yuki Yuta Shoyo Tobio Yuu Tadashi Kei Koushi Azumane Ryuunosuke Chikara Shinsuke]
+
+# Helper method to attach a photo from a URL
+def attach_photo(user, photo_url)
+  io = URI.open(photo_url)
+  user.photo.attach(io: io, filename: File.basename(photo_url), content_type: "image/webp")
+end
+
 # Create users and attach photos
-users = User.all
-users.each do |user|
+User.all.each do |user|
   if user[:role] == 'student'
     if male_names.include?(user.first_name)
       puts "Attaching male ninja image to #{user.first_name} #{user.last_name}"
-      user.photo.attach(io: File.open(male_image_path), filename: "male_ninja.webp", content_type: "image/webp")
+      attach_photo(user, male_image_url)
     else
       puts "Attaching female ninja image to #{user.first_name} #{user.last_name}"
-      user.photo.attach(io: File.open(female_image_path), filename: "female_ninja.webp", content_type: "image/webp")
+      attach_photo(user, female_image_url)
     end
   else
     puts "Attaching sensei image to #{user.first_name} #{user.last_name}"
-    user.photo.attach(io: File.open(sensei_image_path), filename: "ninja_sensei.png", content_type: "image/png")
+    attach_photo(user, sensei_image_url)
   end
   puts "Created user #{user.email} with attached photo"
 end
+
 puts "ALL DONE - Seeded USERS"
