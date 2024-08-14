@@ -4,7 +4,7 @@ puts "Seeding Teachers..."
 User.create!([
   { email: 'teacher@gmail.com', password: '123456', first_name: 'Teacher', last_name: 'Admin', role: 'teacher', school: 'Tokyo Elementary School' },
   { email: 'hatakekakashi@hljhs.com', password: '123456', first_name: 'Kakashi', last_name: 'Hatake', role: 'teacher', school: 'Hidden Leaf JHS' },
-  { email: 'sarutobihiruzen@hljhs.com', password: '123456', first_name: 'Hiruzen', last_name: 'Sarutobi', role: 'teacher', school: 'Minami Elementary School' }
+  { email: 'sarutobihiruzen@hljhs.com', password: '123456', first_name: 'Hiruzen', last_name: 'Sarutobi', role: 'teacher', school: 'Minami Elementary School' },
   { email: 'miyagiken@hljhs.com', password: '123456', first_name: 'Ken', last_name: 'Miyagi', role: 'teacher', school: 'Karasuno JHS' }
 ])
 
