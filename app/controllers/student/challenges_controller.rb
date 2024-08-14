@@ -2,7 +2,7 @@ class Student::ChallengesController < ApplicationController
   before_action :set_challenge, only: [:show]
 
   def index
-    @challenges = policy_scope(Challenge)
+    @challenges = policy_scope(Challenge).order(created_at: :desc)
     # Defining array for leaderboard users
     @classrooms = current_user.classrooms_as_student
     @students = @classrooms.flat_map(&:students)

@@ -5,6 +5,18 @@
 	text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff;
 }
 
+#grammar-game-xp-number-sum {
+	color: #00ffff; /* Choose a color that contrasts well with the background */
+	font-size: 18px; /* Adjust as needed */
+	text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff;
+}
+
+#grammar-game-xp-plus {
+	color: #00ffff; /* Choose a color that contrasts well with the background */
+	font-size: 18px; /* Adjust as needed */
+	text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff;
+}
+
 .grammar-game-experience-bar-img {
 	filter: drop-shadow(0px 0px 10px rgb(55, 48, 175)) invert(0%);
 }
@@ -348,6 +360,10 @@ button:hover::after {
 }
 
 /* Hamster style  */
+
+#loading-element {
+	margin-bottom: 700px !important;
+}
 
 .wheel-and-hamster {
 	--dur: 1s;
