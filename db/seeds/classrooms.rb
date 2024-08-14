@@ -12,9 +12,9 @@ Classroom.create([
   { name: 'ES 6-3', user_id: 3 },
   { name: 'JHS 1-3', user_id: 3 },
   { name: 'JHS 2-3', user_id: 3 },
-  { name: 'ES 5-1', user_id: 4 },
-  { name: 'ES 6-1', user_id: 4 },
-  { name: 'JHS 1-1', user_id: 4 },
-  { name: 'JHS 2-1', user_id: 4 }
+  { name: 'ES 5-4', user_id: 4 },
+  { name: 'ES 6-4', user_id: 4 },
+  { name: 'JHS 1-4', user_id: 4 },
+  { name: 'JHS 2-4', user_id: 4 }
 ])
 puts "ALL DONE - Seeded Classrooms"
