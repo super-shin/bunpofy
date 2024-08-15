@@ -41,10 +41,10 @@ export default class extends Controller {
 		const genAI = new GoogleGenerativeAI(API_KEY);
 		const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 		let prompt = `
-		Create ${number_sentences} simple sentences in English for Japanese Junior High Students.
+		Create ${number_sentences} really simple sentences in English for Japanese Junior High Students.
 		Each sentence should use one of the following words: (${this.wordsArray.join(
 			", "
-		)}).The sentences should be straightforward and not interchangeable in meaning. The sentence should not have more than 10 words. 
+		)}).The sentences should be straightforward and not interchangeable in meaning. The sentence should not have more than 8 words. 
   Ensure that each sentence clearly conveys its intended meaning and does not allow for the words to be interchanged without changing the context.
 	Please format the response as a JSON array with the following structure (Dont write anything before and after "[]"):
 		[{"Sentence": "string"},
@@ -269,13 +269,11 @@ export default class extends Controller {
 			// Go to the next Game
 			const dataToUpdate = {
 				score: this.game_xp,
-				question: this.sentenceTokenizeShuffledArray.map((subArray) =>
-					subArray.join(" ")
-				),
-				correct_answer: this.correctSentencesArray.map(
-					(subArray) => subArray.Sentence
-				),
-				student_answer: this.studentAnswersArray,
+				questions: this.sentenceTokenizeArray.map((sentence, index) => ({
+					student_answer: this.studentAnswersArray[index] || "",
+					correct_answer: this.correctSentencesArray[index].Sentence,
+					options: this.sentenceTokenizeShuffledArray[index],
+				})),
 			};
 			// Saving data in DB
 			fetch(`/student/submissions/${this.submissionId}/games/${this.gameId}`, {

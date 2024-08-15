@@ -22,7 +22,15 @@ class Student::GamesController < ApplicationController
 
   def update
     authorize @game
-    @game.update(game_params)
+    if game.update(score: params[:score])
+      params[:questions].each do |question|
+        game.questions.create(
+          correct_answer: question[:correct_answer],
+          options: question[:options],
+          student_answer: question[:student_answer]
+        )
+      end
+    end
   end
 
   private
