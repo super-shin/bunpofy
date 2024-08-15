@@ -20,7 +20,7 @@ class Student::SubmissionsController < ApplicationController
     @submission = @challenge.submissions.build(submission_params)
     @submission.user = current_user
     @submission.ai_response = generate(@submission.content)
-    @ai_response_data = JSON.parse(@submission.ai_response)
+    @ai_response_data = JSON.parse(@submission.ai_response) if @submission.ai_response.present?
     
     if @ai_response_data
       @submission.score = @ai_response_data['info']['score'].to_i
