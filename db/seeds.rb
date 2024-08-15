@@ -20,8 +20,8 @@ puts "Destroyed Challenges"
 # #Destroy all Classrooms
 Classroom.destroy_all
 puts "Destroyed Classrooms"
-# #Destroy all WordReferences
-# WordReference.destroy_all
+#Destroy all WordReferences   
+# WordReference.destroy_all ######
 # puts "Destroyed Word References"
 # # #Destroy all Units
 # Unit.destroy_all
@@ -29,14 +29,15 @@ puts "Destroyed Classrooms"
 # # #Destroy all Words
 # Word.destroy_all
 # puts "Destroyed Words"
-# #Destroy all Textbooks  ###### 
+# #Destroy all Textbooks 
 # Textbook.destroy_all
 # puts "Destroyed Textbooks" ######
 #Destroy all Users
 User.destroy_all
 puts "Destroyed Users"
 #Reset ID key sequences
-ActiveRecord::Base.connection.execute("TRUNCATE TABLE users, classrooms, attendances, challenges, submissions, feedbacks, games RESTART IDENTITY CASCADE")
+# ActiveRecord::Base.connection.execute("TRUNCATE TABLE word_references, units, words, textbooks RESTART IDENTITY CASCADE")
+ActiveRecord::Base.connection.execute("users, classrooms, attendances, challenges, submissions, feedbacks, games RESTART IDENTITY CASCADE")
 puts "RESET ID Numbers"
 
 #STEP 2: SEED Textbooks --- ######
