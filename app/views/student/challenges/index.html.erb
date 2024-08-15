@@ -95,7 +95,7 @@
             </div>
           <% end %>
           <div class="d-flex align-items-center justify-content-end mx-3 mb-2 mt-auto">
-            <%= image_tag "grammar_game_experience_bar", height: "25px", width: "25px", class: "grammar-game-experience-bar-img ms-2" %>
+            <%= image_tag "grammar_game_experience_bar.png", height: "25px", width: "25px", class: "grammar-game-experience-bar-img ms-2" %>
             <p class="student-challenges-card-experience text-white"><%= submission.present? ? (submission.score || 0) + (submission.games.map(&:score).compact.sum) : 0 %></p>
           </div>
         </div>
@@ -113,7 +113,7 @@
               <p class="student-challenges-ranking-level">22</p>
             </div>
             <p class="student-challenges-ranking-card-name"><%= student.first_name %></p>
-            <%= image_tag "grammar_game_experience_bar", height: "25px", width: "25px", class: "grammar-game-experience-bar-img ms-2" %>
+            <%= image_tag "grammar_game_experience_bar.png", height: "25px", width: "25px", class: "grammar-game-experience-bar-img ms-2" %>
             <p class="student-challenges-ranking-experience-number"><%= (student.submissions.map{|submission| submission.score}.sum) + (student.submissions.flat_map(&:games).select{|game| game.score.present?}.map{|game| game.score}.sum) %></p>
           </div>
         <% end %>
