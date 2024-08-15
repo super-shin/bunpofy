@@ -1,0 +1,20 @@
+<!-- Modal -->
+<div class="modal fade" id="feedbackModal-<%= submission.id %>" tabindex="-1" aria-labelledby="feedbackModal-<%= submission.id %>Label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title fs-5" id="feedbackModal-<%= submission.id %>Label">Give your little ninja a feedback:</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @feedback, url: teacher_submission_feedbacks_path(submission) do |f| %>
+          <%= f.input :content, label: 'Teacher Feedback' %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+          <%= f.button :submit, class: 'btn btn-primary text-white' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

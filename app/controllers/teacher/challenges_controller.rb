@@ -8,7 +8,12 @@ class Teacher::ChallengesController < ApplicationController
   def show
     authorize @challenge
     @challenge = Challenge.find(params[:id])
-    @submissions = @challenge.submissions
+    @submissions = Submission.where(challenge_id: @challenge.id)
+    @students_with_submissions = @challenge.classroom.students.select do |student|
+      @submissions.exists?(user_id: student.id)
+    end
+    @students_without_submissions = @challenge.classroom.students - @students_with_submissions
+    @feedback = Feedback.new
   end
 
   def new
@@ -24,7 +29,6 @@ class Teacher::ChallengesController < ApplicationController
   def create
     @challenge = Challenge.new(challenge_params)
     @challenge.user = current_user
-    @challenge.classroom = current_user.classrooms.first
     authorize @challenge
     if @challenge.save
       redirect_to teacher_challenge_path(@challenge), notice: 'Challenge submitted successfully!'
@@ -78,7 +82,7 @@ class Teacher::ChallengesController < ApplicationController
     # Number of students being taught by this professor
     @students = @classrooms.flat_map(&:students)
     # Number of feedbacks to be done
-    @pending_feedbacks = @submissions.select { |submission| submission.feedbacks.first.nil? }.count
+    @pending_feedbacks = @submissions.select { |submission| submission.feedback.nil? }.count
     # Calculate completion rate per classroom including games
     @completion_rates = @classrooms.map do |classroom|
       classroom_submissions = classroom.challenges.flat_map(&:submissions)
