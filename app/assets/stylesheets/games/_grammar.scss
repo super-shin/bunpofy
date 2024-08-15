@@ -5,12 +5,25 @@
 	text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff;
 }
 
+#grammar-game-xp-number-sum {
+	color: #00ffff; /* Choose a color that contrasts well with the background */
+	font-size: 18px; /* Adjust as needed */
+	text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff;
+}
+
+#grammar-game-xp-plus {
+	color: #00ffff; /* Choose a color that contrasts well with the background */
+	font-size: 18px; /* Adjust as needed */
+	text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff;
+}
+
 .grammar-game-experience-bar-img {
 	filter: drop-shadow(0px 0px 10px rgb(55, 48, 175)) invert(0%);
 }
 
 .grammar-game-close-btn {
 	opacity: 0.5;
+	cursor: pointer;
 }
 
 .grammar-game-close-btn:hover {
@@ -20,16 +33,16 @@
 
 .grammar-game-level-up {
 	position: absolute;
-	left: 170px;
-	top: 100px;
+	left: 700px;
+	top: 430px;
 	opacity: 0;
 	transition: opacity 0.5s ease-in-out;
 }
 
 .grammar-game-broken-sword {
 	position: absolute;
-	left: 170px;
-	top: 100px;
+	left: 700px;
+	top: 430px;
 	opacity: 0;
 	transition: opacity 0.5s ease-in-out;
 }
@@ -164,7 +177,6 @@
 	color: black;
 	font-weight: 300;
 	font-size: 18px;
-	font-family: "go3v2" !important; /* Apply the custom font */
 	z-index: 0;
 	overflow: hidden;
 	transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
@@ -233,17 +245,12 @@ button:hover::after {
 	transform: translate(50%, 0) scale(1.1);
 }
 
-@font-face {
-	font-family: "MyCustomFont";
-	src: url("/app/assets/fonts/go3v2.ttf") format("truetype");
-}
-
 /* Style for sun */
 
 .sun-container {
 	position: absolute;
 	right: 100px;
-	top: 70px;
+	top: 110px;
 	width: 250px;
 	height: 250px;
 	padding: 10px;
@@ -353,6 +360,10 @@ button:hover::after {
 }
 
 /* Hamster style  */
+
+#loading-element {
+	margin-bottom: 700px !important;
+}
 
 .wheel-and-hamster {
 	--dur: 1s;

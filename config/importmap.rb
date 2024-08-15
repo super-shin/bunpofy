@@ -14,3 +14,4 @@ pin "echarts", to: "echarts.min.js"
 pin "echarts/theme/dark", to: "echarts/theme/dark.js"
 pin "@rails/ujs", to: "rails-ujs.js"
 pin "typed.js" # @2.1.0
+pin "countup.js", to: "https://ga.jspm.io/npm:countup.js@2.0.8/dist/countUp.umd.js", preload: true

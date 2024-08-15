@@ -1,5 +1,5 @@
-<div class="grammar-game-container">
-  <div class="d-flex justify-content-center align-items-center" id="loading-element" style="height: 100vh;">
+<div class="grammar-game-container no-margin-p">
+  <div class="d-flex justify-content-center align-items-center" id="loading-element" style="height: 80vh;">
     <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
       <div class="wheel"></div>
       <div class="hamster">
@@ -40,6 +40,8 @@
     </div>
     <div class="d-flex justify-content-center align-items-center my-4">
       <div class="d-flex align-items-center me-3">
+        <p id="grammar-game-xp-plus" class="d-none">+</p>
+        <p class="me-1 text-white" id="grammar-game-xp-number-sum"></p>
         <p class="me-1 text-white grammar-game-xp-number">0</p>
         <%= image_tag "grammar_game_experience_bar", height: "40px", width: "40px", class: "grammar-game-experience-bar-img" %>
       </div>
