@@ -25,6 +25,21 @@ User.create!([
   { email: 'akadoyoroi@hljhs.com', password: '123456', first_name: 'Yoroi', last_name: 'Akado', role: 'student', school: 'Hidden Leaf JHS' },
 ])
 
+# Creating more students for class B and C
+
+User.create!([
+  { email: 'kamizukiyori@hljhs.com', password: '123456', first_name: 'Yori', last_name: 'Kamizuki', role: 'student', school: 'Hidden Leaf JHS' },
+  { email: 'haganerin@hljhs.com', password: '123456', first_name: 'Rin', last_name: 'Hagane', role: 'student', school: 'Hidden Leaf JHS' },
+  { email: 'yamanakakuro@hljhs.com', password: '123456', first_name: 'Kuro', last_name: 'Yamanaka', role: 'student', school: 'Hidden Leaf JHS' },
+  { email: 'nagatomiya@hljhs.com', password: '123456', first_name: 'Miwa', last_name: 'Nagato', role: 'student', school: 'Hidden Leaf JHS' },
+  { email: 'inokumaayame@hljhs.com', password: '123456', first_name: 'Ayame', last_name: 'Inokuma', role: 'student', school: 'Hidden Leaf JHS' },
+  { email: 'kuromatsuri@hljhs.com', password: '123456', first_name: 'Matsuri', last_name: 'Kuro', role: 'student', school: 'Hidden Leaf JHS' },
+  { email: 'hanzokagero@hljhs.com', password: '123456', first_name: 'Kagero', last_name: 'Hanzo', role: 'student', school: 'Hidden Leaf JHS' },
+  { email: 'fujikakashi@hljhs.com', password: '123456', first_name: 'Kakashi', last_name: 'Fuji', role: 'student', school: 'Hidden Leaf JHS' },
+  { email: 'uchihagenki@hljhs.com', password: '123456', first_name: 'Genki', last_name: 'Uchiha', role: 'student', school: 'Hidden Leaf JHS' },
+  { email: 'kumoushiro@hljhs.com', password: '123456', first_name: 'Shiro', last_name: 'Kumo', role: 'student', school: 'Hidden Leaf JHS' }
+])
+
 puts "Seeding completed!"
 # Paths to images
 male_image_path = Rails.root.join("app/assets/images/male_ninja.webp")
