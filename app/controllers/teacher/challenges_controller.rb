@@ -82,7 +82,7 @@ class Teacher::ChallengesController < ApplicationController
     # Number of students being taught by this professor
     @students = @classrooms.flat_map(&:students)
     # Number of feedbacks to be done
-    @pending_feedbacks = @submissions.select { |submission| submission.feedbacks.first.nil? }.count
+    @pending_feedbacks = @submissions.select { |submission| submission.feedback.nil? }.count
     # Calculate completion rate per classroom including games
     @completion_rates = @classrooms.map do |classroom|
       classroom_submissions = classroom.challenges.flat_map(&:submissions)
