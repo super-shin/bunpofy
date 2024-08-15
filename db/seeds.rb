@@ -37,7 +37,7 @@ User.destroy_all
 puts "Destroyed Users"
 #Reset ID key sequences
 # ActiveRecord::Base.connection.execute("TRUNCATE TABLE word_references, units, words, textbooks RESTART IDENTITY CASCADE")
-ActiveRecord::Base.connection.execute("users, classrooms, attendances, challenges, submissions, feedbacks, games RESTART IDENTITY CASCADE")
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE users, classrooms, attendances, challenges, submissions, feedbacks, games RESTART IDENTITY CASCADE")
 puts "RESET ID Numbers"
 
 #STEP 2: SEED Textbooks --- ######
