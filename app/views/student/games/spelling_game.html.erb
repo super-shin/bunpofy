@@ -1,1 +1,20 @@
-<h1>spelling game</h1>
+<div class="body-container"
+  data-controller="spelling-game"
+  data-spelling-game-words-array-value="<%= @words_array_spelling.to_json %>">
+  <div>
+    <h1 class="h1-custom">Spelling Ninja</h1>
+    <br><%= image_tag "abc.jpg", style: "height: 200px" %>
+    <br>
+    <form>
+      <input type="text" placeholder="spell the word..." id="guess">
+      <input type="submit" class="spelling-guess" data-action="click->spelling-game#userInput" >
+    </form>
+      <br>
+      <p class="p-custom">Hint :</p>
+      <button class="custom-button" data-action="click->spelling-game#textToSpeech">
+        <i class="fa-solid fa-music"></i> Pronounce The Word
+      </button>
+      <div id="results"></div>
+  </div>
+</div>
+

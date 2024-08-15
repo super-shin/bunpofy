@@ -19,6 +19,7 @@
 // Games CSS partials
 @import "games/index";
 @import "games/grammar";
+@import "games/spelling";
 
 // Student Challenges CSS
 @import "student/challenges/index";
@@ -107,3 +108,4 @@ h3, h4, h5 {
 .btn-yellow:hover {
   color: black;
 }
+
