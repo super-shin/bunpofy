@@ -1,39 +1,99 @@
-<div>
-  <h1>My Challenges</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-  <button class="create-btn" onClick="window.location.href='/teacher/challenges/new'">Create New Challenge</button>
-</div>
-<nav class="categories">
-  <button class="active">View all</button>
-  <button>Category one</button>
-  <button>Category two</button>
-  <button>Category three</button>
-  <button>Category four</button>
-</nav>
-<section class="challenges">
-  <% @challenges.each do |challenge| %>
-    <a href="<%= teacher_challenge_path(challenge) %>" class="card-link">
-      <div id="challenge-card">
-        <div id="challenge-card-image">
-          <% if challenge.photo.attached? %>
-            <%= cl_image_tag challenge.photo.key, id: "challenge-card-image" %>
-          <% else %>
-            <%= image_tag 'https://img.freepik.com/premium-vector/cute-black-ninja-read-book-illustration_295036-487.jpg', id: "challenge-card-image"%>
+<div class="container">
+  <div class="text-center mb-4">
+    <%= image_tag("https://res.cloudinary.com/ddzvfukq6/image/upload/v1723633517/D_-JO_jzleqd.png", alt: "dojo title text", style: 'max-width: 500px;') %>
+    <p class="mb-4">Welcome to the <strong>Do-jo</strong>, where learning meets innovation! This platform is designed to ignite curiosity and foster language skill development through engaging, interactive challenges. Whether you're looking to test your students' knowledge, refine their skills, or compete with peers, Do-jo offers a dynamic environment to push limits and achieve your goals. Join us in transforming education into an exciting adventure and unlock your full potential here in our Do-jo!</p>
+    <%= link_to "Create New Challenge", new_teacher_challenge_path, class: 'btn-yellow', type: 'button' %>
+  </div>
+  <!-- NEW CODE -->
+  <nav>
+    <div class="nav justify-content-center nav-tabs" id="nav-tab" role="tablist">
+      <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">View All</button>
+      <% unique_class = [] %>
+      <% if @challenges.present? %>
+        <% @challenges.each do |challenge| %>
+          <% classroom_name = challenge.classroom.name %>
+          <% safe_classroom_name = classroom_name.gsub(/\s+/, '-').gsub(/[^\w-]/, '') %>
+          <% unless unique_class.include?(safe_classroom_name) %>
+            <button class="nav-link" 
+              id="nav-profile-tab-<%= safe_classroom_name %>" 
+              data-bs-toggle="tab" 
+              data-bs-target="#nav-profile-<%= safe_classroom_name %>" 
+              type="button" 
+              role="tab" 
+              aria-controls="nav-profile-<%= safe_classroom_name %>" 
+              aria-selected="false"
+              class="yellow">
+              <%= classroom_name %>
+            </button>
+            <% unique_class.push(safe_classroom_name) %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+      <div class="row row-cols-1 row-cols-md-4 g-4 my-5">
+        <!-- Content for "View All" tab -->
+        <% @challenges.each do |challenge| %>
+          <div class="col">
+            <a href="<%= teacher_challenge_path(challenge) %>" class="text-decoration-none">
+              <div class="card h-100">
+                <% if challenge.photo.attached? %>
+                  <%= cl_image_tag challenge.photo.key, id: "challenge-card-image", class: 'card-img-top' %>
+                <% else %>
+                  <%= image_tag 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723567292/CHALLENGE_2_ytlzm2.jpg', alt: "challenge-card-image", class: 'card-img-top' %>
+                <% end %>
+                <div class="card-body bg-white">
+                  <p class="text-muted fw-lighter">Topic</p>
+                  <h5 class="card-title blue"><%= challenge.title %></h5>
+                  <p class="card-text text-muted"><%= challenge.directions %></p>
+                  <div class="container-fluid d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <img src="https://cdn.readawrite.com/articles/4705/4704259/thumbnail/small.gif" alt="School Profile" class="rounded-circle" style="max-width:20px;">
+                      <span class="fw-bold dark-gray ms-2"><%= challenge.classroom.name %></span>
+                    </div>
+                    <span class="text-end dark-gray">Due <%= challenge.due_date %></span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <% unique_class.each do |classroom_name| %>
+      <% safe_classroom_name = classroom_name.gsub(/\s+/, '-').gsub(/[^\w-]/, '') %>
+      <div class="tab-pane fade" id="nav-profile-<%= safe_classroom_name %>" role="tabpanel" aria-labelledby="nav-profile-tab-<%= safe_classroom_name %>" tabindex="0">
+        <!-- Content for each classroom's tab -->
+        <div class="row row-cols-1 row-cols-md-4 g-4 my-5">
+          <% @challenges.select { |c| c.classroom.name.gsub(/\s+/, '-').gsub(/[^\w-]/, '') == classroom_name }.each do |challenge| %>
+            <div class="col">
+              <a href="<%= teacher_challenge_path(challenge) %>" class="text-decoration-none">
+                <div class="card h-100">
+                  <% if challenge.photo.attached? %>
+                    <%= cl_image_tag challenge.photo.key, id: "challenge-card-image", class: 'card-img-top' %>
+                  <% else %>
+                    <%= image_tag 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723567292/CHALLENGE_2_ytlzm2.jpg', alt: "challenge-card-image", class: 'card-img-top' %>
+                  <% end %>
+                  <div class="card-body bg-white">
+                    <p class="text-muted fw-lighter">Topic</p>
+                    <h5 class="card-title blue"><%= challenge.title %></h5>
+                    <p class="card-text text-muted"><%= challenge.directions %></p>
+                    <div class="container-fluid d-flex align-items-center justify-content-between">
+                      <div class="d-flex align-items-center">
+                        <img src="https://cdn.readawrite.com/articles/4705/4704259/thumbnail/small.gif" alt="School Profile" class="rounded-circle" style="max-width:20px;">
+                        <span class="fw-bold dark-gray ms-2"><%= classroom_name %></span>
+                      </div>
+                      <span class="text-end dark-gray">Due <%= challenge.due_date %></span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
           <% end %>
         </div>
-        <div class="card-content">
-          <p class="topic">Topic</p>
-          <h2 class="title"><%= challenge.title %></h2>
-          <p class="challenge-card-description"><%= challenge.directions %></p>
-          <div class="challenge-card-footer">
-            <div class="school-info">
-              <img src="https://cdn.readawrite.com/articles/4705/4704259/thumbnail/small.gif" alt="School Profile" class="school-image">
-              <span class="school"><%= challenge.classroom.name %></span>
-            </div>
-            <span class="date">Due <%= challenge.due_date %></span>
-          </div>
-        </div>
       </div>
-    </a>
-  <% end %>
-</section>
+    <% end %>
+  </div>
+</div>

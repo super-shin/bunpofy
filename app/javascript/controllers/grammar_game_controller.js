@@ -185,7 +185,11 @@ export default class extends Controller {
 				"#grammar-game-xp-number-sum"
 			);
 			const xpSumPlusElement = document.querySelector("#grammar-game-xp-plus");
-			let xpSum = new CountUp(xpSumElement, this.game_xp, options);
+			let xpSum = new CountUp(
+				xpSumElement,
+				100 / this.wordsArray.length,
+				options
+			);
 			if (!xpSum.error) {
 				xpSumPlusElement.classList.remove("d-none");
 				xpSum.start();
