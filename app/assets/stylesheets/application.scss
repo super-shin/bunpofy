@@ -44,6 +44,9 @@ body {
   background-size: 100% 150vh;
   cursor: url('assets/logo/cursor.png'), auto;
 }
+.navbar {
+	z-index: 10;
+}
 h1 {
   font-family: "Lexend", sans-serif;
   font-optical-sizing: auto;
@@ -80,6 +83,9 @@ h3, h4, h5 {
 .green {
   color: $green;
 }
+.pale-red {
+  color: rgba(255, 110, 110, 0.786);
+}
 .text-gray {
   color: rgb(161, 161, 161);
 }
@@ -90,4 +96,14 @@ h3, h4, h5 {
   font-family: "Roboto", sans-serif;
   font-weight: 550;
   font-style: normal;
+}
+.btn-yellow {
+  color: white;
+  background-color: $yellow;
+  padding: 10px 20px;
+  border-radius: 50rem;
+  transition: background-color 1s ease;
+}
+.btn-yellow:hover {
+  color: black;
 }
