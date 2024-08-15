@@ -1,4 +1,4 @@
-<div class="d-flex dashboard-container" data-controller="dashboard">
+<div class="d-flex dashboard-container no-margin-p" data-controller="dashboard">
   <div class="left-container-dashboard shadow d-flex flex-column justify-content-center border-end border-2 mr-auto m-3" >
     <div class="d-flex justify-content-center m-3">
       <%= link_to new_teacher_challenge_path do %>
@@ -32,7 +32,7 @@
       <% end %>
     </div>
   </div>
-  <div class="d-flex flex-column">
+  <div class="d-flex flex-column flex-grow-1">
     <div class="d-flex dashboard-first-column">
       <div class="d-flex mx-1 my-3 shadow dashboard-profile-container p-3">
         <div class="d-flex flex-column justify-content-end dashboard-profile-text-container">
@@ -56,7 +56,7 @@
         </div>
       </div>
     </div>
-    <div class="d-flex">
+    <div class="d-flex dashboard-second-column">
       <div class="dashboard-student-list d-flex flex-column align-items-center mx-1 mb-3 shadow p-0" data-dashboard-target="studentListElement">
         <div class="py-2 fw-bold border-bottom dashboard-student-list-top">
           <p class="text-center">All Students</p>
@@ -70,35 +70,58 @@
       <div class="d-flex flex-wrap dashboard-pie-container m-1">
         <div class="dashboard-pie-card d-flex flex-column m-1 shadow p-2">
           <p class="dashboard-pie-container-text mb-2">Sentence Sensei Progress</p>
-          <div class="pie" style="--p:<%= @submissions_ratio %>; --c:green;"> <%= @submissions_ratio.to_i %>%</div>
+          <div class="pie align-self-center" style="--p:<%= @submissions_ratio %>; --c:green;"> <%= @submissions_ratio.to_i %>%</div>
         </div>
-        <div class="dashboard-pie-card shadow m-1 p-2">
+        <div class="dashboard-pie-card d-flex flex-column shadow m-1 p-2">
           <p class="dashboard-pie-container-text mb-2">Grammar Progress</p>
-          <div class="pie" style="--p:<%= @games_grammar_ratio %>; --c:darkblue;"> <%= @games_grammar_ratio.to_i %>%</div>
+          <div class="pie align-self-center" style="--p:<%= @games_grammar_ratio %>; --c:darkblue;"> <%= @games_grammar_ratio.to_i %>%</div>
         </div>
-        <div class="dashboard-pie-card shadow m-1 p-2">
+        <div class="dashboard-pie-card d-flex flex-column shadow m-1 p-2">
           <p class="dashboard-pie-container-text mb-2">Spelling Progress</p>
-          <div class="pie" style="--p:<%= @games_spelling_ratio %>; --c:orange;"> <%= @games_spelling_ratio.to_i %>%</div>
+          <div class="pie align-self-center" style="--p:<%= @games_spelling_ratio %>; --c:orange;"> <%= @games_spelling_ratio.to_i %>%</div>
         </div>
-        <div class="dashboard-pie-card shadow m-1 p-2">
+        <div class="dashboard-pie-card d-flex flex-column shadow m-1 p-2">
           <p class="dashboard-pie-container-text mb-2">Vocabulary Progress</p>
-          <div class="pie" style="--p:<%= @games_vocabulary_ratio %>; --c:purple;"> <%= @games_vocabulary_ratio.to_i %>%</div>
+          <div class="pie align-self-center" style="--p:<%= @games_vocabulary_ratio %>; --c:purple;"> <%= @games_vocabulary_ratio.to_i %>%</div>
         </div>
       </div>
-      <div class="m-3">
-        <%= bar_chart(
+      <div class="d-flex flex-column">
+        <div class="m-3">
+          <%= bar_chart(@completion_rates,
+  class: 'box',
+  theme: 'sakura',
+  height: '280px',
+  width: '400px',
+  options: {
+    title: {
+      text: 'Challenges Done Statistics'
+    },
+
+  }
+) 
+          %>
+        </div>
+        <div class="m-3">
+          <%= bar_chart(
           @completion_rates,
           class: 'box',
           theme: 'sakura',
+          height: '280px',
+          width: '400px',
           options: {
-          series: {
-          barWidth: '50%'
-          },
-          tooltip: {
-          valueFormatter: RailsCharts.js("(value) => 'Challenges Done ' + Math.round(value)")
-          }
+            title: {
+              text: 'Score Statistics'
+            },
+            series: {
+              barWidth: '50%'
+            },
+            tooltip: {
+              valueFormatter: RailsCharts.js("(value) => 'Challenges Done ' + Math.round(value)")
+            }
+            
           })
         %>
+        </div>
       </div>
     </div>
   </div>

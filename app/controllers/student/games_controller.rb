@@ -7,7 +7,7 @@ class Student::GamesController < ApplicationController
 
   def edit
     authorize @game
-    @api_key = ENV['GEMINI_API']
+    @api_key = ENV['GEMINI_KEY']
     # Get the ActiveRecord relation of words associated with the unit
     @words_relation = @game.submission.challenge.unit.words
     # Sample 5 unique words
