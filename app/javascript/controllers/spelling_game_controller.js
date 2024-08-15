@@ -9,7 +9,8 @@ export default class extends Controller {
   }
 
   textToSpeech() {
-    const utterance = new SpeechSynthesisUtterance(wordsArray);
+    const speechText = this.wordsArrayValue.join(" ");
+    const utterance = new SpeechSynthesisUtterance(speechText);
     window.speechSynthesis.speak(utterance);
   }
 }
