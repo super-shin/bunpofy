@@ -8,9 +8,10 @@ export default class extends Controller {
     console.log("Selected words for the game:", wordsArray);
   }
 
-  textToSpeech() {
-    const speechText = this.wordsArrayValue.join(" ");
-    const utterance = new SpeechSynthesisUtterance(speechText);
-    window.speechSynthesis.speak(utterance);
-  }
+
+  // textToSpeech() {
+  //   const speechText = this.wordsArrayValue.join(" ");
+  //   const utterance = new SpeechSynthesisUtterance(speechText);
+  //   window.speechSynthesis.speak(utterance);
+  // }
 }

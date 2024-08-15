@@ -1,10 +1,10 @@
 <div class="new-challenge-bg">
   <div class="row new-challenge-content d-flex justify-content-center mx-4">
-    <div class="col-12 text-center mb-3">
+    <div class="col-12 text-center mb-2">
       <p class="display-5 text-white mt-1 mb-0">Create your <span class="yellow">Bunpofy</span> Challenge</p>
       <p class="text-white">Ready to train your student ninjas, sensei?</p>
     </div>
-    <div class="col-md-6 col-sm-12 rounded-3 p-4 create-form">
+    <div class="col-md-6 col-sm-12 rounded-3 px-4 py-3 create-form">
       <%= simple_form_for [:teacher, @challenge], html: { data: { controller: 'unit-loader', units_by_textbook: @units_by_textbook.to_json.html_safe } } do |f| %>
         <!-- Choose which Textbook to use -->
         <div class="input-group mb-3">
@@ -22,7 +22,7 @@
         <%= f.input :directions %>
         <div class="d-flex align-items-center row">
           <div class="col-5">
-            <%= f.input :classroom, collection: @classrooms, prompt: 'Select a classroom' %>
+            <%= f.input :classroom_id, collection: @classrooms, prompt: 'Select a classroom' %>
           </div>
           <div class="col-7"><%= f.input :due_date, as: :date, start_year: Date.today.year,
                               end_year: Date.today.year + 1,

@@ -55,6 +55,7 @@ gem "acts-as-taggable-on"
 gem "pundit"
 gem "rails_charts"
 gem 'rails-ujs'
+gem 'httparty'
 
 group :development, :test do
   gem "dotenv-rails"

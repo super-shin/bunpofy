@@ -1,13 +1,11 @@
 <%# ERRORS DIV %>
-<% if !@ai_response || @ai_response["errors"].empty? %>
-  <p class="text-muted">No errors found</p>
-<% else %>
+<% if @ai_response && @ai_response["errors"] %>
   <%# ERRORS COUNT %>
   <% error_counts = @ai_response["errors"].each_with_object(Hash.new(0)) do |error, counts| %>
     <% counts[error["type"]] += 1 %>
   <% end %>
   <%# Group errors by type and render one button per type %>
-  <% grouped_errors = @ai_response["errors"].group_by { |error| error["type"] } %>
+  <% grouped_errors = @ai_response["errors"].group_by { |error| error["type"] || 'unknown' } %>
   <% grouped_errors.each do |error_type, errors| %>
     <% case error_type.downcase
         when "style"
@@ -32,4 +30,6 @@
       <span class="badge <%= badge_class %>"><%= error_counts[error_type] %></span>
     </button>
   <% end %>
+<% else %>
+  <p class="text-muted">No errors found</p>
 <% end %>

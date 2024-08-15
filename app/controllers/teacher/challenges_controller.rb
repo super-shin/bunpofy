@@ -8,7 +8,12 @@ class Teacher::ChallengesController < ApplicationController
   def show
     authorize @challenge
     @challenge = Challenge.find(params[:id])
-    @submissions = @challenge.submissions
+    @submissions = Submission.where(challenge_id: @challenge.id)
+    @students_with_submissions = @challenge.classroom.students.select do |student|
+      @submissions.exists?(user_id: student.id)
+    end
+    @students_without_submissions = @challenge.classroom.students - @students_with_submissions
+    @feedback = Feedback.new
   end
 
   def new
@@ -24,7 +29,6 @@ class Teacher::ChallengesController < ApplicationController
   def create
     @challenge = Challenge.new(challenge_params)
     @challenge.user = current_user
-    @challenge.classroom = current_user.classrooms.first
     authorize @challenge
     if @challenge.save
       redirect_to teacher_challenge_path(@challenge), notice: 'Challenge submitted successfully!'
@@ -49,7 +53,7 @@ class Teacher::ChallengesController < ApplicationController
     @classrooms = current_user.classrooms
     @submissions = current_user.challenges.flat_map(&:submissions)
     # Calculating Submissions % for Pie Chart
-    @submissions_content = @submissions.select { |submission| submission.content.present? }
+    @submissions_content = @submissions.select { |submission| submission.score.present? }
     @submissions_ratio = (@submissions_content.count.to_f/@submissions.count)*100
     # Calculating Grammar Game % for Pie Chart
     @games_grammar = @submissions.flat_map(&:games).select { |game| game.game_type == "grammar" }
@@ -78,52 +82,18 @@ class Teacher::ChallengesController < ApplicationController
     # Number of students being taught by this professor
     @students = @classrooms.flat_map(&:students)
     # Number of feedbacks to be done
-    @pending_feedbacks = @submissions.select { |submission| submission.feedbacks.first.nil? }.count
+    @pending_feedbacks = @submissions.select { |submission| submission.feedback.nil? }.count
     # Calculate completion rate per classroom including games
     @completion_rates = @classrooms.map do |classroom|
-      classroom_submissions = classroom.challenges.flat_map(&:submissions)
-      
-      if classroom_submissions.count > 0
-        # Calculate submission completion
-        completed_submissions = classroom_submissions.select { |submission| submission.content.present? }
-        submission_completion_ratio = (completed_submissions.count.to_f / classroom_submissions.count)
-        
-        # Calculate game completions
-        classroom_games = classroom_submissions.flat_map(&:games)
-        
-        grammar_games = classroom_games.select { |game| game.game_type == "grammar" }
-        completed_grammar_games = grammar_games.select { |game| game.score.present? }
-        grammar_completion_ratio = if grammar_games.count > 0
-          (completed_grammar_games.count.to_f / grammar_games.count)
-        else
-          0
-        end
-        
-        spelling_games = classroom_games.select { |game| game.game_type == "spelling" }
-        completed_spelling_games = spelling_games.select { |game| game.score.present? }
-        spelling_completion_ratio = if spelling_games.count > 0
-          (completed_spelling_games.count.to_f / spelling_games.count)
-        else
-          0
-        end
-        
-        vocab_games = classroom_games.select { |game| game.game_type == "vocab" }
-        completed_vocab_games = vocab_games.select { |game| game.score.present? }
-        vocab_completion_ratio = if vocab_games.count > 0
-          (completed_vocab_games.count.to_f / vocab_games.count)
-        else
-          0
-        end
-        
-        # Calculate the overall completion ratio including submissions and games
-        overall_completion_ratio = (submission_completion_ratio + grammar_completion_ratio + spelling_completion_ratio + vocab_completion_ratio) / 4 * 100
-      else
-        overall_completion_ratio = 0
-      end
-      
-      # Return both the classroom and its overall completion ratio
-      [classroom.name, overall_completion_ratio]
-    end.to_h
+      classroom_submission = classroom.challenges.flat_map(&:submissions)
+      classroom_games_grammar = classroom_submission.flat_map(&:games).filter { |game| game.game_type == "grammar" && game.score.present? }
+      classroom_games_spelling = classroom_submission.flat_map(&:games).filter { |game| game.game_type == "spelling" && game.score.present? }
+      classroom_games_vocab = classroom_submission.flat_map(&:games).filter { |game| game.game_type == "vocab" && game.score.present? }
+    end
+    @completion_rates = {
+      "Class A" => 70,
+      "Class B" => 80,
+    }       
   end
 
   private

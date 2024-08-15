@@ -1,7 +1,8 @@
 .dashboard-pie-card {
 	border-radius: 20px;
 	background-color: white;
-	width: 200px;
+	width: 250px;
+	height: 250px;
 }
 
 .dashboard-chart-h4 {
@@ -32,8 +33,8 @@
 }
 
 .dashboard-pie-container {
-	height: 150px;
-	width: 500px;
+	height: auto;
+	width: 100%;
 }
 
 .dashboard-pie-container-text {
@@ -42,11 +43,15 @@
 	font-weight: bold;
 }
 
+.dashboard-second-column {
+	width: 100%;
+}
+
 .dashboard-student-list {
-	width: 200px;
+	width: 350px;
 	background-color: white;
 	border-radius: 20px;
-	max-height: 500px;
+	max-height: 562px;
 	overflow-y: auto;
 	scrollbar-width: none;
 }
@@ -76,6 +81,10 @@
 	width: 100%;
 }
 
+.dashboard-first-column {
+	width: 100%;
+}
+
 .dashboard-profile-container {
 	background: linear-gradient(
 		to right,
@@ -85,7 +94,7 @@
 
 	border-radius: 20px;
 	height: 150px;
-	width: 600px;
+	width: 100%;
 	background-color: rgba(255, 255, 255, 0.8);
 	background-image: image-url(blue_sky_pattern);
 	background-size: cover;

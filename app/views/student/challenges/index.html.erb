@@ -6,23 +6,23 @@
       </div>
       <div class="student-challenges-profile-box ms-3 me-2 mt-2 d-flex flex-column align-items-center">
         <p class="m-2 student-challenges-profile-box-title">Challenges</p>
-        <p class="mt-1 fw-bold text-white"><%= current_user.submissions.count %></p>
+        <p class="fw-bold text-white"><%= current_user.submissions.count %></p>
       </div>
       <div class="student-challenges-profile-box mx-2 mt-2 d-flex flex-column align-items-center">
         <p class="m-2 student-challenges-profile-box-title">Games</p>
-        <p class="mt-1 fw-bold text-white"><%= current_user.submissions.flat_map(&:games).select { |game| game.score.present? }.count %></p>
+        <p class="fw-bold text-white"><%= current_user.submissions.flat_map(&:games).select { |game| game.score.present? }.count %></p>
       </div>
       <div class="student-challenges-profile-box-last mx-2 mt-2 me-auto d-flex flex-column align-items-center">
         <p class="m-2 student-challenges-profile-box-title">Classroom</p>
-        <p class="mt-1 fw-bold text-white"><%= current_user.classrooms_as_student.first.name %></p>
+        <p class="fw-bold text-white"><%= current_user.classrooms_as_student.first.name %></p>
       </div>
       <div class="student-challenges-profile-box mx-2 mt-2 d-flex flex-column align-items-center">
         <p class="m-2 student-challenges-profile-box-title">Level</p>
-        <p class="mt-1 fw-bold text-white">22</p>
+        <p class="fw-bold text-white">22</p>
       </div>
       <div class="student-challenges-profile-box mx-2 mt-2 d-flex flex-column align-items-center">
         <p class="m-2 student-challenges-profile-box-title">Total XP</p>
-        <p class="mt-1 fw-bold text-white"><%= @experience %></p>
+        <p class="fw-bold text-white"><%= @experience %></p>
       </div>
       <div class="student-challenges-profile-box-last mx-2 me-3 mt-2 d-flex flex-column align-items-center">
         <p class="m-2 student-challenges-profile-box-title">Learning</p>
@@ -95,7 +95,7 @@
             </div>
           <% end %>
           <div class="d-flex align-items-center justify-content-end mx-3 mb-2 mt-auto">
-            <%= image_tag "grammar_game_experience_bar", height: "25px", width: "25px", class: "grammar-game-experience-bar-img ms-2" %>
+            <%= image_tag "grammar_game_experience_bar.png", height: "25px", width: "25px", class: "grammar-game-experience-bar-img ms-2" %>
             <p class="student-challenges-card-experience text-white"><%= submission.present? ? (submission.score || 0) + (submission.games.map(&:score).compact.sum) : 0 %></p>
           </div>
         </div>
@@ -106,14 +106,14 @@
         <p>Leaderboard</p>
       </div>
       <div class="m-3 student-challenges-ranking-card-container">
-        <% @students.each do |student| %>
+        <% @students_ranking.each do |student| %>
           <div class="student-challenges-ranking-card d-flex p-2 justify-content-start align-items-center my-2">
             <%= cl_image_tag student.photo.key, height: 40, width: 40, class: "student-challenge-raking-card-photo " %>
             <div class="student-challenges-ranking-pentagon mx-2">
               <p class="student-challenges-ranking-level">22</p>
             </div>
             <p class="student-challenges-ranking-card-name"><%= student.first_name %></p>
-            <%= image_tag "grammar_game_experience_bar", height: "25px", width: "25px", class: "grammar-game-experience-bar-img ms-2" %>
+            <%= image_tag "grammar_game_experience_bar.png", height: "25px", width: "25px", class: "grammar-game-experience-bar-img ms-2" %>
             <p class="student-challenges-ranking-experience-number"><%= (student.submissions.map{|submission| submission.score}.sum) + (student.submissions.flat_map(&:games).select{|game| game.score.present?}.map{|game| game.score}.sum) %></p>
           </div>
         <% end %>
