@@ -9,21 +9,24 @@ class Student::SubmissionsController < ApplicationController
     @textbook = @submission.challenge.unit.textbook
     @content_words = @submission.content.downcase.scan(/\w+/).uniq
     @word_details = Word.where("LOWER(english) IN (?)", @content_words).pluck(:english, :level, :grade).uniq
-  rescue JSON::ParserError
-    @ai_response = { "errors" => [] }
   end
 
   def new
     @submission = @challenge.submissions.build
     authorize @submission
-    @api_key = ENV['GEMINI_KEY']
   end
 
   def create
     @submission = @challenge.submissions.build(submission_params)
     @submission.user = current_user
-    ai_response_data = JSON.parse(@submission.ai_response)
-    @submission.score = ai_response_data['info']['score'].to_i
+    @submission.ai_response = generate(@submission.content)
+    @ai_response_data = JSON.parse(@submission.ai_response)
+    
+    if @ai_response_data
+      @submission.score = @ai_response_data['info']['score'].to_i
+    else
+      @submission.score = 0
+    end
     authorize @submission
     if @submission.save
       # Creating the games at the creationg of a NEW submission
@@ -54,4 +57,10 @@ class Student::SubmissionsController < ApplicationController
     params.require(:submission).permit(:challenge_id, :user_id, :content, :ai_response, :score)
   end
 
+  def generate(final_prompt)
+    api_key = ENV['GEMINI_KEY']
+    gemini_service = GeminiService.new(api_key)
+  
+    gemini_service.generate_content(final_prompt).to_json
+  end
 end

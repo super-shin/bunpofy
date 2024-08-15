@@ -1,4 +1,4 @@
 <p><span class="bold-title">TEXTBOOK:</span> <%= @textbook.name %></p>
 <p><span class="bold-title">UNIT:</span> <%= @submission.challenge.unit.name %></p>
 <p><span class="bold-title">LEVEL:</span> <%= @textbook.words.first.grade %></p>
-<p><span class="bold-title">CLARITY:</span> <%= @ai_response["correctedText"]["clarity"] %> points</p>
+<p><span class="bold-title">CLARITY:</span> <%= @ai_response.dig("correctedText", "clarity").to_i %> points</p>
