@@ -19,6 +19,7 @@
 // Games CSS partials
 @import "games/index";
 @import "games/grammar";
+@import "games/spelling";
 
 // Student Challenges CSS
 @import "student/challenges/index";
@@ -42,7 +43,7 @@ body {
   );
   background-repeat: no-repeat;
   background-size: 100% 150vh;
-  cursor: url('assets/logo/cursor.png'), auto;
+  cursor: url('logo/cursor.png'), auto;
 }
 .navbar {
 	z-index: 10;
@@ -107,3 +108,4 @@ h3, h4, h5 {
 .btn-yellow:hover {
   color: black;
 }
+

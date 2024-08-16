@@ -109,8 +109,8 @@ puts "Seeding PICTURES...."
 # Remote image URLs
 male_image_url = 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723555359/development/afl0gfvruu22fe3jgajtknke2kk5.webp'
 female_image_url = 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723555982/development/7f93bfp053d2mgsmdvwov3nr4r6l.webp'
-#sensei_image_url = 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723390824/development/s6q3m4552k0wr7e8v5rd844ho72o.webp'
-sensei_image_url = 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723555359/development/afl0gfvruu22fe3jgajtknke2kk5.webp'
+sensei_image_url = 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723657074/development/3lv82qrofset16ziav2dkem0t2vf.webp'
+
 # List of male first names
 male_names = %w[Naruto Sasuke Shikamaru Neji Rock Choji Kiba Shino Itachi Tenma Zaku Kabuto Misumi Yoroi Kazuo Ryo Hiro Kazu Tomo Taka Sora Shin Ichi Haru Shun Yuto Ki Geko Kai Yuki Yuta Shoyo Tobio Yuu Tadashi Kei Koushi Azumane Ryuunosuke Chikara Shinsuke]
 
