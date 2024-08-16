@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center flex-column align-items-center no-margin-p w-100">
   <div class="student-challenges-profile-container">
-    <div class="student-challenges-profile-bar d-flex">
+    <div class="student-challenges-profile-bar d-flex justify-content-center">
       <div class="student-challenges-profile-photo">
         <%= cl_image_tag current_user.photo.key, height: 100, width: 100, class: "student-challenge-profile-photo-cl" %>
       </div>
@@ -12,24 +12,34 @@
         <p class="m-2 student-challenges-profile-box-title">Missions Completed</p>
         <p class="fw-bold text-white"><%= current_user.submissions.flat_map(&:games).select { |game| game.score.present? }.count %></p>
       </div>
-      <div class="student-challenges-profile-box-last px-3 mt-2 me-auto d-flex flex-column align-items-center">
+      <div class="student-challenges-profile-box-last px-3 mt-2 d-flex flex-column align-items-center">
         <p class="m-2 student-challenges-profile-box-title">Classroom</p>
         <p class="fw-bold text-white"><%= current_user.classrooms_as_student.first.name %></p>
       </div>
-      <div class="student-challenges-profile-box mt-2 d-flex flex-column align-items-center">
+      <div class="student-challenges-profile-experience-bar-container align-self-end px-3">
+        <div class="student-challenges-profile-experience-bar-skill-box">
+          <span class="student-challenges-profile-experience-bar-title">EXP</span>
+          <div class="student-challenges-profile-experience-bar-skill-bar">
+            <span class="student-challenges-profile-experience-bar-skill-per student-challenges-profile-experience-bar-html" style="width: <%= (((@experience.to_f % 500) / 500) * 100).floor %>%;">>
+              <span class="student-challenges-profile-experience-bar-tooltip"><%= (((@experience.to_f%500)/500)*100).floor %>%</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="student-challenges-profile-box px-3 mt-2 d-flex flex-column align-items-center">
         <p class="m-2 mb-1 student-challenges-profile-box-title">Level</p>
         <div class="student-challenges-profile-level-pentagon">
           <p class="student-challenges-ranking-level">10</p>
         </div>
       </div>
-      <div class="student-challenges-profile-box mt-2 d-flex flex-column align-items-center">
+      <div class="student-challenges-profile-box px-3 mt-2 d-flex flex-column align-items-center">
         <p class="m-2 student-challenges-profile-box-title">Total XP</p>
         <div class="d-flex">
           <%= image_tag "grammar_game_experience_bar.png", height: "25px", width: "25px", class: "grammar-game-experience-bar-img" %>
           <p class="fw-bold text-white"><%= @experience %></p>
         </div>
       </div>
-      <div class="student-challenges-profile-box-last mx-3 me-3 mt-2 d-flex flex-column align-items-center">
+      <div class="student-challenges-profile-box-last px-3 mt-2 d-flex flex-column align-items-center">
         <p class="m-2 student-challenges-profile-box-title">Learning</p>
         <%= image_tag "student_challenges_eng_flag.png", width: 30, height: 30  %>
       </div>
