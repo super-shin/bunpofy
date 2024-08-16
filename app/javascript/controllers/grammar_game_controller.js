@@ -225,7 +225,7 @@ export default class extends Controller {
 			brokenSwordImage.classList.add("active");
 			setTimeout(() => {
 				brokenSwordImage.classList.remove("active");
-			}, 1500); // duration of the shine effect
+			}, 2000); // duration of the shine effect
 		}
 	}
 

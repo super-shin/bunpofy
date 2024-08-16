@@ -35,16 +35,18 @@
 
 .grammar-game-level-up {
 	position: absolute;
-	left: 700px;
-	top: 430px;
+	left: 12%;
+	top: 100px;
+	transform: translateX(-50%);
 	opacity: 0;
 	transition: opacity 0.5s ease-in-out;
 }
 
 .grammar-game-broken-sword {
 	position: absolute;
-	left: 700px;
-	top: 430px;
+	left: 12%;
+	top: 100px;
+	transform: translateX(-50%);
 	opacity: 0;
 	transition: opacity 0.5s ease-in-out;
 }

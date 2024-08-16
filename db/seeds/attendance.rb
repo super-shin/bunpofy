@@ -19,6 +19,7 @@ puts "Seeding Class D to Classroom 7"
 (65..79).each do |t|
   Attendance.create([{classroom_id: 7, user_id: t}])
   puts "Enrolled #{User.find(t).first_name} to #{Classroom.find(7).name}"
+end
 #Seeding 15 Students in A Class
 (4..17).each do |t|
   Attendance.create([{classroom_id: 1, user_id: t}])
