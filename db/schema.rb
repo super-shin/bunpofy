@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_12_073013) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_15_113833) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -85,14 +85,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_12_073013) do
 
   create_table "games", force: :cascade do |t|
     t.string "game_type"
-    t.text "correct_answer", default: [], array: true
-    t.text "question", default: [], array: true
-    t.text "student_answer", default: [], array: true
     t.integer "score"
     t.bigint "submission_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["submission_id"], name: "index_games_on_submission_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "student_answer"
+    t.string "correct_answer"
+    t.string "options", default: [], array: true
+    t.bigint "game_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_questions_on_game_id"
   end
 
   create_table "submissions", force: :cascade do |t|
@@ -199,6 +206,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_12_073013) do
   add_foreign_key "feedbacks", "submissions"
   add_foreign_key "feedbacks", "users"
   add_foreign_key "games", "submissions"
+  add_foreign_key "questions", "games"
   add_foreign_key "submissions", "challenges"
   add_foreign_key "submissions", "users"
   add_foreign_key "taggings", "tags"

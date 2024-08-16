@@ -1,4 +1,13 @@
 // Specific CSS for your grammar game pages.
+#audio-icon-grammar-game {
+	transition: transform 0.3s ease;
+}
+
+#audio-icon-grammar-game:hover {
+	transform: scale(1.1);
+	cursor: pointer;
+}
+
 .grammar-game-xp-number {
 	color: #00ffff; /* Choose a color that contrasts well with the background */
 	font-size: 24px; /* Adjust as needed */
@@ -35,16 +44,18 @@
 
 .grammar-game-level-up {
 	position: absolute;
-	left: 700px;
-	top: 430px;
+	left: 12%;
+	top: 100px;
+	transform: translateX(-50%);
 	opacity: 0;
 	transition: opacity 0.5s ease-in-out;
 }
 
 .grammar-game-broken-sword {
 	position: absolute;
-	left: 700px;
-	top: 430px;
+	left: 12%;
+	top: 100px;
+	transform: translateX(-50%);
 	opacity: 0;
 	transition: opacity 0.5s ease-in-out;
 }
@@ -106,7 +117,7 @@
 	font-size: 20px;
 }
 .answers-container {
-	width: 550px;
+	width: 600px;
 	min-height: 70px;
 	height: auto;
 	border-radius: 10px;

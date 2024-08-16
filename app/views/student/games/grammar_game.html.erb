@@ -21,10 +21,10 @@
   </div>
   <div id="game-element" class="d-none">
     <div>
-      <%= image_tag "grammar_game_level_up_clear.png", width: "100px", height: "100px", class: "grammar-game-level-up" %>
+      <%= image_tag "grammar_game_level_up_clear.png", width: "90px", height: "90px", class: "grammar-game-level-up" %>
     </div>
     <div>
-      <%= image_tag "grammar_game_broken_sword.png", width: "100px", height: "100px", class: "grammar-game-broken-sword" %>
+      <%= image_tag "training.gif", width: "100px", height: "100px", class: "grammar-game-broken-sword" %>
     </div>
     <div class="sun-container">
       <div class="cloud front">
@@ -51,20 +51,19 @@
         </div>
       </div>
       <div class="ms-3">
-        <%= link_to student_challenges_path, data: { confirm: 'Are you sure? You may lose all your progress.' } do %>
+        <%= link_to student_challenges_path, data: {turbo_method: :get, turbo_confirm: 'Are you sure? You may lose all your progress.'} do %>
           <%= image_tag "close.png", width: "20px", height: "20px", class: "grammar-game-close-btn" %>
         <% end %>
       </div>
     </div>
     <h2 class="text-center mt-3" style="color:white">Form the Correct Sentence</h2>
     <div class="container d-flex justify-content-center mt-3" style="height: 550px; width: 1000px;"><%=  %>
-      <div class="m-3" data-controller="grammar-game" data-value-submission-id="<%= @submission_id %>" data-value-game-id="<%= @game_id %>" data-value-key="<%= @api_key %>" data-value-words-array="<%= @words_array.to_json %>" data-value-audio-success="<%= audio_path("success.wav") %>" data-value-audio-fail="<%= audio_path("fail.wav") %>">
+      <div class="m-3" data-controller="grammar-game" data-value-submission-id="<%= @submission_id %>" data-value-game-id="<%= @game_id %>" data-value-key="<%= @api_key %>" data-value-words-array="<%= @words_array.to_json %>" data-value-audio-success="<%= audio_path("success.wav") %>" data-value-audio-fail="<%= audio_path("fail.wav") %>" data-value-audio-icon="<%= image_path("audio.png") %>">
         <div class="mx-2 d-flex flex-wrap justify-content-start align-items-center border p-2 answers-container" data-grammar-game-target="answerElement">
         </div>
         <div class="mx-2 d-flex flex-wrap justify-content-start options-container" data-grammar-game-target="optionElement">
         </div>
         <div class="d-flex align-items-center border-top botton-box-grammar-game" data-grammar-game-target="buttonElement">
-          <img id="dynamic-image" src="<%= asset_path('grammar_game_ninja_rank_1.png') %>" alt="Dynamic Image" />
         </div>
       </div>
     </div>

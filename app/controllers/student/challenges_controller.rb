@@ -3,13 +3,20 @@ class Student::ChallengesController < ApplicationController
 
   def index
     @challenges = policy_scope(Challenge).order(created_at: :desc)
+    # First row of the challenges
+    @top_challenges = @challenges.first(3)
+    # Second row and remaining challenges if exist
+    @remaining_challenges = @challenges.drop(3)
+    # Current user level
     # Defining array for leaderboard users
     @classrooms = current_user.classrooms_as_student
     @students = @classrooms.flat_map(&:students)
-    # Calculating all XP gained for this student
-    submissions_xp = current_user.submissions.map{|submission| submission.score.to_i}.sum 
-    games_xp = current_user.submissions.flat_map(&:games).select{|game| game.score.present?}.map{|game| game.score.to_i}.sum
+    # Calculating all XP gained for current user
+    submissions_xp = current_user.submissions.map{|submission| submission.score}.sum
+    games_xp = current_user.submissions.flat_map(&:games).select{|game| game.score.present?}.map{|game| game.score}.sum
     @experience = submissions_xp + games_xp
+    # Calculating level for current user
+    @level = 1 + (@experience/500).floor
     # Creating students array based on the experience amount
     @students_ranking = @classrooms.flat_map(&:students).sort_by do |student|
       submission_scores = student.submissions.map(&:score).compact.sum
