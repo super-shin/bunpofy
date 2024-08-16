@@ -42,7 +42,7 @@ ActiveRecord::Base.connection.execute("TRUNCATE TABLE users, classrooms, attenda
 puts "RESET ID Numbers"
 
 # STEP 2: SEED Textbooks --- ######
-require_relative 'seeds/textbooks'
+# require_relative 'seeds/textbooks'
 
 
 #STEP 3: SEED Users - Classrooms - Attendances
