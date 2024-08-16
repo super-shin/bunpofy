@@ -15,6 +15,10 @@ class SubmissionPolicy < ApplicationPolicy
     true
   end
 
+  def selection?
+    return show?
+  end
+
   def new?
     return create?
   end
