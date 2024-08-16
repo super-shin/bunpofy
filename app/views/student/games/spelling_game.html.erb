@@ -1,14 +1,13 @@
 <div class="body-container"
   data-controller="spelling-game"
-  data-spelling-game-words-array-value="<%= @words_array_spelling.to_json %>">
+  data-spelling-game-words-array-value="<%= @words_array_spelling.to_json %>"
+  data-spelling-game-correct-sound-value="<%= audio_path("success.wav") %>"
+  data-spelling-game-incorrect-sound-value="<%= audio_path("fail.wav") %>">
     <h1 class="h1-custom">Spelling Mission</h1>
-    # <br><%#= image_tag "abc.jpg", style: "height: 200px" %>
-    <br>
     <form class="custom-form" data-action="submit->spelling-game#correctSpelling">
       <input type="text" id="wordInput" placeholder="spell the word..." data-spelling-game-target="input">
       <input type="submit" class="spelling-guess">
     </form>
-
       <br>
       <p id="displayHint">Hint :</p>
       <button class="custom-button" data-action="click->spelling-game#textToSpeech">
