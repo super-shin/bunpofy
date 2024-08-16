@@ -8,13 +8,58 @@
   text-align: center;
   font-size: 4rem;
   text-shadow: 5px 0 #232931;
-  font-family: 'Lobster', cursive;
 }
 
-.p-custom {
+#displayHint {
   font-family: 'Indie Flower', cursive;
   font-size: 20px;
   color: white;
+}
+
+#correct {
+  // font-family: 'Indie Flower', cursive; /* Green color */
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 2.2rem;
+  align-items: center;
+  animation: shake 0.5s;
+  animation-iteration-count: 5;
+}
+
+#correct .fa-check-circle {
+  margin-left: 10px;
+  color: #20c997; /* Matching color for the icon */
+  font-size: 2.9rem; /* Adjust size as needed */
+  text-shadow: 1px 1px 5px rgba(0, 128, 128, 0.5);
+  animation: shake 0.5s;
+  animation-iteration-count: 5;/* Blueish shadow effect */
+}
+
+#incorrect {
+  // font-family: 'Indie Flower', cursive; /* Green color */
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 2.2rem;
+  align-items: center;
+  animation: shake 0.5s;
+  animation-iteration-count: 5;
+}
+
+#incorrect .fa-times-circle {
+  margin-left: 10px;
+  color: #dc3545;
+  font-size: 3rem;
+  text-shadow: 1px 1px 5px rgba(255, 0, 0, 0.5);
+  animation: shake 0.5s;
+  animation-iteration-count: 5;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
 }
 
 .custom-button {
@@ -37,7 +82,6 @@
   background: #FFD700; /* Yellowish background */
   background: linear-gradient(90deg, rgba(255,223,0,1) 0%, rgba(255,215,0,1) 100%); /* Gradient of yellow shades */
   border: none;
-  border-radius: 1000px;
   box-shadow: 12px 12px 24px rgba(255,215,0,.64); /* Adjusted shadow color to match yellow theme */
   transition: all 0.3s ease-in-out 0s;
   cursor: pointer;
@@ -87,4 +131,56 @@
     height: 300px;
     opacity: 0;
   }
+}
+
+
+/* Form Container */
+.custom-form {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Input Field Styling */
+.input-field {
+  padding: 12px 15px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+  border-color: #000000;
+}
+
+/* Submit Button Styling */
+.spelling-guess {
+  padding: 12px 15px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.spelling-guess:hover {
+  background-color:  #000000;
+}
+
+/* Placeholder Text Styling */
+.input-field::placeholder {
+  color: #888;
+  font-style: italic;
 }
