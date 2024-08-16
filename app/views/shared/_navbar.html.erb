@@ -10,7 +10,11 @@
             <span class="d-none d-sm-inline navbar-name">
               <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %> <i class="fa-solid fa-caret-down mx-2"></i>
             </span>
-            <img src="https://res.cloudinary.com/ddzvfukq6/image/upload/v1723303466/square_1_ubjhxl.png" class="avatar-img rounded-circle border ms-2" alt="dropdown menu" width="40" height="40">
+            <% if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, style: 'max-width: 40px;', class: 'avatar-img rounded-circle border ms-2' %>
+            <% else %>
+              <img src="https://res.cloudinary.com/ddzvfukq6/image/upload/v1723303466/square_1_ubjhxl.png" class="avatar-img rounded-circle border ms-2" alt="dropdown menu" width="40" height="40">
+            <% end %>
           </a>
           <div class="dropdown-menu dropdown-menu-end me-5" aria-labelledby="navbarDropdown">
             <%= link_to "Dashboard", dashboard_teacher_challenges_path, class: "dropdown-item" %>
@@ -32,7 +36,11 @@
             <span class="d-none d-sm-inline navbar-name">
               <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %> <i class="fa-solid fa-caret-down mx-2"></i>
             </span>
-            <img src="https://res.cloudinary.com/ddzvfukq6/image/upload/v1723303466/square_1_ubjhxl.png" class="avatar-img rounded-circle border ms-2" alt="dropdown menu" width="40" height="40">
+            <% if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, style: 'max-width: 40px;', class: 'avatar-img rounded-circle border ms-2' %>
+            <% else %>
+              <img src="https://res.cloudinary.com/ddzvfukq6/image/upload/v1723303466/square_1_ubjhxl.png" class="avatar-img rounded-circle border ms-2" alt="dropdown menu" width="40" height="40">
+            <% end %>
           </a>
           <div class="dropdown-menu dropdown-menu-end me-5" aria-labelledby="navbarDropdown">
             <%= link_to "My Challenges", student_challenges_path, class: "dropdown-item" %>
