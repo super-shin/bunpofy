@@ -1,8 +1,8 @@
-<div class="container-fluid p-2 bg-white mt-5 border border-light border-5 rounded-5" style="width:90%; min-height:80vh;">
+<div class="container-fluid p-2 bg-white mt-2 border border-light border-5 rounded-5" style="width:90%; min-height:80vh;">
   <div class="row justify-content-center">
-    <div class="col-11">
-      <h1 class="dark-gray">SENTEN<span class="yellow">SENSEI</span></h1>
-      <%= link_to "Select A Game", selection_student_submission_path, class: 'btn btn-danger' %>
+    <div class="col-12 d-flex justify-content-between align-items-center">
+      <h1 class="dark-gray col-8 ms-4" style="font-size: 3.5rem;">SENTEN<span class="yellow">SENSEI</span></h1>
+      <div class="col-3 align-self-center"><%= link_to "Start Missions!", selection_student_submission_path, class: 'btn btn-dark button2 w-100 blue', type: 'button' %></div>
     </div>
     <div class="col-11 d-flex gap-3" data-controller="card-show">
       <div class="col-9 d-flex flex-column align-items-center">
@@ -15,7 +15,7 @@
             </div>
           </div>
         </div>
-        <div class="col-11" data-card-show-target="cardContainer">
+        <div class="col-11 mb-5" data-card-show-target="cardContainer">
           <%#THIS IS WHERE ERROR CARDS GET INPUTED WHEN BUTTONS ARE CLICKED%>
           <%= render "card_show" %>
         </div>
