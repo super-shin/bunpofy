@@ -58,7 +58,7 @@
     </div>
     <h2 class="text-center mt-3" style="color:white">Form the Correct Sentence</h2>
     <div class="container d-flex justify-content-center mt-3" style="height: 550px; width: 1000px;"><%=  %>
-      <div class="m-3" data-controller="grammar-game" data-value-submission-id="<%= @submission_id %>" data-value-game-id="<%= @game_id %>" data-value-key="<%= @api_key %>" data-value-words-array="<%= @words_array.to_json %>" data-value-audio-success="<%= audio_path("success.wav") %>" data-value-audio-fail="<%= audio_path("fail.wav") %>">
+      <div class="m-3" data-controller="grammar-game" data-value-submission-id="<%= @submission_id %>" data-value-game-id="<%= @game_id %>" data-value-key="<%= @api_key %>" data-value-words-array="<%= @words_array.to_json %>" data-value-audio-success="<%= audio_path("success.wav") %>" data-value-audio-fail="<%= audio_path("fail.wav") %>" data-value-audio-icon="<%= image_path("audio.png") %>">
         <div class="mx-2 d-flex flex-wrap justify-content-start align-items-center border p-2 answers-container" data-grammar-game-target="answerElement">
         </div>
         <div class="mx-2 d-flex flex-wrap justify-content-start options-container" data-grammar-game-target="optionElement">

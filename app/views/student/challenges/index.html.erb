@@ -5,7 +5,7 @@
         <%= cl_image_tag current_user.photo.key, height: 100, width: 100, class: "student-challenge-profile-photo-cl" %>
       </div>
       <div class="student-challenges-profile-box px-3 mt-2 d-flex flex-column align-items-center">
-        <p class="m-2 student-challenges-profile-box-title">Total Challenges</p>
+        <p class="m-2 student-challenges-profile-box-title">Assigned Challenges</p>
         <p class="fw-bold text-white"><%= current_user.submissions.count %></p>
       </div>
       <div class="student-challenges-profile-box px-3 mt-2 d-flex flex-column align-items-center">
@@ -19,7 +19,7 @@
       <div class="student-challenges-profile-box mt-2 d-flex flex-column align-items-center">
         <p class="m-2 mb-1 student-challenges-profile-box-title">Level</p>
         <div class="student-challenges-profile-level-pentagon">
-          <p class="student-challenges-ranking-level"><%= @level %></p>
+          <p class="student-challenges-ranking-level">10</p>
         </div>
       </div>
       <div class="student-challenges-profile-box mt-2 d-flex flex-column align-items-center">
