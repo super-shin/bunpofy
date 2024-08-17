@@ -165,15 +165,12 @@ export default class extends Controller {
 		);
 		this.buttonElementTarget.insertAdjacentHTML(
 			"afterbegin",
-			`<div class="correct-sentence-container d-flex flex-wrap justify-content-start align-items-center p-3">
-			<img src="${
-				this.audioIcon
-			}" height="30" width="30" id="audio-icon-grammar-game" class="me-2" data-grammar-game-target="audioElement" data-action="click->grammar-game#audio"/>
-			${this.correctSentencesArray[this.currentSentenceIndex].Sentence}
+			`<div class="correct-sentence-container-grammar-game d-flex flex-wrap justify-content-start align-items-center p-3"><p class="mt-1">
+			<div class="correct-sentence-tooltip-grammar-game"><p>Correct Sentence:</p></div>
+			<i class="fa-solid fa-volume-high me-1" id="audio-icon-grammar-game" data-grammar-game-target="audioElement" data-action="click->grammar-game#audio"></i>
+			${this.correctSentencesArray[this.currentSentenceIndex].Sentence}</p>
 			</div>`
 		);
-		// Reproduce the sentence audio
-		this.audio();
 
 		// Disable events of words(options)
 		this.wordElementTargets.forEach((element) => {

@@ -1,5 +1,5 @@
 .dashboard-pie-card {
-	border-radius: 20px;
+	border-radius: 5px;
 	background-color: white;
 	width: 250px;
 	height: 250px;
@@ -50,7 +50,7 @@
 .dashboard-student-list {
 	width: 350px;
 	background-color: white;
-	border-radius: 20px;
+	border-radius: 5px;
 	max-height: 562px;
 	overflow-y: auto;
 	scrollbar-width: none;
@@ -64,14 +64,14 @@
 .dashboard-student-profile-container {
 	width: 300px;
 	height: 65px;
-	border-radius: 20px;
+	border-radius: 5px;
 	background-color: white;
 }
 
 .dashboard-feedback-profile-container {
 	width: 300px;
 	height: 65px;
-	border-radius: 20px;
+	border-radius: 5px;
 	background-color: white;
 }
 
@@ -92,7 +92,7 @@
 		rgba(100, 149, 237, 0.8)
 	);
 
-	border-radius: 20px;
+	border-radius: 5px;
 	height: 150px;
 	width: 100%;
 	background-color: rgba(255, 255, 255, 0.8);
@@ -106,7 +106,7 @@
 .left-container-dashboard {
 	width: 240px;
 	height: auto;
-	border-radius: 25px;
+	border-radius: 5px;
 	background-color: rgba(255, 255, 255, 0.8);
 	background-image: image-url(blue_sky_pattern);
 	background-size: cover;
