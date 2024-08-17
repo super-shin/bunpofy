@@ -14,7 +14,26 @@ export default class extends Controller {
     this.unitSelectTarget.innerHTML = '<option value ="">Select a unit</option>'
 
     if (textbookId && this.unitsByTextbook[textbookId]) {
-      this.unitsByTextbook[textbookId].forEach(unit => {
+      this.unitsByTextbook[textbookId]
+      .sort((a, b) => {
+        const nameA = a.name.toLowerCase();
+        const nameB = b.name.toLowerCase();
+  
+        const partsA = nameA.match(/(\D+)(\d*)/);
+        const partsB = nameB.match(/(\D+)(\d*)/);
+  
+        const textA = partsA[1];
+        const textB = partsB[1];
+  
+        const numA = parseInt(partsA[2] || "0", 10);
+        const numB = parseInt(partsB[2] || "0", 10);
+  
+        if (textA < textB) return -1;
+        if (textA > textB) return 1;
+  
+        return numA - numB;
+      })
+      .forEach(unit => {
         const option = document.createElement('option')
         option.value = unit.id
         option.textContent = unit.name
