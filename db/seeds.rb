@@ -1,6 +1,3 @@
-# SEEDS for BUNPOFY
-# RULE: Don't change the Order of anything unless checked thoroughly
-
 puts 'DESTROY WARNING: Are you okay to proceed?(y/n)'
 confirmation = gets.chomp.downcase
 

@@ -12,7 +12,7 @@ class Student::GamesController < ApplicationController
     @words_relation = @game.submission.challenge.unit.words
     # Sample 5 unique words
     @words_array = @words_relation.sample(4).map(&:english)
-    @words_array_spelling = @words_relation.limit(5).map(&:english)
+    @words_array_spelling = @words_relation.limit(10).map(&:english)
     # @words_array_spelling = ["house", "dog", "friendly"]
     # Pass the game and submission ID info to the Javascript Controller
     @game_id = @game.id
