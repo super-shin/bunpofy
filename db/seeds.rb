@@ -7,15 +7,9 @@ puts "Destroyed Games"
 #Attendance.destroy_all
 Attendance.destroy_all
 puts "Destroyed Attendances"
-<<<<<<< HEAD
-<<<<<<< HEAD
 #Destroy all Games
 Game.destroy_all
 puts "Destroyed Games"
-#Destroy all Submissions
-=======
-=======
->>>>>>> 26e416a07ccb93a1d6c80140759f04244ac432e1
 #Destroy all Feedbacks
 Feedback.destroy_all
 puts "Destroyed Feedbacks"
@@ -28,8 +22,6 @@ puts "Destroyed Challenges"
 #Destroy all Classrooms
 Classroom.destroy_all
 puts "Destroyed Classrooms"
-<<<<<<< HEAD
-<<<<<<< HEAD
 # Destroy all WordReferences
 WordReference.destroy_all
 puts "Destroyed Word References"
@@ -42,34 +34,25 @@ puts "Destroyed Words"
 #Destroy all Textbooks  ######
 Textbook.destroy_all
 puts "Destroyed Textbooks" ######
-=======
 #Destroy all WordReferences
-=======
-#Destroy all WordReferences
->>>>>>> 26e416a07ccb93a1d6c80140759f04244ac432e1
-# WordReference.destroy_all ######
-# puts "Destroyed Word References"
-# # #Destroy all Units
-# Unit.destroy_all
-# puts "Destroyed Units"
-# # #Destroy all Words
-# Word.destroy_all
-# puts "Destroyed Words"
-<<<<<<< HEAD
+WordReference.destroy_all ######
+puts "Destroyed Word References"
+# #Destroy all Units
+Unit.destroy_all
+puts "Destroyed Units"
+# #Destroy all Words
+Word.destroy_all
+puts "Destroyed Words"
 # #Destroy all Textbooks
-=======
-# #Destroy all Textbooks
->>>>>>> 26e416a07ccb93a1d6c80140759f04244ac432e1
-# Textbook.destroy_all
-# puts "Destroyed Textbooks" ######
+Textbook.destroy_all
+puts "Destroyed Textbooks" ######
 #Destroy all Users
 User.destroy_all
 puts "Destroyed Users"
 #Reset ID key sequences
-<<<<<<< HEAD
+
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE units, words, textbooks, users, classrooms, attendances RESTART IDENTITY CASCADE")
-=======
->>>>>>> 26e416a07ccb93a1d6c80140759f04244ac432e1
+
 # ActiveRecord::Base.connection.execute("TRUNCATE TABLE word_references, units, words, textbooks RESTART IDENTITY CASCADE")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE users, classrooms, attendances, challenges, submissions, feedbacks, games RESTART IDENTITY CASCADE")
 puts "RESET ID Numbers"
