@@ -2,36 +2,133 @@
 	margin-bottom: 0;
 }
 
-.student-challenges-ranking-pentagon {
-	width: 35px;
-	height: 30px;
+// Experience bar CSS
+
+.student-challenges-profile-experience-bar-container {
 	position: relative;
-	background: linear-gradient(145deg, #b8860b, #ffd700);
-	clip-path: polygon(50% 0%, 90% 25%, 90% 75%, 50% 100%, 10% 75%, 10% 25%);
+	max-width: 350px;
+	width: 100%;
+	border-radius: 7px;
+}
+
+.student-challenges-profile-experience-bar-container
+	.student-challenges-profile-experience-bar-skill-box {
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+.student-challenges-profile-experience-bar-skill-box
+	.student-challenges-profile-experience-bar-title {
+	display: block;
+	font-size: 12px;
+	font-weight: 600;
+	color: rgb(226, 226, 226);
+}
+
+.student-challenges-profile-experience-bar-skill-box
+	.student-challenges-profile-experience-bar-skill-bar {
+	height: 8px;
+	width: 100%;
+	border-radius: 6px;
+	margin-top: 6px;
+	background: rgba(236, 236, 236, 0.1);
+}
+
+.student-challenges-profile-experience-bar-skill-bar
+	.student-challenges-profile-experience-bar-skill-per {
+	position: relative;
+	display: block;
+	height: 100%;
+	width: 90%;
+	border-radius: 6px;
+	background: rgb(226, 226, 226);
+	animation: progress 0.4s ease-in-out forwards;
+	opacity: 0;
+}
+
+.student-challenges-profile-experience-bar-skill-per.student-challenges-profile-experience-bar-html {
+	animation-delay: 0.1s;
+}
+
+@keyframes progress {
+	0% {
+		width: 0;
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.student-challenges-profile-experience-bar-skill-per
+	.student-challenges-profile-experience-bar-tooltip {
+	position: absolute;
+	right: -14px;
+	top: -28px;
+	font-size: 8px;
+	font-weight: 500;
+	color: rgb(0, 0, 0);
+	font-weight: bold;
+	padding: 2px 6px;
+	border-radius: 3px;
+	background: rgb(226, 226, 226);
+	z-index: 1;
+}
+
+.student-challenges-profile-experience-bar-tooltip::before {
+	content: "";
+	position: absolute;
+	left: 50%;
+	bottom: -2px;
+	height: 10px;
+	width: 10px;
+	z-index: -1;
+	background-color: rgb(226, 226, 226);
+	transform: translateX(-50%) rotate(45deg);
+}
+
+//
+
+.student-challenges-ranking-pentagon {
+	background-image: image-url(blue_gem);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 40px;
+	height: 40px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 20px auto;
-	box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.6),
-		0 0 0px 20px rgba(235, 234, 231, 0.8);
+}
+
+.student-challenges-profile-level-pentagon {
+	background-image: image-url(blue_gem);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .student-challenges-ranking-level {
-	font-size: 14px;
-	color: white;
+	font-size: 12px;
+	color: black;
 	font-weight: bold;
 	text-align: center;
 	z-index: 1;
 }
 
 .student-challenges-ranking-experience-number {
-	font-family: "Press Start 2P", cursive;
-	font-size: 10px;
+	font-size: 14px;
 	color: white;
 }
 
 .student-challenges-ranking-card-container {
-	margin-top: 30px !important;
+	margin: 30px 15px 15px 15px !important;
 	height: 460px;
 	overflow-y: scroll;
 	scrollbar-width: none;
@@ -66,8 +163,7 @@
 
 .student-challenges-ranking-card-title p {
 	z-index: 2;
-	font-family: "Press Start 2P", cursive;
-	font-size: 14px;
+	font-size: 20px;
 	color: #00ffff;
 }
 
@@ -76,16 +172,18 @@
 }
 
 .student-challenges-ranking-container {
-	margin: 20px 30px 0px 15px;
+	margin: 0px 0px 15px 0px;
 	border-radius: 20px;
 	background-color: rgba(21, 20, 20, 0.95);
 	position: relative;
 	overflow: visible;
-	height: 483px;
+	width: 340px;
+	height: 480px;
 }
 
 .student-challenges-ranking-card {
-	width: 260px;
+	width: 310px;
+	width: 100%;
 	height: 50px;
 	border-radius: 30px;
 	background-color: rgb(36, 35, 35);
@@ -99,12 +197,13 @@
 }
 
 .student-challenges-card-container {
-	margin: 4px 0px 0px 35px;
+	margin: 20px 0px 0px 0px;
 }
 
 .student-challenges-card {
 	width: 340px;
 	height: 480px;
+	margin: 0px 0px 15px 0px;
 	border-radius: 20px;
 	overflow: hidden;
 	background-color: rgba(21, 20, 20, 0.95);
@@ -120,8 +219,7 @@
 }
 
 .student-challenges-card-experience {
-	font-family: "Press Start 2P", cursive;
-	font-size: 10px;
+	font-size: 14px;
 }
 
 .student-challenges-card-options {
@@ -136,6 +234,25 @@
 	transform: scale(1.05);
 }
 
+.student-challenges-card-options-disabled {
+	font-size: 14px;
+	transition: transform 0.3s ease, background-color 0.3s ease,
+		box-shadow 0.3s ease;
+	border: 1px solid #1c1c1c;
+	border-radius: 20px;
+	background-color: #1c1c1c;
+	color: rgba(255, 255, 255, 0.3); /* Lighter text */
+	opacity: 0.4; /* Make the button slightly transparent */
+	filter: grayscale(100%); /* Apply grayscale to the button */
+	cursor: not-allowed; /* Change cursor to indicate disabled state */
+	box-shadow: none; /* Remove shadow */
+}
+
+.student-challenges-card-options-disabled:hover {
+	background-color: rgb(30, 30, 30); /* Slightly darker background on hover */
+	transform: none; /* Disable transform effects */
+}
+
 .student-challenges-card-date {
 	font-size: 12px;
 	color: gray;
@@ -147,16 +264,17 @@
 }
 
 .student-challenges-challenges-container {
-	width: 100%;
-	overflow-x: auto;
+	width: 95%;
 }
 
 .student-challenges-profile-container {
-	height: 200px;
-	width: 160vh;
+	height: 180px;
+	width: 95%;
 	border-radius: 20px;
 	background-color: gray;
-	margin: 15px;
+	margin-bottom: 15px;
+	margin-right: 15px !important;
+	margin-left: 15px !important;
 	position: relative;
 	overflow: visible;
 	background-image: image-url(student_challenges_profile_background3);
@@ -195,7 +313,7 @@
 
 .student-challenges-profile-box {
 	height: 70px;
-	width: 150px;
+	width: 200px;
 	border-right: 1px solid gray;
 }
 
@@ -203,9 +321,10 @@
 	font-size: 14px;
 	color: gray;
 	text-align: center;
+	width: 140px;
 }
 
 .student-challenges-profile-box-last {
 	height: 85px;
-	width: 150px;
+	width: 200px;
 }

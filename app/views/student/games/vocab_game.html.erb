@@ -1,21 +1,26 @@
 
 <style>
-* {
+.game-container * {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   color: #19084e;
 }
-body {
-  margin: 0;
-  background-color: #9873fe;
+
+.game-container #user-score {
+  color: white;
+  font-size: 3.5em; /* Slightly increased font size */
+  margin-bottom: 55px; /* Slightly increased margin */
 }
-button {
+
+.game-container button {
   border: none;
   outline: none;
   cursor: pointer;
+  font-size: 1.3em; /* Slightly increased font size */
 }
-.start-screen,
-.score-container {
+
+.game-container .start-screen,
+.game-container .score-container {
   position: absolute;
   top: 0;
   width: 100%;
@@ -24,141 +29,202 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.game-container #start-button,
+.game-container #restart {
+  color: white;
   background-color: #9873fe;
-}
-#start-button,
-#restart {
   position: absolute;
-  font-size: 1.2em;
-  padding: 1em 3em;
-  border-radius: 2em;
-  box-shadow: 0 1em 3em rgba(37, 22, 80, 0.3);
+  font-size: 1.5em; /* Slightly increased font size */
+  padding: 1.2em 3.5em; /* Slightly increased padding */
+  border-radius: 2em; /* Slightly increased border radius */
+  box-shadow: 0 1.2em 3.5em rgba(37, 22, 80, 0.3); /* Slightly increased shadow */
 }
-.flex-space {
+
+.game-container .flex-space {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.flex {
+
+.game-container .flex {
   display: flex;
 }
-#display-container {
+
+.game-container #display-container {
   background-color: #ffffff;
   position: absolute;
-  width: 90%;
-  max-width: 37em;
+  width: 92%; /* Slightly increased width */
+  max-width: 40em; /* Slightly increased max width */
   transform: translate(-50%, -50%);
   left: 50%;
   top: 50%;
-  padding: 3em 2em;
-  border-radius: 0.8em;
-  box-shadow: 0 1em 3em rgba(37, 22, 80, 0.3);
+  padding: 2em 2em; /* Slightly increased padding */
+  border-radius: 0.9em; /* Slightly increased border radius */
+  box-shadow: 0 1.2em 3.5em rgba(37, 22, 80, 0.3); /* Slightly increased shadow */
 }
-.header {
-  padding: 0.5em;
+
+.game-container .header {
+  padding: 0.75em; /* Slightly increased padding */
   border-bottom: 1px solid #c8c5d1;
 }
-.header .title,
-.timer span {
+
+.game-container .header .title,
+.game-container .timer span {
   font-weight: 600;
 }
-.question-color {
-  font-size: 1.5em;
+
+.game-container .timer {
+  padding-bottom: 16px;
+}
+
+.game-container .question-word {
+  font-size: 2.5em; /* Slightly increased font size */
   text-align: center;
 }
-#container {
-  margin-bottom: 1em;
+
+.game-container #container {
+  margin-bottom: 1.5em; /* Slightly increased margin */
 }
-.button-container {
+
+.game-container .button-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1em;
+  gap: 0 1.2em; /* Slightly increased gap */
   place-items: center;
 }
-.option-div {
+
+.game-container .option-div {
   width: 100%;
-  height: 10em;
-  padding: 1em;
-  margin: 0.3em 0;
+  height: 9em; /* Slightly increased height */
+  padding: 1.2em; /* Slightly increased padding */
+  margin: 0.4em 0; /* Slightly increased margin */
   text-align: center;
-  border-radius: 0.5em;
+  border-radius: 0.6em; /* Slightly increased border radius */
   position: relative;
   z-index: 1;
 }
 
-.option-div .emoji {
-  font-size: 3em; /* Larger font size for emojis */
-  display: inline-block; /* Inline block for scaling */
-  transform: scale(1.5); /* Scale the emoji */
-  transition: transform 0.2s; /* Smooth transition for scaling */
+.game-container .option-div .emoji {
+  font-size: 3.5em; /* Slightly increased emoji font size */
+  display: inline-block;
+  transform: scale(1.3); /* Slightly increased scale */
+  transition: transform 0.2s;
   z-index: 1;
 }
 
-.option-div:disabled {
+.game-container .option-div:disabled {
   cursor: not-allowed;
 }
 
-.correct {
+.game-container .option-div:hover,
+.game-container .option-div:hover::after {
+  opacity: 1;
+}
+
+.game-container .option-div:hover:not(.correct):not(.incorrect) {
+  background-color: #FCD74A;
+}
+
+.game-container .correct {
   background: url("/assets/correct.svg");
+  background-color: rgba(144, 238, 144, 0.5);
   z-index: 2;
 }
-.incorrect {
+
+.game-container .incorrect {
   background: url("/assets/incorrect.svg");
+  background-color: rgba(255, 99, 71, 0.5);
   z-index: 2;
 }
-.correct,
-.incorrect {
+
+.game-container .correct::after {
+  background-image: url("/assets/correct.svg");
+}
+
+.game-container .incorrect::after {
+  background-image: url("/assets/incorrect.svg");
+}
+
+.game-container .correct::after, .game-container .incorrect::after {
+  content: "";
+  position: absolute;
+  top: 80%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  width: 2.5em; /* Slightly increased size */
+  height: 2.5em; /* Slightly increased size */
   background-repeat: no-repeat;
-  background-size: 3em;
+  background-size: contain;
+  z-index: 2;
+}
+
+.game-container .correct,
+.game-container .incorrect {
+  background-repeat: no-repeat;
+  background-size: 0em;
   background-position: center;
   z-index: 2;
 }
-#next-button {
-  font-size: 1.1em;
+
+.game-container #next-button {
+  font-size: 1.2em; /* Slightly increased font size */
   background-color: #9873fe;
   color: #ffffff;
-  padding: 0.4em 2em;
-  border-radius: 0.3em;
+  padding: 0.5em 2.2em; /* Slightly increased padding */
+  border-radius: 0.35em; /* Slightly increased border radius */
 }
-.hide {
+
+.game-container #display-container.hide,
+.game-container .hide {
   display: none;
 }
-#restart {
-  margin-top: 6em;
+
+.game-container #restart {
+  margin-top: 7em; /* Slightly increased margin */
 }
+
+.number-of-questions {
+  padding: 0.75em;
+  font-size: 1.2em;
+}
+
 </style>
 
-  <body>
-    <div id="display-container">
-      <div class="header flex-space">
-        <div class="title">
-          <p>Vocab Game</p>
-        </div>
-        <div class="timer"></div>
+<body>
+<div class="game-container">
+  <div id="display-container" class="hide">
+    <div class="header flex-space">
+      <div class="title">
+        <p>Vocabulary Mission</p>
       </div>
-
-      <div id="container">
-        <!-- Questions and options are displayed here-->
-      </div>
-
-      <div class="flex-space">
-        <div class="number-of-count">
-          <span class="number-of-questions"></span>
-        </div>
-        <div id="next-button">Next</div>
-      </div>
+      <div class="timer"></div>
     </div>
 
-    <div class="start-screen">
-      <button id="start-button">Start</button>
+    <div id="container">
+      <!-- Questions and options are displayed here-->
     </div>
 
-    <div class="score-container hide">
-      <div id="user-score"></div>
-      <button id="restart">Restart</button>
+    <div class="flex-space">
+      <div class="number-of-count">
+        <span class="number-of-questions"></span>
+      </div>
+      <div id="next-button">Next</div>
     </div>
+  </div>
 
-    <script>
+  <div class="start-screen">
+    <button id="start-button">Start</button>
+  </div>
+
+  <div class="score-container hide">
+    <div id="user-score"></div>
+    <button id="restart">Continue</button>
+  </div>
+  </div>
+
+<script>
 
 let timer = document.getElementsByClassName("timer")[0];
 let quizContainer = document.getElementById("container");
@@ -186,7 +252,104 @@ const wordEmojiMap = {
   "Pear": "🍐",
   "Pineapple": "🍍",
   "Strawberry": "🍓",
-  "Watermelon": "🍉"
+  "Watermelon": "🍉",
+  "Lemon": "🍋",
+  "Avocado": "🥑",
+  "Tomato": "🍅",
+  "Cucumber": "🥒",
+  "Carrot": "🥕",
+  "Broccoli": "🥦",
+  "Corn": "🌽",
+  "Potato": "🥔",
+  "Rice": "🍚",
+  "Bread": "🍞",
+  "Cheese": "🧀",
+  "Burger": "🍔",
+  "Pizza": "🍕",
+  "Hotdog": "🌭",
+  "Fries": "🍟",
+  "Ice Cream": "🍨",
+  "Cake": "🍰",
+  "Cookie": "🍪",
+  "Donut": "🍩",
+  "Milk": "🥛",
+  "Coffee": "☕",
+  "Tea": "🍵",
+  "Soda": "🥤",
+  "Beer": "🍺",
+  "Wine": "🍷",
+  "Cocktail": "🍸",
+  "Whiskey": "🥃",
+  "Champagne": "🍾",
+  "Rose": "🌹",
+  "Tulip": "🌷",
+  "Sunflower": "🌻",
+  "Cactus": "🌵",
+  "Tree": "🌳",
+  "Leaf": "🍃",
+  "Rainbow": "🌈",
+  "Cloud": "☁️",
+  "Sun": "☀️",
+  "Moon": "🌙",
+  "Star": "⭐",
+  "Rocket": "🚀",
+  "Car": "🚗",
+  "Bike": "🚲",
+  "Bus": "🚌",
+  "Train": "🚆",
+  "Plane": "✈️",
+  "Boat": "🚤",
+  "Anchor": "⚓",
+  "Clock": "🕰️",
+  "Camera": "📷",
+  "Phone": "📱",
+  "Computer": "💻",
+  "Television": "📺",
+  "Radio": "📻",
+  "Music": "🎵",
+  "Movie": "🎬",
+  "Game": "🎮",
+  "Book": "📚",
+  "Pen": "🖊️",
+  "Notebook": "📓",
+  "Envelope": "✉️",
+  "Gift": "🎁",
+  "Balloon": "🎈",
+  "Party": "🎉",
+  "Glasses": "👓",
+  "Hat": "🎩",
+  "Scarf": "🧣",
+  "Glove": "🧤",
+  "Shoes": "👟",
+  "Boots": "🥾",
+  "Dress": "👗",
+  "Suit": "👔",
+  "Shirt": "👕",
+  "Trousers": "👖",
+  "Sock": "🧦",
+  "Ring": "💍",
+  "Necklace": "💎",
+  "Bracelet": "📿",
+  "Key": "🔑",
+  "Lock": "🔒",
+  "Umbrella": "☂️",
+  "Luggage": "🧳",
+  "Passport": "🛂",
+  "Plane Ticket": "🎫",
+  "Ticket": "🎟️",
+  "Map": "🗺️",
+  "Globe": "🌍",
+  "Flag": "🏳️",
+  "Medal": "🏅",
+  "Trophy": "🏆",
+  "Basketball": "🏀",
+  "Volleyball": "🏐",
+  "Golf": "⛳",
+  "Gym": "🏋️",
+  "Running": "🏃",
+  "Swimming": "🏊",
+  "Cycling": "🚴",
+  "Hiking": "🥾"
 };
 
 // Questions and Options Array
@@ -253,12 +416,12 @@ function quizCreator() {
     div.classList.add("container-mid", "hide");
 
     // Display question number
-    numOfQuestions.innerHTML = `${questionCount + 1} of ${quizArray.length} Question`;
+    numOfQuestions.innerHTML = `${questionCount + 1} / ${quizArray.length}`;
 
     // Create question
     let questionDiv = document.createElement("p");
     questionDiv.classList.add("question");
-    questionDiv.innerHTML = `<div class="question-color">${i.word}</div>`;
+    questionDiv.innerHTML = `<div class="question-word">${i.word}</div>`;
     div.appendChild(questionDiv);
 
     // Create options
@@ -333,7 +496,7 @@ nextButton.addEventListener("click", () => {
     userScore.innerHTML = `Your score is ${scoreCount} out of ${quizArray.length}`;
   } else {
     // Display question count
-    numOfQuestions.innerHTML = `${questionCount + 1} of ${quizArray.length} Question`;
+    numOfQuestions.innerHTML = `${questionCount + 1} / ${quizArray.length}`;
     // Display quiz
     quizDisplay(questionCount);
     // Reset countdown timer
@@ -357,18 +520,23 @@ const timerDisplay = () => {
 };
 
 // Restart the game
+
 restart.addEventListener("click", () => {
-  quizArray = [];
-  populateQuiz();
-  initial();
-  displayContainer.classList.remove("hide");
-  scoreContainer.classList.add("hide");
+  window.location.href = '/student/challenges';
 });
 
-// Start the game
+//restart.addEventListener("click", () => {
+//  quizArray = [];
+//  populateQuiz();
+//  initial();
+//  displayContainer.classList.remove("hide");
+//  scoreContainer.classList.add("hide");
+//});
+
+// Handle start button click
 startButton.addEventListener("click", () => {
   startScreen.classList.add("hide");
-  displayContainer.classList.remove("hide");
+  displayContainer.classList.remove("hide"); // Show display-container
   quizArray = [];
   populateQuiz();
   initial();

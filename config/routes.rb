@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       resources :submissions, only: [:new, :create]
     end
     resources :submissions, only: [:show] do
+      get "selection", on: :member
       resources :games, only: [:show, :edit, :update]
     end
   end

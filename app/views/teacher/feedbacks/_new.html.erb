@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div class="modal fade" id="feedbackModal-<%= submission.id %>" tabindex="-1" aria-labelledby="feedbackModal-<%= submission.id %>Label" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-centered"  style="min-width: 70vw">
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title fs-5" id="feedbackModal-<%= submission.id %>Label">Give your little ninja a feedback:</h2>
@@ -8,7 +8,7 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for @feedback, url: teacher_submission_feedbacks_path(submission) do |f| %>
-          <%= f.input :content, label: 'Teacher Feedback' %>
+          <%= f.input :content, label: 'Teacher Feedback', input_html: { style: 'min-height: 300px;'} %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>

@@ -11,6 +11,7 @@ export default class extends Controller {
 		"checkElement",
 		"nextElement",
 		"buttonElement",
+		"audioElement",
 	];
 	connect() {
 		console.log(this.element.dataset.valueWordsArray);
@@ -19,6 +20,7 @@ export default class extends Controller {
 		this.gameId = this.element.dataset.valueGameId;
 		this.submissionId = this.element.dataset.valueSubmissionId;
 		this.geminiKey = this.element.dataset.valueKey;
+		this.audioIcon = this.element.dataset.valueAudioIcon;
 		this.successAudio = new Audio(this.element.dataset.valueAudioSuccess);
 		this.failAudio = new Audio(this.element.dataset.valueAudioFail);
 		this.wordsArray = JSON.parse(this.element.dataset.valueWordsArray);
@@ -37,14 +39,13 @@ export default class extends Controller {
 
 	async callGemini() {
 		const number_sentences = this.wordsArray.length;
-		const API_KEY = this.geminiKey;
-		const genAI = new GoogleGenerativeAI(API_KEY);
+		const genAI = new GoogleGenerativeAI(this.geminiKey);
 		const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 		let prompt = `
-		Create ${number_sentences} simple sentences in English for Japanese Junior High Students.
+		Create ${number_sentences} really simple sentences in English for Japanese Junior High Students.
 		Each sentence should use one of the following words: (${this.wordsArray.join(
 			", "
-		)}).The sentences should be straightforward and not interchangeable in meaning. The sentence should not have more than 10 words. 
+		)}).The sentences should be straightforward and not interchangeable in meaning. The sentence should not have more than 8 words. 
   Ensure that each sentence clearly conveys its intended meaning and does not allow for the words to be interchanged without changing the context.
 	Please format the response as a JSON array with the following structure (Dont write anything before and after "[]"):
 		[{"Sentence": "string"},
@@ -141,9 +142,9 @@ export default class extends Controller {
 			this.removeShadow(event.currentTarget);
 			event.currentTarget.remove();
 		}
-		this.fullSentence = "";
+		this.fullSentence = [];
 		this.answerElementTarget.querySelectorAll("div").forEach((element) => {
-			this.fullSentence += element.innerText;
+			this.fullSentence.push(element.innerText);
 		});
 	}
 
@@ -151,7 +152,7 @@ export default class extends Controller {
 		// Changes the progress bar
 		this.progressBar();
 		// Update the array with the Student Answers
-		this.studentAnswersArray.push(this.answer.join(" "));
+		this.studentAnswersArray.push(this.fullSentence.join(" "));
 		// Changes the text between Next and Next Challenge
 		this.buttonElementTarget.innerHTML = "";
 		const buttonText =
@@ -164,10 +165,15 @@ export default class extends Controller {
 		);
 		this.buttonElementTarget.insertAdjacentHTML(
 			"afterbegin",
-			`<div class="correct-sentence-container d-flex flex-wrap justify-content-start align-items-center p-3">${
-				this.correctSentencesArray[this.currentSentenceIndex].Sentence
-			}</div>`
+			`<div class="correct-sentence-container d-flex flex-wrap justify-content-start align-items-center p-3">
+			<img src="${
+				this.audioIcon
+			}" height="30" width="30" id="audio-icon-grammar-game" class="me-2" data-grammar-game-target="audioElement" data-action="click->grammar-game#audio"/>
+			${this.correctSentencesArray[this.currentSentenceIndex].Sentence}
+			</div>`
 		);
+		// Reproduce the sentence audio
+		this.audio();
 
 		// Disable events of words(options)
 		this.wordElementTargets.forEach((element) => {
@@ -175,7 +181,7 @@ export default class extends Controller {
 			element.style.cursor = "default";
 		});
 		// Validates the game
-		if (this.fullSentence === this.answer.join("")) {
+		if (this.fullSentence.join("") === this.answer.join("")) {
 			// Sum experience animation
 			this.game_xp += 100 / this.wordsArray.length;
 			const options = {
@@ -225,8 +231,15 @@ export default class extends Controller {
 			brokenSwordImage.classList.add("active");
 			setTimeout(() => {
 				brokenSwordImage.classList.remove("active");
-			}, 1500); // duration of the shine effect
+			}, 2500); // duration of the shine effect
 		}
+	}
+
+	audio() {
+		const utterance = new SpeechSynthesisUtterance(
+			this.correctSentencesArray[this.currentSentenceIndex].Sentence
+		);
+		window.speechSynthesis.speak(utterance);
 	}
 
 	progressBar() {
@@ -269,13 +282,13 @@ export default class extends Controller {
 			// Go to the next Game
 			const dataToUpdate = {
 				score: this.game_xp,
-				question: this.sentenceTokenizeShuffledArray.map((subArray) =>
-					subArray.join(" ")
+				questions: this.sentenceTokenizeShuffledArray.map(
+					(sentence, index) => ({
+						student_answer: this.studentAnswersArray[index] || "",
+						correct_answer: this.correctSentencesArray[index].Sentence,
+						options: sentence,
+					})
 				),
-				correct_answer: this.correctSentencesArray.map(
-					(subArray) => subArray.Sentence
-				),
-				student_answer: this.studentAnswersArray,
 			};
 			// Saving data in DB
 			fetch(`/student/submissions/${this.submissionId}/games/${this.gameId}`, {
@@ -302,7 +315,7 @@ export default class extends Controller {
 				.catch((error) => {
 					console.error(error);
 				});
-			window.location.href = "/student/challenges";
+			//window.location.href = "/student/challenges";
 		} else {
 			this.currentSentenceIndex++;
 			this.loadGame();

@@ -23,7 +23,15 @@ class Student::GamesController < ApplicationController
 
   def update
     authorize @game
-    @game.update(game_params)
+    if @game.update(score: params[:score])
+      params[:questions].each do |question|
+        @game.questions.create(
+          correct_answer: question[:correct_answer],
+          options: question[:options],
+          student_answer: question[:student_answer]
+        )
+      end
+    end
   end
 
   private
@@ -33,6 +41,13 @@ class Student::GamesController < ApplicationController
   end
 
   def game_params
-    params.require(:game).permit(:score, correct_answer: [], question: [], student_answer: [])
+    params.require(:game).permit(
+      :score, 
+      questions_attributes: [
+        :correct_answer, 
+        :options, 
+        :student_answer
+      ]
+    )
   end
 end
