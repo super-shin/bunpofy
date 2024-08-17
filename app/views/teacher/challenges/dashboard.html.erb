@@ -87,7 +87,7 @@
       </div>
       <div class="d-flex flex-column">
         <div class="m-3">
-          <%= bar_chart(@completion_rates,
+          <%= bar_chart(Submission.joins(challenge: :classroom).where('classrooms.user_id': current_user.id).group(:name).average(:score),
   class: 'box',
   theme: 'sakura',
   height: '280px',

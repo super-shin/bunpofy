@@ -45,7 +45,7 @@ export default class extends Controller {
 		Create ${number_sentences} really simple sentences in English for Japanese Junior High Students.
 		Each sentence should use one of the following words: (${this.wordsArray.join(
 			", "
-		)}).The sentences should be straightforward and not interchangeable in meaning. The sentence should not have more than 8 words. 
+		)}).The sentences should be straightforward and not interchangeable in meaning. The sentence should not have more than 6 words and should not have digits, instead use words to represent numbers. 
   Ensure that each sentence clearly conveys its intended meaning and does not allow for the words to be interchanged without changing the context.
 	Please format the response as a JSON array with the following structure (Dont write anything before and after "[]"):
 		[{"Sentence": "string"},
