@@ -1,0 +1,21 @@
+<div class="selection-bg">
+  <div class="page-content mt-5" style="min-height: 100vh;">
+    <div class="container d-flex flex-column justify-content-center align-items-center mt-5 w-100" style="min-height: 97vh;">
+      <h1 class="display-1 text-white text-center">SELECT YOUR <span class="yellow">MISSION</span></h1>
+      <div class="container d-flex align-items-center justify-content-center row p-5">
+        <!-- SPELLING CARD -->
+        <a href="<%= edit_student_submission_game_path(@submission, @submission.games.find_by(game_type: 'spelling')) %>" class="selection-card d-flex flex-column align-items-center justify-content-center col-4">
+          <span class="spelling-game-bg selection-card-content"></span>
+        </a>
+        <!-- VOCAB CARD -->
+        <a href="<%= edit_student_submission_game_path(@submission, @submission.games.find_by(game_type: 'vocab')) %>" class="selection-card d-flex flex-column align-items-center justify-content-center col-4">
+          <span class="vocab-game-bg selection-card-content"></span>
+        </a>
+        <!-- GRAMMAR CARD -->
+        <a href="<%= edit_student_submission_game_path(@submission, @submission.games.find_by(game_type: 'grammar')) %>" class="selection-card d-flex flex-column align-items-center justify-content-center col-4">
+          <span class="grammar-game-bg selection-card-content"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

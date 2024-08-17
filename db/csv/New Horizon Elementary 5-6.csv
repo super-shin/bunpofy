@@ -119,12 +119,12 @@ spaghetti,スパゲッティ,食べ物,,Unit 6,At a restaurant.,12,es_word,ES,5,
 pie,パイ,食べ物,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
 salad,サラダ,食べ物,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
 soup,スープ,食べ物,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
-fried noodles,焼きそば,食べ物（JF）,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
-ramen,ラーメン,食べ物（JF）,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
-soba,そば,食べ物（JF）,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
-beef bowl,牛丼,食べ物（JF）,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
-sushi,寿司,食べ物（JF）,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
-tempura,天ぷら,食べ物（JF）,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
+fried noodles,焼きそば,食べ物,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
+ramen,ラーメン,食べ物,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
+soba,そば,食べ物,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
+beef bowl,牛丼,食べ物,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
+sushi,寿司,食べ物,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
+tempura,天ぷら,食べ物,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
 cereal,シリアル,食べ物,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
 cheese fondue,チーズフォンデュ,食べ物,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
 fried egg,目玉焼き,食べ物,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
@@ -133,8 +133,8 @@ miso soup,みそ汁,食べ物,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horiz
 toast,トースト,食べ物,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
 tuna bowl,鉄火丼,食べ物,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
 yogurt,ヨーグルト,食べ物,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
-gyoza,餃子,食べ物（JF）,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
-okonomiyaki,お好み焼き,食べ物（JF）,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
+gyoza,餃子,食べ物,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
+okonomiyaki,お好み焼き,食べ物,,Unit 6,At a restaurant.,12,es_word,ES,5,New Horizon Elementary 5
 drinks,飲み物,飲み物,,Unit 6,At a restaurant.,13,es_word,ES,5,New Horizon Elementary 5
 coffee,コーヒー,飲み物,,Unit 6,At a restaurant.,13,es_word,ES,5,New Horizon Elementary 5
 tea,紅茶、茶,飲み物,,Unit 6,At a restaurant.,13,es_word,ES,5,New Horizon Elementary 5
@@ -289,50 +289,50 @@ brother,お兄さん、弟,家族,,Unit 4,Who is this?,21,es_word,ES,6,New Horiz
 me,わたしを（に）,家族,,Unit 4,Who is this?,21,es_word,ES,6,New Horizon Elementary 6
 sister,お姉さん、妹,家族,,Unit 4,Who is this?,21,es_word,ES,6,New Horizon Elementary 6
 cousin,いとこ,家族,,Unit 4,Who is this?,21,es_word,ES,6,New Horizon Elementary 6
-spell,つづる,動作など（５年）,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
-like,好きである,動作など（５年）,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
-listen,聞く,動作など（５年）,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
-want,ほしい,動作など（５年）,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
-play,演奏する、（スポーツなどを）する,動作など（５年）,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
-walk,歩く,動作など（５年）,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
-run,走る,動作など（５年）,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
-dance,踊る,動作など（５年）,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
-jump,跳ぶ,動作など（５年）,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
-catch,とる、つかまえる,動作など（５年）,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
-swim,泳ぐ,動作など（５年）,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
-fly,飛ぶ,動作など（５年）,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
-sing,歌う,動作など（５年）,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
-cook,料理をする,動作など（５年）,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
-have,ある、持っている,動作など（５年）,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
-go,行く,動作など（５年）,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
-turn,向きを変える、曲がる,動作など（５年）,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
-see,見る、見える,動作など（５年）,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
-look,見る、目を向ける,動作など（５年）,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
-drink,飲む,動作など（５年）,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
-eat,食べる,動作など（５年）,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
-buy,買う,動作など（５年）,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
-spell,つづる,動作など（５年）,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
-like,好きである,動作など（５年）,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
-listen,聞く,動作など（５年）,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
-want,ほしい,動作など（５年）,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
-play,演奏する、（スポーツなどを）する,動作など（５年）,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
-walk,歩く,動作など（５年）,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
-run,走る,動作など（５年）,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
-dance,踊る,動作など（５年）,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
-jump,跳ぶ,動作など（５年）,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
-catch,とる、つかまえる,動作など（５年）,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
-swim,泳ぐ,動作など（５年）,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
-fly,飛ぶ,動作など（５年）,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
-sing,歌う,動作など（５年）,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
-cook,料理をする,動作など（５年）,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
-have,ある、持っている,動作など（５年）,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
-go,行く,動作など（５年）,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
-turn,向きを変える、曲がる,動作など（５年）,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
-see,見る、見える,動作など（５年）,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
-look,見る、目を向ける,動作など（５年）,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
-drink,飲む,動作など（５年）,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
-eat,食べる,動作など（５年）,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
-buy,買う,動作など（５年）,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
+spell,つづる,動作など,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
+like,好きである,動作など,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
+listen,聞く,動作など,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
+want,ほしい,動作など,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
+play,演奏する、（スポーツなどを）する,動作など,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
+walk,歩く,動作など,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
+run,走る,動作など,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
+dance,踊る,動作など,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
+jump,跳ぶ,動作など,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
+catch,とる、つかまえる,動作など,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
+swim,泳ぐ,動作など,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
+fly,飛ぶ,動作など,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
+sing,歌う,動作など,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
+cook,料理をする,動作など,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
+have,ある、持っている,動作など,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
+go,行く,動作など,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
+turn,向きを変える、曲がる,動作など,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
+see,見る、見える,動作など,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
+look,見る、目を向ける,動作など,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
+drink,飲む,動作など,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
+eat,食べる,動作など,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
+buy,買う,動作など,,Unit 3,Can you play Dodgeball?,22,es_word,ES,5,New Horizon Elementary 5
+spell,つづる,動作など,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
+like,好きである,動作など,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
+listen,聞く,動作など,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
+want,ほしい,動作など,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
+play,演奏する、（スポーツなどを）する,動作など,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
+walk,歩く,動作など,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
+run,走る,動作など,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
+dance,踊る,動作など,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
+jump,跳ぶ,動作など,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
+catch,とる、つかまえる,動作など,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
+swim,泳ぐ,動作など,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
+fly,飛ぶ,動作など,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
+sing,歌う,動作など,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
+cook,料理をする,動作など,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
+have,ある、持っている,動作など,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
+go,行く,動作など,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
+turn,向きを変える、曲がる,動作など,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
+see,見る、見える,動作など,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
+look,見る、目を向ける,動作など,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
+drink,飲む,動作など,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
+eat,食べる,動作など,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
+buy,買う,動作など,,Unit 4,Who is this?,22,es_word,ES,5,New Horizon Elementary 5
 call,呼ぶ,動作など,,Unit 7,Welcome to Japan!,22,es_word,ES,6,New Horizon Elementary 6
 chat,チャットする、おしゃべりする,動作など,,Unit 7,Welcome to Japan!,22,es_word,ES,6,New Horizon Elementary 6
 check,確認する,動作など,,Unit 7,Welcome to Japan!,22,es_word,ES,6,New Horizon Elementary 6
@@ -385,15 +385,15 @@ dam,ダム,町,,Unit 5,Let's go to the zoo,26,es_word,ES,5,New Horizon Elementar
 airport,空港,町,,Unit 5,Let's go to the zoo,26,es_word,ES,5,New Horizon Elementary 5
 bridge,橋,町,,Unit 5,Let's go to the zoo,26,es_word,ES,5,New Horizon Elementary 5
 street,通り、街路,町,,Unit 5,Let's go to the zoo,26,es_word,ES,5,New Horizon Elementary 5
-airplane,飛行機,町（乗り物）,,Unit 5,Let's go to the zoo,26,es_word,ES,5,New Horizon Elementary 5
-car,車,町（乗り物）,,Unit 5,Let's go to the zoo,26,es_word,ES,5,New Horizon Elementary 5
-truck,トラック,町（乗り物）,,Unit 5,Let's go to the zoo,26,es_word,ES,5,New Horizon Elementary 5
-van,バン,町（乗り物）,,Unit 5,Let's go to the zoo,26,es_word,ES,5,New Horizon Elementary 5
-subway,地下鉄,町（乗り物）,,Unit 5,Let's go to the zoo,26,es_word,ES,5,New Horizon Elementary 5
-unicycle,一輪車,町（乗り物）,,Unit 5,Let's go to the zoo,26,es_word,ES,5,New Horizon Elementary 5
-boat,ボート,町（乗り物）,,Unit 5,Let's go to the zoo,26,es_word,ES,5,New Horizon Elementary 5
-ship,船,町（乗り物）,,Unit 5,Let's go to the zoo,26,es_word,ES,5,New Horizon Elementary 5
-yacht,ヨット,町（乗り物）,,Unit 5,Let's go to the zoo,26,es_word,ES,5,New Horizon Elementary 5
+airplane,飛行機,町,,Unit 5,Let's go to the zoo,26,es_word,ES,5,New Horizon Elementary 5
+car,車,町,,Unit 5,Let's go to the zoo,26,es_word,ES,5,New Horizon Elementary 5
+truck,トラック,町,,Unit 5,Let's go to the zoo,26,es_word,ES,5,New Horizon Elementary 5
+van,バン,町,,Unit 5,Let's go to the zoo,26,es_word,ES,5,New Horizon Elementary 5
+subway,地下鉄,町,,Unit 5,Let's go to the zoo,26,es_word,ES,5,New Horizon Elementary 5
+unicycle,一輪車,町,,Unit 5,Let's go to the zoo,26,es_word,ES,5,New Horizon Elementary 5
+boat,ボート,町,,Unit 5,Let's go to the zoo,26,es_word,ES,5,New Horizon Elementary 5
+ship,船,町,,Unit 5,Let's go to the zoo,26,es_word,ES,5,New Horizon Elementary 5
+yacht,ヨット,町,,Unit 5,Let's go to the zoo,26,es_word,ES,5,New Horizon Elementary 5
 go,進む,道案内,,Unit 5,Let's go to the zoo,27,es_word,ES,5,New Horizon Elementary 5
 straight,まっすぐに,道案内,,Unit 5,Let's go to the zoo,27,es_word,ES,5,New Horizon Elementary 5
 turn,向きを変える、曲がる,道案内,,Unit 5,Let's go to the zoo,27,es_word,ES,5,New Horizon Elementary 5
@@ -799,24 +799,24 @@ wetlands,湿地,自然,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Ele
 oasis,オアシス,自然,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
 pond,池,自然,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
 waterfall,滝,自然,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
-tree,木,自然（モノ系）,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
-plant,植物,自然（モノ系）,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
-flower,花,自然（モノ系）,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
-rose,バラ,自然（モノ系）,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
-fire,火,自然（モノ系）,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
-ice,氷,自然（モノ系）,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
-rock,岩,自然（モノ系）,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
-sky,空,自然（天気系）,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
-cloud,雲,自然（天気系）,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
-rain,雨,自然（天気系）,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
-snow,雪,自然（天気系）,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
-rainbow,虹,自然（天気系）,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
-thunder,雷,自然（天気系）,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
-aurora,オーロラ,自然（天気系）,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
-sun,太陽,自然（宇宙系）,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
-moon,月,自然（宇宙系）,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
-star,星,自然（宇宙系）,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
-space,宇宙,自然（宇宙系）,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
+tree,木,自然,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
+plant,植物,自然,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
+flower,花,自然,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
+rose,バラ,自然,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
+fire,火,自然,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
+ice,氷,自然,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
+rock,岩,自然,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
+sky,空,自然,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
+cloud,雲,自然,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
+rain,雨,自然,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
+snow,雪,自然,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
+rainbow,虹,自然,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
+thunder,雷,自然,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
+aurora,オーロラ,自然,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
+sun,太陽,自然,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
+moon,月,自然,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
+star,星,自然,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
+space,宇宙,自然,,Unit 6,Save the animals.,16,es_word,ES,6,New Horizon Elementary 6
 sea animals,海の生き物,海の生き物,,Unit 6,Save the animals.,17,es_word,ES,6,New Horizon Elementary 6
 whale,クジラ,海の生き物,,Unit 6,Save the animals.,17,es_word,ES,6,New Horizon Elementary 6
 dolphin,イルカ,海の生き物,,Unit 6,Save the animals.,17,es_word,ES,6,New Horizon Elementary 6
@@ -864,26 +864,26 @@ overfishing,乱獲,"生き物の問題,できること",,Unit 6,Save the animals
 air pollution,大気汚染,"生き物の問題,できること",,Unit 6,Save the animals.,17,es_word,ES,6,New Horizon Elementary 6
 chemicals,化学物質,"生き物の問題,できること",,Unit 6,Save the animals.,17,es_word,ES,6,New Horizon Elementary 6
 traffic accidents,交通事故,"生き物の問題,できること",,Unit 6,Save the animals.,17,es_word,ES,6,New Horizon Elementary 6
-speak,（言語を）話す,動作など（６年）,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
-live,住む,動作など（６年）,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
-make,作る,動作など（６年）,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
-wear,身につけている、着ている,動作など（６年）,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
-talk,話す,動作など（６年）,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
-watch,（テレビなどを）見る,動作など（６年）,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
-read,読む,動作など（６年）,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
-help,手伝う,動作など（６年）,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
-practice,練習する,動作など（６年）,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
-clean,そうじをする,動作など（６年）,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
-enjoy,楽しむ,動作など（６年）,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
-visit,訪問する,動作など（６年）,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
-ride,乗る,動作など（６年）,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
-come,来る,動作など（６年）,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
-get,手に入れる,動作など（６年）,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
-save,救う,動作など（６年）,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
-stop,止まる,動作など（６年）,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
-study,勉強する,動作など（６年）,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
-join,参加する,動作など（６年）,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
-work,働く,動作など（６年）,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
+speak,（言語を）話す,動作など,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
+live,住む,動作など,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
+make,作る,動作など,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
+wear,身につけている、着ている,動作など,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
+talk,話す,動作など,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
+watch,（テレビなどを）見る,動作など,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
+read,読む,動作など,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
+help,手伝う,動作など,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
+practice,練習する,動作など,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
+clean,そうじをする,動作など,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
+enjoy,楽しむ,動作など,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
+visit,訪問する,動作など,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
+ride,乗る,動作など,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
+come,来る,動作など,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
+get,手に入れる,動作など,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
+save,救う,動作など,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
+stop,止まる,動作など,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
+study,勉強する,動作など,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
+join,参加する,動作など,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
+work,働く,動作など,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
 ate,食べた,したこと,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
 went,行った,したこと,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
 saw,見た、見えた,したこと,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
@@ -892,26 +892,26 @@ made,作った,したこと,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Eleme
 enjoyed,楽しんだ,したこと,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
 played,演奏した、（スポーツなどを）した,したこと,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
 watched,（テレビなどを）見た,したこと,,Unit 3,My Weekend,23,es_word,ES,6,New Horizon Elementary 6
-speak,（言語を）話す,動作など（６年）,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
-live,住む,動作など（６年）,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
-make,作る,動作など（６年）,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
-wear,身につけている、着ている,動作など（６年）,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
-talk,話す,動作など（６年）,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
-watch,（テレビなどを）見る,動作など（６年）,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
-read,読む,動作など（６年）,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
-help,手伝う,動作など（６年）,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
-practice,練習する,動作など（６年）,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
-clean,そうじをする,動作など（６年）,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
-enjoy,楽しむ,動作など（６年）,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
-visit,訪問する,動作など（６年）,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
-ride,乗る,動作など（６年）,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
-come,来る,動作など（６年）,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
-get,手に入れる,動作など（６年）,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
-save,救う,動作など（６年）,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
-stop,止まる,動作など（６年）,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
-study,勉強する,動作など（６年）,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
-join,参加する,動作など（６年）,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
-work,働く,動作など（６年）,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
+speak,（言語を）話す,動作など,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
+live,住む,動作など,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
+make,作る,動作など,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
+wear,身につけている、着ている,動作など,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
+talk,話す,動作など,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
+watch,（テレビなどを）見る,動作など,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
+read,読む,動作など,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
+help,手伝う,動作など,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
+practice,練習する,動作など,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
+clean,そうじをする,動作など,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
+enjoy,楽しむ,動作など,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
+visit,訪問する,動作など,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
+ride,乗る,動作など,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
+come,来る,動作など,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
+get,手に入れる,動作など,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
+save,救う,動作など,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
+stop,止まる,動作など,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
+study,勉強する,動作など,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
+join,参加する,動作など,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
+work,働く,動作など,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
 ate,食べた,したこと,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
 went,行った,したこと,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
 saw,見た、見えた,したこと,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
@@ -920,26 +920,26 @@ made,作った,したこと,,Unit 4,Let's see the world.,23,es_word,ES,6,New Hor
 enjoyed,楽しんだ,したこと,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
 played,演奏した、（スポーツなどを）した,したこと,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
 watched,（テレビなどを）見た,したこと,,Unit 4,Let's see the world.,23,es_word,ES,6,New Horizon Elementary 6
-speak,（言語を）話す,動作など（６年）,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
-live,住む,動作など（６年）,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
-make,作る,動作など（６年）,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
-wear,身につけている、着ている,動作など（６年）,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
-talk,話す,動作など（６年）,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
-watch,（テレビなどを）見る,動作など（６年）,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
-read,読む,動作など（６年）,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
-help,手伝う,動作など（６年）,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
-practice,練習する,動作など（６年）,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
-clean,そうじをする,動作など（６年）,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
-enjoy,楽しむ,動作など（６年）,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
-visit,訪問する,動作など（６年）,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
-ride,乗る,動作など（６年）,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
-come,来る,動作など（６年）,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
-get,手に入れる,動作など（６年）,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
-save,救う,動作など（６年）,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
-stop,止まる,動作など（６年）,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
-study,勉強する,動作など（６年）,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
-join,参加する,動作など（６年）,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
-work,働く,動作など（６年）,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
+speak,（言語を）話す,動作など,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
+live,住む,動作など,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
+make,作る,動作など,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
+wear,身につけている、着ている,動作など,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
+talk,話す,動作など,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
+watch,（テレビなどを）見る,動作など,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
+read,読む,動作など,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
+help,手伝う,動作など,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
+practice,練習する,動作など,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
+clean,そうじをする,動作など,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
+enjoy,楽しむ,動作など,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
+visit,訪問する,動作など,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
+ride,乗る,動作など,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
+come,来る,動作など,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
+get,手に入れる,動作など,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
+save,救う,動作など,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
+stop,止まる,動作など,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
+study,勉強する,動作など,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
+join,参加する,動作など,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
+work,働く,動作など,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
 ate,食べた,したこと,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
 went,行った,したこと,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
 saw,見た、見えた,したこと,,Unit 7,My Best Memory,23,es_word,ES,6,New Horizon Elementary 6
@@ -1018,64 +1018,64 @@ elbow,ひじ,からだ,,Unit 5,Where is it from?,25,es_word,ES,6,New Horizon Ele
 thumb,親指,からだ,,Unit 5,Where is it from?,25,es_word,ES,6,New Horizon Elementary 6
 nail,爪,からだ,,Unit 5,Where is it from?,25,es_word,ES,6,New Horizon Elementary 6
 town,町,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-house,家,町,,Unit 4,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-park,公園,町,,Unit 5,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-library,図書館、図書室,町,,Unit 6,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-museum,博物館、美術館,町,,Unit 7,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-hospital,病院,町,,Unit 8,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-bus stop,バス停,町,,Unit 9,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-station,駅,町,,Unit 10,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-police station,警察署,町,,Unit 11,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-fire station,消防署,町,,Unit 12,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-post office,郵便局,町,,Unit 13,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-bookstore,書店,町,,Unit 14,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-restaurant,レストラン,町,,Unit 15,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-supermarket,スーパーマーケット,町,,Unit 16,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-castle,城,町,,Unit 17,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-shrine,神社,町,,Unit 18,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-temple,寺,町,,Unit 19,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-church,教会,町,,Unit 20,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-aquarium,水族館,町,,Unit 21,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-stadium,スタジアム,町,,Unit 22,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-zoo,動物園,町,,Unit 23,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-amusement park,遊園地,町,,Unit 24,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-convenience store,コンビニエンスストア,町,,Unit 25,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-elementary school,小学校,町,,Unit 26,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-junior high school,中学校,町,,Unit 27,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-bus,バス,町（乗り物）,,Unit 28,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-taxi,タクシー,町（乗り物）,,Unit 29,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-bike,自転車,町（乗り物）,,Unit 30,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-train,電車,町（乗り物）,,Unit 31,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-city,街、都市,町,,Unit 32,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-city hall,役所,町,,Unit 33,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-bank,銀行,町,,Unit 34,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-hotel,ホテル,町,,Unit 35,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-kindergarten,幼稚園,町,,Unit 36,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-shop,店,町,,Unit 37,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-flower shop,生花店,町,,Unit 38,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-department store,デパート、百貨店,町,,Unit 39,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-shopping mall,ショッピングモール,町,,Unit 40,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-theater,劇場,町,,Unit 41,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-planetarium,プラネタリウム,町,,Unit 42,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-dome,ドーム,町,,Unit 43,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-tower,タワー,町,,Unit 44,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-gas station,ガソリンスタンド,町,,Unit 45,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-factory,工場,町,,Unit 46,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-farm,農場,町,,Unit 47,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-garden,庭園,町,,Unit 48,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-dam,ダム,町,,Unit 49,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-airport,空港,町,,Unit 50,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-bridge,橋,町,,Unit 51,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-street,通り、街路,町,,Unit 52,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-airplane,飛行機,町（乗り物）,,Unit 53,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-car,車,町（乗り物）,,Unit 54,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-truck,トラック,町（乗り物）,,Unit 55,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-van,バン,町（乗り物）,,Unit 56,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-subway,地下鉄,町（乗り物）,,Unit 57,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-unicycle,一輪車,町（乗り物）,,Unit 58,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-boat,ボート,町（乗り物）,,Unit 59,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-ship,船,町（乗り物）,,Unit 60,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
-yacht,ヨット,町（乗り物）,,Unit 61,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+house,家,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+park,公園,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+library,図書館、図書室,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+museum,博物館、美術館,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+hospital,病院,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+bus stop,バス停,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+station,駅,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+police station,警察署,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+fire station,消防署,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+post office,郵便局,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+bookstore,書店,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+restaurant,レストラン,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+supermarket,スーパーマーケット,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+castle,城,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+shrine,神社,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+temple,寺,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+church,教会,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+aquarium,水族館,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+stadium,スタジアム,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+zoo,動物園,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+amusement park,遊園地,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+convenience store,コンビニエンスストア,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+elementary school,小学校,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+junior high school,中学校,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+bus,バス,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+taxi,タクシー,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+bike,自転車,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+train,電車,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+city,街、都市,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+city hall,役所,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+bank,銀行,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+hotel,ホテル,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+kindergarten,幼稚園,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+shop,店,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+flower shop,生花店,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+department store,デパート、百貨店,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+shopping mall,ショッピングモール,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+theater,劇場,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+planetarium,プラネタリウム,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+dome,ドーム,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+tower,タワー,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+gas station,ガソリンスタンド,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+factory,工場,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+farm,農場,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+garden,庭園,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+dam,ダム,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+airport,空港,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+bridge,橋,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+street,通り、街路,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+airplane,飛行機,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+car,車,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+truck,トラック,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+van,バン,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+subway,地下鉄,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+unicycle,一輪車,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+boat,ボート,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+ship,船,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
+yacht,ヨット,町,,Unit 3,My Weekend,26,es_word,ES,6,New Horizon Elementary 6
 bag,かばん,身の回りのもの,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
 bat,バット,身の回りのもの,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
 glove,グローブ,身の回りのもの,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
@@ -1124,20 +1124,20 @@ fork,フォーク,身の回りのもの（食器系）,,Unit 1,This is me!,30,es
 spoon,スプーン,身の回りのもの（食器系）,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
 dish,皿,身の回りのもの（食器系）,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
 pot,鍋,身の回りのもの（食器系）,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
-gate,門、ゲート,身の回りのもの（家系）,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
-elevator,エレベーター,身の回りのもの（家系）,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
-door,ドア,身の回りのもの（家系）,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
-key,鍵,身の回りのもの（家系）,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
-room,部屋,身の回りのもの（家系）,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
-rug,ラグ、じゅうたん、カーペット,身の回りのもの（家系）,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
-quilt,キルト,身の回りのもの（家系）,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
-sofa,ソファ,身の回りのもの（家系）,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
-table,テーブル,身の回りのもの（家系）,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
-lamp,ランプ,身の回りのもの（家系）,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
-wall,壁,身の回りのもの（家系）,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
-window,窓,身の回りのもの（家系）,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
-bath,風呂,身の回りのもの（家系）,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
-yen,円,身の回りのもの（家系）,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
+gate,門、ゲート,身の回りのもの,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
+elevator,エレベーター,身の回りのもの,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
+door,ドア,身の回りのもの,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
+key,鍵,身の回りのもの,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
+room,部屋,身の回りのもの,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
+rug,ラグ、じゅうたん、カーペット,身の回りのもの,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
+quilt,キルト,身の回りのもの,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
+sofa,ソファ,身の回りのもの,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
+table,テーブル,身の回りのもの,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
+lamp,ランプ,身の回りのもの,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
+wall,壁,身の回りのもの,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
+window,窓,身の回りのもの,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
+bath,風呂,身の回りのもの,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
+yen,円,身の回りのもの,,Unit 1,This is me!,30,es_word,ES,6,New Horizon Elementary 6
 camping,キャンプ,遊びなど,,Unit 1,This is me!,31,es_word,ES,6,New Horizon Elementary 6
 dancing,踊り,遊びなど,,Unit 1,This is me!,31,es_word,ES,6,New Horizon Elementary 6
 fishing,魚つり,遊びなど,,Unit 1,This is me!,31,es_word,ES,6,New Horizon Elementary 6

@@ -1,20 +1,19 @@
 <div class="body-container"
   data-controller="spelling-game"
-  data-spelling-game-words-array-value="<%= @words_array_spelling.to_json %>">
-  <div>
-    <h1 class="h1-custom">Spelling Ninja</h1>
-    <br><%= image_tag "abc.jpg", style: "height: 200px" %>
-    <br>
-    <form>
-      <input type="text" placeholder="spell the word..." id="guess">
-      <input type="submit" class="spelling-guess" data-action="click->spelling-game#userInput" >
+  data-spelling-game-words-array-value="<%= @words_array_spelling.to_json %>"
+  data-spelling-game-correct-sound-value="<%= audio_path("success.wav") %>"
+  data-spelling-game-incorrect-sound-value="<%= audio_path("fail.wav") %>">
+    <h1 class="h1-custom">Spelling Mission</h1>
+    <form class="custom-form" data-action="submit->spelling-game#correctSpelling">
+      <input type="text" id="wordInput" placeholder="spell the word..." data-spelling-game-target="input">
+      <input type="submit" class="spelling-guess">
     </form>
       <br>
-      <p class="p-custom">Hint :</p>
+      <p id="displayHint">Hint :</p>
       <button class="custom-button" data-action="click->spelling-game#textToSpeech">
-        <i class="fa-solid fa-music"></i> Pronounce The Word
+      <i class="fa-solid fa-volume-up ml-6"> Pronounce
+      </i>
       </button>
-      <div id="results"></div>
-  </div>
+      <div data-spelling-game-target="results" class="mt-5">
+      </div>
 </div>
-

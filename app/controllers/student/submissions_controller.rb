@@ -1,5 +1,5 @@
 class Student::SubmissionsController < ApplicationController
-  before_action :set_submission, only: [:show]
+  before_action :set_submission, only: [:show, :selection]
   before_action :set_challenge, only: [:new, :create]
 
   def show
@@ -41,6 +41,11 @@ class Student::SubmissionsController < ApplicationController
       render :new
       Rails.logger.error("Submission save failed: #{@submission.errors.full_messages.join(', ')}")
     end
+  end
+
+  def selection
+    # @submission it's already set by before_action
+    authorize @submission
   end
 
   private
