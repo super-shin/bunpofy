@@ -38,7 +38,7 @@
         <% @challenges.each do |challenge| %>
           <div class="col">
             <a href="<%= teacher_challenge_path(challenge) %>" class="text-decoration-none">
-              <div class="card h-100 shadow">
+              <div class="card h-100 shadow border-0">
                 <% if challenge.photo.attached? %>
                   <%= cl_image_tag challenge.photo.key, id: "challenge-card-image", class: 'card-img-top' %>
                 <% else %>
@@ -80,7 +80,7 @@
           <% @challenges.select { |c| c.classroom.name.gsub(/\s+/, '-').gsub(/[^\w-]/, '') == classroom_name }.each do |challenge| %>
             <div class="col">
               <a href="<%= teacher_challenge_path(challenge) %>" class="text-decoration-none">
-                <div class="card h-100">
+                <div class="card h-100 shadow border-0">
                   <% if challenge.photo.attached? %>
                     <%= cl_image_tag challenge.photo.key, id: "challenge-card-image", class: 'card-img-top' %>
                   <% else %>

@@ -1,0 +1,80 @@
+<tr class="bg-white">
+  <td scope="row" class="bg-white" width="20%"><!-- COL1 - STUDENT -->
+    <div class="d-flex">
+      <%= cl_image_tag user.photo.key, class: 'rounded-circle text-center', width: 50, height: 50, quality: '10' %>
+      <div class="d-flex flex-column justify-content-start text-start ms-2">
+        <span><%= user.first_name %> <%= user.last_name %></span>
+        <span class="dark-gray"><small><%= user.email %></small></span>
+      </div>
+    </div>
+  </td>
+  <td class="bg-white align-middle" width="20%"><!-- COL2 - DATE AND TIME -->
+    <% user_submissions = submissions.select { |sub| sub.user_id == user.id } %>
+    <% if user_submissions.any? %>
+      <% user_submissions.each do |submission| %>
+        <div class="dark-gray"><%= submission.created_at.strftime("%B %d, %Y (%I:%M %p)") %></div>
+      <% end %>
+    <% else %>
+      <span class="gray-pill"></span>
+      <span class="dark-gray">Waiting</span>
+    <% end %>
+  </td>
+  <td class="bg-white align-middle text-center"><!-- COL3 - SPELLING -->
+    <% if user_submissions.any? %>
+      <% user_submissions.each do |submission| %>
+        <% spelling_score = submission.games.find_by(game_type: 'spelling').score %>
+        <div class="dark-gray">
+          <span class="me-2 <%= !spelling_score ? 'gray-pill' : spelling_score > 80 ? 'green-pill' : spelling_score > 65 ? 'yellow-pill' : 'red-pill' %>">
+          </span>
+          <%= spelling_score ? spelling_score : '' %>
+        </div>
+      <% end %>
+    <% else %>
+      <span class="gray-pill"></span>
+    <% end %>
+  </td>
+  <td class="bg-white align-middle"><!-- COL4 - VOCABULARY -->
+    <% if user_submissions.any? %>
+      <% user_submissions.each do |submission| %>
+        <% vocab_score = submission.games.find_by(game_type: 'vocab').score %>
+        <div class="dark-gray">
+          <span class="me-2 <%= !vocab_score ? 'gray-pill' : vocab_score > 80 ? 'green-pill' : vocab_score > 65 ? 'yellow-pill' : 'red-pill' %>">
+          </span>
+          <%= vocab_score ? vocab_score : '' %>
+        </div>
+      <% end %>
+    <% else %>
+      <span class="gray-pill"></span>
+    <% end %>
+  </td>
+  <td class="bg-white align-middle"><!-- COL5 - GRAMMAR -->
+    <% if user_submissions.any? %>
+      <% user_submissions.each do |submission| %>
+        <% grammar_score = submission.games.find_by(game_type: 'grammar').score %>
+        <div class="dark-gray">
+          <span class="me-2 <%= !grammar_score ? 'gray-pill' : grammar_score > 80 ? 'green-pill' : grammar_score > 65 ? 'yellow-pill' : 'red-pill' %>">
+          </span>
+          <%= grammar_score ? grammar_score : '' %>
+        </div>
+      <% end %>
+    <% else %>
+      <span class="gray-pill"></span>
+    <% end %>
+  </td>
+  <td class="bg-white align-middle"><!-- COL6 - FINAL SCORE -->
+    <% if user_submissions.any? %>
+      <% user_submissions.each do |submission| %>
+        <% final_score = submission.score %>
+        <div class="dark-gray">
+          <span class="me-2 <%= !final_score ? 'gray-pill' : final_score > 80 ? 'green-pill' : final_score > 65 ? 'yellow-pill' : 'red-pill' %>">
+          </span>
+          <%= final_score ? final_score : '' %>
+        </div>
+      <% end %>
+    <% else %>
+      <span class="gray-pill"></span>
+    <% end %>
+  </td>
+  <td class="bg-white align-middle"><!-- COL7 - DETAILS --></td>
+  <td class="bg-white align-middle"><!-- COL8 - FEEDBACK --></td>
+</tr>
