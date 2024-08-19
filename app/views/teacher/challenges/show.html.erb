@@ -54,7 +54,7 @@
   <!--############################ NEW SUBMISSIONS ############################-->
   <h1>_______________________________________________</h1>
   <div class="table-responsive">
-    <table class="table text-center">
+    <table class="table text-center table-hover">
       <thead>
         <tr>
           <th scope="col">Student</th>
@@ -62,12 +62,15 @@
           <th scope="col">Spelling</th>
           <th scope="col">Vocabulary</th>
           <th scope="col">Grammar</th>
-          <th scope="col">Final Score</th>
+          <th scope="col">Main Submission</th>
           <th scope="col">Details</th>
           <th scope="col">Feedback</th>
         </tr>
       </thead>
       <tbody>
+        <% @students_without_feedback.each_with_index do |user, index| %>
+          <%= render 'students_table', user: user, submissions: @submissions, source: 'feedback' %>
+        <% end %>
         <% @students_without_submissions.each_with_index do |user, index| %>
           <%= render 'students_table', user: user, submissions: @submissions, source: 'without' %>
         <% end %>

@@ -9,11 +9,18 @@ class Teacher::ChallengesController < ApplicationController
     authorize @challenge
     @challenge = Challenge.find(params[:id])
     @submissions = Submission.where(challenge_id: @challenge.id)
-    @students_with_submissions = @challenge.classroom.students.select do |student|
-      @submissions.exists?(user_id: student.id)
-    end
-    @students_without_submissions = @challenge.classroom.students - @students_with_submissions
     @feedback = Feedback.new
+    submission_ids_with_feedback = Feedback.pluck(:submission_id).uniq
+    students_with_submissions = @challenge.classroom.students.joins(:submissions).where(submissions: { id: @submissions.pluck(:id) })
+
+    # Students who have submitted work BUT not received feedback
+    @students_without_feedback = students_with_submissions.where.not(submissions: { id: submission_ids_with_feedback }).order('submissions.score ASC')
+    
+    # Students who have submitted work AND received feedback
+    @students_with_submissions = students_with_submissions.order('submissions.score DESC') - @students_without_feedback
+    
+    # Students who have NOT submitted any work
+    @students_without_submissions = @challenge.classroom.students.where.not(id: @students_with_submissions.pluck(:id)) - @students_without_feedback
   end
 
   def new

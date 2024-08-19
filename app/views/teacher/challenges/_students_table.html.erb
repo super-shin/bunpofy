@@ -19,7 +19,7 @@
       <span class="dark-gray">Waiting</span>
     <% end %>
   </td>
-  <td class="bg-white align-middle text-center"><!-- COL3 - SPELLING -->
+  <td class="bg-white align-middle text-center" width="5%"><!-- COL3 - SPELLING -->
     <% if user_submissions.any? %>
       <% user_submissions.each do |submission| %>
         <% spelling_score = submission.games.find_by(game_type: 'spelling').score %>
@@ -33,7 +33,7 @@
       <span class="gray-pill"></span>
     <% end %>
   </td>
-  <td class="bg-white align-middle"><!-- COL4 - VOCABULARY -->
+  <td class="bg-white align-middle" width="5%"><!-- COL4 - VOCABULARY -->
     <% if user_submissions.any? %>
       <% user_submissions.each do |submission| %>
         <% vocab_score = submission.games.find_by(game_type: 'vocab').score %>
@@ -47,7 +47,7 @@
       <span class="gray-pill"></span>
     <% end %>
   </td>
-  <td class="bg-white align-middle"><!-- COL5 - GRAMMAR -->
+  <td class="bg-white align-middle" width="5%"><!-- COL5 - GRAMMAR -->
     <% if user_submissions.any? %>
       <% user_submissions.each do |submission| %>
         <% grammar_score = submission.games.find_by(game_type: 'grammar').score %>
@@ -64,17 +64,21 @@
   <td class="bg-white align-middle"><!-- COL6 - FINAL SCORE -->
     <% if user_submissions.any? %>
       <% user_submissions.each do |submission| %>
-        <% final_score = submission.score %>
-        <div class="dark-gray">
-          <span class="me-2 <%= !final_score ? 'gray-pill' : final_score > 80 ? 'green-pill' : final_score > 65 ? 'yellow-pill' : 'red-pill' %>">
-          </span>
-          <%= final_score ? final_score : '' %>
+        <% final_score = submission.score ? submission.score : 0 %>
+        <div class="fs-5 <%= final_score == 0 ? 'dark-gray' : final_score > 80 ? 'text-success' : final_score > 65 ? 'text-warning' : 'text-danger' %>">
+          <%= final_score %>
         </div>
       <% end %>
     <% else %>
       <span class="gray-pill"></span>
     <% end %>
   </td>
-  <td class="bg-white align-middle"><!-- COL7 - DETAILS --></td>
-  <td class="bg-white align-middle"><!-- COL8 - FEEDBACK --></td>
+  <td class="bg-white align-middle"><!-- COL7 - DETAILS -->
+    <a href=""><i class="fa-solid fa-square-arrow-up-right dark-gray fs-5"></i></a>
+  </td>
+  <td class="bg-white align-middle"><!-- COL8 - FEEDBACK -->
+    <% if %>
+    <% else %>
+    <% end %>
+  </td>
 </tr>
