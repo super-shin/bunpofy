@@ -47,7 +47,7 @@
   </div>
   <div class="student-challenges-challenges-container d-flex">
     <div class="d-flex student-challenges-card-container flex-wrap justify-content-between flex-grow-1">
-      <% @top_challenges.each do |challenge| %>
+      <% @top_challenges.each_with_index do |challenge, index| %>
         <div class="student-challenges-card d-flex flex-column p-0">
           <% if challenge.photo.attached? %>
             <%= cl_image_tag challenge.photo.key, height: 200, width: "100%", class: "student-challenges-card-image" %>
@@ -57,7 +57,31 @@
           <div class="d-flex justify-content-between align-items-start">
             <p class="text-white m-3 text-start student-challenges-card-title"><%= challenge.title %></p>
             <div class="m-3">
-              <%= image_tag "feedback_blue.png", height: 25, width: 25, class: "student-challenges-card-feedback" %>
+              <% if challenge.submissions.find_by(user_id: current_user.id).present? && challenge.submissions.find_by(user_id: current_user.id).feedback.present?%>
+                <div class="student-challenges-card-feedback" data-bs-toggle="modal" data-bs-target="#feedbackModal<%= index %>">
+                  <%= image_tag "feedback_blue.png", height: 25, width: 25%>
+                </div>
+                <div class="modal fade" id="feedbackModal<%= index %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel"><%= challenge.user.last_name %>'s Feedback</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <%= challenge.submissions.find_by(user_id: current_user.id).feedback.content %>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% else %>
+                <div class="student-challenges-card-feedback-disabled">
+                  <%= image_tag "feedback_blue.png", height: 25, width: 25%>
+                </div>
+              <% end %>
             </div>
           </div>
           <% submission = challenge.submissions.find_by(user_id: current_user.id) %>
@@ -149,7 +173,7 @@
             <% end %>
           </div>
         </div>
-        <% @remaining_challenges.each do |challenge| %>
+        <% @remaining_challenges.each_with_index do |challenge, index| %>
           <div class="student-challenges-card d-flex flex-column p-0">
             <% if challenge.photo.attached? %>
               <%= cl_image_tag challenge.photo.key, height: 200, width: "100%", class: "student-challenges-card-image" %>
@@ -159,7 +183,31 @@
             <div class="d-flex justify-content-between align-items-start">
               <p class="text-white m-3 text-start student-challenges-card-title"><%= challenge.title %></p>
               <div class="m-3">
-                <%= image_tag "feedback_blue.png", height: 25, width: 25, class: "student-challenges-card-feedback" %>
+                <% if challenge.submissions.find_by(user_id: current_user.id).present? && challenge.submissions.find_by(user_id: current_user.id).feedback.present?%>
+                  <div class="student-challenges-card-feedback" data-bs-toggle="modal" data-bs-target="#feedbackModal-remaining-challenges<%= index %>">
+                    <%= image_tag "feedback_blue.png", height: 25, width: 25%>
+                  </div>
+                  <div class="modal fade" id="feedbackModal-remaining-challenges<%= index %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel"><%= challenge.user.last_name %>'s Feedback</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <%= challenge.submissions.find_by(user_id: current_user.id).feedback.content %>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% else %>
+                  <div class="student-challenges-card-feedback-disabled">
+                    <%= image_tag "feedback_blue.png", height: 25, width: 25%>
+                  </div>
+                <% end %>
               </div>
             </div>
             <% submission = challenge.submissions.find_by(user_id: current_user.id) %>
@@ -218,12 +266,14 @@
                 <p class="text-white py-2 px-3">Vocabulary Mission</p>
               </div>
             <% end %>
-            <div class="d-flex align-items-center justify-content-between mx-3 mb-2 mt-auto">
-              <div class="m-3 student-challenges-card-date">
-                <%= challenge.due_date.strftime("%m月%d日") %>
+            <div class="d-flex justify-content-between mx-2 mb-2 mt-auto">
+              <div class="m-2 student-challenges-card-date">
+                <p><%= challenge.due_date.strftime("%m月%d日") %></p>
               </div>
-              <%= image_tag "grammar_game_experience_bar.png", height: "25px", width: "25px", class: "grammar-game-experience-bar-img ms-2" %>
-              <p class="student-challenges-card-experience text-white"><%= submission.present? ? (submission.score || 0) + (submission.games.map(&:score).compact.sum) : 0 %></p>
+              <div class="d-flex m-1 align-items-center">
+                <%= image_tag "grammar_game_experience_bar.png", height: "25px", width: "25px", class: "grammar-game-experience-bar-img ms-2" %>
+                <p class="student-challenges-card-experience text-white"><%= submission.present? ? (submission.score || 0) + (submission.games.map(&:score).compact.sum) : 0 %></p>
+              </div>
             </div>
           </div>
         <% end %>

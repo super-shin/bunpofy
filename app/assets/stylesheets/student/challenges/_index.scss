@@ -247,6 +247,14 @@
 	transform: scale(1.05);
 }
 
+.student-challenges-card-feedback-disabled {
+	transition: transform 0.3s ease, background-color 0.3s ease,
+		box-shadow 0.3s ease;
+	opacity: 0.4;
+	filter: grayscale(100%);
+	box-shadow: none;
+}
+
 .student-challenges-card-experience {
 	font-size: 14px;
 }
@@ -273,7 +281,6 @@
 	color: rgba(255, 255, 255, 0.3); /* Lighter text */
 	opacity: 0.4; /* Make the button slightly transparent */
 	filter: grayscale(100%); /* Apply grayscale to the button */
-	cursor: not-allowed; /* Change cursor to indicate disabled state */
 	box-shadow: none; /* Remove shadow */
 }
 

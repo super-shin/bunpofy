@@ -91,8 +91,8 @@ class Teacher::ChallengesController < ApplicationController
       classroom_games_vocab = classroom_submission.flat_map(&:games).filter { |game| game.game_type == "vocab" && game.score.present? }
     end
     @completion_rates = {
-      "Class A" => 70,
-      "Class B" => 80,
+      "Class A" => [70,80,90],
+      "Class B" => [80,90,10]
     }       
   end
 
@@ -106,3 +106,5 @@ class Teacher::ChallengesController < ApplicationController
     @challenge = Challenge.find(params[:id])
   end
 end
+
+
