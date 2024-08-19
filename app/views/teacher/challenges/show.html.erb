@@ -53,6 +53,12 @@
   </div>
   <!--############################ NEW SUBMISSIONS ############################-->
   <h1>_______________________________________________</h1>
+  <span class="dark-gray">
+    <span class="green-pill"></span> High Score
+    <span class="yellow-pill"></span> Average
+    <span class="red-pill"></span> Low Score
+    <span class="gray-pill"></span> Undefined
+  </span>
   <div class="table-responsive">
     <table class="table text-center table-hover">
       <thead>
@@ -63,27 +69,27 @@
           <th scope="col">Vocabulary</th>
           <th scope="col">Grammar</th>
           <th scope="col">Main Submission</th>
-          <th scope="col">Details</th>
           <th scope="col">Feedback</th>
+          <th scope="col">Details</th>
         </tr>
       </thead>
       <tbody>
         <% @students_without_feedback.each_with_index do |user, index| %>
-          <%= render 'students_table', user: user, submissions: @submissions, source: 'feedback' %>
+          <%= render 'students_table', user: user, index: index, submissions: @submissions, source: 'feedback' %>
         <% end %>
         <% @students_without_submissions.each_with_index do |user, index| %>
-          <%= render 'students_table', user: user, submissions: @submissions, source: 'without' %>
+          <%= render 'students_table', user: user, index: index, submissions: @submissions, source: 'without' %>
         <% end %>
         <% @students_with_submissions.each_with_index do |user, index| %>
-          <%= render 'students_table', user: user, submissions: @submissions, source: 'with' %>
+          <%= render 'students_table', user: user, index: index, submissions: @submissions, source: 'with' %>
         <% end %>
       </tbody>
     </table>
   </div>
   <h1>_______________________________________________</h1>
-  <!--############################ OLD SUBMISSIONS ############################-->
-  <div class="accordion accordion-flush mb-4" id="accordionFlushExample">
-    <!-- Users with submissions -->
+</div>
+<!--############################ OLD SUBMISSIONS ############################-->
+<!-- <div class="accordion accordion-flush mb-4" id="accordionFlushExample">
     <h2 class="mb-4">Student Submissions:</h2>
     <% @students_with_submissions.each_with_index do |user, index| %>
       <div class="accordion-item bg-white">
@@ -99,7 +105,6 @@
               <% user_submissions.each do |submission| %>
                 <div class="card mb-2 bg-white">
                   <div class="card-body row d-flex justify-contents-center align-items-start">
-                    <!--card LEFT side-->
                     <div class="col-md-10 col-sm-12">
                       <h3 class="card-title mb-4">"<%= submission.content %>"</h3>
                       <% if submission.feedback.present? %>
@@ -109,16 +114,13 @@
                         </blockquote>
                       <% else %>
                         <p class="text-muted fs-6">No feedback yet.</p>
-                        <!-- Button trigger modal -->
                         <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#feedbackModal-<%= submission.id %>">
                           Send Feedback
                         </button>
-                        <!--RENDER MODAL-->
                         <%= render 'teacher/feedbacks/new', submission: submission %>
                       <% end %>
                       <a href="#" class="btn btn-outline-primary">See Details</a>
                     </div>
-                    <!--card RIGHT side-->
                     <div class="col-md-2 d-none d-md-block display-4">
                       <% if submission.score.present? %>
                         <lord-icon
@@ -145,7 +147,6 @@
         </div>
       </div>
     <% end %>
-    <!-- Users without submissions -->
     <h2 class="mb-4 mt-5 pale-red">Pending Submissions:</h2>
     <% @students_without_submissions.each_with_index do |user, index| %>
       <div class="accordion-item">
@@ -162,5 +163,4 @@
       </div>
     <% end %>
   </div>
-</div>
-<!--############################ OLD SUBMISSIONS ############################-->
+</div> -->

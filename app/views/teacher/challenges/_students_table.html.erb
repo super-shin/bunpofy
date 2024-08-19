@@ -1,3 +1,4 @@
+<% user_submissions = submissions.select { |sub| sub.user_id == user.id } %>
 <tr class="bg-white">
   <td scope="row" class="bg-white" width="20%"><!-- COL1 - STUDENT -->
     <div class="d-flex">
@@ -9,14 +10,13 @@
     </div>
   </td>
   <td class="bg-white align-middle" width="20%"><!-- COL2 - DATE AND TIME -->
-    <% user_submissions = submissions.select { |sub| sub.user_id == user.id } %>
     <% if user_submissions.any? %>
       <% user_submissions.each do |submission| %>
         <div class="dark-gray"><%= submission.created_at.strftime("%B %d, %Y (%I:%M %p)") %></div>
       <% end %>
     <% else %>
-      <span class="gray-pill"></span>
-      <span class="dark-gray">Waiting</span>
+      <span class="red-pill"></span>
+      <span class="pale-red">Waiting</span>
     <% end %>
   </td>
   <td class="bg-white align-middle text-center" width="5%"><!-- COL3 - SPELLING -->
@@ -73,12 +73,24 @@
       <span class="gray-pill"></span>
     <% end %>
   </td>
-  <td class="bg-white align-middle"><!-- COL7 - DETAILS -->
-    <a href=""><i class="fa-solid fa-square-arrow-up-right dark-gray fs-5"></i></a>
-  </td>
-  <td class="bg-white align-middle"><!-- COL8 - FEEDBACK -->
-    <% if %>
-    <% else %>
+  <td class="bg-white align-middle"><!-- COL7 - FEEDBACK -->
+    <% if user_submissions.any? %>
+      <% user_submissions.each do |submission| %>
+        <% if source == 'feedback' %>
+          <button type="button" class="btn btn-outline-danger rounded-pill" data-bs-toggle="modal" data-bs-target="#feedbackModal-<%= "#{index}-#{user.id}-#{submission.id}" %>">
+            Send Feedback
+          </button>
+          <!--RENDER MODAL-->
+          <%= render 'teacher/feedbacks/new', submission: submission, index: index, user: user %>
+        <% elsif source == 'without' %>
+          <span class="gray-pill"></span>
+        <% else %>
+          <span class="dark-gray">Sent <i class="fa-solid fa-check"></i></span>
+        <% end %>
+      <% end %>
     <% end %>
+  </td>
+  <td class="bg-white align-middle"><!-- COL8 - DETAILS -->
+    <a href=""><i class="fa-solid fa-square-arrow-up-right dark-gray fs-5"></i></a>
   </td>
 </tr>
