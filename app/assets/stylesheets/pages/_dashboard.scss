@@ -1,8 +1,13 @@
+.dashboard-bar-chart {
+	background-color: white;
+	border-radius: 5px;
+}
+
 .dashboard-pie-card {
 	border-radius: 5px;
 	background-color: white;
-	width: 250px;
-	height: 250px;
+	max-width: 276.5px;
+	min-height: 200px;
 }
 
 .dashboard-chart-h4 {
@@ -32,57 +37,94 @@
 	font-weight: bold;
 }
 
-.dashboard-pie-container {
+.dashboard-charts-container {
 	height: auto;
-	width: 100%;
 }
 
 .dashboard-pie-container-text {
-	font-size: 12px;
-	color: black;
+	font-size: 18px;
+	color: #464646;
 	font-weight: bold;
 }
 
-.dashboard-second-column {
-	width: 100%;
+.dashboard-second-row {
+	flex-shrink: 1;
+	flex-grow: 1;
+	height: auto;
+}
+
+.right-container-dashboard {
+	max-width: 1450px;
+	height: auto;
+	flex-grow: 1;
+	flex-shrink: 1;
 }
 
 .dashboard-student-list {
-	width: 350px;
+	width: 250px;
 	background-color: white;
 	border-radius: 5px;
-	max-height: 562px;
+	flex-shrink: 1 !important;
+	max-height: 608px;
 	overflow-y: auto;
 	scrollbar-width: none;
+	box-sizing: border-box;
+	-ms-overflow-style: none;
+}
+
+.dashboard-student-list::-webkit-scrollbar {
+	display: none;
 }
 
 .dashboard-student-list-top {
-	background-color: rgb(241, 236, 134);
 	width: 100%;
+	position: sticky;
+	top: 0;
+	color: #464646;
+	background-color: rgba(255, 255, 255, 0.8);
+	background-image: image-url(blue_sky_pattern);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-blend-mode: overlay;
 }
 
 .dashboard-student-profile-container {
-	width: 300px;
+	height: 65px;
+	border-radius: 5px;
+	background-color: white;
+}
+
+.dashboard-profile-container-title {
+	color: black;
+}
+
+.dashboard-challenges-assigned-container {
+	height: 65px;
+	border-radius: 5px;
+	background-color: white;
+}
+
+.dashboard-missions-completed-container {
 	height: 65px;
 	border-radius: 5px;
 	background-color: white;
 }
 
 .dashboard-feedback-profile-container {
-	width: 300px;
 	height: 65px;
 	border-radius: 5px;
 	background-color: white;
 }
 
 .dashboard-container {
-	overflow: hidden;
 	height: 92vh;
-	width: 100%;
+	width: auto;
 }
 
-.dashboard-first-column {
-	width: 100%;
+.dashboard-first-row {
+	width: auto;
+	flex-shrink: 1;
 }
 
 .dashboard-profile-container {
@@ -93,8 +135,9 @@
 	);
 
 	border-radius: 5px;
-	height: 150px;
-	width: 100%;
+	height: 120px;
+	flex-shrink: 1;
+	flex-grow: 1;
 	background-color: rgba(255, 255, 255, 0.8);
 	background-image: image-url(blue_sky_pattern);
 	background-size: cover;
@@ -155,6 +198,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	margin-bottom: 5px;
 }
 /* text */
 .text-create-challenge {
