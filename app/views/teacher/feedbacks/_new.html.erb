@@ -1,20 +1,50 @@
 <!-- Modal -->
-<div class="modal fade" id="feedbackModal-<%= submission.id %>" tabindex="-1" aria-labelledby="feedbackModal-<%= submission.id %>Label" aria-hidden="true">
+<% ai_response = submission.ai_response.present? ? JSON.parse(submission.ai_response) : {} %>
+<% corrected_text = ai_response['corrected_text'] %>
+<% jSONRESPONSE_sentence = corrected_text && corrected_text["jSONRESPONSE_sentence"] ? corrected_text["jSONRESPONSE_sentence"] : {} %>
+<% alternatives = corrected_text && corrected_text['alternatives'] ? corrected_text['alternatives'] : {} %>
+<div class="modal fade" id="feedbackModal-<%= "#{index}-#{user.id}-#{submission.id}" %>" tabindex="-1" aria-labelledby="feedbackModal-<%= "#{index}-#{user.id}-#{submission.id}" %>Label" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered"  style="min-width: 70vw">
     <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title fs-5" id="feedbackModal-<%= submission.id %>Label">Give your little ninja a feedback:</h2>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-header d-flex justify-content-center">
+        <h2 class="modal-title display-6" id="feedbackModal-<%= "#{index}-#{user.id}-#{submission.id}" %>Label">Give your Ninja a <span class="yellow">Feedback</span></h2>
       </div>
-      <div class="modal-body">
-        <%= simple_form_for @feedback, url: teacher_submission_feedbacks_path(submission) do |f| %>
-          <%= f.input :content, label: 'Teacher Feedback', input_html: { style: 'min-height: 300px;'} %>
+      <div class="modal-body row">
+        <div class="col-6 d-flex flex-column align-items-start gap-1">
+          <div class="card px-4 py-2 w-100 text-start">
+            <span><small class="dark-gray mb-5"><i class="fa-solid fa-pencil"></i> Student Submission</small></span>
+            <span class="fs-4 red"><%= submission.content %></span>
+          </div>
+          <div class="card px-4 py-2 w-100 text-start">
+            <span><img src="https://res.cloudinary.com/ddzvfukq6/image/upload/v1724114176/gemini_rkqmxj.png" alt="gemini-logo" style="width:20px;"> <small class="blue mb-5">AI Improved Text</small></span>
+            <% if jSONRESPONSE_sentence.blank? %>
+              <p class="dark-gray ms-4"><small>AI response not available.</small></p>
+            <% else %>
+              <div data-controller="clipboard">
+                <span class="fs-5" data-clipboard-target="source"><%= jSONRESPONSE_sentence %></span>
+                <i class="fa-regular fa-copy align-text-top dark-gray" style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Copy" data-action="click->clipboard#copy" data-clipboard-target="copybutton"></i>
+              </div>
+            <% end %>
+          </div>
+          <% alternatives.uniq.each_with_index do |alt, index| %>
+            <div class="card px-4 py-2 w-100 d-flex flex-column text-start">
+              <span><img src="https://res.cloudinary.com/ddzvfukq6/image/upload/v1724114176/gemini_rkqmxj.png" alt="gemini-logo" style="width:20px;"> <small class="blue mb-5">AI Alternative <%= alternatives.uniq.count == 1 ? '' : index == 0 ? '#1' : "##{index + 1}" %></small></span>
+              <div data-controller="clipboard">
+                <span class="fs-5" data-clipboard-target="source"><%= alt %></span>
+                <i class="fa-regular fa-copy align-text-top dark-gray" style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Copy" data-action="click->clipboard#copy" data-clipboard-target="copybutton"></i>
+              </div>
+            </div>
+          <% end %>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
-          <%= f.button :submit, class: 'btn btn-primary text-white' %>
+        <div class="col-6">
+          <%= simple_form_for @feedback, url: teacher_submission_feedbacks_path(submission), html: { class: 'h-100', id: "new_feedback-#{index}-#{user.id}-#{submission.id}" } do |f| %>
+            <div class="d-flex flex-column h-100">
+              <%= f.text_area :content, label: false, placeholder: 'Type your feedback here...', id: "feedback_content-#{index}-#{user.id}-#{submission.id}", class: 'card w-100 h-100 mb-4 p-2 feedback-textarea', input_html: { id: "feedback_content-#{index}-#{user.id}-#{submission.id}" } %>
+              <%= f.button :submit, class: 'btn btn-primary text-white rounded-pill flex-shrink-1', input_html: { id: "feedback_content-#{index}-#{user.id}-#{submission.id}" }  %>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>

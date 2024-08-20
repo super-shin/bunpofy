@@ -12,7 +12,6 @@ User.create!([
 puts "Seeding Class A from Tokyo Elementary School...."
 User.create!([
   { email: 'student@gmail.com', password: '123456', first_name: 'Kazuto', last_name: 'Fuji', role: 'student', school: 'Tokyo Elementary School' },
-  { email: 'nishikikazuo@tges.com', password: '123456', first_name: 'Kazuo', last_name: 'Nishiki', role: 'student', school: 'Tokyo Elementary School' },
   { email: 'saitoayumi@tges.com', password: '123456', first_name: 'Ayumi', last_name: 'Saito', role: 'student', school: 'Tokyo Elementary School' },
   { email: 'takahashiryo@tges.com', password: '123456', first_name: 'Ryo', last_name: 'Takahashi', role: 'student', school: 'Tokyo Elementary School' },
   { email: 'yamamotohiro@tges.com', password: '123456', first_name: 'Hiro', last_name: 'Yamamoto', role: 'student', school: 'Tokyo Elementary School' },
