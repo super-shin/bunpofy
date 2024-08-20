@@ -52,9 +52,12 @@ class Teacher::ChallengesController < ApplicationController
     @challenges = policy_scope(Challenge)
     @classrooms = current_user.classrooms
     @submissions = current_user.challenges.flat_map(&:submissions)
+    @missions_completed = @submissions.count + @submissions.flat_map(&:games).select {|game| game.score.present?}.count
+    @submissions_plus_not_created = Attendance.joins(classroom: :challenges)
+    .where('classrooms.user_id': User.find_by(first_name: "Teacher").id).count
     # Calculating Submissions % for Pie Chart
     @submissions_content = @submissions.select { |submission| submission.score.present? }
-    @submissions_ratio = (@submissions_content.count.to_f/@submissions.count)*100
+    @submissions_ratio = (@submissions.count.to_f/@submissions_plus_not_created)*100
     # Calculating Grammar Game % for Pie Chart
     @games_grammar = @submissions.flat_map(&:games).select { |game| game.game_type == "grammar" }
     @games_grammar_score = @games_grammar.select { |game| game.score.present? }
@@ -90,10 +93,25 @@ class Teacher::ChallengesController < ApplicationController
       classroom_games_spelling = classroom_submission.flat_map(&:games).filter { |game| game.game_type == "spelling" && game.score.present? }
       classroom_games_vocab = classroom_submission.flat_map(&:games).filter { |game| game.game_type == "vocab" && game.score.present? }
     end
-    @completion_rates = {
-      "Class A" => 70,
-      "Class B" => 80,
-    }       
+    @sentence_average_score = Submission.joins(challenge: :classroom).where('classrooms.user_id': current_user.id)
+    .group(:name).average(:score).transform_values(&:floor)
+    @grammar_average_score = Game.joins(submission: { challenge: :classroom })
+    .where('classrooms.user_id': current_user.id)
+    .where(game_type: 'grammar').where.not(score: nil).group(:name).average(:score).transform_values(&:floor)
+    @spelling_average_score = Game.joins(submission: { challenge: :classroom })
+    .where('classrooms.user_id': current_user.id)
+    .where(game_type: 'spelling').where.not(score: nil).group(:name).average(:score).transform_values(&:floor)
+    @vocab_average_score = Game.joins(submission: { challenge: :classroom })
+    .where('classrooms.user_id': current_user.id)
+    .where(game_type: 'vocab').where.not(score: nil).group(:name).average(:score).transform_values(&:floor)
+    @sentence_average_score_per_time = Submission.joins(challenge: :classroom).where('classrooms.user_id': current_user.id)
+    .group(:due_date).order(:due_date).average(:score).transform_values(&:floor)
+    @spelling_average_score_per_time = Game.joins(submission: { challenge: :classroom }).where('classrooms.user_id': current_user.id)
+    .where(game_type: 'spelling').where.not(score: nil).group(:due_date).order(:due_date).average(:score).transform_values(&:floor)
+    @vocab_average_score_per_time = Game.joins(submission: { challenge: :classroom }).where('classrooms.user_id': current_user.id)
+    .where(game_type: 'vocab').where.not(score: nil).group(:due_date).order(:due_date).average(:score).transform_values(&:floor)
+    @grammar_average_score_per_time = Game.joins(submission: { challenge: :classroom }).where('classrooms.user_id': current_user.id)
+    .where(game_type: 'grammar').where.not(score: nil).group(:due_date).order(:due_date).average(:score).transform_values(&:floor)
   end
 
   private
@@ -106,3 +124,5 @@ class Teacher::ChallengesController < ApplicationController
     @challenge = Challenge.find(params[:id])
   end
 end
+
+

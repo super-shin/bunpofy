@@ -1,5 +1,11 @@
-<div class="d-flex dashboard-container no-margin-p" data-controller="dashboard">
-  <div class="left-container-dashboard shadow d-flex flex-column justify-content-center border-end border-2 mr-auto m-3" >
+<div class="d-flex dashboard-container no-margin-p mx-3 pb-3" data-controller="dashboard">
+  <div class="left-container-dashboard shadow d-flex flex-column justify-content-center border-end border-2 mr-auto me-2" >
+    <div class="d-flex dashboard-text-container justify-content-center border-bottom m-3">
+      <%= image_tag "dashboard.png", width: "30px", height: "30px" %>
+      <div class="align-self-center ms-2">
+        <h3>Dashboard</h3>
+      </div>
+    </div>
     <div class="d-flex justify-content-center m-3">
       <%= link_to new_teacher_challenge_path do %>
         <button class="dashboard-btn-create">
@@ -7,12 +13,6 @@
           <div class="text-create-challenge">Create</div>
         </button>
       <% end %>
-    </div>
-    <div class="d-flex dashboard-text-container justify-content-center border-bottom m-3">
-      <%= image_tag "dashboard.png", width: "30px", height: "30px" %>
-      <div class="align-self-center ms-2">
-        <h3>Dashboard</h3>
-      </div>
     </div>
     <div>
       <% @classrooms.each do |classroom| %>
@@ -32,32 +32,17 @@
       <% end %>
     </div>
   </div>
-  <div class="d-flex flex-column flex-grow-1">
-    <div class="d-flex dashboard-first-column">
-      <div class="d-flex mx-1 my-3 shadow dashboard-profile-container p-3">
+  <div class="d-flex flex-column right-container-dashboard">
+    <div class="d-flex dashboard-first-row">
+      <div class="d-flex ms-2 mb-2 shadow dashboard-profile-container p-3">
         <div class="d-flex flex-column justify-content-end dashboard-profile-text-container">
-          <h4 class="fw-bold">Hello, <%= current_user.first_name %></h4>
+          <h2 class="fw-bold dashboard-profile-container-title">Hello, <%= current_user.first_name %></h2>
           <p>Ready to start the day training your little ninjas?</p>
-        </div>
-        <%= image_tag "dashboard_sensei_profile.png", height: 140, width: 120, class: "ms-auto" %>
-      </div>
-      <div class="d-flex flex-column m-3">
-        <div class="d-flex shadow align-items-center dashboard-student-profile-container mt-1 mb-2">
-          <%= image_tag "dashboard_student_profile.png", height: 50, width: 50, class: "m-3" %>
-          <div>
-            <p><span class="text-primary"><%= @students.count %></span> - Students</p>
-          </div>
-        </div>
-        <div class="d-flex shadow align-items-center dashboard-feedback-profile-container mt-2">
-          <%= image_tag "feedback.png", height: 50, width: 50, class: "m-3" %>
-          <div>
-            <p><span class="text-danger"><%= @pending_feedbacks %></span> feedbacks pending</p>
-          </div>
         </div>
       </div>
     </div>
-    <div class="d-flex dashboard-second-column">
-      <div class="dashboard-student-list d-flex flex-column align-items-center mx-1 mb-3 shadow p-0" data-dashboard-target="studentListElement">
+    <div class="d-flex dashboard-second-row">
+      <div class="dashboard-student-list d-flex flex-column align-items-center mt-2 mx-2 shadow" data-dashboard-target="studentListElement">
         <div class="py-2 fw-bold border-bottom dashboard-student-list-top">
           <p class="text-center">All Students</p>
         </div>
@@ -67,60 +52,122 @@
           </div>
         <% end %>
       </div>
-      <div class="d-flex flex-wrap dashboard-pie-container m-1">
-        <div class="dashboard-pie-card d-flex flex-column m-1 shadow p-2">
-          <p class="dashboard-pie-container-text mb-2">Sentence Sensei Progress</p>
-          <div class="pie align-self-center" style="--p:<%= @submissions_ratio %>; --c:green;"> <%= @submissions_ratio.to_i %>%</div>
+      <div class="d-flex flex-column dashboard-charts-container flex-grow-1 mt-2">
+        <div class="d-flex">
+          <div class="d-flex shadow align-items-center dashboard-student-profile-container flex-grow-1 flex-shrink-1 mx-2 mb-2 px-3 py-2">
+            <%= image_tag "dashboard_student_profile.png", height: 30, width: 30, class:"me-2" %>
+            <div>
+              <p><span class="text-primary"><%= @students.count %></span> Students</p>
+            </div>
+          </div>
+          <div class="d-flex shadow align-items-center dashboard-feedback-profile-container flex-grow-1 flex-shrink-1 mx-2 mb-2 px-3 py-2">
+            <%= image_tag "feedback.png", height: 30, width: 30, class: "me-2" %>
+            <div>
+              <p><span class="text-danger"><%= @pending_feedbacks %></span> feedbacks pending</p>
+            </div>
+          </div>
+          <div class="d-flex shadow align-items-center dashboard-challenges-assigned-container flex-grow-1 flex-shrink-1 mx-2 mb-2 px-3 py-2">
+            <%= image_tag "challenge_icon.png", height: 30, width: 30, class:"me-2" %>
+            <div>
+              <p><span class="text-primary"><%= @challenges.count %></span> Challenges Assigned</p>
+            </div>
+          </div>
+          <div class="d-flex shadow align-items-center dashboard-missions-completed-container flex-grow-1 flex-shrink-1 ms-2 mb-2 px-3 py-2">
+            <%= image_tag "target.png", height: 30, width: 30, class:"me-2" %>
+            <div>
+              <p><span class="text-primary"><%= @missions_completed %></span> Missions Completed</p>
+            </div>
+          </div>
         </div>
-        <div class="dashboard-pie-card d-flex flex-column shadow m-1 p-2">
-          <p class="dashboard-pie-container-text mb-2">Grammar Progress</p>
-          <div class="pie align-self-center" style="--p:<%= @games_grammar_ratio %>; --c:darkblue;"> <%= @games_grammar_ratio.to_i %>%</div>
-        </div>
-        <div class="dashboard-pie-card d-flex flex-column shadow m-1 p-2">
-          <p class="dashboard-pie-container-text mb-2">Spelling Progress</p>
-          <div class="pie align-self-center" style="--p:<%= @games_spelling_ratio %>; --c:orange;"> <%= @games_spelling_ratio.to_i %>%</div>
-        </div>
-        <div class="dashboard-pie-card d-flex flex-column shadow m-1 p-2">
-          <p class="dashboard-pie-container-text mb-2">Vocabulary Progress</p>
-          <div class="pie align-self-center" style="--p:<%= @games_vocabulary_ratio %>; --c:purple;"> <%= @games_vocabulary_ratio.to_i %>%</div>
-        </div>
-      </div>
-      <div class="d-flex flex-column">
-        <div class="m-3">
-          <%= bar_chart(@completion_rates,
-  class: 'box',
-  theme: 'sakura',
-  height: '280px',
-  width: '400px',
-  options: {
-    title: {
-      text: 'Challenges Done Statistics'
-    },
-
-  }
-) 
-          %>
-        </div>
-        <div class="m-3">
-          <%= bar_chart(
-          @completion_rates,
-          class: 'box',
-          theme: 'sakura',
-          height: '280px',
-          width: '400px',
-          options: {
-            title: {
-              text: 'Score Statistics'
+        <div class="d-flex my-2">
+          <div class="dashboard-bar-chart mx-2 shadow">
+            <%= bar_chart([{
+              name: 'Sentence',
+              data: @sentence_average_score
             },
-            series: {
-              barWidth: '50%'
+            {
+              name: 'Vocabulary',
+              data: @vocab_average_score
             },
-            tooltip: {
-              valueFormatter: RailsCharts.js("(value) => 'Challenges Done ' + Math.round(value)")
-            }
-            
-          })
-        %>
+            {
+              name: 'Spelling',
+              data: @spelling_average_score
+            },
+            {
+              name: 'Grammar',
+              data: @grammar_average_score
+            }],
+            {
+              theme: 'roma',
+              height: '310px',
+              width: '475px',
+              options: {
+                legend: {
+                  data: ['Sentence', 'Vocabulary', 'Spelling', 'Grammar'],
+                  bottom: '15'
+                },
+                title: {
+                text: 'Classroom Performance Overview'
+                },
+                emphasis: {
+                  focus: 'series'
+                }
+              }
+            })%>
+          </div>
+          <div class="dashboard-bar-chart shadow ms-2">
+            <%= line_chart([{
+              name: 'Sentence',
+              data: @sentence_average_score_per_time
+            },
+            {
+              name: 'Vocabulary',
+              data: @vocab_average_score_per_time
+            },
+            {
+              name: 'Spelling',
+              data: @spelling_average_score_per_time
+            },
+            {
+              name: 'Grammar',
+              data: @grammar_average_score_per_time
+            }],
+            {
+              theme: 'roma',
+              height: '310px',
+              width: '475px',
+              options: {
+                legend: {
+                  data: ['Sentence', 'Vocabulary', 'Spelling', 'Grammar'],
+                  bottom: '15'
+                },
+                title: {
+                  text: 'Students Performance Over Time'
+                },
+                emphasis: {
+                  focus: 'series'
+                }
+              }
+            })%>
+          </div>
+        </div>
+        <div class="d-flex flex-grow-1 justify-content-center mt-2 w-auto">
+          <div class="dashboard-pie-card d-flex flex-column flex-grow-1 flex-shrink-1 shadow mx-2 ps-1">
+            <p class="dashboard-pie-container-text mb-2">Sentence Progress</p>
+            <div class="pie align-self-center" style="--p:<%= @submissions_ratio %>; --c:green;"> <%= @submissions_ratio.to_i %>%</div>
+          </div>
+          <div class="dashboard-pie-card d-flex flex-column flex-grow-1 flex-shrink-1 shadow mx-2 ps-1">
+            <p class="dashboard-pie-container-text mb-2">Grammar Progress</p>
+            <div class="pie align-self-center" style="--p:<%= @games_grammar_ratio %>; --c:darkblue;"> <%= @games_grammar_ratio.to_i %>%</div>
+          </div>
+          <div class="dashboard-pie-card d-flex flex-column flex-grow-1 flex-shrink-1 shadow mx-2 ps-1">
+            <p class="dashboard-pie-container-text mb-2">Spelling Progress</p>
+            <div class="pie align-self-center" style="--p:<%= @games_spelling_ratio %>; --c:orange;"> <%= @games_spelling_ratio.to_i %>%</div>
+          </div>
+          <div class="dashboard-pie-card d-flex flex-column flex-grow-1 flex-shrink-1 shadow ms-2 ps-1">
+            <p class="dashboard-pie-container-text mb-2">Vocabulary Progress</p>
+            <div class="pie align-self-center" style="--p:<%= @games_vocabulary_ratio %>; --c:purple;"> <%= @games_vocabulary_ratio.to_i %>%</div>
+          </div>
         </div>
       </div>
     </div>
