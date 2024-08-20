@@ -1,8 +1,7 @@
-<div class="new-challenge-bg">
-  <div class="row new-challenge-content d-flex justify-content-center mx-4">
-    <div class="col-12 text-center mb-2">
+<div class="new-challenge-bg d-flex align-items-center justify-content-center">
+  <div class="row new-challenge-content d-flex justify-content-center align-items-center mx-4">
+    <div class="col-12 text-center mb-4">
       <p class="display-5 text-white mt-1 mb-0">Create your <span class="yellow">Bunpofy</span> Challenge</p>
-      <p class="text-white">Ready to train your student ninjas, sensei?</p>
     </div>
     <div class="col-md-6 col-sm-12 rounded-3 px-4 py-3 create-form">
       <%= simple_form_for [:teacher, @challenge], html: { data: { controller: 'unit-loader', units_by_textbook: @units_by_textbook.to_json.html_safe } } do |f| %>
@@ -19,7 +18,7 @@
         <%= f.input :unit_id, collection: [], class: 'form-control input-selection', label_method: :name, value_method: :id, prompt: 'Select a unit', id: 'unit_select', input_html: {data: { unit_loader_target: 'unitSelect' }} %>
         <!-- Other challenge information -->
         <%= f.input :title %>
-        <%= f.input :directions %>
+        <%= f.input :directions, as: :text, label: 'Directions', input_html: { rows: 3, placeholder: 'Enter directions here...' } %>
         <div class="d-flex align-items-center row">
           <div class="col-5">
             <%= f.input :classroom_id, collection: @classrooms, prompt: 'Select a classroom' %>
