@@ -91,6 +91,10 @@
     <% end %>
   </td>
   <td class="bg-white align-middle"><!-- COL8 - DETAILS -->
-    <a href=""><i class="fa-solid fa-square-arrow-up-right dark-gray fs-5"></i></a>
+    <% if source == 'without' %>
+      <span class="gray-pill"></span>
+    <% else %>
+      <a href="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Submission Details"><i class="fa-solid fa-square-arrow-up-right dark-gray fs-5"></i></a>
+    <% end %>
   </td>
 </tr>

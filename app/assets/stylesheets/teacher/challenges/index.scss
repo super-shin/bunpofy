@@ -53,7 +53,8 @@
 }
 .create-form input:focus,
 .create-form select:focus,
-.create-form textarea:focus {
+.create-form textarea:focus,
+.feedback-textarea:focus {
 	border-color: $yellow;
 	background-color: #ffffff;
 	outline: none;
