@@ -4,6 +4,9 @@ confirmation = gets.chomp.downcase
 if confirmation == 'y'
 
   #STEP 1: Destroy ALL
+  #Destroy all Questions
+  Question.destroy_all
+  puts "Destroyed Questions"
   #Destroy all Games
   Game.destroy_all
   puts "Destroyed Games"

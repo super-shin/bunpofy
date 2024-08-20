@@ -18,7 +18,7 @@
       </div>
       <div class="student-challenges-profile-experience-bar-container align-self-end px-3">
         <div class="student-challenges-profile-experience-bar-skill-box">
-          <span class="student-challenges-profile-experience-bar-title">EXP</span>
+          <span class="student-challenges-profile-experience-bar-title">XP</span>
           <div class="student-challenges-profile-experience-bar-skill-bar">
             <span class="student-challenges-profile-experience-bar-skill-per student-challenges-profile-experience-bar-html" style="width: <%= (((@experience.to_f % 500) / 500) * 100).floor %>%;">>
               <span class="student-challenges-profile-experience-bar-tooltip"><%= (((@experience.to_f%500)/500)*100).floor %>%</span>
@@ -29,7 +29,7 @@
       <div class="student-challenges-profile-box px-3 mt-2 d-flex flex-column align-items-center">
         <p class="m-2 mb-1 student-challenges-profile-box-title">Level</p>
         <div class="student-challenges-profile-level-pentagon">
-          <p class="student-challenges-ranking-level">10</p>
+          <p class="student-challenges-ranking-level"><%= @level %></p>
         </div>
       </div>
       <div class="student-challenges-profile-box px-3 mt-2 d-flex flex-column align-items-center">
@@ -40,24 +40,48 @@
         </div>
       </div>
       <div class="student-challenges-profile-box-last px-3 mt-2 d-flex flex-column align-items-center">
-        <p class="m-2 student-challenges-profile-box-title">Learning</p>
-        <%= image_tag "student_challenges_eng_flag.png", width: 30, height: 30  %>
+        <p class="m-2 student-challenges-profile-box-title">Ranking</p>
+        <p class="fw-bold text-white"><%= @students_ranking.index(current_user) + 1 %></p>
       </div>
     </div>
   </div>
   <div class="student-challenges-challenges-container d-flex">
     <div class="d-flex student-challenges-card-container flex-wrap justify-content-between flex-grow-1">
-      <% @top_challenges.each do |challenge| %>
+      <% @top_challenges.each_with_index do |challenge, index| %>
         <div class="student-challenges-card d-flex flex-column p-0">
           <% if challenge.photo.attached? %>
             <%= cl_image_tag challenge.photo.key, height: 200, width: "100%", class: "student-challenges-card-image" %>
           <% else %>
             <%= image_tag 'https://img.freepik.com/premium-vector/cute-black-ninja-read-book-illustration_295036-487.jpg', height: 200, width: "100%", class: "student-challenges-card-image" %>
           <% end %>
-          <div class="d-flex justify-content-between align-items-end">
+          <div class="d-flex justify-content-between align-items-start">
             <p class="text-white m-3 text-start student-challenges-card-title"><%= challenge.title %></p>
-            <div class="mx-2 my-3 student-challenges-card-date">
-              <%= challenge.due_date.strftime("%m月%d日") %>
+            <div class="m-3">
+              <% if challenge.submissions.find_by(user_id: current_user.id).present? && challenge.submissions.find_by(user_id: current_user.id).feedback.present?%>
+                <div class="student-challenges-card-feedback" data-bs-toggle="modal" data-bs-target="#feedbackModal<%= index %>">
+                  <%= image_tag "feedback_blue.png", height: 25, width: 25%>
+                </div>
+                <div class="modal fade" id="feedbackModal<%= index %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel"><%= challenge.user.last_name %>'s Feedback</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <%= challenge.submissions.find_by(user_id: current_user.id).feedback.content %>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% else %>
+                <div class="student-challenges-card-feedback-disabled">
+                  <%= image_tag "feedback_blue.png", height: 25, width: 25%>
+                </div>
+              <% end %>
             </div>
           </div>
           <% submission = challenge.submissions.find_by(user_id: current_user.id) %>
@@ -116,9 +140,14 @@
               <p class="text-white py-2 px-3">Vocabulary Mission</p>
             </div>
           <% end %>
-          <div class="d-flex align-items-center justify-content-end mx-3 mb-2 mt-auto">
-            <%= image_tag "grammar_game_experience_bar.png", height: "25px", width: "25px", class: "grammar-game-experience-bar-img ms-2" %>
-            <p class="student-challenges-card-experience text-white"><%= submission.present? ? (submission.score || 0) + (submission.games.map(&:score).compact.sum) : 0 %></p>
+          <div class="d-flex justify-content-between mx-2 mb-2 mt-auto">
+            <div class="m-2 student-challenges-card-date">
+              <p><%= challenge.due_date.strftime("%m月%d日") %></p>
+            </div>
+            <div class="d-flex m-1 align-items-center">
+              <%= image_tag "grammar_game_experience_bar.png", height: "25px", width: "25px", class: "grammar-game-experience-bar-img ms-2" %>
+              <p class="student-challenges-card-experience text-white"><%= submission.present? ? (submission.score || 0) + (submission.games.map(&:score).compact.sum) : 0 %></p>
+            </div>
           </div>
         </div>
       <% end %>
@@ -127,94 +156,127 @@
           <p>Leaderboard</p>
         </div>
         <div class="student-challenges-ranking-card-container">
-          <% @students_ranking.each do |student| %>
-            <div class="student-challenges-ranking-card d-flex p-2 justify-content-start align-items-center my-2">
-              <%= cl_image_tag student.photo.key, height: 40, width: 40, class: "student-challenge-raking-card-photo " %>
-              <div class="student-challenges-ranking-pentagon mx-2">
-                <p class="student-challenges-ranking-level"><%= 1 + (((student.submissions.map{|submission| submission.score}.sum) + (student.submissions.flat_map(&:games).select{|game| game.score.present?}.map{|game| game.score}.sum))/500).floor %></p>
+          <% @students_ranking.each_with_index do |student, index| %>
+            <% if student.id != current_user.id %>
+              <div class="student-challenges-ranking-card d-flex p-2 justify-content-start align-items-center my-2">
+              <% else %>
+                <div class="student-challenges-ranking-card-current-user d-flex p-2 justify-content-start align-items-center my-2">
+                <% end %>
+                <%= cl_image_tag student.photo.key, height: 40, width: 40, class: "student-challenge-raking-card-photo " %>
+                <div class="<%= index == 0 ? "student-challenges-ranking-pentagon-rank-1" : "student-challenges-ranking-pentagon" %> mx-2">
+                  <p class="student-challenges-ranking-level"><%= 1 + (((student.submissions.map{|submission| submission.score}.sum) + (student.submissions.flat_map(&:games).select{|game| game.score.present?}.map{|game| game.score}.sum))/500).floor %></p>
+                </div>
+                <p class="student-challenges-ranking-card-name"><%= student.first_name %></p>
+                <%= image_tag "grammar_game_experience_bar.png", height: "25px", width: "25px", class: "grammar-game-experience-bar-img ms-auto" %>
+                <p class="student-challenges-ranking-experience-number me-3"><%= (student.submissions.map{|submission| submission.score}.sum) + (student.submissions.flat_map(&:games).select{|game| game.score.present?}.map{|game| game.score}.sum) %></p>
               </div>
-              <p class="student-challenges-ranking-card-name"><%= student.first_name %></p>
-              <%= image_tag "grammar_game_experience_bar.png", height: "25px", width: "25px", class: "grammar-game-experience-bar-img ms-auto" %>
-              <p class="student-challenges-ranking-experience-number me-3"><%= (student.submissions.map{|submission| submission.score}.sum) + (student.submissions.flat_map(&:games).select{|game| game.score.present?}.map{|game| game.score}.sum) %></p>
-            </div>
-          <% end %>
-        </div>
-      </div>
-      <% @remaining_challenges.each do |challenge| %>
-        <div class="student-challenges-card d-flex flex-column p-0">
-          <% if challenge.photo.attached? %>
-            <%= cl_image_tag challenge.photo.key, height: 200, width: "100%", class: "student-challenges-card-image" %>
-          <% else %>
-            <%= image_tag 'https://img.freepik.com/premium-vector/cute-black-ninja-read-book-illustration_295036-487.jpg', height: 200, width: "100%", class: "student-challenges-card-image" %>
-          <% end %>
-          <div class="d-flex justify-content-between align-items-end">
-            <p class="text-white m-3 text-start student-challenges-card-title"><%= challenge.title %></p>
-            <div class="mx-2 my-3 student-challenges-card-date">
-              <%= challenge.due_date.strftime("%m月%d日") %>
-            </div>
+            <% end %>
           </div>
-          <% submission = challenge.submissions.find_by(user_id: current_user.id) %>
-          <% if submission.nil? %>
-            <%= link_to new_student_challenge_submission_path(challenge) do %>
+        </div>
+        <% @remaining_challenges.each_with_index do |challenge, index| %>
+          <div class="student-challenges-card d-flex flex-column p-0">
+            <% if challenge.photo.attached? %>
+              <%= cl_image_tag challenge.photo.key, height: 200, width: "100%", class: "student-challenges-card-image" %>
+            <% else %>
+              <%= image_tag 'https://img.freepik.com/premium-vector/cute-black-ninja-read-book-illustration_295036-487.jpg', height: 200, width: "100%", class: "student-challenges-card-image" %>
+            <% end %>
+            <div class="d-flex justify-content-between align-items-start">
+              <p class="text-white m-3 text-start student-challenges-card-title"><%= challenge.title %></p>
+              <div class="m-3">
+                <% if challenge.submissions.find_by(user_id: current_user.id).present? && challenge.submissions.find_by(user_id: current_user.id).feedback.present?%>
+                  <div class="student-challenges-card-feedback" data-bs-toggle="modal" data-bs-target="#feedbackModal-remaining-challenges<%= index %>">
+                    <%= image_tag "feedback_blue.png", height: 25, width: 25%>
+                  </div>
+                  <div class="modal fade" id="feedbackModal-remaining-challenges<%= index %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel"><%= challenge.user.last_name %>'s Feedback</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <%= challenge.submissions.find_by(user_id: current_user.id).feedback.content %>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% else %>
+                  <div class="student-challenges-card-feedback-disabled">
+                    <%= image_tag "feedback_blue.png", height: 25, width: 25%>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <% submission = challenge.submissions.find_by(user_id: current_user.id) %>
+            <% if submission.nil? %>
+              <%= link_to new_student_challenge_submission_path(challenge) do %>
+                <div class="d-flex justify-content-between align-items-center student-challenges-card-options mx-3 my-1">
+                  <p class="text-white py-2 px-3">Sentence Sensei</p>
+                  <%= image_tag "empty.png", height: 20, width: 20, class: "mx-3" %>
+                </div>
+              <% end %>
+            <% else %>
               <div class="d-flex justify-content-between align-items-center student-challenges-card-options mx-3 my-1">
                 <p class="text-white py-2 px-3">Sentence Sensei</p>
-                <%= image_tag "empty.png", height: 20, width: 20, class: "mx-3" %>
+                <%= image_tag "check.png", height: 20, width: 20, class: "mx-3" %>
               </div>
             <% end %>
-          <% else %>
-            <div class="d-flex justify-content-between align-items-center student-challenges-card-options mx-3 my-1">
-              <p class="text-white py-2 px-3">Sentence Sensei</p>
-              <%= image_tag "check.png", height: 20, width: 20, class: "mx-3" %>
-            </div>
-          <% end %>
-          <% if submission.present? %>
-            <%= link_to edit_student_submission_game_path(submission, submission.games.find_by(game_type: "grammar")) do %>
-              <div class="d-flex justify-content-between align-items-center student-challenges-card-options mx-3 my-1">
+            <% if submission.present? %>
+              <%= link_to edit_student_submission_game_path(submission, submission.games.find_by(game_type: "grammar")) do %>
+                <div class="d-flex justify-content-between align-items-center student-challenges-card-options mx-3 my-1">
+                  <p class="text-white py-2 px-3">Grammar Mission</p>
+                  <% if submission.games.find_by(game_type: "grammar").score.present? %>
+                    <%= image_tag "check.png", height: 20, width: 20, class: "mx-3" %>
+                  <% else %>
+                    <%= image_tag "empty.png", height: 20, width: 20, class: "mx-3" %>
+                  <% end %>
+                </div>
+              <% end %>
+              <%= link_to edit_student_submission_game_path(submission, submission.games.find_by(game_type: "spelling")) do %>
+                <div class="d-flex justify-content-between align-items-center student-challenges-card-options mx-3 my-1">
+                  <p class="text-white py-2 px-3">Spelling Mission</p>
+                  <% if submission.games.find_by(game_type: "spelling").score.present? %>
+                    <%= image_tag "check.png", height: 20, width: 20, class: "mx-3" %>
+                  <% else %>
+                    <%= image_tag "empty.png", height: 20, width: 20, class: "mx-3" %>
+                  <% end %>
+                </div>
+              <% end %>
+              <%= link_to edit_student_submission_game_path(submission, submission.games.find_by(game_type: "vocab")) do %>
+                <div class="d-flex justify-content-between align-items-center student-challenges-card-options mx-3 my-1">
+                  <p class="text-white py-2 px-3">Vocabulary Mission</p>
+                  <% if submission.games.find_by(game_type: "vocab").score.present? %>
+                    <%= image_tag "check.png", height: 20, width: 20, class: "mx-3" %>
+                  <% else %>
+                    <%= image_tag "empty.png", height: 20, width: 20, class: "mx-3" %>
+                  <% end %>
+                </div>
+              <% end %>
+            <% else %>
+              <div class="d-flex student-challenges-card-options-disabled mx-3 my-1">
                 <p class="text-white py-2 px-3">Grammar Mission</p>
-                <% if submission.games.find_by(game_type: "grammar").score.present? %>
-                  <%= image_tag "check.png", height: 20, width: 20, class: "mx-3" %>
-                <% else %>
-                  <%= image_tag "empty.png", height: 20, width: 20, class: "mx-3" %>
-                <% end %>
               </div>
-            <% end %>
-            <%= link_to edit_student_submission_game_path(submission, submission.games.find_by(game_type: "spelling")) do %>
-              <div class="d-flex justify-content-between align-items-center student-challenges-card-options mx-3 my-1">
+              <div class="d-flex student-challenges-card-options-disabled mx-3 my-1">
                 <p class="text-white py-2 px-3">Spelling Mission</p>
-                <% if submission.games.find_by(game_type: "spelling").score.present? %>
-                  <%= image_tag "check.png", height: 20, width: 20, class: "mx-3" %>
-                <% else %>
-                  <%= image_tag "empty.png", height: 20, width: 20, class: "mx-3" %>
-                <% end %>
               </div>
-            <% end %>
-            <%= link_to edit_student_submission_game_path(submission, submission.games.find_by(game_type: "vocab")) do %>
-              <div class="d-flex justify-content-between align-items-center student-challenges-card-options mx-3 my-1">
+              <div class="d-flex student-challenges-card-options-disabled mx-3 my-1">
                 <p class="text-white py-2 px-3">Vocabulary Mission</p>
-                <% if submission.games.find_by(game_type: "vocab").score.present? %>
-                  <%= image_tag "check.png", height: 20, width: 20, class: "mx-3" %>
-                <% else %>
-                  <%= image_tag "empty.png", height: 20, width: 20, class: "mx-3" %>
-                <% end %>
               </div>
             <% end %>
-          <% else %>
-            <div class="d-flex student-challenges-card-options-disabled mx-3 my-1">
-              <p class="text-white py-2 px-3">Grammar Mission</p>
+            <div class="d-flex justify-content-between mx-2 mb-2 mt-auto">
+              <div class="m-2 student-challenges-card-date">
+                <p><%= challenge.due_date.strftime("%m月%d日") %></p>
+              </div>
+              <div class="d-flex m-1 align-items-center">
+                <%= image_tag "grammar_game_experience_bar.png", height: "25px", width: "25px", class: "grammar-game-experience-bar-img ms-2" %>
+                <p class="student-challenges-card-experience text-white"><%= submission.present? ? (submission.score || 0) + (submission.games.map(&:score).compact.sum) : 0 %></p>
+              </div>
             </div>
-            <div class="d-flex student-challenges-card-options-disabled mx-3 my-1">
-              <p class="text-white py-2 px-3">Spelling Mission</p>
-            </div>
-            <div class="d-flex student-challenges-card-options-disabled mx-3 my-1">
-              <p class="text-white py-2 px-3">Vocabulary Mission</p>
-            </div>
-          <% end %>
-          <div class="d-flex align-items-center justify-content-end mx-3 mb-2 mt-auto">
-            <%= image_tag "grammar_game_experience_bar.png", height: "25px", width: "25px", class: "grammar-game-experience-bar-img ms-2" %>
-            <p class="student-challenges-card-experience text-white"><%= submission.present? ? (submission.score || 0) + (submission.games.map(&:score).compact.sum) : 0 %></p>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>

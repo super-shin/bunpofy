@@ -45,7 +45,7 @@ export default class extends Controller {
 		Create ${number_sentences} really simple sentences in English for Japanese Junior High Students.
 		Each sentence should use one of the following words: (${this.wordsArray.join(
 			", "
-		)}).The sentences should be straightforward and not interchangeable in meaning. The sentence should not have more than 8 words. 
+		)}).The sentences should be straightforward and not interchangeable in meaning. The sentence should not have more than 6 words and should not have digits, instead use words to represent numbers. 
   Ensure that each sentence clearly conveys its intended meaning and does not allow for the words to be interchanged without changing the context.
 	Please format the response as a JSON array with the following structure (Dont write anything before and after "[]"):
 		[{"Sentence": "string"},
@@ -165,15 +165,12 @@ export default class extends Controller {
 		);
 		this.buttonElementTarget.insertAdjacentHTML(
 			"afterbegin",
-			`<div class="correct-sentence-container d-flex flex-wrap justify-content-start align-items-center p-3">
-			<img src="${
-				this.audioIcon
-			}" height="30" width="30" id="audio-icon-grammar-game" class="me-2" data-grammar-game-target="audioElement" data-action="click->grammar-game#audio"/>
-			${this.correctSentencesArray[this.currentSentenceIndex].Sentence}
+			`<div class="correct-sentence-container-grammar-game d-flex flex-wrap justify-content-start align-items-center p-3"><p class="mt-1">
+			<div class="correct-sentence-tooltip-grammar-game"><p>Correct Sentence:</p></div>
+			<i class="fa-solid fa-volume-high me-1" id="audio-icon-grammar-game" data-grammar-game-target="audioElement" data-action="click->grammar-game#audio"></i>
+			${this.correctSentencesArray[this.currentSentenceIndex].Sentence}</p>
 			</div>`
 		);
-		// Reproduce the sentence audio
-		this.audio();
 
 		// Disable events of words(options)
 		this.wordElementTargets.forEach((element) => {
