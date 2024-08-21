@@ -51,6 +51,90 @@
       </div>
     </div>
   </div>
+  <!--############################ CHARTS AND GRAPHS ############################-->
+  <div class="container mb-4">
+    <div class="row d-flex align-items-start justify-content-between">
+      <!-- COMPLETION Column -->
+      <div class="col-md-4 mb-4 mb-md-0">
+        <div class="bg-white shadow d-flex flex-column align-items-center position-relative" style="height: 300px;">
+          <%= gauge_chart @completion,
+            class: 'box',
+            height: '300px',
+            options: {
+              title: {
+                text: 'Completion Rate',
+                left: 'center'
+              }}%>
+          <% if @students_without_feedback.count == 0 %>
+            <a class="btn btn-light disabled w-75 rounded-pill mb-3 position-absolute" style="bottom: 0;">No Pending Feedback</a>
+          <% else %>
+            <a class="btn btn-primary text-white w-75 rounded-pill mb-3 position-absolute" style="bottom: 0;" href="#table-start">
+              Pending Feedback
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <%=@students_without_feedback.count %>
+                <span class="visually-hidden">unread messages</span>
+              </span>
+            </a>
+          <% end %>
+        </div>
+      </div>
+      <!-- RADAR Chart -->
+      <div class="col-md-4 mb-4">
+        <div class="bg-white shadow">
+          <%= radar_chart @radar,
+          height: '300px',
+          class: 'box',
+          options: {
+            legend: {
+              data: ['Average Salaries', 'Maximum Salary'],
+              orient: 'vertical',
+              left: '20%'
+            }
+          }
+        %>
+        </div>
+      </div>
+      <!-- PERCENTAGE Column -->
+      <div class="col-md-4 mb-4">
+        <div class="row h-100">
+          <!-- LEFT side -->
+          <div class="col-6 d-flex flex-column gap-2 mb-3">
+            <div class="bg-white shadow border-0 d-flex flex-column p-3">
+              <i class="fa-solid blue mb-4 fa-feather fs-4"></i>
+              <div class="d-flex flex-column">
+                <span class="dark-gray"><small>Submission Average</small></span>
+                <span class="fs-3 <%= @sub_avg == 0 ? 'dark-gray' : @sub_avg > 83 ? 'pale-green' : @sub_avg > 73 ? 'pale-yellow' : 'pale-red' %>"><%= @sub_avg %> %</span>
+              </div>
+            </div>
+            <div class="bg-white shadow border-0 d-flex flex-column p-3">
+              <i class="fa-solid blue mb-4 fa-arrow-down-a-z fs-4"></i>
+              <div class="d-flex flex-column">
+                <span class="dark-gray"><small>Spelling Average</small></span>
+                <span class="fs-3 <%= @spell_avg == 0 ? 'dark-gray' : @spell_avg > 83 ? 'pale-green' : @spell_avg > 73 ? 'pale-yellow' : 'pale-red' %>"><%= @spell_avg %> %</span>
+              </div>
+            </div>
+          </div>
+          <!-- RIGHT side -->
+          <div class="col-6 d-flex flex-column gap-2">
+            <div class="bg-white shadow border-0 d-flex flex-column p-3">
+              <i class="fa-solid blue mb-4 fa-spell-check fs-4"></i>
+              <div class="d-flex flex-column">
+                <span class="dark-gray"><small>Vocabulary Average</small></span>
+                <span class="fs-3 <%= @vocab_avg == 0 ? 'dark-gray' : @vocab_avg > 83 ? 'pale-green' : @vocab_avg > 73 ? 'pale-yellow' : 'pale-red' %>"><%= @vocab_avg %> %</span>
+              </div>
+            </div>
+            <div class="bg-white shadow border-0 d-flex flex-column p-3">
+              <i class="fa-solid blue mb-4 fa-puzzle-piece fs-4"></i>
+              <div class="d-flex flex-column">
+                <span class="dark-gray"><small>Grammar Average</small></span>
+                <span class="fs-3 <%= @grammar_avg == 0 ? 'dark-gray' : @grammar_avg > 83 ? 'pale-green' : @grammar_avg > 73 ? 'pale-yellow' : 'pale-red' %>"><%= @grammar_avg %> %</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <!--############################ NEW SUBMISSIONS ############################-->
   <span class="dark-gray">
     <span class="green-pill"></span> High Score
@@ -58,7 +142,7 @@
     <span class="red-pill"></span> Low Score
     <span class="gray-pill"></span> Undefined
   </span>
-  <div class="table-responsive">
+  <div class="table-responsive" id="table-start">
     <table class="table text-center table-hover">
       <thead>
         <tr>

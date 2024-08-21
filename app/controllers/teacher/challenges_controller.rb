@@ -12,15 +12,40 @@ class Teacher::ChallengesController < ApplicationController
     @feedback = Feedback.new
     submission_ids_with_feedback = Feedback.pluck(:submission_id).uniq
     students_with_submissions = @challenge.classroom.students.joins(:submissions).where(submissions: { id: @submissions.pluck(:id) })
-
     # Students who have submitted work BUT not received feedback
     @students_without_feedback = students_with_submissions.where.not(submissions: { id: submission_ids_with_feedback }).order('submissions.score ASC')
-    
     # Students who have submitted work AND received feedback
     @students_with_submissions = students_with_submissions.order('submissions.score DESC') - @students_without_feedback
-    
     # Students who have NOT submitted any work
     @students_without_submissions = @challenge.classroom.students.where.not(id: @students_with_submissions.pluck(:id)) - @students_without_feedback
+    #CHARTS and GRAPHS Calculations and Variables
+    @completion = { data: {value: ((@challenge.submissions.select(:user_id).distinct.count / @challenge.classroom.attendances.count) * 100), detail: {formatter: "{value}%", fontSize: 20, color: '#FCD74A'}} }
+    @sub_avg = @challenge.submissions.where.not(score: nil).average(:score)&.round(2) || 0
+    @spell_avg = @challenge.submissions.joins(:games).where(games: { game_type: 'spelling' }).where.not(games: { score: nil }).average('games.score')&.round(2) || 0
+    @vocab_avg = @challenge.submissions.joins(:games).where(games: { game_type: 'vocab' }).where.not(games: { score: nil }).average('games.score')&.round(2) || 0
+    @grammar_avg = @challenge.submissions.joins(:games).where(games: { game_type: 'grammar' }).where.not(games: { score: nil }).average('games.score')&.round(2) || 0
+    @radar = {
+      indicators: {
+        "Submission" => 100,
+        "Spelling" => 100,
+        "Vocabulary" => 100,
+        "Grammar" => 100
+      },
+      data: [
+        {
+          name: 'Average Scores',
+          value: [97, 90, 80, 70]
+        },
+        {
+          name: 'Maximum Score',
+          value: [95, 92, 91, 99]
+        },
+        {
+          name: 'Minimum Score',
+          value: [45, 20, 50, 30]
+        }
+      ]
+    }
   end
 
   def new
