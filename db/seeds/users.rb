@@ -13,7 +13,7 @@ puts "Seeding Class A from Tokyo Elementary School...."
 User.create!([
   { email: 'student@gmail.com', password: '123456', first_name: 'Kazuto', last_name: 'Fuji', role: 'student', school: 'Tokyo Elementary School' },
   { email: 'saitoayumi@tges.com', password: '123456', first_name: 'Ayumi', last_name: 'Saito', role: 'student', school: 'Tokyo Elementary School' },
-  { email: 'takahashiryo@tges.com', password: '123456', first_name: 'Ryo', last_name: 'Takahashi', role: 'student', school: 'Tokyo Elementary School' },
+  { email: 'takahashiharuto@tges.com', password: '123456', first_name: 'Haruto', last_name: 'Takahashi', role: 'student', school: 'Tokyo Elementary School' },
   { email: 'yamamotohiro@tges.com', password: '123456', first_name: 'Hiro', last_name: 'Yamamoto', role: 'student', school: 'Tokyo Elementary School' },
   { email: 'fujimorikazu@tges.com', password: '123456', first_name: 'Kazu', last_name: 'Fujimori', role: 'student', school: 'Tokyo Elementary School' },
   { email: 'matsumotokimi@tges.com', password: '123456', first_name: 'Kimi', last_name: 'Matsumoto', role: 'student', school: 'Tokyo Elementary School' },
@@ -83,11 +83,11 @@ User.create!([
   { email: 'kawaguchiryo@minami.com', password: '123456', first_name: 'Ryo', last_name: 'Kawaguchi', role: 'student', school: 'Minami International School' },
   { email: 'nakanoshin@minami.com', password: '123456', first_name: 'Shin', last_name: 'Nakano', role: 'student', school: 'Minami International School' },
   { email: 'hayashikazu@minami.com', password: '123456', first_name: 'Kazu', last_name: 'Hayashi', role: 'student', school: 'Minami International School' },
-  { email: 'suzukiryo@minami.com', password: '123456', first_name: 'Ryo', last_name: 'Suzuki', role: 'student', school: 'Minami International School' },
+  { email: 'suzukidaiki@minami.com', password: '123456', first_name: 'Daiki', last_name: 'Suzuki', role: 'student', school: 'Minami International School' },
   { email: 'okamotoshin@minami.com', password: '123456', first_name: 'Shin', last_name: 'Okamoto', role: 'student', school: 'Minami International School' },
   { email: 'tanakikai@minami.com', password: '123456', first_name: 'Kai', last_name: 'Tanaka', role: 'student', school: 'Minami International School' },
   { email: 'takeuchiyuki@minami.com', password: '123456', first_name: 'Yuki', last_name: 'Takeuchi', role: 'student', school: 'Minami International School' },
-  { email: 'miyamotoryo@minami.com', password: '123456', first_name: 'Ryo', last_name: 'Miyamoto', role: 'student', school: 'Minami International School' },
+  { email: 'miyamotokosuke@minami.com', password: '123456', first_name: 'Kosuke', last_name: 'Miyamoto', role: 'student', school: 'Minami International School' },
   { email: 'yoshidakazu@minami.com', password: '123456', first_name: 'Kazu', last_name: 'Yoshida', role: 'student', school: 'Minami International School' },
   { email: 'sakamotoyuta@minami.com', password: '123456', first_name: 'Yuta', last_name: 'Sakamoto', role: 'student', school: 'Minami International School' },
   { email: 'sakamotoemi@minami.com', password: '123456', first_name: 'Emi', last_name: 'Sakamoto', role: 'student', school: 'Minami International School' },
@@ -128,11 +128,11 @@ class_d_images = {
   'kawaguchiryo@minami.com' => 'https://res.cloudinary.com/ddzvfukq6/image/upload/c_pad,w_100,h_100/v1724235582/4ec915e2-d3d3-4694-907a-9191ad3fa495.png',
   'nakanoshin@minami.com' => 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724235713/e8eb8e4c-f520-47dd-b40e-c17f9b4ddc94.png',
   'hayashikazu@minami.com' => 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724236178/fd996ec1-7950-4716-bf1b-23a24e2be377.png',
-  'suzukiryo@minami.com' => 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724236318/e809d7d1-68f9-455e-9099-f69632c6a9fc.png',
+  'suzukidaiki@minami.com' => 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724236318/e809d7d1-68f9-455e-9099-f69632c6a9fc.png',
   'okamotoshin@minami.com' => 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724237749/82c52426-5171-4ad1-9a9e-4178ee909855.png',
   'tanakikai@minami.com' => 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724236484/158e520d-8c51-4cdf-bd14-1f78f069f25d.png',
   'takeuchiyuki@minami.com' => 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724237432/1f9adc5c-273f-4455-bd88-fd694464be31.png',
-  'miyamotoryo@minami.com' => 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724237616/f8016c7f-b993-472b-85ac-483520ea3f69.png',
+  'miyamotokosuke@minami.com' => 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724237616/f8016c7f-b993-472b-85ac-483520ea3f69.png',
   'yoshidakazu@minami.com' => 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724237510/3af8cff2-ee77-4ada-8081-2ea309369782.png',
   'sakamotoyuta@minami.com' => 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724236859/d94a2fcc-5fd9-4a72-893c-1612909a1e9e.png',
   'sakamotoemi@minami.com' => 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724236076/66391b89-19ee-4ab0-927b-5d95fd6d1c52.png',
@@ -150,41 +150,41 @@ class_d_images = {
 
 puts "Seeding PICTURES...."
 
-# List of all images including specific ones for Class C
 default_male_image_url = 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723555359/development/afl0gfvruu22fe3jgajtknke2kk5.webp'
 default_female_image_url = 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723555982/development/7f93bfp053d2mgsmdvwov3nr4r6l.webp'
 default_sensei_image_url = 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723657074/development/3lv82qrofset16ziav2dkem0t2vf.webp'
 
-# Helper method to attach a photo from a URL
+# List of male first names
+male_names = %w[Naruto Sasuke Shikamaru Neji Rock Choji Kiba Shino Itachi Tenma Zaku Kabuto Misumi Yoroi Kazuo Ryo Daiki Kosuke Hiro Kazu Tomo Taka Sora Shin Ichi Haru Shun Yuto Ki Geko Kai Yuki Yuta Shoyo Tobio Yuu Tadashi Kei Koushi Azumane Ryuunosuke Chikara Shinsuke]
+
 def attach_photo(user, photo_url)
   io = URI.open(photo_url)
   user.photo.attach(io: io, filename: File.basename(photo_url), content_type: "image/webp")
 end
 
-# Attach specific images for Class C users
 User.all.each do |user|
   if user.school == 'Karasuno Elementary School'
     if class_c_images[user.email]
-      puts "Attaching SPECIFIC image to #{user.first_name} #{user.last_name}"
+      puts "Attaching SPECIFIC image to #{user.first_name}"
       attach_photo(user, class_c_images[user.email])
     else
-      puts "Attaching DEFAULT image to #{user.first_name} #{user.last_name}"
+      puts "Attaching DEFAULT image to #{user.first_name}"
       attach_photo(user, user.first_name.in?(male_names) ? default_male_image_url : default_female_image_url)
     end
   elsif user.school == 'Minami International School'
     if class_d_images[user.email]
-      puts "Attaching SPECIFIC image to #{user.first_name} #{user.last_name}"
+      puts "Attaching SPECIFIC image to #{user.first_name}"
       attach_photo(user, class_d_images[user.email])
     else
-      puts "Attaching DEFAULT image to #{user.first_name} #{user.last_name}"
+      puts "Attaching DEFAULT image to #{user.first_name}"
       attach_photo(user, user.first_name.in?(male_names) ? default_male_image_url : default_female_image_url)
     end
   else
     if user[:role] == 'student'
-      puts "Attaching DEFAULT student image to #{user.first_name} #{user.last_name}"
+      puts "Attaching DEFAULT student image to #{user.first_name}"
       attach_photo(user, user.first_name.in?(male_names) ? default_male_image_url : default_female_image_url)
     else
-      puts "Attaching sensei image to #{user.first_name} #{user.last_name}"
+      puts "Attaching sensei image to #{user.first_name}"
       attach_photo(user, default_sensei_image_url)
     end
   end

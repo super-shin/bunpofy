@@ -66,22 +66,40 @@ if confirmation == 'y'
       puts 'SEED SUCCESS! 100% NEW DATABASE!'
 
     else
-      #Destroy all Users
-      User.destroy_all
-      puts "Destroyed Users"
-      #Reset ID key sequences
-      ActiveRecord::Base.connection.execute("TRUNCATE TABLE users, classrooms, attendances, challenges, submissions, feedbacks, games RESTART IDENTITY CASCADE")
-      puts "RESET ID Numbers"
+      puts "USERS DESTROY WARNING: Are you okay to proceed? (y/n)"
+      confirmation = gets.chomp.downcase
+    
+        if confirmation == 'y'
+          #Destroy all Users
+          User.destroy_all
+          puts "Destroyed Users"
+          #Reset ID key sequences
+          ActiveRecord::Base.connection.execute("TRUNCATE TABLE users, classrooms, attendances, challenges, submissions, feedbacks, games RESTART IDENTITY CASCADE")
+          puts "RESET ID Numbers"
 
-      #STEP 2: SEED Users - Classrooms - Attendances
-      require_relative 'seeds/users'
-      require_relative 'seeds/classrooms'
-      require_relative 'seeds/attendance'
-      require_relative 'seeds/challenges.rb'
-      require_relative 'seeds/submission.rb'
-      require_relative 'seeds/games.rb'
+          #STEP 2: SEED Users - Classrooms - Attendances
+          require_relative 'seeds/users'
+          require_relative 'seeds/classrooms'
+          require_relative 'seeds/attendance'
+          require_relative 'seeds/challenges.rb'
+          require_relative 'seeds/submission.rb'
+          require_relative 'seeds/games.rb'
 
-      puts 'SEED SUCCESS! No Textbooks seeded or deleted.'
+          puts 'SEED SUCCESS! No Textbooks seeded or deleted.'
+        else
+          #Reset ID key sequences
+          ActiveRecord::Base.connection.execute("TRUNCATE TABLE classrooms, attendances, challenges, submissions, feedbacks, games RESTART IDENTITY CASCADE")
+          puts "RESET ID Numbers"
+
+          #STEP 2: SEED Users - Classrooms - Attendances
+          require_relative 'seeds/classrooms'
+          require_relative 'seeds/attendance'
+          require_relative 'seeds/challenges.rb'
+          require_relative 'seeds/submission.rb'
+          require_relative 'seeds/games.rb'
+
+          puts 'SEED SUCCESS! No Textbooks AND Users seeded or deleted.'
+        end
     end
 
 else
