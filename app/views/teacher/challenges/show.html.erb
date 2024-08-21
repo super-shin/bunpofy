@@ -57,14 +57,10 @@
       <!-- COMPLETION Column -->
       <div class="col-md-4 mb-4 mb-md-0">
         <div class="bg-white shadow d-flex flex-column align-items-center position-relative" style="height: 300px;">
+          <span class="flex-grow-1 position-absolute top-0 fs-4 blue">Completion Rate</span>
           <%= gauge_chart @completion,
             class: 'box',
-            height: '300px',
-            options: {
-              title: {
-                text: 'Completion Rate',
-                left: 'center'
-              }}%>
+            height: '300px'%>
           <% if @students_without_feedback.count == 0 %>
             <a class="btn btn-light disabled w-75 rounded-pill mb-3 position-absolute" style="bottom: 0;">No Pending Feedback</a>
           <% else %>
@@ -76,22 +72,6 @@
               </span>
             </a>
           <% end %>
-        </div>
-      </div>
-      <!-- RADAR Chart -->
-      <div class="col-md-4 mb-4">
-        <div class="bg-white shadow">
-          <%= radar_chart @radar,
-          height: '300px',
-          class: 'box',
-          options: {
-            legend: {
-              data: ['Average Salaries', 'Maximum Salary'],
-              orient: 'vertical',
-              left: '20%'
-            }
-          }
-        %>
         </div>
       </div>
       <!-- PERCENTAGE Column -->
@@ -131,6 +111,16 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <!-- RADAR Chart -->
+      <div class="col-md-4 mb-4">
+        <div class="bg-white shadow position-relative d-flex align-items-end" style="height: 300px;">
+          <div class="flex-grow-1 position-absolute top-0 fs-4 blue d-flex justify-content-center w-100"><span>Challenge Scores</span></div>
+          <%= radar_chart @radar,
+          height: '260px',
+          class: 'box'
+        %>
         </div>
       </div>
     </div>

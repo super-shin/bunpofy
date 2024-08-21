@@ -21,9 +21,19 @@ class Teacher::ChallengesController < ApplicationController
     #CHARTS and GRAPHS Calculations and Variables
     @completion = { data: {value: ((@challenge.submissions.select(:user_id).distinct.count / @challenge.classroom.attendances.count) * 100), detail: {formatter: "{value}%", fontSize: 20, color: '#FCD74A'}} }
     @sub_avg = @challenge.submissions.where.not(score: nil).average(:score)&.round(2) || 0
+    @max_sub = @challenge.submissions.where.not(score: nil).maximum(:score) || 0
+    @min_sub = @challenge.submissions.where.not(score: nil).maximum(:score) || 0
     @spell_avg = @challenge.submissions.joins(:games).where(games: { game_type: 'spelling' }).where.not(games: { score: nil }).average('games.score')&.round(2) || 0
     @vocab_avg = @challenge.submissions.joins(:games).where(games: { game_type: 'vocab' }).where.not(games: { score: nil }).average('games.score')&.round(2) || 0
     @grammar_avg = @challenge.submissions.joins(:games).where(games: { game_type: 'grammar' }).where.not(games: { score: nil }).average('games.score')&.round(2) || 0
+    @max_spell = @challenge.submissions.joins(:games).where(games: { game_type: 'spelling' }).where.not(games: { score: nil }).maximum('games.score') || 0
+    @max_vocab = @challenge.submissions.joins(:games).where(games: { game_type: 'vocab' }).where.not(games: { score: nil }).maximum('games.score') || 0
+    @max_grammar = @challenge.submissions.joins(:games).where(games: { game_type: 'grammar' }).where.not(games: { score: nil }).maximum('games.score') || 0
+    @min_spell = @challenge.submissions.joins(:games).where(games: { game_type: 'spelling' }).where.not(games: { score: nil }).minimum('games.score') || 0
+    @min_vocab = @challenge.submissions.joins(:games).where(games: { game_type: 'vocab' }).where.not(games: { score: nil }).minimum('games.score') || 0
+    @min_grammar = @challenge.submissions.joins(:games).where(games: { game_type: 'grammar' }).where.not(games: { score: nil }).minimum('games.score') || 0
+
+
     @radar = {
       indicators: {
         "Submission" => 100,
@@ -34,15 +44,15 @@ class Teacher::ChallengesController < ApplicationController
       data: [
         {
           name: 'Average Scores',
-          value: [97, 90, 80, 70]
+          value: [@sub_avg, @spell_avg, @vocab_avg, @grammar_avg]
         },
         {
           name: 'Maximum Score',
-          value: [95, 92, 91, 99]
+          value: [@max_sub, @max_spell, @max_vocab, @max_grammar]
         },
         {
           name: 'Minimum Score',
-          value: [45, 20, 50, 30]
+          value: [@min_sub, @min_spell, @min_vocab, @min_grammar]
         }
       ]
     }
