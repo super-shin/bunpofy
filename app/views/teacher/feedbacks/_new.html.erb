@@ -21,7 +21,7 @@
               <p class="dark-gray ms-4"><small>AI response not available.</small></p>
             <% else %>
               <div data-controller="clipboard">
-                <span class="fs-5" data-clipboard-target="source"><%= jSONRESPONSE_sentence %></span>
+                <span class="fs-6 text-muted" data-clipboard-target="source"><%= jSONRESPONSE_sentence %></span>
                 <i class="fa-regular fa-copy align-text-top dark-gray" style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Copy" data-action="click->clipboard#copy" data-clipboard-target="copybutton"></i>
               </div>
             <% end %>
@@ -30,7 +30,7 @@
             <div class="card px-4 py-2 w-100 d-flex flex-column text-start">
               <span><img src="https://res.cloudinary.com/ddzvfukq6/image/upload/v1724114176/gemini_rkqmxj.png" alt="gemini-logo" style="width:20px;"> <small class="blue mb-5">AI Alternative <%= alternatives.uniq.count == 1 ? '' : index == 0 ? '#1' : "##{index + 1}" %></small></span>
               <div data-controller="clipboard">
-                <span class="fs-5" data-clipboard-target="source"><%= alt %></span>
+                <span class="fs-6 text-muted" data-clipboard-target="source"><%= alt %></span>
                 <i class="fa-regular fa-copy align-text-top dark-gray" style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Copy" data-action="click->clipboard#copy" data-clipboard-target="copybutton"></i>
               </div>
             </div>
