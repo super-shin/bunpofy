@@ -1,9 +1,8 @@
 <div class="container">
   <!--############################ HEADER ############################-->
-  <div class="row mx-2 d-flex align-items-center justify-content-center">
+  <div class="row d-flex align-items-center justify-content-center">
     <div class="row col-12 d-flex mb-4 p-4 bg-white shadow justify-content-between">
       <div class="col-md-3 col-sm-12 ps-0 text-center">
-        <%#= image_tag(@challenge.photo_url, id: "challenge-card-image", alt: "Challenge Image") %>
         <% if @challenge.photo.attached? %>
           <%= cl_image_tag @challenge.photo.key, style: 'max-width: 300px;', width: 300, quality: '50' %>
         <% else %>
@@ -52,76 +51,74 @@
     </div>
   </div>
   <!--############################ CHARTS AND GRAPHS ############################-->
-  <div class="container mb-4">
-    <div class="row d-flex align-items-start justify-content-between">
-      <!-- COMPLETION Column -->
-      <div class="col-md-4 mb-4 mb-md-0">
-        <div class="bg-white shadow d-flex flex-column align-items-center position-relative" style="height: 300px;">
-          <span class="flex-grow-1 position-absolute top-0 fs-4 blue">Completion Rate</span>
-          <%= gauge_chart @completion,
+  <div class="row d-flex align-items-start justify-content-between mb-4">
+    <!-- COMPLETION Column -->
+    <div class="col-md-4 mb-4 mb-md-0 p-0">
+      <div class="bg-white shadow d-flex flex-column align-items-center position-relative" style="height: 300px;">
+        <span class="flex-grow-1 position-absolute top-0 fs-4 blue">Completion Rate</span>
+        <%= gauge_chart @completion,
             class: 'box',
             height: '300px'%>
-          <% if @students_without_feedback.count == 0 %>
-            <a class="btn btn-light disabled w-75 rounded-pill mb-3 position-absolute" style="bottom: 0;">No Pending Feedback</a>
-          <% else %>
-            <a class="btn btn-primary text-white w-75 rounded-pill mb-3 position-absolute" style="bottom: 0;" href="#table-start">
-              Pending Feedback
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                <%=@students_without_feedback.count %>
-                <span class="visually-hidden">unread messages</span>
-              </span>
-            </a>
-          <% end %>
-        </div>
+        <% if @students_without_feedback.count == 0 %>
+          <a class="btn btn-light disabled w-75 rounded-pill mb-3 position-absolute" style="bottom: 0;">No Pending Feedback</a>
+        <% else %>
+          <a class="btn btn-primary text-white w-75 rounded-pill mb-3 position-absolute" style="bottom: 0;" href="#table-start">
+            Pending Feedback
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              <%=@students_without_feedback.count %>
+              <span class="visually-hidden">unread messages</span>
+            </span>
+          </a>
+        <% end %>
       </div>
-      <!-- PERCENTAGE Column -->
-      <div class="col-md-4 mb-4">
-        <div class="row h-100">
-          <!-- LEFT side -->
-          <div class="col-6 d-flex flex-column gap-2 mb-3">
-            <div class="bg-white shadow border-0 d-flex flex-column p-3">
-              <i class="fa-solid blue mb-4 fa-feather fs-4"></i>
-              <div class="d-flex flex-column">
-                <span class="dark-gray"><small>Submission Average</small></span>
-                <span class="fs-3 <%= @sub_avg == 0 ? 'dark-gray' : @sub_avg > 83 ? 'pale-green' : @sub_avg > 73 ? 'pale-yellow' : 'pale-red' %>"><%= @sub_avg %> %</span>
-              </div>
-            </div>
-            <div class="bg-white shadow border-0 d-flex flex-column p-3">
-              <i class="fa-solid blue mb-4 fa-arrow-down-a-z fs-4"></i>
-              <div class="d-flex flex-column">
-                <span class="dark-gray"><small>Spelling Average</small></span>
-                <span class="fs-3 <%= @spell_avg == 0 ? 'dark-gray' : @spell_avg > 83 ? 'pale-green' : @spell_avg > 73 ? 'pale-yellow' : 'pale-red' %>"><%= @spell_avg %> %</span>
-              </div>
+    </div>
+    <!-- PERCENTAGE Column -->
+    <div class="col-md-4 mb-4">
+      <div class="row h-100">
+        <!-- LEFT side -->
+        <div class="col-6 d-flex flex-column gap-2 mb-3">
+          <div class="bg-white shadow border-0 d-flex flex-column p-3">
+            <i class="fa-solid blue mb-4 fa-feather fs-4"></i>
+            <div class="d-flex flex-column">
+              <span class="dark-gray"><small>Submission Average</small></span>
+              <span class="fs-3 <%= @sub_avg == 0 ? 'dark-gray' : @sub_avg > 83 ? 'pale-green' : @sub_avg > 73 ? 'pale-yellow' : 'pale-red' %>"><%= @sub_avg %> %</span>
             </div>
           </div>
-          <!-- RIGHT side -->
-          <div class="col-6 d-flex flex-column gap-2">
-            <div class="bg-white shadow border-0 d-flex flex-column p-3">
-              <i class="fa-solid blue mb-4 fa-spell-check fs-4"></i>
-              <div class="d-flex flex-column">
-                <span class="dark-gray"><small>Vocabulary Average</small></span>
-                <span class="fs-3 <%= @vocab_avg == 0 ? 'dark-gray' : @vocab_avg > 83 ? 'pale-green' : @vocab_avg > 73 ? 'pale-yellow' : 'pale-red' %>"><%= @vocab_avg %> %</span>
-              </div>
-            </div>
-            <div class="bg-white shadow border-0 d-flex flex-column p-3">
-              <i class="fa-solid blue mb-4 fa-puzzle-piece fs-4"></i>
-              <div class="d-flex flex-column">
-                <span class="dark-gray"><small>Grammar Average</small></span>
-                <span class="fs-3 <%= @grammar_avg == 0 ? 'dark-gray' : @grammar_avg > 83 ? 'pale-green' : @grammar_avg > 73 ? 'pale-yellow' : 'pale-red' %>"><%= @grammar_avg %> %</span>
-              </div>
+          <div class="bg-white shadow border-0 d-flex flex-column p-3">
+            <i class="fa-solid blue mb-4 fa-arrow-down-a-z fs-4"></i>
+            <div class="d-flex flex-column">
+              <span class="dark-gray"><small>Spelling Average</small></span>
+              <span class="fs-3 <%= @spell_avg == 0 ? 'dark-gray' : @spell_avg > 83 ? 'pale-green' : @spell_avg > 73 ? 'pale-yellow' : 'pale-red' %>"><%= @spell_avg %> %</span>
             </div>
           </div>
         </div>
+        <!-- RIGHT side -->
+        <div class="col-6 d-flex flex-column gap-2">
+          <div class="bg-white shadow border-0 d-flex flex-column p-3">
+            <i class="fa-solid blue mb-4 fa-spell-check fs-4"></i>
+            <div class="d-flex flex-column">
+              <span class="dark-gray"><small>Vocabulary Average</small></span>
+              <span class="fs-3 <%= @vocab_avg == 0 ? 'dark-gray' : @vocab_avg > 83 ? 'pale-green' : @vocab_avg > 73 ? 'pale-yellow' : 'pale-red' %>"><%= @vocab_avg %> %</span>
+            </div>
+          </div>
+          <div class="bg-white shadow border-0 d-flex flex-column p-3">
+            <i class="fa-solid blue mb-4 fa-puzzle-piece fs-4"></i>
+            <div class="d-flex flex-column">
+              <span class="dark-gray"><small>Grammar Average</small></span>
+              <span class="fs-3 <%= @grammar_avg == 0 ? 'dark-gray' : @grammar_avg > 83 ? 'pale-green' : @grammar_avg > 73 ? 'pale-yellow' : 'pale-red' %>"><%= @grammar_avg %> %</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- RADAR Chart -->
-      <div class="col-md-4 mb-4">
-        <div class="bg-white shadow position-relative d-flex align-items-end" style="height: 300px;">
-          <div class="flex-grow-1 position-absolute top-0 fs-4 blue d-flex justify-content-center w-100"><span>Challenge Scores</span></div>
-          <%= radar_chart @radar,
+    </div>
+    <!-- RADAR Chart -->
+    <div class="col-md-4 mb-4 p-0">
+      <div class="bg-white shadow position-relative d-flex align-items-end" style="height: 300px;">
+        <div class="flex-grow-1 position-absolute top-0 fs-4 blue d-flex justify-content-center w-100"><span>Challenge Scores</span></div>
+        <%= radar_chart @radar,
           height: '260px',
           class: 'box'
         %>
-        </div>
       </div>
     </div>
   </div>
