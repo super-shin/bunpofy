@@ -2,7 +2,7 @@ import { Controller } from '@hotwired/stimulus';
 
 // Connects to data-controller="spelling-game"
 export default class extends Controller {
-  static values = { wordsArray: Array, correctSound: String, incorrectSound: String, jpwordsArray: Array };
+  static values = { wordsArray: Array, correctSound: String, incorrectSound: String, jpwordsArray: Array, gameId: String, submissionId: String};
   static targets = ['input', 'results'];
 
   connect() {
@@ -42,10 +42,10 @@ export default class extends Controller {
     event.preventDefault();
     const resultElement = this.resultsTarget;
     const userInput = this.inputTarget.value.trim().toLowerCase();
-    this.emptyUserArray.push(userInput);
     if (userInput === this.randomWord.toLowerCase()) {
+      this.emptyUserArray.push(userInput);
       this.correctSound.play();
-      this.score += 10;
+      this.score += 50;
       this.currentAttempt++;
       this.updateScore();
       resultElement.innerHTML = `
@@ -116,12 +116,51 @@ export default class extends Controller {
         <p id="congrats">
           Congratulations on completing the game! You scored ${this.score} points.
         </p>
+        <br>
+        <button></button>
       </div>
       <div class="firework"></div>
       <div class="firework"></div>
       <div class="firework"></div>
     `;
     this.inputTarget.disabled = true;
+    const dataToUpdate = {
+      score: this.score,
+      questions: this.emptyCorrectArray.map(
+        (sentence, index) => ({
+          student_answer: this.emptyUserArray[index] || "",
+          correct_answer: this.emptyCorrectArray[index],
+          options:[]
+        })
+      ),
+    };
+    // Saving data in DB
+    fetch(`/student/submissions/${this.submissionIdValue}/games/${this.gameIdValue}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": document
+          .querySelector('meta[name="csrf-token"]')
+          .getAttribute("content"),
+      },
+      body: JSON.stringify(dataToUpdate),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.text(); // If you're expecting a Turbo Stream response
+        } else {
+          throw new Error("Failed to update the game");
+        }
+      })
+      .then((turboStreamResponse) => {
+        // Turbo will automatically process the Turbo Stream response and update the DOM
+        console.log("Game updated successfully!");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    window.location.href = `/student/submissions/${this.submissionIdValue}/games/${
+      parseInt(this.gameIdValue) + 1
+    }/edit`;
   }
-
 }

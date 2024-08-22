@@ -3,7 +3,9 @@
   data-spelling-game-words-array-value="<%= @words_array_spelling_en.to_json %>"
   data-spelling-game-jpwords-array-value="<%= @words_array_spelling_jp.to_json %>"
   data-spelling-game-correct-sound-value="<%= audio_path("success.wav") %>"
-  data-spelling-game-incorrect-sound-value="<%= audio_path("fail.wav") %>">
+  data-spelling-game-incorrect-sound-value="<%= audio_path("fail.wav") %>"
+  data-spelling-game-game-id-value="<%= @game_id %>"
+  data-spelling-game-submission-id-value="<%= @submission_id %>">
     <h1 class="h1-custom">Spelling Mission</h1>
     <form class="custom-form" data-action="submit->spelling-game#correctSpelling">
       <input type="text" id="wordInput" placeholder="spell the word..." data-spelling-game-target="input">
