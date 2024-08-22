@@ -1,4 +1,110 @@
 // Specific CSS for your grammar game pages.
+/* Shuriken Animation */
+.shuriken-grammar-game {
+	position: fixed;
+	width: 100px;
+	height: 100px;
+	top: 50%;
+	left: -100%;
+	transform: translateY(-50%);
+	z-index: 10;
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+	background-image: image-url(shuriken);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.shuriken-grammar-game.active {
+	opacity: 1;
+	animation: shuriken-cut 1s ease-in-out forwards;
+}
+
+.white-flash-grammar-game {
+	position: fixed;
+	top: 50%;
+	left: -700px;
+	width: 0;
+	height: 3px; /* This determines the thickness of the line */
+	background-color: white;
+	z-index: 20;
+	opacity: 1;
+}
+
+.white-flash-grammar-game.active {
+	opacity: 1;
+	animation: flash-line 2s ease-in-out forwards,
+		flash-fill 2s 0.5s ease-in-out forwards;
+}
+
+@keyframes shuriken-cut {
+	0% {
+		transform: translateX(-100vw) translateY(-50%) rotate(0deg);
+	}
+	100% {
+		transform: translateX(82vw) translateY(-50%) rotate(360deg);
+	}
+}
+
+@keyframes flash-line {
+	0% {
+		width: 0;
+		left: -700px;
+	}
+	100% {
+		width: 200vw;
+		left: 0;
+	}
+}
+
+@keyframes flash-fill {
+	0% {
+		width: 0;
+		height: 5px;
+		top: 50%;
+		left: -700px;
+		background-color: rgba(255, 255, 255, 0.7); /* White with transparency */
+	}
+	100% {
+		width: 100vw;
+		height: 200vh; /* Larger than the viewport to ensure full coverage */
+		top: -50vh; /* Moves the top of the flash upwards */
+		background-color: rgba(255, 255, 255, 0.7); /* Maintain transparency */
+	}
+}
+
+.level-pentagon-grammar-game {
+	background-image: image-url(blue_gem);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 400px;
+	height: 400px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	left: 50%;
+	top: 25%;
+	transform: translateX(-50%);
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out;
+}
+
+.level-pentagon-grammar-game.active {
+	opacity: 1;
+	animation: shine 1s ease-in-out infinite;
+}
+
+.level-pentagon-number-grammar-game {
+	font-size: 140px;
+	color: black;
+	font-weight: bold;
+	text-align: center;
+	z-index: 1;
+}
+
 #audio-icon-grammar-game {
 	transition: transform 0.3s ease;
 }

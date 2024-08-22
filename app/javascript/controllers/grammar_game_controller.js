@@ -23,6 +23,7 @@ export default class extends Controller {
 		this.audioIcon = this.element.dataset.valueAudioIcon;
 		this.successAudio = new Audio(this.element.dataset.valueAudioSuccess);
 		this.failAudio = new Audio(this.element.dataset.valueAudioFail);
+		this.cutAudio = new Audio(this.element.dataset.valueAudioCut);
 		this.wordsArray = JSON.parse(this.element.dataset.valueWordsArray);
 		this.loadingElement = document.querySelector("#loading-element");
 		this.gameElement = document.querySelector("#game-element");
@@ -276,6 +277,9 @@ export default class extends Controller {
 
 	next(event) {
 		if (this.currentSentenceIndex === this.correctSentencesArray.length - 1) {
+			const levelImage = document.querySelector(".level-pentagon-grammar-game");
+			const shuriken = document.querySelector(".shuriken-grammar-game");
+			const whiteFlash = document.querySelector(".white-flash-grammar-game");
 			// Go to the next Game
 			const dataToUpdate = {
 				score: this.game_xp,
@@ -312,7 +316,22 @@ export default class extends Controller {
 				.catch((error) => {
 					console.error(error);
 				});
-			//window.location.href = "/student/challenges";
+			this.answerElementTarget.innerHTML = "";
+			this.answerElementTarget.classList.remove("border");
+			this.optionElementTarget.innerHTML = "";
+			document.querySelector(".text-center").innerText = "";
+			this.gameElement.classList.add("d-none");
+			levelImage.classList.add("active");
+			setTimeout(() => {
+				shuriken.classList.add("active");
+				whiteFlash.classList.add("active");
+				this.cutAudio.play();
+			}, 500);
+			setTimeout(() => {
+				window.location.href = `/student/submissions/${
+					this.submissionId
+				}/games/${parseInt(this.gameId) + 1}/edit`;
+			}, 100000);
 		} else {
 			this.currentSentenceIndex++;
 			this.loadGame();

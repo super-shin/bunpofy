@@ -99,7 +99,7 @@
             }],
             {
               theme: 'roma',
-              height: '310px',
+              height: '300px',
               width: '475px',
               options: {
                 legend: {
@@ -107,7 +107,9 @@
                   bottom: '15'
                 },
                 title: {
-                text: 'Classroom Performance Overview'
+                text: 'Classroom Performance Overview',
+                left: 'center',
+                top: '15'
                 },
                 emphasis: {
                   focus: 'series'
@@ -134,7 +136,7 @@
             }],
             {
               theme: 'roma',
-              height: '310px',
+              height: '300px',
               width: '475px',
               options: {
                 legend: {
@@ -142,7 +144,9 @@
                   bottom: '15'
                 },
                 title: {
-                  text: 'Students Performance Over Time'
+                  text: 'Student Performance Trends',
+                  left: 'center',
+                  top: '15'
                 },
                 emphasis: {
                   focus: 'series'
@@ -152,21 +156,21 @@
           </div>
         </div>
         <div class="d-flex flex-grow-1 justify-content-center mt-2 w-auto">
-          <div class="dashboard-pie-card d-flex flex-column flex-grow-1 flex-shrink-1 shadow mx-2 ps-1">
-            <p class="dashboard-pie-container-text mb-2">Sentence Progress</p>
-            <div class="pie align-self-center" style="--p:<%= @submissions_ratio %>; --c:green;"> <%= @submissions_ratio.to_i %>%</div>
+          <div class="dashboard-pie-card d-flex flex-column flex-grow-1 flex-shrink-1 shadow mx-2 ps-1 align-items-center">
+            <p class="dashboard-pie-container-text mb-1 pt-2">Sentence Progress</p>
+            <div class="pie align-self-center" style="--p:<%= @submissions_ratio %>; --c:#9ECF8E;"> <%= @submissions_ratio.to_i %>%</div>
           </div>
-          <div class="dashboard-pie-card d-flex flex-column flex-grow-1 flex-shrink-1 shadow mx-2 ps-1">
-            <p class="dashboard-pie-container-text mb-2">Grammar Progress</p>
-            <div class="pie align-self-center" style="--p:<%= @games_grammar_ratio %>; --c:darkblue;"> <%= @games_grammar_ratio.to_i %>%</div>
+          <div class="dashboard-pie-card d-flex flex-column flex-grow-1 flex-shrink-1 shadow mx-2 ps-1 align-items-center">
+            <p class="dashboard-pie-container-text mb-1 pt-2">Grammar Progress</p>
+            <div class="pie align-self-center" style="--p:<%= @games_grammar_ratio %>; --c:#5470C6;"> <%= @games_grammar_ratio.to_i %>%</div>
           </div>
-          <div class="dashboard-pie-card d-flex flex-column flex-grow-1 flex-shrink-1 shadow mx-2 ps-1">
-            <p class="dashboard-pie-container-text mb-2">Spelling Progress</p>
-            <div class="pie align-self-center" style="--p:<%= @games_spelling_ratio %>; --c:orange;"> <%= @games_spelling_ratio.to_i %>%</div>
+          <div class="dashboard-pie-card d-flex flex-column flex-grow-1 flex-shrink-1 shadow mx-2 ps-1 align-items-center">
+            <p class="dashboard-pie-container-text mb-1 pt-2">Spelling Progress</p>
+            <div class="pie align-self-center" style="--p:<%= @games_spelling_ratio %>; --c:#FAC858;"> <%= @games_spelling_ratio.to_i %>%</div>
           </div>
-          <div class="dashboard-pie-card d-flex flex-column flex-grow-1 flex-shrink-1 shadow ms-2 ps-1">
-            <p class="dashboard-pie-container-text mb-2">Vocabulary Progress</p>
-            <div class="pie align-self-center" style="--p:<%= @games_vocabulary_ratio %>; --c:purple;"> <%= @games_vocabulary_ratio.to_i %>%</div>
+          <div class="dashboard-pie-card d-flex flex-column flex-grow-1 flex-shrink-1 shadow ms-2 ps-1 align-items-center">
+            <p class="dashboard-pie-container-text mb-1 pt-2">Vocabulary Progress</p>
+            <div class="pie align-self-center" style="--p:<%= @games_vocabulary_ratio %>; --c:#EE6666;"> <%= @games_vocabulary_ratio.to_i %>%</div>
           </div>
         </div>
       </div>
