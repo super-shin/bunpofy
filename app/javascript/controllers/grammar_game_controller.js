@@ -18,11 +18,14 @@ export default class extends Controller {
 		this.game_xp = 0;
 		this.studentAnswersArray = [];
 		this.gameId = this.element.dataset.valueGameId;
+		this.levelNumber = this.element.dataset.valueLevelNumber;
 		this.submissionId = this.element.dataset.valueSubmissionId;
+		this.experience = this.element.dataset.valueExperience;
 		this.geminiKey = this.element.dataset.valueKey;
 		this.audioIcon = this.element.dataset.valueAudioIcon;
 		this.successAudio = new Audio(this.element.dataset.valueAudioSuccess);
 		this.failAudio = new Audio(this.element.dataset.valueAudioFail);
+		this.cutAudio = new Audio(this.element.dataset.valueAudioCut);
 		this.wordsArray = JSON.parse(this.element.dataset.valueWordsArray);
 		this.loadingElement = document.querySelector("#loading-element");
 		this.gameElement = document.querySelector("#game-element");
@@ -312,10 +315,51 @@ export default class extends Controller {
 				.catch((error) => {
 					console.error(error);
 				});
-			//window.location.href = "/student/challenges";
+			if (this.experience / this.levelNumber + this.game_xp > 500) {
+				this.levelUp();
+			} else {
+				window.location.href = `/student/submissions/${
+					this.submissionId
+				}/games/${parseInt(this.gameId) + 1}/edit`;
+			}
 		} else {
 			this.currentSentenceIndex++;
 			this.loadGame();
 		}
+	}
+
+	levelUp() {
+		const levelImage = document.querySelector(".level-pentagon-grammar-game");
+		const shuriken = document.querySelector(".shuriken-grammar-game");
+		const whiteFlash = document.querySelector(".white-flash-grammar-game");
+		const levelNumber = document.querySelector(
+			".level-pentagon-number-grammar-game"
+		);
+		const levelUpMessage = document.querySelector(
+			".level-pentagon-title-grammar-game"
+		);
+		this.answerElementTarget.innerHTML = "";
+		this.answerElementTarget.classList.remove("border");
+		this.optionElementTarget.innerHTML = "";
+		document.querySelector(".text-center").innerText = "";
+		this.gameElement.classList.add("d-none");
+		levelImage.classList.add("active");
+		setTimeout(() => {
+			shuriken.classList.add("active");
+			whiteFlash.classList.add("active");
+			setTimeout(() => this.cutAudio.play(), 50);
+		}, 500);
+		setTimeout(() => {
+			shuriken.classList.remove("active");
+			whiteFlash.classList.remove("active");
+			levelUpMessage.classList.add("active");
+			levelNumber.innerText = `${parseInt(this.levelNumber) + 1}`;
+		}, 2100);
+
+		setTimeout(() => {
+			window.location.href = `/student/submissions/${this.submissionId}/games/${
+				parseInt(this.gameId) + 1
+			}/edit`;
+		}, 6000);
 	}
 }
