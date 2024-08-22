@@ -96,9 +96,8 @@ class Teacher::ChallengesController < ApplicationController
     @submissions = current_user.challenges.flat_map(&:submissions)
     @missions_completed = @submissions.count + @submissions.flat_map(&:games).select {|game| game.score.present?}.count
     @submissions_plus_not_created = Attendance.joins(classroom: :challenges)
-    .where('classrooms.user_id': User.find_by(first_name: "Teacher").id).count
+    .where(classrooms: { user_id: current_user.id }).count
     # Calculating Submissions % for Pie Chart
-    @submissions_content = @submissions.select { |submission| submission.score.present? }
     @submissions_ratio = (@submissions.count.to_f/@submissions_plus_not_created)*100
     # Calculating Grammar Game % for Pie Chart
     @games_grammar = @submissions.flat_map(&:games).select { |game| game.game_type == "grammar" }

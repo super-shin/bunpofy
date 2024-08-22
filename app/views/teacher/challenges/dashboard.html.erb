@@ -82,7 +82,7 @@
         <div class="d-flex my-2">
           <div class="dashboard-bar-chart mx-2 shadow">
             <%= bar_chart([{
-              name: 'Sentence',
+              name: 'Submission',
               data: @sentence_average_score
             },
             {
@@ -103,7 +103,7 @@
               width: '475px',
               options: {
                 legend: {
-                  data: ['Sentence', 'Vocabulary', 'Spelling', 'Grammar'],
+                  data: ['Submission', 'Vocabulary', 'Spelling', 'Grammar'],
                   bottom: '15'
                 },
                 title: {
@@ -119,7 +119,7 @@
           </div>
           <div class="dashboard-bar-chart shadow ms-2">
             <%= line_chart([{
-              name: 'Sentence',
+              name: 'Submission',
               data: @sentence_average_score_per_time
             },
             {
@@ -140,7 +140,7 @@
               width: '475px',
               options: {
                 legend: {
-                  data: ['Sentence', 'Vocabulary', 'Spelling', 'Grammar'],
+                  data: ['Submission', 'Vocabulary', 'Spelling', 'Grammar'],
                   bottom: '15'
                 },
                 title: {
@@ -157,7 +157,7 @@
         </div>
         <div class="d-flex flex-grow-1 justify-content-center mt-2 w-auto">
           <div class="dashboard-pie-card d-flex flex-column flex-grow-1 flex-shrink-1 shadow mx-2 ps-1 align-items-center">
-            <p class="dashboard-pie-container-text mb-1 pt-2">Sentence Progress</p>
+            <p class="dashboard-pie-container-text mb-1 pt-2">Submission Progress</p>
             <div class="pie align-self-center" style="--p:<%= @submissions_ratio %>; --c:#9ECF8E;"> <%= @submissions_ratio.to_i %>%</div>
           </div>
           <div class="dashboard-pie-card d-flex flex-column flex-grow-1 flex-shrink-1 shadow mx-2 ps-1 align-items-center">

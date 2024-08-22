@@ -1,5 +1,19 @@
 // Specific CSS for your grammar game pages.
 /* Shuriken Animation */
+.level-pentagon-title-grammar-game {
+	opacity: 0;
+	color: white;
+	position: absolute;
+	left: 50%;
+	top: -20%;
+	transform: translateX(-50%);
+	width: 230px;
+}
+
+.level-pentagon-title-grammar-game.active {
+	opacity: 1;
+}
+
 .shuriken-grammar-game {
 	position: fixed;
 	width: 100px;
@@ -24,9 +38,9 @@
 .white-flash-grammar-game {
 	position: fixed;
 	top: 50%;
-	left: -700px;
+	left: -800px;
 	width: 0;
-	height: 3px; /* This determines the thickness of the line */
+	height: 2px;
 	background-color: white;
 	z-index: 20;
 	opacity: 1;
@@ -34,8 +48,8 @@
 
 .white-flash-grammar-game.active {
 	opacity: 1;
-	animation: flash-line 2s ease-in-out forwards,
-		flash-fill 2s 0.5s ease-in-out forwards;
+	animation: flash-line 1s ease-in forwards,
+		glow-expand 1.5s 0.9s ease-in-out forwards;
 }
 
 @keyframes shuriken-cut {
@@ -50,27 +64,19 @@
 @keyframes flash-line {
 	0% {
 		width: 0;
-		left: -700px;
+		left: -100vw;
 	}
 	100% {
-		width: 200vw;
-		left: 0;
+		width: 130vw;
 	}
 }
 
-@keyframes flash-fill {
+@keyframes glow-expand {
 	0% {
-		width: 0;
-		height: 5px;
-		top: 50%;
-		left: -700px;
-		background-color: rgba(255, 255, 255, 0.7); /* White with transparency */
+		box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
 	}
 	100% {
-		width: 100vw;
-		height: 200vh; /* Larger than the viewport to ensure full coverage */
-		top: -50vh; /* Moves the top of the flash upwards */
-		background-color: rgba(255, 255, 255, 0.7); /* Maintain transparency */
+		box-shadow: 0 0 2000px 1000px rgba(255, 255, 255, 0.9);
 	}
 }
 
@@ -243,7 +249,7 @@
 	position: absolute;
 	top: 2px;
 	left: 20px;
-	color: green;
+	color: black;
 	font-size: 12px;
 	font-weight: bold;
 }
