@@ -40,6 +40,7 @@ export default class extends Controller {
 
   correctSpelling(event) {
     event.preventDefault();
+    document.getElementById('hint').innerHTML = '';
     const resultElement = this.resultsTarget;
     const userInput = this.inputTarget.value.trim().toLowerCase();
     if (userInput === this.randomWord.toLowerCase()) {
@@ -97,12 +98,6 @@ export default class extends Controller {
     newScore.innerHTML = `
     <div class="d-flex align-items-center justify-content-center">
       <p id="displayHint">EARNED: ${this.score} POINTS<p>
-      <lord-icon
-        src="https://cdn.lordicon.com/eiwtsgei.json"
-        trigger="loop"
-        state="loop-cycle"
-        style="width:50px;height:50px">
-      </lord-icon>
     </div>`;
   }
 
@@ -116,8 +111,12 @@ export default class extends Controller {
         <p id="congrats">
           Congratulations on completing the game! You scored ${this.score} points.
         </p>
-        <br>
-        <button></button>
+        <lord-icon
+          src="https://cdn.lordicon.com/eiwtsgei.json"
+          trigger="loop"
+          state="loop-cycle"
+          style="width:50px;height:50px">
+        </lord-icon>
       </div>
       <div class="firework"></div>
       <div class="firework"></div>

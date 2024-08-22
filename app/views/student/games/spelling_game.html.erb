@@ -1,3 +1,21 @@
+<div class="d-flex justify-content-center align-items-center my-4">
+<div class="d-flex align-items-center me-3">
+  <p id="grammar-game-xp-plus" class="d-none">+</p>
+  <p class="mx-1 text-white" id="grammar-game-xp-number-sum"></p>
+  <p class="me-1 text-white grammar-game-xp-number">0</p>
+  <%= image_tag "grammar_game_experience_bar.png", height: "40px", width: "40px", class: "grammar-game-experience-bar-img" %>
+</div>
+<div class="progress-container">
+  <div id="progress-bar">
+    <div id="current-progress-bar"></div>
+  </div>
+</div>
+<div class="ms-3">
+  <%= link_to student_challenges_path, data: {turbo_method: :get, turbo_confirm: 'Are you sure? You may lose all your progress.'} do %>
+    <%= image_tag "close.png", width: "20px", height: "20px", class: "grammar-game-close-btn" %>
+  <% end %>
+</div>
+</div>
 <div class="body-container"
   data-controller="spelling-game"
   data-spelling-game-words-array-value="<%= @words_array_spelling_en.to_json %>"
@@ -11,17 +29,13 @@
       <input type="text" id="wordInput" placeholder="spell the word..." data-spelling-game-target="input">
       <input type="submit" class="spelling-guess">
     </form>
-      <div id="score"></div>
-      <div id="hint" class="mb-3"></div>
       <button class="custom-button" data-action="click->spelling-game#textToSpeech">
       <i class="fa-solid fa-volume-up ml-6"> Pronounce
       </i>
       </button>
-      <div data-spelling-game-target="results" class="mt-5">
+      <div class="botton-box-grammar-game">
+        <div id="hint"></div>
+        <div id="score"></div>
+        <div data-spelling-game-target="results"></div>
       </div>
-      <div class="row">
-      <div class="col-8"></div>
-      <div class="col-4">
-      </div>
-    </div>
 </div>
