@@ -8,8 +8,8 @@ export default class extends Controller {
   connect() {
     const options = {
       strings: ["NINJA-FUN!", "NINJA-EXCITING!", "NINJA-CHALLENGING!", "NINJA-ENGAGING!", "NINJA-DELIGHTFUL!", "NINJA-AMUSING!"],
-      typeSpeed: 75,
-      backSpeed: 25,
+      typeSpeed: 100,
+      backSpeed: 75,
       backDelay: 1000,
       startDelay: 1000,
       smartBackspace: true,

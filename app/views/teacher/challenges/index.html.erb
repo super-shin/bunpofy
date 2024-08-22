@@ -38,22 +38,32 @@
         <% @challenges.each do |challenge| %>
           <div class="col">
             <a href="<%= teacher_challenge_path(challenge) %>" class="text-decoration-none">
-              <div class="card h-100">
+              <div class="card h-100 shadow border-0">
                 <% if challenge.photo.attached? %>
                   <%= cl_image_tag challenge.photo.key, id: "challenge-card-image", class: 'card-img-top' %>
                 <% else %>
                   <%= image_tag 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723567292/CHALLENGE_2_ytlzm2.jpg', alt: "challenge-card-image", class: 'card-img-top' %>
                 <% end %>
-                <div class="card-body bg-white">
-                  <p class="text-muted fw-lighter">Topic</p>
-                  <h5 class="card-title blue"><%= challenge.title %></h5>
-                  <p class="card-text text-muted"><%= challenge.directions %></p>
-                  <div class="container-fluid d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center">
-                      <img src="https://cdn.readawrite.com/articles/4705/4704259/thumbnail/small.gif" alt="School Profile" class="rounded-circle" style="max-width:20px;">
-                      <span class="fw-bold dark-gray ms-2"><%= challenge.classroom.name %></span>
+                <div class="card-body bg-white d-flex flex-column py-2 px-0">
+                  <div class="container-fluid d-flex flex-column h-100">
+                    <div class="d-flex flex-column justify-content-center">
+                      <p class="text-muted fw-lighter mb-0">Topic</p>
+                      <h5 class="card-title blue mb-4"><%= challenge.title %></h5>
                     </div>
-                    <span class="text-end dark-gray">Due <%= challenge.due_date %></span>
+                    <div class="mt-auto w-100">
+                      <div class="d-flex align-items-center">
+                        <i class="fa-solid fa-chalkboard-user text-muted"></i>
+                        <span class="dark-gray ms-1"><%= challenge.classroom.name %></span>
+                      </div>
+                      <div class="d-flex align-items-center">
+                        <i class="fa-regular fa-calendar-days text-muted"></i>
+                        <span class="dark-gray dark-gray ms-2"><%= challenge.due_date.strftime("%B %d, %Y") %></span>
+                      </div>
+                      <% percentage = (challenge.submissions.count / challenge.classroom.attendances.count) * 100 %>
+                      <div class="progress mt-4" style="height: 25px;">
+                        <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: <%= percentage %>%;" aria-valuenow="<%= percentage %>" aria-valuemin="0" aria-valuemax="100"><%= percentage %>% Completed</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -70,22 +80,32 @@
           <% @challenges.select { |c| c.classroom.name.gsub(/\s+/, '-').gsub(/[^\w-]/, '') == classroom_name }.each do |challenge| %>
             <div class="col">
               <a href="<%= teacher_challenge_path(challenge) %>" class="text-decoration-none">
-                <div class="card h-100">
+                <div class="card h-100 shadow border-0">
                   <% if challenge.photo.attached? %>
                     <%= cl_image_tag challenge.photo.key, id: "challenge-card-image", class: 'card-img-top' %>
                   <% else %>
                     <%= image_tag 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723567292/CHALLENGE_2_ytlzm2.jpg', alt: "challenge-card-image", class: 'card-img-top' %>
                   <% end %>
-                  <div class="card-body bg-white">
-                    <p class="text-muted fw-lighter">Topic</p>
-                    <h5 class="card-title blue"><%= challenge.title %></h5>
-                    <p class="card-text text-muted"><%= challenge.directions %></p>
-                    <div class="container-fluid d-flex align-items-center justify-content-between">
-                      <div class="d-flex align-items-center">
-                        <img src="https://cdn.readawrite.com/articles/4705/4704259/thumbnail/small.gif" alt="School Profile" class="rounded-circle" style="max-width:20px;">
-                        <span class="fw-bold dark-gray ms-2"><%= classroom_name %></span>
+                  <div class="card-body bg-white d-flex flex-column py-2 px-0">
+                    <div class="container-fluid d-flex flex-column h-100">
+                      <div class="d-flex flex-column justify-content-center">
+                        <p class="text-muted fw-lighter mb-0">Topic</p>
+                        <h5 class="card-title blue mb-4"><%= challenge.title %></h5>
                       </div>
-                      <span class="text-end dark-gray">Due <%= challenge.due_date %></span>
+                      <div class="mt-auto w-100">
+                        <div class="d-flex align-items-center">
+                          <i class="fa-solid fa-chalkboard-user text-muted"></i>
+                          <span class="dark-gray ms-1"><%= classroom_name %></span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <i class="fa-regular fa-calendar-days text-muted"></i>
+                          <span class="dark-gray dark-gray ms-2"><%= challenge.due_date.strftime("%B %d, %Y") %></span>
+                        </div>
+                        <% percentage = (challenge.submissions.count / challenge.classroom.attendances.count) * 100 %>
+                        <div class="progress mt-4" style="height: 25px;">
+                          <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: <%= percentage %>%;" aria-valuenow="<%= percentage %>" aria-valuemin="0" aria-valuemax="100"><%= percentage %>% Completed</div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

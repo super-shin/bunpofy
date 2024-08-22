@@ -1,44 +1,167 @@
 <div class="container">
-  <div class="row d-flex align-items-start justify-content-between gap-5 my-5">
-    <div class="card col-md-8 col-sm-12 bg-white shadow rounded-5">
-      <div class="card-body p-4">
-        <div class="d-flex justify-content-between">
-          <p><span class="dark-gray fw-bold">Title</span><br>
-            <span class="fs-3"><%= @challenge.title %></span></p>
-          <div class="d-flex align-items-center display-6 blue gap-2">
-            <lord-icon
-                src="https://cdn.lordicon.com/kgvlhryh.json"
-                trigger="hover"
-                colors="primary:#3a3347,secondary:#b4b4b4,tertiary:#fcd74a,quaternary:#fcd74a,quinary:#848484,senary:#08a88a,septenary:#2c86c7,octonary:#fcd74a"
-                style="width:50px;height:50px">
-            </lord-icon>
-            <%= @challenge.classroom.name %>
+  <!--############################ HEADER ############################-->
+  <div class="row mx-2 d-flex align-items-center justify-content-center">
+    <div class="row col-12 d-flex mb-4 p-4 bg-white shadow justify-content-between">
+      <div class="col-md-3 col-sm-12 ps-0 text-center">
+        <%#= image_tag(@challenge.photo_url, id: "challenge-card-image", alt: "Challenge Image") %>
+        <% if @challenge.photo.attached? %>
+          <%= cl_image_tag @challenge.photo.key, style: 'max-width: 300px;', width: 300, quality: '50' %>
+        <% else %>
+          <%= image_tag 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723567292/CHALLENGE_2_ytlzm2.jpg',  style: 'max-width: 300px;' %>
+        <% end %>
+      </div>
+      <div class="col-md-9 col-sm-12 ms-auto d-flex flex-column justify-content-between">
+        <div class="d-flex flex-column">
+          <div class="d-flex row">
+            <span class="fs-2 blue col-md-9 col-sm-12"><%= @challenge.title %></span>
+            <div class="d-flex justify-content-end align-items-center display-6 blue gap-2 col-md-3 col-sm-12 text-nowrap">
+              <lord-icon
+                      src="https://cdn.lordicon.com/kgvlhryh.json"
+                      trigger="hover"
+                      colors="primary:#3a3347,secondary:#b4b4b4,tertiary:#fcd74a,quaternary:#fcd74a,quinary:#848484,senary:#08a88a,septenary:#2c86c7,octonary:#fcd74a"
+                      style="width:50px;height:50px">
+              </lord-icon>
+              <%= @challenge.classroom.name %>
+            </div>
+          </div>
+          <span class="dark-gray justify-content"><%= @challenge.directions %></span>
+        </div>
+        <!-- Card Footer - details -->
+        <div class="d-flex gap-3">
+          <div><!-- Book -->
+            <i class="fa-solid fa-book yellow"></i>
+            <span class="dark-gray"><%= @challenge.unit.textbook.name %></span>
+          </div>
+          <div><!-- Unit -->
+            <i class="fa-regular fa-pen-to-square yellow"></i>
+            <span class="dark-gray"><%= @challenge.unit.name %></span>
+          </div>
+          <div class="text-end"><!-- Due Date -->
+            <i class="fa-regular fa-calendar-days yellow"></i>
+            <% if @challenge.due_date < Date.today %>
+              <span class="dark-gray pale-red"><%= @challenge.due_date.strftime("%B %d, %Y") %> (Past Due)</span>
+            <% elsif @challenge.due_date == Date.today %>
+              <%   remaining_hours = ((((@challenge.due_date.to_time - Time.current) / 1.hour) * -1) - 12).round %>
+              <span class="dark-gray"><%= "#{remaining_hours} #{'hour'.pluralize(remaining_hours)} left" %></span>
+            <% else %>
+              <% remaining_days = (@challenge.due_date - Date.today).to_i %>
+              <span class="dark-gray"><%= "#{remaining_days} #{'day'.pluralize(remaining_days)} left" %></span>            <% end %>
           </div>
         </div>
-        <p><span class="dark-gray fw-bold">Directions</span><br>
-          <%= @challenge.directions %></p>
       </div>
-      <div class="card-footer text-muted text-end">
-        <%= @challenge.due_date %>
-      </div>
-    </div>
-    <div class="col-md-3 col-sm-6 d-flex flex-column align-items-center justify-content-center gap-3">
-      <%#= image_tag(@challenge.photo_url, id: "challenge-card-image", alt: "Challenge Image") %>
-      <% if @challenge.photo.attached? %>
-        <%= cl_image_tag @challenge.photo.key, style: 'max-width: 300px;' %>
-      <% else %>
-        <%= image_tag 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723567292/CHALLENGE_2_ytlzm2.jpg',  style: 'max-width: 300px;' %>
-      <% end %>
-      <% if @challenge.due_date < Date.today %>
-        <button class="btn btn-outline-danger w-100"> ENDED </button>
-      <% else %>
-        <button class="btn btn-outline-success w-100"> On Going </button>
-      <% end %>
     </div>
   </div>
-  <!--############################ SUBMISSIONS ############################-->
-  <div class="accordion accordion-flush mb-4" id="accordionFlushExample">
-    <!-- Users with submissions -->
+  <!--############################ CHARTS AND GRAPHS ############################-->
+  <div class="container mb-4">
+    <div class="row d-flex align-items-start justify-content-between">
+      <!-- COMPLETION Column -->
+      <div class="col-md-4 mb-4 mb-md-0">
+        <div class="bg-white shadow d-flex flex-column align-items-center position-relative" style="height: 300px;">
+          <span class="flex-grow-1 position-absolute top-0 fs-4 blue">Completion Rate</span>
+          <%= gauge_chart @completion,
+            class: 'box',
+            height: '300px'%>
+          <% if @students_without_feedback.count == 0 %>
+            <a class="btn btn-light disabled w-75 rounded-pill mb-3 position-absolute" style="bottom: 0;">No Pending Feedback</a>
+          <% else %>
+            <a class="btn btn-primary text-white w-75 rounded-pill mb-3 position-absolute" style="bottom: 0;" href="#table-start">
+              Pending Feedback
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <%=@students_without_feedback.count %>
+                <span class="visually-hidden">unread messages</span>
+              </span>
+            </a>
+          <% end %>
+        </div>
+      </div>
+      <!-- PERCENTAGE Column -->
+      <div class="col-md-4 mb-4">
+        <div class="row h-100">
+          <!-- LEFT side -->
+          <div class="col-6 d-flex flex-column gap-2 mb-3">
+            <div class="bg-white shadow border-0 d-flex flex-column p-3">
+              <i class="fa-solid blue mb-4 fa-feather fs-4"></i>
+              <div class="d-flex flex-column">
+                <span class="dark-gray"><small>Submission Average</small></span>
+                <span class="fs-3 <%= @sub_avg == 0 ? 'dark-gray' : @sub_avg > 83 ? 'pale-green' : @sub_avg > 73 ? 'pale-yellow' : 'pale-red' %>"><%= @sub_avg %> %</span>
+              </div>
+            </div>
+            <div class="bg-white shadow border-0 d-flex flex-column p-3">
+              <i class="fa-solid blue mb-4 fa-arrow-down-a-z fs-4"></i>
+              <div class="d-flex flex-column">
+                <span class="dark-gray"><small>Spelling Average</small></span>
+                <span class="fs-3 <%= @spell_avg == 0 ? 'dark-gray' : @spell_avg > 83 ? 'pale-green' : @spell_avg > 73 ? 'pale-yellow' : 'pale-red' %>"><%= @spell_avg %> %</span>
+              </div>
+            </div>
+          </div>
+          <!-- RIGHT side -->
+          <div class="col-6 d-flex flex-column gap-2">
+            <div class="bg-white shadow border-0 d-flex flex-column p-3">
+              <i class="fa-solid blue mb-4 fa-spell-check fs-4"></i>
+              <div class="d-flex flex-column">
+                <span class="dark-gray"><small>Vocabulary Average</small></span>
+                <span class="fs-3 <%= @vocab_avg == 0 ? 'dark-gray' : @vocab_avg > 83 ? 'pale-green' : @vocab_avg > 73 ? 'pale-yellow' : 'pale-red' %>"><%= @vocab_avg %> %</span>
+              </div>
+            </div>
+            <div class="bg-white shadow border-0 d-flex flex-column p-3">
+              <i class="fa-solid blue mb-4 fa-puzzle-piece fs-4"></i>
+              <div class="d-flex flex-column">
+                <span class="dark-gray"><small>Grammar Average</small></span>
+                <span class="fs-3 <%= @grammar_avg == 0 ? 'dark-gray' : @grammar_avg > 83 ? 'pale-green' : @grammar_avg > 73 ? 'pale-yellow' : 'pale-red' %>"><%= @grammar_avg %> %</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- RADAR Chart -->
+      <div class="col-md-4 mb-4">
+        <div class="bg-white shadow position-relative d-flex align-items-end" style="height: 300px;">
+          <div class="flex-grow-1 position-absolute top-0 fs-4 blue d-flex justify-content-center w-100"><span>Challenge Scores</span></div>
+          <%= radar_chart @radar,
+          height: '260px',
+          class: 'box'
+        %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--############################ NEW SUBMISSIONS ############################-->
+  <span class="dark-gray">
+    <span class="green-pill"></span> High Score
+    <span class="yellow-pill"></span> Average
+    <span class="red-pill"></span> Low Score
+    <span class="gray-pill"></span> Undefined
+  </span>
+  <div class="table-responsive" id="table-start">
+    <table class="table text-center table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Student</th>
+          <th scope="col">Submission Date (Time)</th>
+          <th scope="col">Spelling</th>
+          <th scope="col">Vocabulary</th>
+          <th scope="col">Grammar</th>
+          <th scope="col">Main Submission</th>
+          <th scope="col">Feedback</th>
+          <th scope="col">Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @students_without_feedback.each_with_index do |user, index| %>
+          <%= render 'students_table', user: user, index: index, submissions: @submissions, source: 'feedback' %>
+        <% end %>
+        <% @students_without_submissions.each_with_index do |user, index| %>
+          <%= render 'students_table', user: user, index: index, submissions: @submissions, source: 'without' %>
+        <% end %>
+        <% @students_with_submissions.each_with_index do |user, index| %>
+          <%= render 'students_table', user: user, index: index, submissions: @submissions, source: 'with' %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!--############################ OLD SUBMISSIONS ############################-->
+<!-- <div class="accordion accordion-flush mb-4" id="accordionFlushExample">
     <h2 class="mb-4">Student Submissions:</h2>
     <% @students_with_submissions.each_with_index do |user, index| %>
       <div class="accordion-item bg-white">
@@ -54,7 +177,6 @@
               <% user_submissions.each do |submission| %>
                 <div class="card mb-2 bg-white">
                   <div class="card-body row d-flex justify-contents-center align-items-start">
-                    <!--card LEFT side-->
                     <div class="col-md-10 col-sm-12">
                       <h3 class="card-title mb-4">"<%= submission.content %>"</h3>
                       <% if submission.feedback.present? %>
@@ -64,16 +186,13 @@
                         </blockquote>
                       <% else %>
                         <p class="text-muted fs-6">No feedback yet.</p>
-                        <!-- Button trigger modal -->
                         <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#feedbackModal-<%= submission.id %>">
                           Send Feedback
                         </button>
-                        <!--RENDER MODAL-->
                         <%= render 'teacher/feedbacks/new', submission: submission %>
                       <% end %>
                       <a href="#" class="btn btn-outline-primary">See Details</a>
                     </div>
-                    <!--card RIGHT side-->
                     <div class="col-md-2 d-none d-md-block display-4">
                       <% if submission.score.present? %>
                         <lord-icon
@@ -100,7 +219,6 @@
         </div>
       </div>
     <% end %>
-    <!-- Users without submissions -->
     <h2 class="mb-4 mt-5 pale-red">Pending Submissions:</h2>
     <% @students_without_submissions.each_with_index do |user, index| %>
       <div class="accordion-item">
@@ -117,5 +235,4 @@
       </div>
     <% end %>
   </div>
-</div>
-<!--############################ OLD SUBMISSIONS ############################-->
+</div> -->
