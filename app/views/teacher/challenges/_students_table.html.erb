@@ -77,7 +77,7 @@
     <% if user_submissions.any? %>
       <% user_submissions.each do |submission| %>
         <% if source == 'feedback' %>
-          <button type="button" class="btn btn-outline-danger rounded-pill" data-bs-toggle="modal" data-bs-target="#feedbackModal-<%= "#{index}-#{user.id}-#{submission.id}" %>">
+          <button type="button" class="btn btn-outline-success rounded-pill" data-bs-toggle="modal" data-bs-target="#feedbackModal-<%= "#{index}-#{user.id}-#{submission.id}" %>">
             Send Feedback
           </button>
           <!--RENDER MODAL-->
