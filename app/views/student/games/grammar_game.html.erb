@@ -19,6 +19,14 @@
       <div class="spoke"></div>
     </div>
   </div>
+  <div class="level-pentagon-grammar-game">
+    <div class="level-pentagon-title-grammar-game">
+      <h1>LEVEL UP!</h1>
+    </div>
+    <div class="shuriken-grammar-game"></div>
+    <div class="white-flash-grammar-game"></div>
+    <p class="level-pentagon-number-grammar-game"><%= @level %></p>
+  </div>
   <div id="game-element" class="d-none">
     <div>
       <%= image_tag "grammar_game_level_up_clear.png", width: "90px", height: "90px", class: "grammar-game-level-up" %>
@@ -58,7 +66,7 @@
     </div>
     <h2 class="text-center mt-3" style="color:white">Form the Correct Sentence</h2>
     <div class="container d-flex justify-content-center mt-3" style="height: 550px; width: 1000px;"><%=  %>
-      <div class="m-3" data-controller="grammar-game" data-value-submission-id="<%= @submission_id %>" data-value-game-id="<%= @game_id %>" data-value-key="<%= @api_key %>" data-value-words-array="<%= @words_array.to_json %>" data-value-audio-success="<%= audio_path("success.wav") %>" data-value-audio-fail="<%= audio_path("fail.wav") %>">
+      <div class="m-3" data-controller="grammar-game" data-value-submission-id="<%= @submission_id %>" data-value-game-id="<%= @game_id %>" data-value-key="<%= @api_key %>" data-value-words-array="<%= @words_array.to_json %>" data-value-audio-success="<%= audio_path("success.wav") %>" data-value-audio-fail="<%= audio_path("fail.wav") %>" data-value-audio-cut="<%= audio_path("cut.mp3") %>" data-value-level-number="<%= @level %>" data-value-experience="<%= @experience  %>">
         <div class="mx-2 d-flex flex-wrap justify-content-start align-items-center border p-2 answers-container" data-grammar-game-target="answerElement">
         </div>
         <div class="mx-2 d-flex flex-wrap justify-content-start options-container" data-grammar-game-target="optionElement">

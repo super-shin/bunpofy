@@ -1,4 +1,116 @@
 // Specific CSS for your grammar game pages.
+/* Shuriken Animation */
+.level-pentagon-title-grammar-game {
+	opacity: 0;
+	color: white;
+	position: absolute;
+	left: 50%;
+	top: -20%;
+	transform: translateX(-50%);
+	width: 230px;
+}
+
+.level-pentagon-title-grammar-game.active {
+	opacity: 1;
+}
+
+.shuriken-grammar-game {
+	position: fixed;
+	width: 100px;
+	height: 100px;
+	top: 50%;
+	left: -100%;
+	transform: translateY(-50%);
+	z-index: 10;
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+	background-image: image-url(shuriken);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.shuriken-grammar-game.active {
+	opacity: 1;
+	animation: shuriken-cut 1s ease-in-out forwards;
+}
+
+.white-flash-grammar-game {
+	position: fixed;
+	top: 50%;
+	left: -800px;
+	width: 0;
+	height: 2px;
+	background-color: white;
+	z-index: 20;
+	opacity: 1;
+}
+
+.white-flash-grammar-game.active {
+	opacity: 1;
+	animation: flash-line 1s ease-in forwards,
+		glow-expand 1.5s 0.9s ease-in-out forwards;
+}
+
+@keyframes shuriken-cut {
+	0% {
+		transform: translateX(-100vw) translateY(-50%) rotate(0deg);
+	}
+	100% {
+		transform: translateX(82vw) translateY(-50%) rotate(360deg);
+	}
+}
+
+@keyframes flash-line {
+	0% {
+		width: 0;
+		left: -100vw;
+	}
+	100% {
+		width: 130vw;
+	}
+}
+
+@keyframes glow-expand {
+	0% {
+		box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+	}
+	100% {
+		box-shadow: 0 0 2000px 1000px rgba(255, 255, 255, 0.9);
+	}
+}
+
+.level-pentagon-grammar-game {
+	background-image: image-url(blue_gem);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 400px;
+	height: 400px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	left: 50%;
+	top: 25%;
+	transform: translateX(-50%);
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out;
+}
+
+.level-pentagon-grammar-game.active {
+	opacity: 1;
+	animation: shine 1s ease-in-out infinite;
+}
+
+.level-pentagon-number-grammar-game {
+	font-size: 140px;
+	color: black;
+	font-weight: bold;
+	text-align: center;
+	z-index: 1;
+}
+
 #audio-icon-grammar-game {
 	transition: transform 0.3s ease;
 }
@@ -137,7 +249,7 @@
 	position: absolute;
 	top: 2px;
 	left: 20px;
-	color: green;
+	color: black;
 	font-size: 12px;
 	font-weight: bold;
 }
