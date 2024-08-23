@@ -155,7 +155,7 @@ default_female_image_url = ['https://res.cloudinary.com/ddzvfukq6/image/upload/t
 default_sensei_image_url = 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724401056/teacher_wrwgta.png'
 
 # List of male first names
-male_names = %w[Naruto Sasuke Shikamaru Neji Rock Choji Kiba Shino Itachi Tenma Zaku Kabuto Misumi Yoroi Kazuo Ryo Daiki Kosuke Hiro Kazu Tomo Taka Sora Shin Ichi Haru Shun Yuto Ki Geko Kai Yuki Yuta Shoyo Tobio Yuu Tadashi Kei Koushi Azumane Ryuunosuke Chikara Shinsuke]
+male_names = %w[Naruto Sasuke Shikamaru Neji Rock Choji Kiba Shino Itachi Tenma Zaku Kabuto Misumi Yoroi Kazuo Ryo Daiki Kosuke Hiro Kazu Tomo Taka Sora Shin Ichi Haru Shun Yuto Ki Geko Kai Yuki Yuta Shoyo Tobio Yuu Tadashi Kei Koushi Azumane Ryuunosuke Chikara Shinsuke Kazuto]
 
 def attach_photo(user, photo_url)
   io = URI.open(photo_url)
