@@ -12,7 +12,10 @@ class Student::GamesController < ApplicationController
     @words_relation = @game.submission.challenge.unit.words
     # Sample 5 unique words
     @words_array = @words_relation.sample(2).map(&:english)
-    @words_array_spelling = @words_relation.limit(10).map(&:english)
+    @single_word_array = @words_relation.select { |word| word.english.split.size == 1 }
+    @words_array_spelling = @single_word_array.sample(5)
+    @words_array_spelling_en = @words_array_spelling.map(&:english)
+    @words_array_spelling_jp = @words_array_spelling.map(&:japanese)
     # @words_array_spelling = ["house", "dog", "friendly"]
     # Calculate the current user level
     submissions_xp = current_user.submissions.map{|submission| submission.score}.sum
@@ -61,10 +64,10 @@ class Student::GamesController < ApplicationController
 
   def game_params
     params.require(:game).permit(
-      :score, 
+      :score,
       questions_attributes: [
-        :correct_answer, 
-        :options, 
+        :correct_answer,
+        :options,
         :student_answer
       ]
     )

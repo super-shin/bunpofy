@@ -1,5 +1,6 @@
+/* Default for Laptop Displays (Up to 1920px wide) */
 .selection-bg {
-    background-image: url('https://res.cloudinary.com/ddzvfukq6/image/upload/v1723795856/SentenSensei_harnesses_the_power_of_advanced_AI_to_elevate_your_writing_experience._Our_cutting-edge_technology_goes_beyond_basic_grammar_checks_analyzing_your_composition_with_unparalleled_preci_3_aoxlxf.jpg');
+    background-image: url('https://res.cloudinary.com/ddzvfukq6/image/upload/w_1920/v1723795856/SentenSensei_harnesses_the_power_of_advanced_AI_to_elevate_your_writing_experience._Our_cutting-edge_technology_goes_beyond_basic_grammar_checks_analyzing_your_composition_with_unparalleled_preci_3_aoxlxf.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -8,30 +9,59 @@
     position: absolute;
     z-index: 1;
 }
-.selection-card{
-    background-image: url('https://res.cloudinary.com/ddzvfukq6/image/upload/v1723795859/D_-JO_1_wabqyw.png');
+
+.selection-card {
+    background-image: url('https://res.cloudinary.com/ddzvfukq6/image/upload/w_400/v1723795859/D_-JO_1_wabqyw.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
     min-height: 24rem;
     transition: transform 1s ease;
 }
+
 .selection-card:hover {
     transform: scale(1.2);
 }
+
 .spelling-game-bg {
-    background-image: url('https://res.cloudinary.com/ddzvfukq6/image/upload/v1723802915/1_cx2utr.png');
+    background-image: url('https://res.cloudinary.com/ddzvfukq6/image/upload/w_300/v1723802915/1_cx2utr.png');
 }
+
 .vocab-game-bg {
-    background-image: url('https://res.cloudinary.com/ddzvfukq6/image/upload/v1723802915/2_qcukxh.png');
+    background-image: url('https://res.cloudinary.com/ddzvfukq6/image/upload/w_300/v1723802915/2_qcukxh.png');
 }
+
 .grammar-game-bg {
-    background-image: url('https://res.cloudinary.com/ddzvfukq6/image/upload/v1723802915/3_coxubc.png');
+    background-image: url('https://res.cloudinary.com/ddzvfukq6/image/upload/w_300/v1723802915/3_coxubc.png');
 }
+
 .selection-card-content {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
     min-height: 18rem;
     width: 90%;
+}
+
+/* Larger Displays (Above 1920px) */
+@media (min-width: 1921px) {
+    .selection-bg {
+        background-image: url('https://res.cloudinary.com/ddzvfukq6/image/upload/v1723795856/SentenSensei_harnesses_the_power_of_advanced_AI_to_elevate_your_writing_experience._Our_cutting-edge_technology_goes_beyond_basic_grammar_checks_analyzing_your_composition_with_unparalleled_preci_3_aoxlxf.jpg');
+    }
+
+    .selection-card {
+        background-image: url('https://res.cloudinary.com/ddzvfukq6/image/upload/v1723795859/D_-JO_1_wabqyw.png');
+    }
+
+    .spelling-game-bg {
+        background-image: url('https://res.cloudinary.com/ddzvfukq6/image/upload/v1723802915/1_cx2utr.png');
+    }
+
+    .vocab-game-bg {
+        background-image: url('https://res.cloudinary.com/ddzvfukq6/image/upload/v1723802915/2_qcukxh.png');
+    }
+
+    .grammar-game-bg {
+        background-image: url('https://res.cloudinary.com/ddzvfukq6/image/upload/v1723802915/3_coxubc.png');
+    }
 }

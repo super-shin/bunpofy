@@ -1,547 +1,283 @@
-
 <style>
-.game-container * {
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-  color: #19084e;
+    .game-container * {
+      box-sizing: border-box;
+    }
+
+    .game-container #user-score {
+      color: white;
+      font-size: 3.5em; /* Slightly increased font size */
+      margin-bottom: 55px; /* Slightly increased margin */
+    }
+
+    .game-container button {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-size: 1.3em; /* Slightly increased font size */
+    }
+
+    .game-container .start-screen,
+    .game-container .score-container {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .game-container #start-button,
+    .game-container #restart {
+      color: white;
+      background-color: #9873fe;
+      position: absolute;
+      font-size: 1.5em; /* Slightly increased font size */
+      padding: 1.2em 3.5em; /* Slightly increased padding */
+      border-radius: 2em; /* Slightly increased border radius */
+      box-shadow: 0 1.2em 3.5em rgba(37, 22, 80, 0.3); /* Slightly increased shadow */
+    }
+
+    .game-container .flex-space {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .game-container .flex {
+      display: flex;
+    }
+
+    .game-container #display-container {
+      position: absolute;
+      width: 92%; /* Slightly increased width */
+      max-width: 40em; /* Slightly increased max width */
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 50%;
+      padding: 2em 2em; /* Slightly increased padding */
+      border-radius: 0.9em; /* Slightly increased border radius */
+    }
+
+    .game-container .header {
+      padding: 0.75em; /* Slightly increased padding */
+      border-bottom: 1px solid #c8c5d1;
+    }
+
+    .game-container .header .title,
+    .game-container .timer span {
+      font-weight: 600;
+    }
+
+    .game-container .timer {
+      padding-bottom: 16px;
+    }
+
+    .game-container .question-word {
+      font-size: 2.5em; /* Slightly increased font size */
+      text-align: center;
+    }
+
+    .game-container #container {
+      margin-bottom: 1.5em; /* Slightly increased margin */
+    }
+
+    .game-container .button-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 1.2em; /* Slightly increased gap */
+      place-items: center;
+    }
+
+    .game-container .option-div {
+      width: 100%;
+      height: 9em; /* Slightly increased height */
+      padding: 1.2em; /* Slightly increased padding */
+      margin: 0.4em 0; /* Slightly increased margin */
+      text-align: center;
+      border-radius: 0.6em; /* Slightly increased border radius */
+      position: relative;
+      z-index: 1;
+    }
+
+    .game-container .option-div .emoji {
+      font-size: 3.5em; /* Slightly increased emoji font size */
+      display: inline-block;
+      transform: scale(1.3); /* Slightly increased scale */
+      transition: transform 0.2s;
+      z-index: 1;
+    }
+
+    .game-container .option-div:disabled {
+      cursor: not-allowed;
+    }
+
+    .game-container .option-div:hover,
+    .game-container .option-div:hover::after {
+      opacity: 1;
+    }
+
+    .game-container .option-div:hover:not(.correct):not(.incorrect) {
+      background-color: #FCD74A;
+    }
+
+    .game-container .correct {
+      background: url("/assets/correct.svg");
+      background-color: rgba(144, 238, 144, 0.5);
+      z-index: 2;
+    }
+
+    .game-container .incorrect {
+      background: url("/assets/incorrect.svg");
+      background-color: rgba(255, 99, 71, 0.5);
+      z-index: 2;
+    }
+
+    .game-container .correct::after {
+      background-image: url("/assets/correct.svg");
+    }
+
+    .game-container .incorrect::after {
+      background-image: url("/assets/incorrect.svg");
+    }
+
+    .game-container .correct::after, .game-container .incorrect::after {
+      content: "";
+      position: absolute;
+      top: 80%;
+      left: 85%;
+      transform: translate(-50%, -50%);
+      width: 2.5em; /* Slightly increased size */
+      height: 2.5em; /* Slightly increased size */
+      background-repeat: no-repeat;
+      background-size: contain;
+      z-index: 2;
+    }
+
+    .game-container .correct,
+    .game-container .incorrect {
+      background-repeat: no-repeat;
+      background-size: 0em;
+      background-position: center;
+      z-index: 2;
+    }
+
+    .game-container #next-button {
+      font-size: 1.2em; /* Slightly increased font size */
+      background-color: #9873fe;
+      color: #ffffff;
+      padding: 0.5em 2.2em; /* Slightly increased padding */
+      border-radius: 0.35em; /* Slightly increased border radius */
+    }
+
+    .game-container #display-container.hide,
+    .game-container .hide {
+      display: none;
+    }
+
+    .game-container #restart {
+      margin-top: 7em; /* Slightly increased margin */
+    }
+
+    .number-of-questions {
+      padding: 0.75em;
+      font-size: 1.2em;
+    }
+
+    .highlighted {
+      background-color: #FCD74A; /* Light grey background */
+    }
+
+    /* Add this to your CSS file */
+.correct-answer {
+  background-color: rgba(144, 238, 144, 0.5); /* Light green background */
+  border: 2px solid #c3e6cb; /* Green border */
+  color: #155724; /* Dark green text */
 }
 
-.game-container #user-score {
-  color: white;
-  font-size: 3.5em; /* Slightly increased font size */
-  margin-bottom: 55px; /* Slightly increased margin */
+.incorrect-answer {
+  background-color: rgba(255, 99, 71, 0.5); /* Light red background */
+  border: 2px solid #f5c6cb; /* Red border */
+  color: #721c24; /* Dark red text */
 }
 
-.game-container button {
-  border: none;
-  outline: none;
-  cursor: pointer;
-  font-size: 1.3em; /* Slightly increased font size */
-}
-
-.game-container .start-screen,
-.game-container .score-container {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.game-container #start-button,
-.game-container #restart {
-  color: white;
-  background-color: #9873fe;
-  position: absolute;
-  font-size: 1.5em; /* Slightly increased font size */
-  padding: 1.2em 3.5em; /* Slightly increased padding */
-  border-radius: 2em; /* Slightly increased border radius */
-  box-shadow: 0 1.2em 3.5em rgba(37, 22, 80, 0.3); /* Slightly increased shadow */
-}
-
-.game-container .flex-space {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.game-container .flex {
-  display: flex;
-}
-
-.game-container #display-container {
-  background-color: #ffffff;
-  position: absolute;
-  width: 92%; /* Slightly increased width */
-  max-width: 40em; /* Slightly increased max width */
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
-  padding: 2em 2em; /* Slightly increased padding */
-  border-radius: 0.9em; /* Slightly increased border radius */
-  box-shadow: 0 1.2em 3.5em rgba(37, 22, 80, 0.3); /* Slightly increased shadow */
-}
-
-.game-container .header {
-  padding: 0.75em; /* Slightly increased padding */
-  border-bottom: 1px solid #c8c5d1;
-}
-
-.game-container .header .title,
-.game-container .timer span {
-  font-weight: 600;
-}
-
-.game-container .timer {
-  padding-bottom: 16px;
-}
-
-.game-container .question-word {
-  font-size: 2.5em; /* Slightly increased font size */
-  text-align: center;
-}
-
-.game-container #container {
-  margin-bottom: 1.5em; /* Slightly increased margin */
-}
-
-.game-container .button-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 1.2em; /* Slightly increased gap */
-  place-items: center;
-}
-
-.game-container .option-div {
-  width: 100%;
-  height: 9em; /* Slightly increased height */
-  padding: 1.2em; /* Slightly increased padding */
-  margin: 0.4em 0; /* Slightly increased margin */
-  text-align: center;
-  border-radius: 0.6em; /* Slightly increased border radius */
-  position: relative;
-  z-index: 1;
-}
-
-.game-container .option-div .emoji {
-  font-size: 3.5em; /* Slightly increased emoji font size */
-  display: inline-block;
-  transform: scale(1.3); /* Slightly increased scale */
-  transition: transform 0.2s;
-  z-index: 1;
-}
-
-.game-container .option-div:disabled {
-  cursor: not-allowed;
-}
-
-.game-container .option-div:hover,
-.game-container .option-div:hover::after {
-  opacity: 1;
-}
-
-.game-container .option-div:hover:not(.correct):not(.incorrect) {
-  background-color: #FCD74A;
-}
-
-.game-container .correct {
-  background: url("/assets/correct.svg");
-  background-color: rgba(144, 238, 144, 0.5);
-  z-index: 2;
-}
-
-.game-container .incorrect {
-  background: url("/assets/incorrect.svg");
-  background-color: rgba(255, 99, 71, 0.5);
-  z-index: 2;
-}
-
-.game-container .correct::after {
-  background-image: url("/assets/correct.svg");
-}
-
-.game-container .incorrect::after {
-  background-image: url("/assets/incorrect.svg");
-}
-
-.game-container .correct::after, .game-container .incorrect::after {
-  content: "";
-  position: absolute;
-  top: 80%;
-  left: 85%;
-  transform: translate(-50%, -50%);
-  width: 2.5em; /* Slightly increased size */
-  height: 2.5em; /* Slightly increased size */
-  background-repeat: no-repeat;
-  background-size: contain;
-  z-index: 2;
-}
-
-.game-container .correct,
-.game-container .incorrect {
-  background-repeat: no-repeat;
-  background-size: 0em;
-  background-position: center;
-  z-index: 2;
-}
-
-.game-container #next-button {
-  font-size: 1.2em; /* Slightly increased font size */
-  background-color: #9873fe;
-  color: #ffffff;
-  padding: 0.5em 2.2em; /* Slightly increased padding */
-  border-radius: 0.35em; /* Slightly increased border radius */
-}
-
-.game-container #display-container.hide,
-.game-container .hide {
-  display: none;
-}
-
-.game-container #restart {
-  margin-top: 7em; /* Slightly increased margin */
-}
-
-.number-of-questions {
-  padding: 0.75em;
-  font-size: 1.2em;
+.disabled {
+	pointer-events: none;
+	opacity: 1;
 }
 
 </style>
-
-<body>
 <div class="game-container">
-  <div id="display-container" class="hide">
-    <div class="header flex-space">
-      <div class="title">
-        <p>Vocabulary Mission</p>
+<div class="vocab-game-container no-margin-p">
+  <div class="d-flex justify-content-center align-items-center" id="loading-element" style="height: 80vh;">
+    <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+      <div class="wheel"></div>
+      <div class="hamster">
+        <div class="hamster__body">
+          <div class="hamster__head">
+            <div class="hamster__ear"></div>
+            <div class="hamster__eye"></div>
+            <div class="hamster__nose"></div>
+          </div>
+          <div class="hamster__limb hamster__limb--fr"></div>
+          <div class="hamster__limb hamster__limb--fl"></div>
+          <div class="hamster__limb hamster__limb--br"></div>
+          <div class="hamster__limb hamster__limb--bl"></div>
+          <div class="hamster__tail"></div>
+        </div>
       </div>
-      <div class="timer"></div>
+      <div class="spoke"></div>
     </div>
-
-    <div id="container">
-      <!-- Questions and options are displayed here-->
+  </div>
+  <div id="game-element" class="d-none">
+    <div>
+      <%= image_tag "grammar_game_level_up_clear.png", width: "90px", height: "90px", class: "vocab-game-level-up" %>
     </div>
-
-    <div class="flex-space">
-      <div class="number-of-count">
-        <span class="number-of-questions"></span>
+    <div>
+      <%= image_tag "training.gif", width: "100px", height: "100px", class: "vocab-game-broken-sword" %>
+    </div>
+    <div class="sun-container">
+      <div class="cloud front">
+        <span class="left-front"></span>
+        <span class="right-front"></span>
       </div>
-      <div id="next-button">Next</div>
+      <span class="sun sunshine"></span>
+      <span class="sun"></span>
+      <div class="cloud back-vocab-game">
+        <span class="left-back"></span>
+        <span class="right-back"></span>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center align-items-center my-4">
+      <div class="d-flex align-items-center me-3">
+        <p id="vocab-game-xp-plus" class="d-none">+</p>
+        <p class="mx-1 text-white" id="vocab-game-xp-number-sum"></p>
+        <p class="me-1 text-white vocab-game-xp-number">0</p>
+        <%= image_tag "grammar_game_experience_bar.png", height: "40px", width: "40px", class: "vocab-game-experience-bar-img" %>
+      </div>
+      <div class="progress-container">
+        <div id="progress-bar">
+          <div id="current-progress-bar"></div>
+        </div>
+      </div>
+      <div class="ms-3">
+        <%= link_to student_challenges_path, data: {turbo_method: :get, turbo_confirm: 'Are you sure? You may lose all your progress.'} do %>
+          <%= image_tag "close.png", width: "20px", height: "20px", class: "vocab-game-close-btn" %>
+        <% end %>
+      </div>
+    </div>
+    <h2 class="text-center mt-3" style="color:white" data-vocab-game-target="questionWord">Choose The Correct Word</h2>
+    <div class="container d-flex justify-content-center mt-3" style="height: 550px; width: 1000px;"><%=  %>
+      <div class="m-3" data-controller="vocab-game" data-value-submission-id="<%= @submission_id %>" data-value-game-id="<%= @game_id %>" data-value-key="<%= @api_key %>" data-value-words-array="<%= @words_array.to_json %>" data-value-audio-success="<%= audio_path("success.wav") %>" data-value-audio-fail="<%= audio_path("fail.wav") %>">
+        <div class="div" data-vocab-game-target="answerElement">
+        </div>
+        <div class="button-container options-container" data-vocab-game-target="optionElement">
+        </div>
+        <div class="d-flex align-items-center border-top botton-box-vocab-game" data-vocab-game-target="buttonElement">
+        </div>
+      </div>
     </div>
   </div>
-
-  <div class="start-screen">
-    <button id="start-button">Start</button>
-  </div>
-
-  <div class="score-container hide">
-    <div id="user-score"></div>
-    <button id="restart">Continue</button>
-  </div>
-  </div>
-
-<script>
-
-let timer = document.getElementsByClassName("timer")[0];
-let quizContainer = document.getElementById("container");
-let nextButton = document.getElementById("next-button");
-let numOfQuestions = document.getElementsByClassName("number-of-questions")[0];
-let displayContainer = document.getElementById("display-container");
-let scoreContainer = document.querySelector(".score-container");
-let restart = document.getElementById("restart");
-let userScore = document.getElementById("user-score");
-let startScreen = document.querySelector(".start-screen");
-let startButton = document.getElementById("start-button");
-let questionCount;
-let scoreCount = 0;
-let count = 10;
-let countdown;
-
-// Words and emojis array
-const wordEmojiMap = {
-  "Apple": "🍎",
-  "Banana": "🍌",
-  "Cherry": "🍒",
-  "Grapes": "🍇",
-  "Orange": "🍊",
-  "Peach": "🍑",
-  "Pear": "🍐",
-  "Pineapple": "🍍",
-  "Strawberry": "🍓",
-  "Watermelon": "🍉",
-  "Lemon": "🍋",
-  "Avocado": "🥑",
-  "Tomato": "🍅",
-  "Cucumber": "🥒",
-  "Carrot": "🥕",
-  "Broccoli": "🥦",
-  "Corn": "🌽",
-  "Potato": "🥔",
-  "Rice": "🍚",
-  "Bread": "🍞",
-  "Cheese": "🧀",
-  "Burger": "🍔",
-  "Pizza": "🍕",
-  "Hotdog": "🌭",
-  "Fries": "🍟",
-  "Ice Cream": "🍨",
-  "Cake": "🍰",
-  "Cookie": "🍪",
-  "Donut": "🍩",
-  "Milk": "🥛",
-  "Coffee": "☕",
-  "Tea": "🍵",
-  "Soda": "🥤",
-  "Beer": "🍺",
-  "Wine": "🍷",
-  "Cocktail": "🍸",
-  "Whiskey": "🥃",
-  "Champagne": "🍾",
-  "Rose": "🌹",
-  "Tulip": "🌷",
-  "Sunflower": "🌻",
-  "Cactus": "🌵",
-  "Tree": "🌳",
-  "Leaf": "🍃",
-  "Rainbow": "🌈",
-  "Cloud": "☁️",
-  "Sun": "☀️",
-  "Moon": "🌙",
-  "Star": "⭐",
-  "Rocket": "🚀",
-  "Car": "🚗",
-  "Bike": "🚲",
-  "Bus": "🚌",
-  "Train": "🚆",
-  "Plane": "✈️",
-  "Boat": "🚤",
-  "Anchor": "⚓",
-  "Clock": "🕰️",
-  "Camera": "📷",
-  "Phone": "📱",
-  "Computer": "💻",
-  "Television": "📺",
-  "Radio": "📻",
-  "Music": "🎵",
-  "Movie": "🎬",
-  "Game": "🎮",
-  "Book": "📚",
-  "Pen": "🖊️",
-  "Notebook": "📓",
-  "Envelope": "✉️",
-  "Gift": "🎁",
-  "Balloon": "🎈",
-  "Party": "🎉",
-  "Glasses": "👓",
-  "Hat": "🎩",
-  "Scarf": "🧣",
-  "Glove": "🧤",
-  "Shoes": "👟",
-  "Boots": "🥾",
-  "Dress": "👗",
-  "Suit": "👔",
-  "Shirt": "👕",
-  "Trousers": "👖",
-  "Sock": "🧦",
-  "Ring": "💍",
-  "Necklace": "💎",
-  "Bracelet": "📿",
-  "Key": "🔑",
-  "Lock": "🔒",
-  "Umbrella": "☂️",
-  "Luggage": "🧳",
-  "Passport": "🛂",
-  "Plane Ticket": "🎫",
-  "Ticket": "🎟️",
-  "Map": "🗺️",
-  "Globe": "🌍",
-  "Flag": "🏳️",
-  "Medal": "🏅",
-  "Trophy": "🏆",
-  "Basketball": "🏀",
-  "Volleyball": "🏐",
-  "Golf": "⛳",
-  "Gym": "🏋️",
-  "Running": "🏃",
-  "Swimming": "🏊",
-  "Cycling": "🚴",
-  "Hiking": "🥾"
-};
-
-// Questions and Options Array
-let quizArray = [];
-
-// Generate a random value from an array
-const generateRandomValue = (array) =>
-  array[Math.floor(Math.random() * array.length)];
-
-// Generate random options
-const populateOptions = (correctEmoji) => {
-  let optionsArray = [correctEmoji];
-  while (optionsArray.length < 4) {
-    let randomEmoji = generateRandomValue(Object.values(wordEmojiMap));
-    if (!optionsArray.includes(randomEmoji)) {
-      optionsArray.push(randomEmoji);
-    }
-  }
-  return optionsArray;
-};
-
-// Create quiz questions
-const populateQuiz = () => {
-  // Create a shuffled array of unique words
-  let words = Object.keys(wordEmojiMap);
-  words = words.sort(() => Math.random() - 0.5);
-
-  // Ensure we only use as many words as we have questions for
-  words = words.slice(0, 5);
-
-  for (let word of words) {
-    let correctEmoji = wordEmojiMap[word];
-    let allEmojis = populateOptions(correctEmoji);
-    quizArray.push({
-      id: quizArray.length,
-      word: word,
-      correct: correctEmoji,
-      options: allEmojis,
-    });
-  }
-};
-
-// Display the quiz
-const quizDisplay = (questionCount) => {
-  let quizCards = document.querySelectorAll(".container-mid");
-  // Hide other cards
-  quizCards.forEach((card) => {
-    card.classList.add("hide");
-  });
-  // Display the current question card
-  quizCards[questionCount].classList.remove("hide");
-};
-
-// Create quiz cards
-function quizCreator() {
-  // Randomly sort questions
-  quizArray.sort(() => Math.random() - 0.5);
-  // Generate quiz
-  for (let i of quizArray) {
-    // Randomly sort options
-    i.options.sort(() => Math.random() - 0.5);
-    // Create quiz card
-    let div = document.createElement("div");
-    div.classList.add("container-mid", "hide");
-
-    // Display question number
-    numOfQuestions.innerHTML = `${questionCount + 1} / ${quizArray.length}`;
-
-    // Create question
-    let questionDiv = document.createElement("p");
-    questionDiv.classList.add("question");
-    questionDiv.innerHTML = `<div class="question-word">${i.word}</div>`;
-    div.appendChild(questionDiv);
-
-    // Create options
-div.innerHTML += `
-  <div class="button-container">
-    <button class="option-div" onclick="checker(this)" data-option="${i.options[0]}">
-      <span class="emoji">${i.options[0]}</span>
-    </button>
-    <button class="option-div" onclick="checker(this)" data-option="${i.options[1]}">
-      <span class="emoji">${i.options[1]}</span>
-    </button>
-    <button class="option-div" onclick="checker(this)" data-option="${i.options[2]}">
-      <span class="emoji">${i.options[2]}</span>
-    </button>
-    <button class="option-div" onclick="checker(this)" data-option="${i.options[3]}">
-      <span class="emoji">${i.options[3]}</span>
-    </button>
-  </div>
-`;
-    quizContainer.appendChild(div);
-  }
-}
-
-// Check user's answer
-function checker(userOption) {
-  let userSolution = userOption.getAttribute("data-option");
-  let question = document.getElementsByClassName("container-mid")[questionCount];
-  let options = question.querySelectorAll(".option-div");
-  // Check if the user's answer is correct
-  if (userSolution === quizArray[questionCount].correct) {
-    userOption.classList.add("correct");
-    scoreCount++;
-  } else {
-    userOption.classList.add("incorrect");
-    options.forEach((element) => {
-      if (element.getAttribute("data-option") === quizArray[questionCount].correct) {
-        element.classList.add("correct");
-      }
-    });
-  }
-  // Clear interval and disable all options
-  clearInterval(countdown);
-  options.forEach((element) => {
-    element.disabled = true;
-  });
-  nextButton.classList.remove("hide");
-}
-
-// Initialize the game
-function initial() {
-  nextButton.classList.add("hide");
-  quizContainer.innerHTML = "";
-  questionCount = 0;
-  scoreCount = 0;
-  clearInterval(countdown);
-  count = 10;
-  timerDisplay();
-  quizCreator();
-  quizDisplay(questionCount);
-}
-
-// Handle next button click
-nextButton.addEventListener("click", () => {
-  // Increment questionCount
-  questionCount += 1;
-  // If it's the last question
-  if (questionCount === quizArray.length) {
-    // Hide question container and display score
-    displayContainer.classList.add("hide");
-    scoreContainer.classList.remove("hide");
-    // Show user score
-    userScore.innerHTML = `Your score is ${scoreCount} out of ${quizArray.length}`;
-  } else {
-    // Display question count
-    numOfQuestions.innerHTML = `${questionCount + 1} / ${quizArray.length}`;
-    // Display quiz
-    quizDisplay(questionCount);
-    // Reset countdown timer
-    count = 10;
-    clearInterval(countdown);
-    timerDisplay();
-  }
-  nextButton.classList.add("hide");
-});
-
-// Timer display
-const timerDisplay = () => {
-  countdown = setInterval(() => {
-    timer.innerHTML = `<span>Time Left: </span> ${count}s`;
-    count--;
-    if (count < 0) {
-      clearInterval(countdown);
-      nextButton.click();
-    }
-  }, 1000);
-};
-
-// Restart the game
-
-restart.addEventListener("click", () => {
-  window.location.href = '/student/challenges';
-});
-
-//restart.addEventListener("click", () => {
-//  quizArray = [];
-//  populateQuiz();
-//  initial();
-//  displayContainer.classList.remove("hide");
-//  scoreContainer.classList.add("hide");
-//});
-
-// Handle start button click
-startButton.addEventListener("click", () => {
-  startScreen.classList.add("hide");
-  displayContainer.classList.remove("hide"); // Show display-container
-  quizArray = [];
-  populateQuiz();
-  initial();
-});
-
-    </script>
-  </body>
-</html>
+</div>
+</div>
