@@ -1,5 +1,5 @@
 puts "Seeding Submissions for Challenge 9..."
-challenge_9 = Challenge.find(9)
+challenge_19 = Challenge.find(19)
 
 submissions = [
   { user_id: 60, content: "We should start by recycling paper and plastic, and using reusable water bottles. This will help keep our school clean and save resources. Everyone can do their part by following these rules.", score: 65 },
@@ -86,7 +86,7 @@ submissions = [
 submissions.each do |submission|
   Submission.create({
     user_id: submission[:user_id],
-    challenge_id: challenge_9.id,
+    challenge_id: challenge_19.id,
     content: submission[:content],
     score: submission[:score],
     ai_response: submission[:ai_response] || {}
@@ -94,7 +94,7 @@ submissions.each do |submission|
   puts "Seeded User #{submission[:user_id]}'s Submission"
 end
 
-puts "ALL DONE - Seeded Custom Submissions for Challenge 9"
+puts "ALL DONE - Seeded Custom Submissions for Challenge 19"
 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -111,17 +111,51 @@ generic_contents = [
   "Hi! I love badminton. My favorite fruit is apple. I live in Saitama."
 ]
 
-puts "Seeding the rest of Submissions from ALL Challenges..."
+puts "Seeding Submissions for Miyagiken (user_id: 4) exluding IC 3-1 challenges"
 
-Challenge.where.not(id: 9).each do |challenge|
-  challenge.students.each do |student|
+Challenge.where(id: 5..11).each_with_index do |challenge, challenge_index|
+  challenge.students.where.not(id: 44..54).each do |student|
     content = generic_contents.sample
     Submission.create({
       user_id: student.id,
       challenge_id: challenge.id,
       content: content,
-      score: rand(50..100)
+      score: rand((40 + (challenge_index * 4))..(60 + (challenge_index * 4)))
     })
+  end
+  puts "Seeded Challenge ##{challenge.id}"
+end
+
+puts "ALL DONE - Seeded Submissions for Miyagiken (user_id: 4) exluding IC 3-1 challenges"
+
+puts "Seeding Submissions for Miyagiken (user_id: 4) in IC 3-1 challenges."
+
+Challenge.where(id: 12..18).each_with_index do |challenge, challenge_index|
+  challenge.students.each_with_index do |student, student_index|
+    content = generic_contents.sample
+    Submission.create({
+      user_id: student.id,
+      challenge_id: challenge.id,
+      content: content,
+      score: (50 + (challenge_index * 2) + student_index)
+    })
+  end
+  puts "Seeded Challenge ##{challenge.id}"
+end
+
+puts "ALL DONE - Seeded submissions for Miyagiken (user_id: 4) in IC 3-1 challenges."
+
+puts "Seeding Submissions for the other teachers..."
+
+Challenge.where(id: 1..4).each do |challenge|
+  challenge.students.each do |student|
+    content = generic_contents.sample
+    Submission.create!(
+      user_id: student.id,
+      challenge_id: challenge.id,
+      content: content,
+      score: rand(60..100)
+    )
   end
   puts "Seeded Challenge ##{challenge.id}"
 end

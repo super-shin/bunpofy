@@ -157,38 +157,39 @@ default_sensei_image_url = 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1
 # List of male first names
 male_names = %w[Naruto Sasuke Shikamaru Neji Rock Choji Kiba Shino Itachi Tenma Zaku Kabuto Misumi Yoroi Kazuo Ryo Daiki Kosuke Hiro Kazu Tomo Taka Sora Shin Ichi Haru Shun Yuto Ki Geko Kai Yuki Yuta Shoyo Tobio Yuu Tadashi Kei Koushi Azumane Ryuunosuke Chikara Shinsuke]
 
-def attach_photo(user, photo_url)
-  io = URI.open(photo_url)
-  user.photo.attach(io: io, filename: File.basename(photo_url), content_type: "image/webp")
-end
+# def attach_photo(user, photo_url)
+#   io = URI.open(photo_url)
+#   user.photo.attach(io: io, filename: File.basename(photo_url), content_type: "image/webp")
+# end
 
-User.all.each do |user|
-  if user.school == 'Karasuno Elementary School'
-    if class_c_images[user.email]
-      puts "Attaching SPECIFIC image to #{user.first_name}"
-      attach_photo(user, class_c_images[user.email])
-    else
-      puts "Attaching DEFAULT image to #{user.first_name}"
-      attach_photo(user, user.first_name.in?(male_names) ? default_male_image_url : default_female_image_url)
-    end
-  elsif user.school == 'Minami International School'
-    if class_d_images[user.email]
-      puts "Attaching SPECIFIC image to #{user.first_name}"
-      attach_photo(user, class_d_images[user.email])
-    else
-      puts "Attaching DEFAULT image to #{user.first_name}"
-      attach_photo(user, user.first_name.in?(male_names) ? default_male_image_url : default_female_image_url)
-    end
-  else
-    if user[:role] == 'student'
-      puts "Attaching DEFAULT student image to #{user.first_name}"
-      attach_photo(user, user.first_name.in?(male_names) ? default_male_image_url : default_female_image_url)
-    else
-      puts "Attaching sensei image to #{user.first_name}"
-      attach_photo(user, default_sensei_image_url)
-    end
-  end
-  puts "Created user #{user.email} with attached photo"
-end
+# User.all.each do |user|
+#   if user.school == 'Karasuno Elementary School'
+#     if class_c_images[user.email]
+#       puts "Attaching SPECIFIC image to #{user.first_name}"
+#       attach_photo(user, class_c_images[user.email])
+#     else
+#       puts "Attaching DEFAULT image to #{user.first_name}"
+#       attach_photo(user, user.first_name.in?(male_names) ? default_male_image_url : default_female_image_url)
+#     end
+#   elsif user.school == 'Minami International School'
+#     if class_d_images[user.email]
+#       puts "Attaching SPECIFIC image to #{user.first_name}"
+#       attach_photo(user, class_d_images[user.email])
+#     else
+#       puts "Attaching DEFAULT image to #{user.first_name}"
+#       attach_photo(user, user.first_name.in?(male_names) ? default_male_image_url : default_female_image_url)
+#     end
+#   else
+#     if user[:role] == 'student'
+#       puts "Attaching DEFAULT student image to #{user.first_name}"
+#       attach_photo(user, user.first_name.in?(male_names) ? default_male_image_url : default_female_image_url)
+#     else
+#       puts "Attaching sensei image to #{user.first_name}"
+#       attach_photo(user, default_sensei_image_url)
+#       puts "sensei image attached"
+#     end
+#   end
+#   puts "Created user #{user.email} with attached photo"
+# end
 
 puts "ALL DONE - Seeded USERS"
