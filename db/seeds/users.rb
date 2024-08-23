@@ -5,7 +5,7 @@ User.create!([
   { email: 'teacher@gmail.com', password: '123456', first_name: 'Teacher', last_name: 'Admin', role: 'teacher', school: 'Tokyo Elementary School' },
   { email: 'hatakekakashi@hljhs.com', password: '123456', first_name: 'Kakashi', last_name: 'Hatake', role: 'teacher', school: 'Hidden Leaf JHS' },
   { email: 'sarutobihiruzen@minami.com', password: '123456', first_name: 'Hiruzen', last_name: 'Sarutobi', role: 'teacher', school: 'Minami International School' },
-  { email: 'miyagiken@karasuno.com', password: '123456', first_name: 'Ken', last_name: 'Miyagi', role: 'teacher', school: 'Karasuno Elementary School' }
+  { email: 'shingie@karasuno.com', password: '123456', first_name: 'Shingie', last_name: 'Taira', role: 'teacher', school: 'Karasuno Elementary School' }
 ])
 
 
@@ -150,12 +150,12 @@ class_d_images = {
 
 puts "Seeding PICTURES...."
 
-default_male_image_url = 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723555359/development/afl0gfvruu22fe3jgajtknke2kk5.webp'
-default_female_image_url = 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723555982/development/7f93bfp053d2mgsmdvwov3nr4r6l.webp'
-default_sensei_image_url = 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723657074/development/3lv82qrofset16ziav2dkem0t2vf.webp'
+default_male_image_url = ['https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724385925/ninja6_nujnaw.png', 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724385965/ninja5_ywmqse.png', 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724386012/ninja2_yrvhd8.png', 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724385881/ninja3_negxwb.png', 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724385827/ninja1_tdznjy.png', 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724385747/ninja4_sh50tg.png']
+default_female_image_url = ['https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724385658/fninja4_scqk5d.png', 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724385706/fninja3_xreuuh.png', 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724385733/fninja2_xj4lri.png', 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724385737/fninja1_v6cdcx.png']
+default_sensei_image_url = 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724401056/teacher_wrwgta.png'
 
 # List of male first names
-male_names = %w[Naruto Sasuke Shikamaru Neji Rock Choji Kiba Shino Itachi Tenma Zaku Kabuto Misumi Yoroi Kazuo Ryo Daiki Kosuke Hiro Kazu Tomo Taka Sora Shin Ichi Haru Shun Yuto Ki Geko Kai Yuki Yuta Shoyo Tobio Yuu Tadashi Kei Koushi Azumane Ryuunosuke Chikara Shinsuke]
+male_names = %w[Naruto Sasuke Shikamaru Neji Rock Choji Kiba Shino Itachi Tenma Zaku Kabuto Misumi Yoroi Kazuo Ryo Daiki Kosuke Hiro Kazu Tomo Taka Sora Shin Ichi Haru Shun Yuto Ki Geko Kai Yuki Yuta Shoyo Tobio Yuu Tadashi Kei Koushi Azumane Ryuunosuke Chikara Shinsuke Kazuto]
 
 def attach_photo(user, photo_url)
   io = URI.open(photo_url)
@@ -167,22 +167,25 @@ User.all.each do |user|
     if class_c_images[user.email]
       puts "Attaching SPECIFIC image to #{user.first_name}"
       attach_photo(user, class_c_images[user.email])
+    elsif user.first_name.downcase == 'shingie'
+      puts "Attaching SENSEI image to #{user.first_name}"
+      attach_photo(user, 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724385579/shin_umlz5n.jpg')
     else
       puts "Attaching DEFAULT image to #{user.first_name}"
-      attach_photo(user, user.first_name.in?(male_names) ? default_male_image_url : default_female_image_url)
+      attach_photo(user, user.first_name.in?(male_names) ? default_male_image_url.sample : default_female_image_url.sample)
     end
-  elsif user.school == 'Minami International School'
+  elsif user.school == 'Minami International School' && user.first_name.downcase != 'hiruzen'
     if class_d_images[user.email]
       puts "Attaching SPECIFIC image to #{user.first_name}"
       attach_photo(user, class_d_images[user.email])
     else
       puts "Attaching DEFAULT image to #{user.first_name}"
-      attach_photo(user, user.first_name.in?(male_names) ? default_male_image_url : default_female_image_url)
+      attach_photo(user, user.first_name.in?(male_names) ? default_male_image_url.sample : default_female_image_url.sample)
     end
   else
     if user[:role] == 'student'
       puts "Attaching DEFAULT student image to #{user.first_name}"
-      attach_photo(user, user.first_name.in?(male_names) ? default_male_image_url : default_female_image_url)
+      attach_photo(user, user.first_name.in?(male_names) ? default_male_image_url.sample : default_female_image_url.sample)
     else
       puts "Attaching sensei image to #{user.first_name}"
       attach_photo(user, default_sensei_image_url)

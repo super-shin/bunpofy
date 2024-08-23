@@ -23,7 +23,7 @@ submissions = [
   { user_id: 78, content: "We can use digital devices for notes instead of paper and make sure to recycle everything we can. These actions help reduce our waste and keep our school environment cleaner. Everyone should try to follow these tips.", score: 72 },
   { user_id: 79, content: "Bring your own reusable bottles and bags and recycle paper and plastic. This will help reduce the amount of waste we produce and is good for the environment. Everyone can make a difference by following these ideas.", score: 67 },
     # Kawaguchi Ryo's Challenge Submission below
-  { user_id: 59, content: "We can recycle paper and plastic, reuse water bottles, and print less.", score: 60,
+  { user_id: 59, content: "We can by recycle paper and plastic, no use water bottles, and no print.", score: 60,
     ai_response: {
       "corrected_text": {
         "jSONRESPONSE_sentence": "We could recycle paper and plastic, reuse water bottles, and print less.",
@@ -53,7 +53,7 @@ submissions = [
           ["less", "JJS"],
           [".", "."]
         ],
-        "original_sentence": "We could recycle paper and plastic, reuse water bottles, and print less.",
+        "original_sentence": "We can by recycle paper and plastic, no use water bottles, and no print.",
         "corrected_sentence": "We could recycle paper and plastic, reuse water bottles, and print less."
       },
       "errors": [
