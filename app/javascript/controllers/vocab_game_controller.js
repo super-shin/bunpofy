@@ -4,7 +4,6 @@ import { CountUp } from "countup.js";
 
 // Connects to data-controller="game"
 export default class extends Controller {
-
 	static targets = [
 		"optionElement",
 		"answerElement",
@@ -13,7 +12,7 @@ export default class extends Controller {
 		"nextElement",
 		"buttonElement",
 		"audioElement",
-    "questionWord"
+		"questionWord",
 	];
 	connect() {
 		console.log(this.element.dataset.valueWordsArray);
@@ -21,10 +20,13 @@ export default class extends Controller {
 		this.studentAnswersArray = [];
 		this.gameId = this.element.dataset.valueGameId;
 		this.submissionId = this.element.dataset.valueSubmissionId;
+		this.levelNumber = this.element.dataset.valueLevelNumber;
+		this.experience = this.element.dataset.valueExperience;
 		this.geminiKey = this.element.dataset.valueKey;
 		this.audioIcon = this.element.dataset.valueAudioIcon;
 		this.successAudio = new Audio(this.element.dataset.valueAudioSuccess);
 		this.failAudio = new Audio(this.element.dataset.valueAudioFail);
+		this.cutAudio = new Audio(this.element.dataset.valueAudioCut);
 		this.wordsArray = JSON.parse(this.element.dataset.valueWordsArray);
 		this.loadingElement = document.querySelector("#loading-element");
 		this.gameElement = document.querySelector("#game-element");
@@ -52,27 +54,27 @@ export default class extends Controller {
 		let result = await model.generateContent(prompt);
 		this.correctSentencesArray = JSON.parse(result.response.text());
 		console.log(this.correctSentencesArray);
-    this.optionsArray = this.correctSentencesArray.slice(4);
-    this.correctSentencesArray = this.correctSentencesArray.slice(0, 4);
+		this.optionsArray = this.correctSentencesArray.slice(4);
+		this.correctSentencesArray = this.correctSentencesArray.slice(0, 4);
 		this.shuffleWords(this.correctSentencesArray);
-    this.filterWords(this.correctSentencesArray);
-    this.shuffleOptionsArray(this.optionsArray);
-    console.log(this.correctSentencesArray);
-    console.log(this.optionsArray)
+		this.filterWords(this.correctSentencesArray);
+		this.shuffleOptionsArray(this.optionsArray);
+		console.log(this.correctSentencesArray);
+		console.log(this.optionsArray);
 	}
 
-filterWords(correctSentencesArray) {
-  this.fullWordsArray = [];
-  correctSentencesArray.forEach((sentence) => {
-    this.wordTokenize = sentence.Sentence;
-    this.wordTokenize = this.wordTokenize.trim();
-    // Remove trailing punctuation
-    this.wordTokenize = this.wordTokenize.replace(/[^\p{L}\p{N}]+/gu, '');
-    this.wordTokenize = this.wordTokenize.replace(/[\s,]+/g, '');
-    this.fullWordsArray.push(this.wordTokenize);
-    console.log(this.fullWordsArray);
-  });
-}
+	filterWords(correctSentencesArray) {
+		this.fullWordsArray = [];
+		correctSentencesArray.forEach((sentence) => {
+			this.wordTokenize = sentence.Sentence;
+			this.wordTokenize = this.wordTokenize.trim();
+			// Remove trailing punctuation
+			this.wordTokenize = this.wordTokenize.replace(/[^\p{L}\p{N}]+/gu, "");
+			this.wordTokenize = this.wordTokenize.replace(/[\s,]+/g, "");
+			this.fullWordsArray.push(this.wordTokenize);
+			console.log(this.fullWordsArray);
+		});
+	}
 
 	shuffleWords(correctSentencesArray) {
 		this.sentenceTokenizeArray = [];
@@ -85,9 +87,14 @@ filterWords(correctSentencesArray) {
 			//	/([!.?])(?=[^a-zA-Z]*$)/g,
 			//	""
 			//);
-      this.sentenceTokenize = this.sentenceTokenize.replace(/[^\p{Emoji_Presentation}]/gu,"");
+			this.sentenceTokenize = this.sentenceTokenize.replace(
+				/[^\p{Emoji_Presentation}]/gu,
+				""
+			);
 			// Tokenize the sentence
-      this.sentenceTokenize = this.sentenceTokenize.match(/[\w']+|[,.!?]|[\p{Emoji_Presentation}]/gu);
+			this.sentenceTokenize = this.sentenceTokenize.match(
+				/[\w']+|[,.!?]|[\p{Emoji_Presentation}]/gu
+			);
 			//this.sentenceTokenize = this.sentenceTokenize.match(/[\w']+|[,.!?]/g);
 			this.sentenceTokenizeShuffled = [...this.sentenceTokenize];
 			this.sentenceTokenizeArray.push(this.sentenceTokenize);
@@ -105,15 +112,22 @@ filterWords(correctSentencesArray) {
 		optionsArray.forEach((sentence) => {
 			this.emojiTokenize = sentence.Sentence;
 			this.emojiTokenize = this.emojiTokenize.trim();
-      this.emojiTokenize = this.emojiTokenize.replace(/[^\p{Emoji_Presentation}]/gu,"");
-      this.emojiTokenize = this.emojiTokenize.match(/[\w']+|[,.!?]|[\p{Emoji_Presentation}]/gu);
+			this.emojiTokenize = this.emojiTokenize.replace(
+				/[^\p{Emoji_Presentation}]/gu,
+				""
+			);
+			this.emojiTokenize = this.emojiTokenize.match(
+				/[\w']+|[,.!?]|[\p{Emoji_Presentation}]/gu
+			);
 			this.emojiTokenizeShuffled = [...this.emojiTokenize];
 			this.emojiTokenizeArray.push(this.emojiTokenize);
-			this.emojiTokenizeShuffled = this.shuffleArray(this.emojiTokenizeShuffled);
+			this.emojiTokenizeShuffled = this.shuffleArray(
+				this.emojiTokenizeShuffled
+			);
 			console.log(this.emojiTokenizeShuffled);
 			this.emojiTokenizeShuffledArray.push(this.emojiTokenizeShuffled);
-      this.emojisArray = this.emojiTokenizeShuffledArray.flat();
-      console.log(this.emojisArray);
+			this.emojisArray = this.emojiTokenizeShuffledArray.flat();
+			console.log(this.emojisArray);
 		});
 	}
 
@@ -136,252 +150,263 @@ filterWords(correctSentencesArray) {
 		return array;
 	}
 
-  shuffleButtons() {
-    const container = this.optionElementTarget; // Select the container element
-    const buttons = Array.from(container.querySelectorAll('.option-div')); // Get all buttons
+	shuffleButtons() {
+		const container = this.optionElementTarget; // Select the container element
+		const buttons = Array.from(container.querySelectorAll(".option-div")); // Get all buttons
 
-    // Fisher-Yates shuffle algorithm
-    for (let i = buttons.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [buttons[i], buttons[j]] = [buttons[j], buttons[i]]; // Swap elements
-    }
+		// Fisher-Yates shuffle algorithm
+		for (let i = buttons.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[buttons[i], buttons[j]] = [buttons[j], buttons[i]]; // Swap elements
+		}
 
-    // Clear the container
-    container.innerHTML = '';
+		// Clear the container
+		container.innerHTML = "";
 
-    // Append shuffled buttons to the container
-    buttons.forEach(button => container.appendChild(button));
-  }
+		// Append shuffled buttons to the container
+		buttons.forEach((button) => container.appendChild(button));
+	}
 
-  loadGame() {
-    let quizContainer = document.getElementById("container");
-    let randomEmoji = this.shuffleArray(this.emojisArray.slice()).slice(0, 3);
-    this.answerElementTarget.innerHTML = "";
-    this.optionElementTarget.innerHTML = "";
-    this.buttonElementTarget.innerHTML = "";
-    this.answer = this.sentenceTokenizeArray[this.currentSentenceIndex];
-    this.questionWord = this.fullWordsArray
-    console.log(this.questionWord);
+	loadGame() {
+		let quizContainer = document.getElementById("container");
+		let randomEmoji = this.shuffleArray(this.emojisArray.slice()).slice(0, 3);
+		this.answerElementTarget.innerHTML = "";
+		this.optionElementTarget.innerHTML = "";
+		this.buttonElementTarget.innerHTML = "";
+		this.answer = this.sentenceTokenizeArray[this.currentSentenceIndex];
+		this.questionWord = this.fullWordsArray;
+		console.log(this.questionWord);
 
-    // Select the h2 element using its data attribute
-const questionWordElement = document.querySelector('[data-vocab-game-target="questionWord"]');
+		// Select the h2 element using its data attribute
+		const questionWordElement = document.querySelector(
+			'[data-vocab-game-target="questionWord"]'
+		);
 
-// Change the text content
-questionWordElement.textContent = `${this.questionWord[this.currentSentenceIndex]}`;
+		// Change the text content
+		questionWordElement.textContent = `${
+			this.questionWord[this.currentSentenceIndex]
+		}`;
 
+		// Remove existing answerElement if present
+		const answerElement = document.querySelector(
+			'[data-vocab-game-target="answerElement"]'
+		);
+		if (answerElement) {
+			answerElement.remove();
+		}
 
-    // Remove existing answerElement if present
-    const answerElement = document.querySelector('[data-vocab-game-target="answerElement"]');
-    if (answerElement) {
-      answerElement.remove();
-    }
-
-    // Add buttons to optionElementTarget
-    this.sentenceTokenizeShuffledArray[this.currentSentenceIndex].forEach(word => {
-      this.optionElementTarget.insertAdjacentHTML(
-        "beforeend",
-        `
+		// Add buttons to optionElementTarget
+		this.sentenceTokenizeShuffledArray[this.currentSentenceIndex].forEach(
+			(word) => {
+				this.optionElementTarget.insertAdjacentHTML(
+					"beforeend",
+					`
         <button class="option-div" data-action="click->vocab-game#select" data-vocab-game-target="wordElement" style="cursor:pointer">
           <span class="emoji" data-vocab-game-target="answerElement">${word}</span>
         </button>
         `
-      );
-    });
+				);
+			}
+		);
 
-    randomEmoji.forEach(word => {
-      this.optionElementTarget.insertAdjacentHTML(
-        "beforeend",
-        `
+		randomEmoji.forEach((word) => {
+			this.optionElementTarget.insertAdjacentHTML(
+				"beforeend",
+				`
         <button class="option-div" data-action="click->vocab-game#select" data-vocab-game-target="wordElement" style="cursor:pointer" data-option="${word}">
           <span class="emoji">${word}</span>
         </button>
         `
-      );
-    });
+			);
+		});
 
-    // Shuffle buttons
-    this.shuffleButtons();
+		// Shuffle buttons
+		this.shuffleButtons();
 
-    // Set up check button and styles
-    this.buttonElementTarget.style.backgroundColor = "";
-    this.buttonElementTarget.insertAdjacentHTML(
-      "beforeend",
-      `<button type="button" class="button-check-vocab-game ms-auto" data-vocab-game-target="checkElement" data-action="click->vocab-game#check">Check</button>`
-    );
-    this.fullSentence = ""; // Resetting value inside FullSentence for new Game
-    this.checkElementTarget.disabled = false;
-    this.checkElementTarget.classList.add("disabled");
-    this.checkElementTarget.style.cursor = "pointer";
-  }
+		// Set up check button and styles
+		this.buttonElementTarget.style.backgroundColor = "";
+		this.buttonElementTarget.insertAdjacentHTML(
+			"beforeend",
+			`<button type="button" class="button-check-vocab-game ms-auto" data-vocab-game-target="checkElement" data-action="click->vocab-game#check">Check</button>`
+		);
+		this.fullSentence = ""; // Resetting value inside FullSentence for new Game
+		this.checkElementTarget.disabled = false;
+		this.checkElementTarget.classList.add("disabled");
+		this.checkElementTarget.style.cursor = "pointer";
+	}
 
 	select(event) {
+		const clickedButton = event.currentTarget;
 
-    const clickedButton = event.currentTarget;
+		// Remove highlight from previously selected buttons
+		this.optionElementTarget
+			.querySelectorAll(".option-div")
+			.forEach((button) => {
+				button.classList.remove("highlighted");
+			});
 
-  // Remove highlight from previously selected buttons
-  this.optionElementTarget.querySelectorAll('.option-div').forEach(button => {
-    button.classList.remove('highlighted');
-  });
-
-  // Add highlight to the clicked button
-  clickedButton.classList.add('highlighted');
+		// Add highlight to the clicked button
+		clickedButton.classList.add("highlighted");
 
 		const parent = event.currentTarget.parentElement;
 		if (this.checkElementTarget.classList.contains("disabled")) {
 			this.checkElementTarget.classList.remove("disabled");
 		}
-	 if (parent.classList.contains("options-container")) {
-		 	//this.answerElementTarget.insertAdjacentHTML(
-		 	//	"beforeend",
-		 	//	event.currentTarget.outerHTML
-		 	//);
-		 	//this.createShadow(event.currentTarget);
-		}
-    else {
+		if (parent.classList.contains("options-container")) {
+			//this.answerElementTarget.insertAdjacentHTML(
+			//	"beforeend",
+			//	event.currentTarget.outerHTML
+			//);
+			//this.createShadow(event.currentTarget);
+		} else {
 			//this.removeShadow(event.currentTarget);
 			event.currentTarget.remove();
 		}
 		this.fullSentence = [];
 
-    const word = event.currentTarget.querySelector('.emoji').textContent.trim();
+		const word = event.currentTarget.querySelector(".emoji").textContent.trim();
 
-    // Add the word to the fullSentence array
-    this.fullSentence.push(word);
+		// Add the word to the fullSentence array
+		this.fullSentence.push(word);
 
-
-	//	this.answerElementTarget.querySelectorAll("button").forEach((element) => {
-	//		this.fullSentence.push(element.innerText);
-	//	});
+		//	this.answerElementTarget.querySelectorAll("button").forEach((element) => {
+		//		this.fullSentence.push(element.innerText);
+		//	});
 	}
 
-  check(event) {
-    // Changes the progress bar
-    this.progressBar();
+	check(event) {
+		// Changes the progress bar
+		this.progressBar();
 
-    // Update the array with the Student Answers
-    this.studentAnswersArray.push(this.fullSentence.join(" "));
-    const sentence = this.correctSentencesArray[this.currentSentenceIndex].Sentence;
-    console.log(sentence);
+		// Update the array with the Student Answers
+		this.studentAnswersArray.push(this.fullSentence.join(" "));
+		const sentence =
+			this.correctSentencesArray[this.currentSentenceIndex].Sentence;
+		console.log(sentence);
 
-    const emojiToFind = this.studentAnswersArray[0];
-    this.studentAnswersWord = this.optionsArray.filter(obj => obj.Sentence.includes(emojiToFind));
-    console.log(this.studentAnswersWord);
+		const emojiToFind = this.studentAnswersArray[0];
+		this.studentAnswersWord = this.optionsArray.filter((obj) =>
+			obj.Sentence.includes(emojiToFind)
+		);
+		console.log(this.studentAnswersWord);
 
-    //const sentence = this.studentAnswersWord[0].Sentence;
+		//const sentence = this.studentAnswersWord[0].Sentence;
 
-    const filteredSentence = sentence.replace(/[^a-zA-Z\s]/g, '');
+		const filteredSentence = sentence.replace(/[^a-zA-Z\s]/g, "");
 
-    // Changes the text between Next and Next Challenge
-    this.buttonElementTarget.innerHTML = "";
-    const buttonText =
-      this.currentSentenceIndex === this.correctSentencesArray.length - 1
-        ? "Finish"
-        : "Next";
-    this.buttonElementTarget.insertAdjacentHTML(
-      "beforeend",
-      `<button type="button" class="button-check-vocab-game ms-auto" data-vocab-game-target="nextElement" data-action="click->vocab-game#next">${buttonText}</button>`
-    );
-    this.buttonElementTarget.insertAdjacentHTML(
-      "afterbegin",
-      `<div class="correct-sentence-container-grammar-game d-flex flex-wrap justify-content-start align-items-center p-3"><p class="mt-1">
+		// Changes the text between Next and Next Challenge
+		this.buttonElementTarget.innerHTML = "";
+		const buttonText =
+			this.currentSentenceIndex === this.correctSentencesArray.length - 1
+				? "Finish"
+				: "Next";
+		this.buttonElementTarget.insertAdjacentHTML(
+			"beforeend",
+			`<button type="button" class="button-check-vocab-game ms-auto" data-vocab-game-target="nextElement" data-action="click->vocab-game#next">${buttonText}</button>`
+		);
+		this.buttonElementTarget.insertAdjacentHTML(
+			"afterbegin",
+			`<div class="correct-sentence-container-grammar-game d-flex flex-wrap justify-content-start align-items-center p-3"><p class="mt-1">
 			<div class="correct-sentence-tooltip-grammar-game"><p>Correct Word:</p></div>
       <i class="fa-solid fa-volume-high me-1" id="audio-icon-grammar-game" data-vocab-game-target="audioElement" data-action="click->vocab-game#audio"></i>
       ${filteredSentence}
       </div>`
-    );
+		);
 
-    // Reproduce the sentence audio
-    this.audio();
+		// Reproduce the sentence audio
+		this.audio();
 
-    // Disable events of words(options)
-    this.wordElementTargets.forEach((element) => {
-      element.classList.add("disabled");
-      element.style.cursor = "default";
-    });
+		// Disable events of words(options)
+		this.wordElementTargets.forEach((element) => {
+			element.classList.add("disabled");
+			element.style.cursor = "default";
+		});
 
-    // Validate the game
-    if (this.fullSentence.join("") === this.answer.join("")) {
-      // Sum experience animation
-      this.game_xp += 100 / this.wordsArray.length;
-      const options = {
-        duration: 3,
-      };
-      const xpSumElement = document.querySelector("#vocab-game-xp-number-sum");
-      const xpSumPlusElement = document.querySelector("#vocab-game-xp-plus");
-      let xpSum = new CountUp(
-        xpSumElement,
-        100 / this.wordsArray.length,
-        options
-      );
-      if (!xpSum.error) {
-        xpSumPlusElement.classList.remove("d-none");
-        xpSum.start();
-        setTimeout(() => {
-          // Update the xp gaining in this game after animation finishes
-          document.querySelector(".vocab-game-xp-number").innerText =
-            this.game_xp;
-        }, options.duration * 1000);
-        setTimeout(() => {
-          xpSumPlusElement.classList.add("d-none");
-          xpSumElement.innerText = "";
-        }, options.duration * 1000 + 500);
-      } else {
-        console.error(xpSum.error);
-      }
+		// Validate the game
+		if (this.fullSentence.join("") === this.answer.join("")) {
+			// Sum experience animation
+			this.game_xp += 100 / this.wordsArray.length;
+			const options = {
+				duration: 3,
+			};
+			const xpSumElement = document.querySelector("#vocab-game-xp-number-sum");
+			const xpSumPlusElement = document.querySelector("#vocab-game-xp-plus");
+			let xpSum = new CountUp(
+				xpSumElement,
+				100 / this.wordsArray.length,
+				options
+			);
+			if (!xpSum.error) {
+				xpSumPlusElement.classList.remove("d-none");
+				xpSum.start();
+				setTimeout(() => {
+					// Update the xp gaining in this game after animation finishes
+					document.querySelector(".vocab-game-xp-number").innerText =
+						this.game_xp;
+				}, options.duration * 1000);
+				setTimeout(() => {
+					xpSumPlusElement.classList.add("d-none");
+					xpSumElement.innerText = "";
+				}, options.duration * 1000 + 500);
+			} else {
+				console.error(xpSum.error);
+			}
 
-      // Update the xp gaining in this game
-      const levelUpImage = document.querySelector(".vocab-game-level-up");
-      this.buttonElementTarget.style.backgroundColor = "#1b4332";
-      this.successAudio.play();
-      // Trigger the shine and disappear effect
-      levelUpImage.classList.add("active");
-      setTimeout(() => {
-        levelUpImage.classList.remove("active");
-      }, 1500); // duration of the shine effect
-    } else {
-      const brokenSwordImage = document.querySelector(".vocab-game-broken-sword");
-      this.buttonElementTarget.style.backgroundColor = "#250902";
-      this.failAudio.play();
-      // Trigger the shine and disappear effect
-      brokenSwordImage.classList.add("active");
-      setTimeout(() => {
-        brokenSwordImage.classList.remove("active");
-      }, 2500); // duration of the shine effect
-    }
+			// Update the xp gaining in this game
+			const levelUpImage = document.querySelector(".vocab-game-level-up");
+			this.buttonElementTarget.style.backgroundColor = "#1b4332";
+			this.successAudio.play();
+			// Trigger the shine and disappear effect
+			levelUpImage.classList.add("active");
+			setTimeout(() => {
+				levelUpImage.classList.remove("active");
+			}, 1500); // duration of the shine effect
+		} else {
+			const brokenSwordImage = document.querySelector(
+				".vocab-game-broken-sword"
+			);
+			this.buttonElementTarget.style.backgroundColor = "#250902";
+			this.failAudio.play();
+			// Trigger the shine and disappear effect
+			brokenSwordImage.classList.add("active");
+			setTimeout(() => {
+				brokenSwordImage.classList.remove("active");
+			}, 2500); // duration of the shine effect
+		}
 
-    // Apply styles to indicate correct and incorrect answers
-    this.applyAnswerStyles();
+		// Apply styles to indicate correct and incorrect answers
+		this.applyAnswerStyles();
 
-    console.log('Full Sentence:', this.fullSentence);
-    console.log('Answer:', this.answer);
+		console.log("Full Sentence:", this.fullSentence);
+		console.log("Answer:", this.answer);
 
-    if (this.fullSentence.join("") === this.answer.join("")) {
-      console.log('Correct answer! Awarding XP...');
-      // Your existing XP logic
-    } else {
-      console.log('Incorrect answer.');
-      // Your existing fail logic
-    }
-
-  }
+		if (this.fullSentence.join("") === this.answer.join("")) {
+			console.log("Correct answer! Awarding XP...");
+			// Your existing XP logic
+		} else {
+			console.log("Incorrect answer.");
+			// Your existing fail logic
+		}
+	}
 
 	audio() {
-    const sentence = this.correctSentencesArray[this.currentSentenceIndex].Sentence;
-    const filteredSentence = sentence.replace(/[^a-zA-Z\s]/g, '');
-    const utterance = new SpeechSynthesisUtterance(filteredSentence);
-    window.speechSynthesis.speak(utterance);
+		const sentence =
+			this.correctSentencesArray[this.currentSentenceIndex].Sentence;
+		const filteredSentence = sentence.replace(/[^a-zA-Z\s]/g, "");
+		const utterance = new SpeechSynthesisUtterance(filteredSentence);
+		window.speechSynthesis.speak(utterance);
 
-    // if (this.fullSentence.join("") === this.answer.join("")) {
-    //   const utterance = new SpeechSynthesisUtterance(
-    //     filteredSentence
-    //   );
-    //   window.speechSynthesis.speak(utterance);
-    // } else {
-    //   const utterance = new SpeechSynthesisUtterance(
-    //     this.fullSentence
-    //   );
-    //   window.speechSynthesis.speak(utterance);
-    // }
+		// if (this.fullSentence.join("") === this.answer.join("")) {
+		//   const utterance = new SpeechSynthesisUtterance(
+		//     filteredSentence
+		//   );
+		//   window.speechSynthesis.speak(utterance);
+		// } else {
+		//   const utterance = new SpeechSynthesisUtterance(
+		//     this.fullSentence
+		//   );
+		//   window.speechSynthesis.speak(utterance);
+		// }
 	}
 
 	progressBar() {
@@ -419,26 +444,33 @@ questionWordElement.textContent = `${this.questionWord[this.currentSentenceIndex
 			});
 	}
 
-  applyAnswerStyles() {
-    // Retrieve the correct sentence and correct words
-    const correctSentence = this.correctSentencesArray[this.currentSentenceIndex].Sentence;
-    const correctWords = correctSentence.match(/[\w']+|[,.!?]|[\p{Emoji_Presentation}]/gu);
+	applyAnswerStyles() {
+		// Retrieve the correct sentence and correct words
+		const correctSentence =
+			this.correctSentencesArray[this.currentSentenceIndex].Sentence;
+		const correctWords = correctSentence.match(
+			/[\w']+|[,.!?]|[\p{Emoji_Presentation}]/gu
+		);
 
-    // Clear previous styles
-    this.optionElementTarget.querySelectorAll('.option-div').forEach(button => {
-      button.classList.remove('correct', 'incorrect');
-    });
+		// Clear previous styles
+		this.optionElementTarget
+			.querySelectorAll(".option-div")
+			.forEach((button) => {
+				button.classList.remove("correct", "incorrect");
+			});
 
-    // Apply styles based on correctness
-    this.optionElementTarget.querySelectorAll('.option-div').forEach(button => {
-      const buttonWord = button.querySelector('.emoji').textContent.trim();
-      if (correctWords.includes(buttonWord)) {
-        button.classList.add('correct');
-      } else if (this.fullSentence.includes(buttonWord)) {
-        button.classList.add('incorrect');
-      }
-    });
-  }
+		// Apply styles based on correctness
+		this.optionElementTarget
+			.querySelectorAll(".option-div")
+			.forEach((button) => {
+				const buttonWord = button.querySelector(".emoji").textContent.trim();
+				if (correctWords.includes(buttonWord)) {
+					button.classList.add("correct");
+				} else if (this.fullSentence.includes(buttonWord)) {
+					button.classList.add("incorrect");
+				}
+			});
+	}
 
 	next(event) {
 		if (this.currentSentenceIndex === this.correctSentencesArray.length - 1) {
@@ -478,10 +510,43 @@ questionWordElement.textContent = `${this.questionWord[this.currentSentenceIndex
 				.catch((error) => {
 					console.error(error);
 				});
-      window.location.href = "/student/challenges";
+			this.levelUp();
 		} else {
 			this.currentSentenceIndex++;
 			this.loadGame();
 		}
+	}
+
+	levelUp() {
+		const levelImage = document.querySelector(".level-pentagon-grammar-game");
+		const shuriken = document.querySelector(".shuriken-grammar-game");
+		const whiteFlash = document.querySelector(".white-flash-grammar-game");
+		const levelNumber = document.querySelector(
+			".level-pentagon-number-grammar-game"
+		);
+		const levelUpMessage = document.querySelector(
+			".level-pentagon-title-grammar-game"
+		);
+		this.answerElementTarget.innerHTML = "";
+		this.answerElementTarget.classList.remove("border");
+		this.optionElementTarget.innerHTML = "";
+		document.querySelector(".text-center").innerText = "";
+		this.gameElement.classList.add("d-none");
+		levelImage.classList.add("active");
+		setTimeout(() => {
+			shuriken.classList.add("active");
+			whiteFlash.classList.add("active");
+			setTimeout(() => this.cutAudio.play(), 50);
+		}, 500);
+		setTimeout(() => {
+			shuriken.classList.remove("active");
+			whiteFlash.classList.remove("active");
+			levelUpMessage.classList.add("active");
+			levelNumber.innerText = `${parseInt(this.levelNumber) + 1}`;
+		}, 2100);
+
+		setTimeout(() => {
+			window.location.href = "/student/challenges";
+		}, 6000);
 	}
 }
