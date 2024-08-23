@@ -13,6 +13,7 @@ class ChallengePolicy < ApplicationPolicy
     def resolve
       scope.where(user_id: user.id)
            .or(scope.where(classroom_id: user.classrooms_as_student))
+           .order(created_at: :desc)
     end
   end
 
