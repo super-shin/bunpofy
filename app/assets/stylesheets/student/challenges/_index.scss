@@ -90,6 +90,10 @@
 
 //
 
+.student-challenges-modal-content {
+	background-color: rgb(197, 196, 196) !important;
+}
+
 .student-challenges-ranking-pentagon {
 	background-image: image-url(blue_gem);
 	background-size: contain;
@@ -187,6 +191,7 @@
 	margin: 0px 0px 15px 0px;
 	border-radius: 20px;
 	background-color: rgba(21, 20, 20, 0.95);
+	box-shadow: rgba(0, 0, 0, 0.7) 0px 4px 15px;
 	position: relative;
 	overflow: visible;
 	width: 340px;

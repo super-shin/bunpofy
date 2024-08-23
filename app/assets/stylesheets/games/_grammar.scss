@@ -227,6 +227,7 @@
 	color: #ffffff;
 	font-weight: bold;
 	font-size: 1.2em;
+	z-index: 5;
 }
 .answers-container {
 	width: 600px;
@@ -274,6 +275,7 @@
 	left: 0;
 	padding: 10px;
 }
+
 #progress-bar {
 	width: 800px;
 	background-color: rgb(163, 162, 162);

@@ -6,8 +6,8 @@
 .dashboard-pie-card {
 	border-radius: 5px;
 	background-color: white;
-	max-width: 276.5px;
-	min-height: 200px;
+	width: 14vw;
+	min-height: 22vh;
 }
 
 .dashboard-chart-h4 {
@@ -61,11 +61,11 @@
 }
 
 .dashboard-student-list {
-	width: 250px;
+	width: 16vw;
 	background-color: white;
 	border-radius: 5px;
 	flex-shrink: 1 !important;
-	max-height: 608px;
+	max-height: 74.6vh;
 	overflow-y: auto;
 	scrollbar-width: none;
 	box-sizing: border-box;
@@ -90,7 +90,7 @@
 }
 
 .dashboard-student-profile-container {
-	height: 65px;
+	height: 6vh;
 	border-radius: 5px;
 	background-color: white;
 }
@@ -100,19 +100,19 @@
 }
 
 .dashboard-challenges-assigned-container {
-	height: 65px;
+	height: 6vh;
 	border-radius: 5px;
 	background-color: white;
 }
 
 .dashboard-missions-completed-container {
-	height: 65px;
+	height: 6vh;
 	border-radius: 5px;
 	background-color: white;
 }
 
 .dashboard-feedback-profile-container {
-	height: 65px;
+	height: 6vh;
 	border-radius: 5px;
 	background-color: white;
 }
@@ -135,7 +135,7 @@
 	);
 
 	border-radius: 5px;
-	height: 120px;
+	height: 14vh;
 	flex-shrink: 1;
 	flex-grow: 1;
 	background-color: rgba(255, 255, 255, 0.8);
@@ -147,7 +147,7 @@
 }
 
 .left-container-dashboard {
-	width: 240px;
+	width: 22vw;
 	height: auto;
 	border-radius: 5px;
 	background-color: rgba(255, 255, 255, 0.8);
@@ -166,9 +166,6 @@
 
 .classroom-container:hover {
 	background-color: #236a9d;
-}
-
-.dashboard-text-container {
 }
 
 // New Challenge Button Style
@@ -248,13 +245,12 @@
 	--p: 20;
 	--b: 22px;
 	--c: darkred;
-	--w: 150px;
+	--w: 9vw;
 
 	width: var(--w);
 	aspect-ratio: 1;
 	position: relative;
 	display: inline-grid;
-	margin: 5px;
 	place-content: center;
 	font-size: 25px;
 	font-weight: bold;
@@ -301,5 +297,11 @@
 @keyframes p {
 	from {
 		--p: 0;
+	}
+}
+
+@media (max-width: 1440px) {
+	.dashboard-text-media {
+		font-size: 15px;
 	}
 }
