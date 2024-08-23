@@ -40,7 +40,7 @@
           <%= simple_form_for @feedback, url: teacher_submission_feedbacks_path(submission), html: { class: 'h-100', id: "new_feedback-#{index}-#{user.id}-#{submission.id}" } do |f| %>
             <div class="d-flex flex-column h-100">
               <%= f.text_area :content, label: false, placeholder: 'Type your feedback here...', id: "feedback_content-#{index}-#{user.id}-#{submission.id}", class: 'card w-100 h-100 mb-4 p-2 feedback-textarea', input_html: { id: "feedback_content-#{index}-#{user.id}-#{submission.id}" } %>
-              <%= f.button :submit, class: 'btn btn-primary text-white rounded-pill flex-shrink-1', input_html: { id: "feedback_content-#{index}-#{user.id}-#{submission.id}" }  %>
+              <%= f.button :submit,'Send Feedback', class: 'btn btn-primary text-white rounded-pill flex-shrink-1', input_html: { id: "feedback_content-#{index}-#{user.id}-#{submission.id}" }  %>
             </div>
           <% end %>
         </div>
