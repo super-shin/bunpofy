@@ -1,12 +1,18 @@
-<div class="container challenge-directions-card p-4 rounded-5 bg-white">
-  <h2 class="display-5"><%= @challenge.title %></h2>
-  <p><%= @challenge.directions %></p>
-</div>
-<div class="container mt-4 p-2">
-  <%= simple_form_for [:student, @challenge, @submission] do |f| %>
-    <div class="submission-input">
-      <%= f.input :content, as: :text, label: 'Answer:', input_html: { style: 'min-height: 40vh;', placeholder: 'Type here...' } %>
-      <div class="text-end"><%= f.button :submit, 'Submit Answer', class: 'btn btn-primary rounded-pill text-white' %></div>
+<div class="container position-relative">
+  <div class="container challenge-directions-card p-4 rounded-5 bg-white">
+    <h2 class="display-5"><%= @challenge.title %></h2>
+    <p><%= @challenge.directions %></p>
+  </div>
+  <div class="container mt-4 p-2" data-controller="loader">
+    <%= simple_form_for [:student, @challenge, @submission], data: { action: "submit->loader#submitForm" } do |f| %>
+      <div class="submission-input">
+        <%= f.input :content, as: :text, label: 'Answer:', input_html: { style: 'min-height: 40vh;', placeholder: 'Type here...' } %>
+        <div class="text-end"><%= f.button :submit, 'Submit Answer', class: 'btn btn-primary rounded-pill text-white' %></div>
+      </div>
+    <% end %>
+    <!-- Loading overlay -->
+    <div data-loader-target="loading" class="d-none position-fixed top-0 start-0 vw-100 vh-100 d-flex justify-content-center align-items-center bg-dark bg-opacity-75">
+      <img src="https://res.cloudinary.com/ddzvfukq6/image/upload/v1724411671/loading_jaevzr.gif" alt="Loading..." class="img-fluid" style="max-width: 500px;">
     </div>
-  <% end %>
+  </div>
 </div>
