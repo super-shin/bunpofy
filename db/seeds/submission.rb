@@ -2,6 +2,7 @@ puts "Seeding Submissions for Challenge 9..."
 challenge_19 = Challenge.find(19)
 
 submissions = [
+  { user_id: 59, content: "Start by recycling paper, plastics, and using reusable containers. This helps to reduce the amount of waste and benefits the environment. Everyone can support this effort by following these guidelines.", score: 73 },
   { user_id: 60, content: "We should start by recycling paper and plastic, and using reusable water bottles. This will help keep our school clean and save resources. Everyone can do their part by following these rules.", score: 65 },
   { user_id: 61, content: "We can use both sides of the paper before recycling it, and bring our own lunch boxes instead of using disposable ones. These actions will cut down on trash and protect the environment. We all need to remember to follow these practices.", score: 90 },
   { user_id: 62, content: "We should use digital notes instead of printing everything, and avoid using single-use plastics. These changes will reduce the amount of waste and make our school more eco-friendly. Everyone can help by making these small changes.", score: 80 },
@@ -19,11 +20,10 @@ submissions = [
   { user_id: 74, content: "Bring reusable containers and avoid using single-use plastics. This reduces waste and is better for our environment. Everyone should help by making these simple changes.", score: 70 },
   { user_id: 75, content: "Using both sides of the paper and recycling old materials can cut down on waste. These practices help save resources and keep our environment clean. Everyone should try to follow these tips.", score: 87 },
   { user_id: 76, content: "Use reusable items like water bottles and lunch boxes, and recycle as much as you can. This will help decrease the amount of garbage and protect our planet. Everyone can make a difference by adopting these habits.", score: 88 },
-  { user_id: 77, content: "Start by recycling paper, plastics, and using reusable containers. This helps to reduce the amount of waste and benefits the environment. Everyone can support this effort by following these guidelines.", score: 73 },
   { user_id: 78, content: "We can use digital devices for notes instead of paper and make sure to recycle everything we can. These actions help reduce our waste and keep our school environment cleaner. Everyone should try to follow these tips.", score: 72 },
   { user_id: 79, content: "Bring your own reusable bottles and bags and recycle paper and plastic. This will help reduce the amount of waste we produce and is good for the environment. Everyone can make a difference by following these ideas.", score: 67 },
     # Kawaguchi Ryo's Challenge Submission below
-  { user_id: 59, content: "We can by recycle paper and plastic, no use water bottles, and no print.", score: 60,
+  { user_id: 77, content: "We can by recycle paper and plastic, no use water bottles, and no print.", score: 60,
     ai_response: {
       "corrected_text": {
         "jSONRESPONSE_sentence": "We could recycle paper and plastic, reuse water bottles, and print less.",

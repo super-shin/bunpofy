@@ -241,11 +241,13 @@
 
 .student-challenges-card-title {
 	font-size: 14px;
+	height: 42px;
 }
 
 .student-challenges-card-feedback {
 	cursor: pointer;
 	transition: transform 0.3s ease;
+	height: 42px;
 }
 
 .student-challenges-card-feedback:hover {
@@ -258,6 +260,7 @@
 	opacity: 0.4;
 	filter: grayscale(100%);
 	box-shadow: none;
+	height: 42px;
 }
 
 .student-challenges-card-experience {

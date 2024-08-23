@@ -60,20 +60,25 @@ puts "Done!"
 puts "Seeding Games for other challenges in IC 3-1..."
 
 Submission.where(challenge_id: 12..18).each do |submission|
+  score = if submission.user_id == 79
+    120
+  else
+    (10 + ((submission.user_id - 58) * 4) + ((submission.challenge_id - 11) * 2))
+  end
   Game.create({
     submission_id: submission.id,
     game_type: "grammar",
-    score: (50 + (submission.user_id - 58) + ((submission.challenge_id - 11) * 2))
+    score: score
   })
   Game.create({
     submission_id: submission.id,
     game_type: "spelling",
-    score: (50 + (submission.user_id - 58) + ((submission.challenge_id - 11) * 3))
+    score: score
   })
   Game.create({
     submission_id: submission.id,
     game_type: "vocab",
-    score: (55 + (submission.user_id - 58) + ((submission.challenge_id - 11) * 2))
+    score: score
   })
 end
 

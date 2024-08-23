@@ -315,7 +315,7 @@ export default class extends Controller {
 				.catch((error) => {
 					console.error(error);
 				});
-			if (this.experience / this.levelNumber + this.game_xp > 500) {
+			if ((this.experience % this.levelNumber) + this.game_xp > 500) {
 				this.levelUp();
 			} else {
 				window.location.href = `/student/submissions/${

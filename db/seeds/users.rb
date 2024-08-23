@@ -80,7 +80,7 @@ User.create!([
 
 puts "Seeding Class D from Minami International JHS..."
 User.create!([
-  { email: 'kawaguchiryo@minami.com', password: '123456', first_name: 'Ryo', last_name: 'Kawaguchi', role: 'student', school: 'Minami International School' },
+  { email: 'nakamurayumi@minami.com', password: '123456', first_name: 'Yumi', last_name: 'Nakamura', role: 'student', school: 'Minami International School' },
   { email: 'nakanoshin@minami.com', password: '123456', first_name: 'Shin', last_name: 'Nakano', role: 'student', school: 'Minami International School' },
   { email: 'hayashikazu@minami.com', password: '123456', first_name: 'Kazu', last_name: 'Hayashi', role: 'student', school: 'Minami International School' },
   { email: 'suzukidaiki@minami.com', password: '123456', first_name: 'Daiki', last_name: 'Suzuki', role: 'student', school: 'Minami International School' },
@@ -98,7 +98,7 @@ User.create!([
   { email: 'uchidareiko@minami.com', password: '123456', first_name: 'Reiko', last_name: 'Uchida', role: 'student', school: 'Minami International School' },
   { email: 'takashimi@minami.com', password: '123456', first_name: 'Shimi', last_name: 'Takashi', role: 'student', school: 'Minami International School' },
   { email: 'kanemimiyu@minami.com', password: '123456', first_name: 'Miyu', last_name: 'Kanemi', role: 'student', school: 'Minami International School' },
-  { email: 'nakamurayumi@minami.com', password: '123456', first_name: 'Yumi', last_name: 'Nakamura', role: 'student', school: 'Minami International School' },
+  { email: 'kawaguchiryo@minami.com', password: '123456', first_name: 'Ryo', last_name: 'Kawaguchi', role: 'student', school: 'Minami International School' },
   { email: 'yamaguchiriko@minami.com', password: '123456', first_name: 'Riko', last_name: 'Yamaguchi', role: 'student', school: 'Minami International School' },
   { email: 'okunomiku@minami.com', password: '123456', first_name: 'Miku', last_name: 'Okuno', role: 'student', school: 'Minami International School' }
 ])
@@ -157,10 +157,10 @@ default_sensei_image_url = 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_
 # List of male first names
 male_names = %w[Naruto Sasuke Shikamaru Neji Rock Choji Kiba Shino Itachi Tenma Zaku Kabuto Misumi Yoroi Kazuo Ryo Daiki Kosuke Hiro Kazu Tomo Taka Sora Shin Ichi Haru Shun Yuto Ki Geko Kai Yuki Yuta Shoyo Tobio Yuu Tadashi Kei Koushi Azumane Ryuunosuke Chikara Shinsuke Kazuto]
 
-# def attach_photo(user, photo_url)
-#   io = URI.open(photo_url)
-#   user.photo.attach(io: io, filename: File.basename(photo_url), content_type: "image/webp")
-# end
+def attach_photo(user, photo_url)
+  io = URI.open(photo_url)
+  user.photo.attach(io: io, filename: File.basename(photo_url), content_type: "image/webp")
+end
 
 User.all.each do |user|
   if user.school == 'Karasuno Elementary School'
