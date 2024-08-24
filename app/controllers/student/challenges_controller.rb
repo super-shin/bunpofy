@@ -3,7 +3,6 @@ class Student::ChallengesController < ApplicationController
 
   def index
     @challenges = policy_scope(Challenge)
-    @challenges = @challenges.order(due_date: :desc)
     # First row of the challenges
     @top_challenges = @challenges.first(3)
     # Second row and remaining challenges if exist

@@ -18,14 +18,18 @@ export default class extends Controller {
 		this.game_xp = 0;
 		this.studentAnswersArray = [];
 		this.gameId = this.element.dataset.valueGameId;
-		this.levelNumber = this.element.dataset.valueLevelNumber;
 		this.submissionId = this.element.dataset.valueSubmissionId;
+		this.levelNumber = this.element.dataset.valueLevelNumber;
 		this.experience = this.element.dataset.valueExperience;
 		this.geminiKey = this.element.dataset.valueKey;
 		this.audioIcon = this.element.dataset.valueAudioIcon;
 		this.successAudio = new Audio(this.element.dataset.valueAudioSuccess);
 		this.failAudio = new Audio(this.element.dataset.valueAudioFail);
 		this.cutAudio = new Audio(this.element.dataset.valueAudioCut);
+		this.wordsArraySet = [
+			{ Sentence: "The elephant has big ears." },
+			{ Sentence: "The giraffe has a long neck." },
+		];
 		this.wordsArray = JSON.parse(this.element.dataset.valueWordsArray);
 		this.loadingElement = document.querySelector("#loading-element");
 		this.gameElement = document.querySelector("#game-element");
@@ -33,7 +37,12 @@ export default class extends Controller {
 	}
 
 	async loadData() {
-		await this.callGemini();
+		if (this.wordsArray[0] == "elephant") {
+			this.correctSentencesArray = this.wordsArraySet;
+			this.shuffleWords(this.correctSentencesArray);
+		} else {
+			await this.callGemini();
+		}
 		this.loadingElement.classList.add("d-none");
 		this.gameElement.classList.remove("d-none");
 		this.currentSentenceIndex = 0;
@@ -315,7 +324,7 @@ export default class extends Controller {
 				.catch((error) => {
 					console.error(error);
 				});
-			if (this.experience / this.levelNumber + this.game_xp > 500) {
+			if ((this.experience % this.levelNumber) + this.game_xp > 500) {
 				this.levelUp();
 			} else {
 				window.location.href = `/student/submissions/${

@@ -80,7 +80,7 @@ User.create!([
 
 puts "Seeding Class D from Minami International JHS..."
 User.create!([
-  { email: 'kawaguchiryo@minami.com', password: '123456', first_name: 'Ryo', last_name: 'Kawaguchi', role: 'student', school: 'Minami International School' },
+  { email: 'nakamurayumi@minami.com', password: '123456', first_name: 'Yumi', last_name: 'Nakamura', role: 'student', school: 'Minami International School' },
   { email: 'nakanoshin@minami.com', password: '123456', first_name: 'Shin', last_name: 'Nakano', role: 'student', school: 'Minami International School' },
   { email: 'hayashikazu@minami.com', password: '123456', first_name: 'Kazu', last_name: 'Hayashi', role: 'student', school: 'Minami International School' },
   { email: 'suzukidaiki@minami.com', password: '123456', first_name: 'Daiki', last_name: 'Suzuki', role: 'student', school: 'Minami International School' },
@@ -98,7 +98,7 @@ User.create!([
   { email: 'uchidareiko@minami.com', password: '123456', first_name: 'Reiko', last_name: 'Uchida', role: 'student', school: 'Minami International School' },
   { email: 'takashimi@minami.com', password: '123456', first_name: 'Shimi', last_name: 'Takashi', role: 'student', school: 'Minami International School' },
   { email: 'kanemimiyu@minami.com', password: '123456', first_name: 'Miyu', last_name: 'Kanemi', role: 'student', school: 'Minami International School' },
-  { email: 'nakamurayumi@minami.com', password: '123456', first_name: 'Yumi', last_name: 'Nakamura', role: 'student', school: 'Minami International School' },
+  { email: 'kawaguchiryo@minami.com', password: '123456', first_name: 'Ryo', last_name: 'Kawaguchi', role: 'student', school: 'Minami International School' },
   { email: 'yamaguchiriko@minami.com', password: '123456', first_name: 'Riko', last_name: 'Yamaguchi', role: 'student', school: 'Minami International School' },
   { email: 'okunomiku@minami.com', password: '123456', first_name: 'Miku', last_name: 'Okuno', role: 'student', school: 'Minami International School' }
 ])
