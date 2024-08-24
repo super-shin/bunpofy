@@ -45,7 +45,7 @@ challenges[7].tap { |c| attach_photo(c, 'https://res.cloudinary.com/ddzvfukq6/im
 challenges[8].tap { |c| attach_photo(c, 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1724242241/Untitled_design_rl1ag4.jpg') }
 challenges[9].tap { |c| attach_photo(c, 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1724242241/Untitled_design_2_zssrhd.jpg') }
 challenges[10].tap { |c| attach_photo(c, 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1724242241/Untitled_design_3_gnxn7q.jpg') }
-challenges[11].tap { |c| attach_photo(c, 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1724469195/2_zjqqiq.jpg') }
+challenges[11].tap { |c| attach_photo(c, 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1724474555/CHALLENGE_9_gcdko4.jpg') }
 challenges[12].tap { |c| attach_photo(c, 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1724469195/1_gltduz.jpg') }
 challenges[13].tap { |c| attach_photo(c, 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1724469195/3_zcjfzr.jpg') }
 challenges[14].tap { |c| attach_photo(c, 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1724469195/4_xmoy8k.jpg') }

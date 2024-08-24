@@ -73,7 +73,7 @@ class Teacher::ChallengesController < ApplicationController
     @challenge.user = current_user
     authorize @challenge
     if @challenge.save
-      redirect_to teacher_challenge_path(@challenge), notice: 'Challenge submitted successfully!'
+      redirect_to teacher_challenges_path, notice: 'Challenge submitted successfully!'
     else
       render :new
       Rails.logger.error("Challenge save failed: #{@challenge.errors.full_messages.join(', ')}")

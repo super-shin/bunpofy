@@ -1,4 +1,6 @@
-<p><span class="bold-title">TEXTBOOK:</span> <%= @textbook.name %></p>
-<p><span class="bold-title">UNIT:</span> <%= @submission.challenge.unit.name %></p>
-<p><span class="bold-title">LEVEL:</span> <%= @textbook.words.first.grade %></p>
-<p><span class="bold-title">CLARITY:</span> <%= @ai_response["corrected_text"]["clarity"] %> points</p>
+<div class="d-flex flex-column justify-content-center align-items-start">
+  <p class="mb-0"><span class="bold-title">TEXTBOOK:</span> <%= @textbook.name %></p>
+  <p class="mb-0"><span class="bold-title">UNIT:</span> <%= @submission.challenge.unit.name %></p>
+  <p class="mb-0"><span class="bold-title">LEVEL:</span> <%= @textbook.words.first.grade %></p>
+  <p class="mb-0"><span class="bold-title">CLARITY:</span> <%= @ai_response["corrected_text"]["clarity"] %>%</p>
+</div>
