@@ -12,7 +12,7 @@ class Student::GamesController < ApplicationController
     @words_relation = @game.submission.challenge.unit.words
     # Sample 5 unique words
     if (current_user.last_name == "Kawaguchi")
-      @words_array = ["elephant", "dog"]
+      @words_array = ["elephant", "giraffe"]
       @words_array_spelling_en = ["rabbit", "elephant"]
       @words_array_spelling_jp = ["兎 (うさぎ)", " 象 (ぞう, **zō**)"]
     else
