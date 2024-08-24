@@ -11,9 +11,15 @@ class ChallengePolicy < ApplicationPolicy
     #   scope.all
     # end
     def resolve
-      scope.where(user_id: user.id)
-           .or(scope.where(classroom_id: user.classrooms_as_student))
-           .order(:due_date)
+      if user.role == "student"
+        scope.where(user_id: user.id)
+             .or(scope.where(classroom_id: user.classrooms_as_student))
+             .order(due_date: :desc)
+      elsif user.role == "teacher"
+        scope.where(user_id: user.id)
+             .or(scope.where(classroom_id: user.classrooms_as_student))
+             .order(due_date: :asc)
+      end
     end
   end
 
