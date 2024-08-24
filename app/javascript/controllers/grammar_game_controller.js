@@ -26,6 +26,10 @@ export default class extends Controller {
 		this.successAudio = new Audio(this.element.dataset.valueAudioSuccess);
 		this.failAudio = new Audio(this.element.dataset.valueAudioFail);
 		this.cutAudio = new Audio(this.element.dataset.valueAudioCut);
+		this.wordsArraySet = [
+			{ Sentence: "The elephant has big ears." },
+			{ Sentence: "The giraffe has a long neck." },
+		];
 		this.wordsArray = JSON.parse(this.element.dataset.valueWordsArray);
 		this.loadingElement = document.querySelector("#loading-element");
 		this.gameElement = document.querySelector("#game-element");
@@ -33,7 +37,12 @@ export default class extends Controller {
 	}
 
 	async loadData() {
-		await this.callGemini();
+		if (this.wordsArray[0] == "elephant") {
+			this.correctSentencesArray = this.wordsArraySet;
+			this.shuffleWords(this.correctSentencesArray);
+		} else {
+			await this.callGemini();
+		}
 		this.loadingElement.classList.add("d-none");
 		this.gameElement.classList.remove("d-none");
 		this.currentSentenceIndex = 0;
