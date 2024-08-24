@@ -18,8 +18,8 @@ export default class extends Controller {
 		this.game_xp = 0;
 		this.studentAnswersArray = [];
 		this.gameId = this.element.dataset.valueGameId;
-		this.levelNumber = this.element.dataset.valueLevelNumber;
 		this.submissionId = this.element.dataset.valueSubmissionId;
+		this.levelNumber = this.element.dataset.valueLevelNumber;
 		this.experience = this.element.dataset.valueExperience;
 		this.geminiKey = this.element.dataset.valueKey;
 		this.audioIcon = this.element.dataset.valueAudioIcon;
@@ -315,7 +315,7 @@ export default class extends Controller {
 				.catch((error) => {
 					console.error(error);
 				});
-			if (this.experience / this.levelNumber + this.game_xp > 500) {
+			if ((this.experience % this.levelNumber) + this.game_xp > 500) {
 				this.levelUp();
 			} else {
 				window.location.href = `/student/submissions/${

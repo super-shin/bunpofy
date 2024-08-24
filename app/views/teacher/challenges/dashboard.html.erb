@@ -57,25 +57,25 @@
           <div class="d-flex shadow align-items-center dashboard-student-profile-container flex-grow-1 flex-shrink-1 mx-2 mb-2 px-3 py-2">
             <%= image_tag "dashboard_student_profile.png", height: 30, width: 30, class:"me-2" %>
             <div>
-              <p><span class="text-primary"><%= @students.count %></span> Students</p>
+              <p class="dashboard-text-media"><span class="text-primary"><%= @students.count %></span> Students</p>
             </div>
           </div>
           <div class="d-flex shadow align-items-center dashboard-feedback-profile-container flex-grow-1 flex-shrink-1 mx-2 mb-2 px-3 py-2">
             <%= image_tag "feedback.png", height: 30, width: 30, class: "me-2" %>
             <div>
-              <p><span class="text-danger"><%= @pending_feedbacks %></span> feedbacks pending</p>
+              <p class="dashboard-text-media"><span class="text-danger"><%= @pending_feedbacks %></span> feedbacks pending</p>
             </div>
           </div>
           <div class="d-flex shadow align-items-center dashboard-challenges-assigned-container flex-grow-1 flex-shrink-1 mx-2 mb-2 px-3 py-2">
             <%= image_tag "challenge_icon.png", height: 30, width: 30, class:"me-2" %>
             <div>
-              <p><span class="text-primary"><%= @challenges.count %></span> Challenges Assigned</p>
+              <p class="dashboard-text-media"><span class="text-primary"><%= @challenges.count %></span> Challenges Assigned</p>
             </div>
           </div>
           <div class="d-flex shadow align-items-center dashboard-missions-completed-container flex-grow-1 flex-shrink-1 ms-2 mb-2 px-3 py-2">
             <%= image_tag "target.png", height: 30, width: 30, class:"me-2" %>
             <div>
-              <p><span class="text-primary"><%= @missions_completed %></span> Missions Completed</p>
+              <p class="dashboard-text-media"><span class="text-primary"><%= @missions_completed %></span> Missions Completed</p>
             </div>
           </div>
         </div>
@@ -99,8 +99,8 @@
             }],
             {
               theme: 'roma',
-              height: '300px',
-              width: '475px',
+              height: '41vh',
+              width: '31vw',
               options: {
                 legend: {
                   data: ['Submission', 'Vocabulary', 'Spelling', 'Grammar'],
@@ -136,15 +136,15 @@
             }],
             {
               theme: 'roma',
-              height: '300px',
-              width: '475px',
+              height: '41vh',
+              width: '31vw',
               options: {
                 legend: {
                   data: ['Submission', 'Vocabulary', 'Spelling', 'Grammar'],
                   bottom: '15'
                 },
                 title: {
-                  text: 'Student Performance Trends',
+                  text: 'Student Performance Trend',
                   left: 'center',
                   top: '15'
                 },
@@ -157,20 +157,28 @@
         </div>
         <div class="d-flex flex-grow-1 justify-content-center mt-2 w-auto">
           <div class="dashboard-pie-card d-flex flex-column flex-grow-1 flex-shrink-1 shadow mx-2 ps-1 align-items-center">
-            <p class="dashboard-pie-container-text mb-1 pt-2">Submission Progress</p>
-            <div class="pie align-self-center" style="--p:<%= @submissions_ratio %>; --c:#9ECF8E;"> <%= @submissions_ratio.to_i %>%</div>
+            <p class="dashboard-pie-container-text pt-2">Submission Progress</p>
+            <div class="d-flex flex-grow-1 justify-content-center align-items-center">
+              <div class="pie" style="--p:<%= @submissions_ratio %>; --c:#9ECF8E;"> <%= @submissions_ratio.to_i %>%</div>
+            </div>
           </div>
           <div class="dashboard-pie-card d-flex flex-column flex-grow-1 flex-shrink-1 shadow mx-2 ps-1 align-items-center">
-            <p class="dashboard-pie-container-text mb-1 pt-2">Grammar Progress</p>
-            <div class="pie align-self-center" style="--p:<%= @games_grammar_ratio %>; --c:#5470C6;"> <%= @games_grammar_ratio.to_i %>%</div>
+            <p class="dashboard-pie-container-text pt-2">Grammar Progress</p>
+            <div class="d-flex flex-grow-1 justify-content-center align-items-center">
+              <div class="pie" style="--p:<%= @games_grammar_ratio %>; --c:#5470C6;"> <%= @games_grammar_ratio.to_i %>%</div>
+            </div>
           </div>
           <div class="dashboard-pie-card d-flex flex-column flex-grow-1 flex-shrink-1 shadow mx-2 ps-1 align-items-center">
-            <p class="dashboard-pie-container-text mb-1 pt-2">Spelling Progress</p>
-            <div class="pie align-self-center" style="--p:<%= @games_spelling_ratio %>; --c:#FAC858;"> <%= @games_spelling_ratio.to_i %>%</div>
+            <p class="dashboard-pie-container-text pt-2">Spelling Progress</p>
+            <div class="d-flex flex-grow-1 justify-content-center align-items-center">
+              <div class="pie" style="--p:<%= @games_spelling_ratio %>; --c:#FAC858;"> <%= @games_spelling_ratio.to_i %>%</div>
+            </div>
           </div>
           <div class="dashboard-pie-card d-flex flex-column flex-grow-1 flex-shrink-1 shadow ms-2 ps-1 align-items-center">
-            <p class="dashboard-pie-container-text mb-1 pt-2">Vocabulary Progress</p>
-            <div class="pie align-self-center" style="--p:<%= @games_vocabulary_ratio %>; --c:#EE6666;"> <%= @games_vocabulary_ratio.to_i %>%</div>
+            <p class="dashboard-pie-container-text pt-2">Vocabulary Progress</p>
+            <div class="d-flex flex-grow-1 justify-content-center align-items-center">
+              <div class="pie" style="--p:<%= @games_vocabulary_ratio %>; --c:#EE6666;"> <%= @games_vocabulary_ratio.to_i %>%</div>
+            </div>
           </div>
         </div>
       </div>

@@ -36,8 +36,106 @@ def weighted_score_for_game_type(game_type)
   end
 end
 
-puts "Seeding Games..."
-Submission.all.each do |submission|
+puts "Seeding Games for challenge id: 19"
+Submission.where(challenge_id: 19).each do |submission|
+  Game.create({
+    submission_id: submission.id,
+    game_type: "grammar",
+    score: weighted_score_for_game_type("grammar")
+  })
+  Game.create({
+    submission_id: submission.id,
+    game_type: "spelling",
+    score: weighted_score_for_game_type("spelling")
+  })
+  Game.create({
+    submission_id: submission.id,
+    game_type: "vocab",
+    score: weighted_score_for_game_type("vocab")
+  })
+end
+
+puts "Done!"
+
+puts "Seeding Games for other challenges in IC 3-1..."
+
+Submission.where(challenge_id: 12..18).each do |submission|
+  score = if submission.user_id == 79
+    120
+  else
+    (10 + ((submission.user_id - 58) * 4) + ((submission.challenge_id - 11) * 2))
+  end
+  Game.create({
+    submission_id: submission.id,
+    game_type: "grammar",
+    score: score
+  })
+  Game.create({
+    submission_id: submission.id,
+    game_type: "spelling",
+    score: score
+  })
+  Game.create({
+    submission_id: submission.id,
+    game_type: "vocab",
+    score: score
+  })
+end
+
+puts "Done!"
+
+puts "Seeding Games for other challenges in Miyagiken classrooms..."
+
+Submission.where(challenge_id: 5..11).each do |submission|
+  if (5..13).include?(submission.user_id)
+    Game.create({
+      submission_id: submission.id,
+      game_type: "grammar",
+    })
+  else
+    Game.create({
+      submission_id: submission.id,
+      game_type: "grammar",
+      score: (50 + ((submission.challenge_id - 4) * 3))
+    })
+  end
+end
+
+Submission.where(challenge_id: 5..11).each do |submission|
+  if (5..11).include?(submission.user_id)
+    Game.create({
+      submission_id: submission.id,
+      game_type: "spelling",
+    })
+  else
+    Game.create({
+      submission_id: submission.id,
+      game_type: "spelling",
+      score: (50 + ((submission.challenge_id - 4) * 4))
+    })
+  end
+end
+
+Submission.where(challenge_id: 5..11).each do |submission|
+  if (5..15).include?(submission.user_id)
+    Game.create({
+      submission_id: submission.id,
+      game_type: "vocab",
+    })
+  else
+    Game.create({
+      submission_id: submission.id,
+      game_type: "vocab",
+      score: (50 + ((submission.challenge_id - 4) * 5))
+    })
+  end
+end
+
+puts "Done!"
+
+puts "Seeding Games for remaining challenges..."
+
+Submission.where(challenge_id: 1..5).each do |submission|
   Game.create({
     submission_id: submission.id,
     game_type: "grammar",

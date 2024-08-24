@@ -55,15 +55,15 @@
             <%= image_tag 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723567292/CHALLENGE_2_ytlzm2.jpg', height: 200, width: "100%", class: "student-challenges-card-image" %>
           <% end %>
           <div class="d-flex justify-content-between align-items-start">
-            <p class="text-white m-3 text-start student-challenges-card-title"><%= challenge.title %></p>
+            <p class="text-white d-flex align-items-center m-3 text-start student-challenges-card-title"><%= challenge.title %></p>
             <div class="m-3">
               <% if challenge.submissions.find_by(user_id: current_user.id).present? && challenge.submissions.find_by(user_id: current_user.id).feedback.present?%>
-                <div class="student-challenges-card-feedback" data-bs-toggle="modal" data-bs-target="#feedbackModal<%= index %>">
+                <div class="student-challenges-card-feedback d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#feedbackModal<%= index %>">
                   <%= image_tag "feedback_blue.png", height: 25, width: 25%>
                 </div>
                 <div class="modal fade" id="feedbackModal<%= index %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
+                    <div class="modal-content student-challenges-modal-content">
                       <div class="modal-header">
                         <h1 class="modal-title fs-5 student-challenges-card-feedback-name" id="exampleModalLabel"><%= challenge.user.last_name %>'s Feedback</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -78,7 +78,7 @@
                   </div>
                 </div>
               <% else %>
-                <div class="student-challenges-card-feedback-disabled">
+                <div class="student-challenges-card-feedback-disabled d-flex align-items-center">
                   <%= image_tag "feedback_blue.png", height: 25, width: 25%>
                 </div>
               <% end %>
@@ -181,15 +181,15 @@
               <%= image_tag 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723567292/CHALLENGE_2_ytlzm2.jpg', height: 200, width: "100%", class: "student-challenges-card-image" %>
             <% end %>
             <div class="d-flex justify-content-between align-items-start">
-              <p class="text-white m-3 text-start student-challenges-card-title"><%= challenge.title %></p>
+              <p class="text-white m-3 d-flex align-items-center text-start student-challenges-card-title"><%= challenge.title %></p>
               <div class="m-3">
                 <% if challenge.submissions.find_by(user_id: current_user.id).present? && challenge.submissions.find_by(user_id: current_user.id).feedback.present?%>
-                  <div class="student-challenges-card-feedback" data-bs-toggle="modal" data-bs-target="#feedbackModal-remaining-challenges<%= index %>">
+                  <div class="student-challenges-card-feedback d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#feedbackModal-remaining-challenges<%= index %>">
                     <%= image_tag "feedback_blue.png", height: 25, width: 25%>
                   </div>
                   <div class="modal fade" id="feedbackModal-remaining-challenges<%= index %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
-                      <div class="modal-content">
+                      <div class="modal-content student-challenges-modal-content">
                         <div class="modal-header">
                           <h1 class="modal-title fs-5 student-challenges-card-feedback-name" id="exampleModalLabel"><%= challenge.user.last_name %>'s Feedback</h1>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -204,7 +204,7 @@
                     </div>
                   </div>
                 <% else %>
-                  <div class="student-challenges-card-feedback-disabled">
+                  <div class="student-challenges-card-feedback-disabled d-flex align-items-center">
                     <%= image_tag "feedback_blue.png", height: 25, width: 25%>
                   </div>
                 <% end %>
