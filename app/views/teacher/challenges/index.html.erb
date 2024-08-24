@@ -39,7 +39,7 @@
           <div class="col">
             <a href="<%= teacher_challenge_path(challenge) %>" class="text-decoration-none">
               <div class="card h-100 shadow border-0 position-relative">
-                <% if challenge.created_at >= 1.minutes.ago %>
+                <% if challenge.created_at >= 2.minutes.ago %>
                   <span class="badge rounded-pill bg-info text-dark position-absolute px-4" style="top: 10px; right: 10px;">New!</span>
                 <% end %>
                 <% if challenge.photo.attached? %>
