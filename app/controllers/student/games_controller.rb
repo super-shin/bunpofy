@@ -11,12 +11,17 @@ class Student::GamesController < ApplicationController
     # Get the ActiveRecord relation of words associated with the unit
     @words_relation = @game.submission.challenge.unit.words
     # Sample 5 unique words
-    @words_array = @words_relation.sample(2).map(&:english)
-    @single_word_array = @words_relation.select { |word| word.english.split.size == 1 }
-    @words_array_spelling = @single_word_array.sample(5)
-    @words_array_spelling_en = @words_array_spelling.map(&:english)
-    @words_array_spelling_jp = @words_array_spelling.map(&:japanese)
-    # @words_array_spelling = ["house", "dog", "friendly"]
+    if (current_user.last_name == "Kawaguchi")
+      @words_array = ["elephant", "dog"]
+      @words_array_spelling_en = ["rabbit", "elephant"]
+      @words_array_spelling_jp = ["兎 (うさぎ)", " 象 (ぞう, **zō**)"]
+    else
+      @words_array = @words_relation.sample(2).map(&:english)
+      @single_word_array = @words_relation.select { |word| word.english.split.size == 1 }
+      @words_array_spelling = @single_word_array.sample(5)
+      @words_array_spelling_en = @words_array_spelling.map(&:english)
+      @words_array_spelling_jp = @words_array_spelling.map(&:japanese)
+    end
     # Calculate the current user level
     submissions_xp = current_user.submissions.map{|submission| submission.score}.sum
     games_xp = current_user.submissions.flat_map(&:games).select{|game| game.score.present?}.map{|game| game.score}.sum

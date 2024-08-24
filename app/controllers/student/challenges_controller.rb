@@ -2,7 +2,8 @@ class Student::ChallengesController < ApplicationController
   before_action :set_challenge, only: [:show]
 
   def index
-    @challenges = policy_scope(Challenge).order(created_at: :desc)
+    @challenges = policy_scope(Challenge)
+    @challenges = @challenges.order(due_date: :desc)
     # First row of the challenges
     @top_challenges = @challenges.first(3)
     # Second row and remaining challenges if exist
