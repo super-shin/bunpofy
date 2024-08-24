@@ -49,9 +49,10 @@ challenges[11].tap { |c| attach_photo(c, 'https://res.cloudinary.com/ddzvfukq6/i
 challenges[12].tap { |c| attach_photo(c, 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723656408/CHALLENGE_7_p9vpdd.jpg') }
 challenges[13].tap { |c| attach_photo(c, 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723654268/CHALLENGE_4_m2rlj7.jpg') }
 challenges[14].tap { |c| attach_photo(c, 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723654369/CHALLENGE_5_lzgpje.jpg') }
-challenges[15].tap { |c| attach_photo(c, 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723654494/CHALLENGE_6_zlkp07.jpg') }
+challenges[15].tap { |c| attach_photo(c, 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1724242241/Untitled_design_rl1ag4.jpg') }
 challenges[16].tap { |c| attach_photo(c, 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1724242241/Untitled_design_2_zssrhd.jpg') }
 challenges[17].tap { |c| attach_photo(c, 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1724242241/Untitled_design_3_gnxn7q.jpg') }
-challenges[18].tap { |c| attach_photo(c, 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1724242241/Untitled_design_rl1ag4.jpg') }
+challenges[18].tap { |c| attach_photo(c, 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723654494/CHALLENGE_6_zlkp07.jpg') }
+
 
 puts "ALL DONE - Seeded Challenges"
