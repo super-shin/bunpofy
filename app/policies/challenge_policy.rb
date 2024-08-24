@@ -18,7 +18,7 @@ class ChallengePolicy < ApplicationPolicy
       elsif user.role == "teacher"
         scope.where(user_id: user.id)
              .or(scope.where(classroom_id: user.classrooms_as_student))
-             .order(due_date: :asc)
+             .order(due_date: :desc)
       end
     end
   end
