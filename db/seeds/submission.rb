@@ -1,3 +1,27 @@
+def random_datetime_between(start_date, end_date)
+  end_date = [end_date, Time.now].min
+  
+  start_date = start_date.to_time if start_date.respond_to?(:to_time)
+  end_date = end_date.to_time if end_date.respond_to?(:to_time)
+  
+  valid_start_time = 9 * 3600
+  valid_end_time = 24 * 3600
+
+  range = end_date - start_date
+  
+  loop do
+    random_seconds = rand(range.to_i)
+    random_datetime = start_date + random_seconds.seconds
+
+    seconds_since_midnight = random_datetime.hour * 3600 + random_datetime.min * 60 + random_datetime.sec
+
+    if seconds_since_midnight >= valid_start_time && seconds_since_midnight < valid_end_time
+      return random_datetime
+    end
+  end
+end
+
+
 puts "Seeding Submissions for Challenge 9..."
 challenge_19 = Challenge.find(19)
 
@@ -84,12 +108,15 @@ submissions = [
 ]
 
 submissions.each do |submission|
+  created_at = random_datetime_between(challenge_19.created_at, challenge_19.due_date)
   Submission.create({
     user_id: submission[:user_id],
     challenge_id: challenge_19.id,
     content: submission[:content],
     score: submission[:score],
-    ai_response: submission[:ai_response] || {}
+    ai_response: submission[:ai_response] || {},
+    created_at: created_at,
+    updated_at: created_at
     })
   puts "Seeded User #{submission[:user_id]}'s Submission"
 end
@@ -111,16 +138,20 @@ generic_contents = [
   "Hi! I love badminton. My favorite fruit is apple. I live in Saitama."
 ]
 
+
 puts "Seeding Submissions for Miyagiken (user_id: 4) exluding IC 3-1 challenges"
 
 Challenge.where(id: 5..11).each_with_index do |challenge, challenge_index|
-  challenge.students.where.not(id: 44..54).each do |student|
+  challenge.students.where.not(id: 44..58).each do |student|
     content = generic_contents.sample
+    created_at = random_datetime_between(challenge.created_at, challenge.due_date)
     Submission.create({
       user_id: student.id,
       challenge_id: challenge.id,
       content: content,
-      score: rand((40 + (challenge_index * 4))..(60 + (challenge_index * 4)))
+      score: rand((40 + (challenge_index * 4))..(60 + (challenge_index * 4))),
+      created_at: created_at,
+      updated_at: created_at
     })
   end
   puts "Seeded Challenge ##{challenge.id}"
@@ -133,11 +164,14 @@ puts "Seeding Submissions for Miyagiken (user_id: 4) in IC 3-1 challenges."
 Challenge.where(id: 12..18).each_with_index do |challenge, challenge_index|
   challenge.students.each_with_index do |student, student_index|
     content = generic_contents.sample
+    created_at = random_datetime_between(challenge.created_at, challenge.due_date)
     Submission.create({
       user_id: student.id,
       challenge_id: challenge.id,
       content: content,
-      score: (50 + (challenge_index * 2) + student_index)
+      score: (50 + (challenge_index * 2) + student_index),
+      created_at: created_at,
+      updated_at: created_at
     })
   end
   puts "Seeded Challenge ##{challenge.id}"
@@ -150,11 +184,14 @@ puts "Seeding Submissions for the other teachers..."
 Challenge.where(id: 1..4).each do |challenge|
   challenge.students.each do |student|
     content = generic_contents.sample
+    created_at = random_datetime_between(challenge.created_at, challenge.due_date)
     Submission.create!(
       user_id: student.id,
       challenge_id: challenge.id,
       content: content,
-      score: rand(60..100)
+      score: rand(60..100),
+      created_at: created_at,
+      updated_at: created_at
     )
   end
   puts "Seeded Challenge ##{challenge.id}"
