@@ -19,7 +19,11 @@ class Student::SubmissionsController < ApplicationController
   def create
     @submission = @challenge.submissions.build(submission_params)
     @submission.user = current_user
-    @submission.ai_response = generate(@submission.content)
+    if @submission.user.email == 'kawaguchiryo@minami.com'
+      @submission.ai_response = pitch_response
+    else
+      @submission.ai_response = generate(@submission.content)
+    end
     @ai_response_data = JSON.parse(@submission.ai_response) if @submission.ai_response.present?
     
     if @ai_response_data
@@ -68,4 +72,70 @@ class Student::SubmissionsController < ApplicationController
   
     gemini_service.generate_content(final_prompt).to_json
   end
+
+  def pitch_response
+    {
+      "corrected_text" => {
+        "jSONRESPONSE_sentence" => "My favorite animal is the elephant. I am always excited to go to the zoo to see them.",
+        "clarity" => "60",
+        "alternatives" => [
+          "Elephants are my favorite animals. I always get excited when I go to the zoo to see them.",
+          "I love elephants. I always look forward to visiting the zoo to see them."
+        ]
+      },
+      "info" => {
+        "score" => "70",
+        "chars_count" => 102,
+        "word_count" => 19,
+        "sentence_count" => 2,
+        "pos_tagging_with_index" => [
+          ["My", "PRP$"],
+          ["favorite", "JJ"],
+          ["animal", "NN"],
+          ["is", "VBZ"],
+          ["a", "DT"],
+          ["elefant", "NN"],
+          ["I", "PRP"],
+          ["am", "VBZ"],
+          ["always", "RB"],
+          ["excited", "JJ"],
+          ["to", "TO"],
+          ["go", "VB"],
+          ["to", "TO"],
+          ["the", "DT"],
+          ["zoo", "NN"],
+          ["'s", "POS"],
+          ["to", "TO"],
+          ["see", "VB"],
+          ["them", "PRP"]
+        ],
+        "original_sentence" => "My favorite animal is a elefant. I am always excited to go to the zoo's to see them.",
+        "corrected_sentence" => "My favorite animal is the elephant. I am always excited to go to the zoo to see them."
+      },
+      "errors" => [
+        {
+          "type" => "Spelling",
+          "subcategory" => "Misspelled Word",
+          "description" => "The word 'elefant' is misspelled. The correct spelling is 'elephant'.",
+          "problematic_segment" => "elefant",
+          "suggested_alternative" => "elephant"
+        },
+        {
+          "type" => "Punctuation",
+          "subcategory" => "Unnecessary Punctuation",
+          "description" => "The punctuation is unnecessary after 'zoo'.",
+          "problematic_segment" => "'",
+          "suggested_alternative" => ""
+        },
+        {
+          "type" => "Grammar",
+          "subcategory" => "Article Usage",
+          "description" => "The article 'a' should be replaced with 'the' because the sentence is referring to a specific elephant.",
+          "problematic_segment" => "a elefant",
+          "suggested_alternative" => "the elephant"
+        }
+      ]
+    }.to_json
+  end
+  
 end
