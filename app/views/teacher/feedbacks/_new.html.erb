@@ -5,34 +5,35 @@
 <% alternatives = corrected_text && corrected_text['alternatives'] ? corrected_text['alternatives'] : {} %>
 <div class="modal fade" id="feedbackModal-<%= "#{index}-#{user.id}-#{submission.id}" %>" tabindex="-1" aria-labelledby="feedbackModal-<%= "#{index}-#{user.id}-#{submission.id}" %>Label" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered"  style="min-width: 70vw">
-    <div class="modal-content">
-      <div class="modal-header d-flex justify-content-center">
-        <h2 class="modal-title display-6" id="feedbackModal-<%= "#{index}-#{user.id}-#{submission.id}" %>Label">Give your Ninja a <span class="yellow">Feedback</span></h2>
+    <div class="modal-content px-5 pb-5 pt-3">
+      <div class="modal-header d-flex justify-content-center border-0">
+        <%= image_tag "https://res.cloudinary.com/ddzvfukq6/image/upload/v1724587262/D_-JO_4_soqipf.png", style: 'max-height: 100px;' %>
       </div>
-      <div class="modal-body row">
+      <div class="modal-body row pt-0">
         <div class="col-6 d-flex flex-column align-items-start gap-1">
-          <div class="card px-4 py-2 w-100 text-start">
+          <div class="card px-2 py-2 w-100 text-start shadow bg-white mb-3">
             <span><small class="dark-gray mb-5"><i class="fa-solid fa-pencil"></i> Student Submission</small></span>
-            <span class="fs-4 red"><%= submission.content %></span>
+            <span class="fs-4 ps-3 red"><%= submission.content %></span>
           </div>
-          <div class="card px-4 py-2 w-100 text-start">
-            <span><img src="https://res.cloudinary.com/ddzvfukq6/image/upload/v1724114176/gemini_rkqmxj.png" alt="gemini-logo" style="width:20px;"> <small class="blue mb-5">AI Improved Text</small></span>
+          <div class="card px-2 py-2 w-100 text-start shadow bg-white" data-controller="clipboard">
             <% if jSONRESPONSE_sentence.blank? %>
+              <span><img src="https://res.cloudinary.com/ddzvfukq6/image/upload/v1724114176/gemini_rkqmxj.png" alt="gemini-logo" style="width:20px;"> <small class="gemini-text mb-5">AI Improved Text</small></span>
               <p class="dark-gray ms-4"><small>AI response not available.</small></p>
             <% else %>
-              <div data-controller="clipboard">
-                <span class="fs-6 text-muted" data-clipboard-target="source"><%= jSONRESPONSE_sentence %></span>
+              <div class="d-flex justify-content-between align-items-center">
+                <span><img src="https://res.cloudinary.com/ddzvfukq6/image/upload/v1724114176/gemini_rkqmxj.png" alt="gemini-logo" style="width:20px;"> <small class="gemini-text mb-5">AI Improved Text</small></span>
                 <i class="fa-regular fa-copy align-text-top dark-gray" style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Copy" data-action="click->clipboard#copy" data-clipboard-target="copybutton"></i>
               </div>
+              <div class="ps-4"><span class="fs-6 text-muted" data-clipboard-target="source"><%= jSONRESPONSE_sentence %></span></div>
             <% end %>
           </div>
           <% alternatives.uniq.each_with_index do |alt, index| %>
-            <div class="card px-4 py-2 w-100 d-flex flex-column text-start">
-              <span><img src="https://res.cloudinary.com/ddzvfukq6/image/upload/v1724114176/gemini_rkqmxj.png" alt="gemini-logo" style="width:20px;"> <small class="blue mb-5">AI Alternative <%= alternatives.uniq.count == 1 ? '' : index == 0 ? '#1' : "##{index + 1}" %></small></span>
-              <div data-controller="clipboard">
-                <span class="fs-6 text-muted" data-clipboard-target="source"><%= alt %></span>
+            <div class="card px-2 py-2 w-100 d-flex flex-column text-start shadow bg-white" data-controller="clipboard">
+              <div class="d-flex justify-content-between align-items-center">
+                <span><img src="https://res.cloudinary.com/ddzvfukq6/image/upload/v1724114176/gemini_rkqmxj.png" alt="gemini-logo" style="width:20px;"> <small class="gemini-text mb-5">AI Alternative <%= alternatives.uniq.count == 1 ? '' : index == 0 ? '#1' : "##{index + 1}" %></small></span>
                 <i class="fa-regular fa-copy align-text-top dark-gray" style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Copy" data-action="click->clipboard#copy" data-clipboard-target="copybutton"></i>
               </div>
+              <div class="ps-4"><span class="fs-6 text-muted" data-clipboard-target="source"><%= alt %></span></div>
             </div>
           <% end %>
         </div>
