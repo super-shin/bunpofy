@@ -35,6 +35,7 @@ export default class extends Controller {
   
     setTimeout(() => {
       const gif = document.createElement('img')
+      gif.src = ''
       gif.src = 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1724650846/papyrus_hpyvds.gif'
       gif.style.width = '600px'
       gif.style.height = '600px'
