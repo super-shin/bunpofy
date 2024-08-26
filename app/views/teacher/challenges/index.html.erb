@@ -117,14 +117,21 @@
                           <i class="fa-regular fa-calendar-days text-muted"></i>
                           <span class="dark-gray dark-gray ms-2"><%= challenge.due_date.strftime("%B %d, %Y") %></span>
                         </div>
-                        <% percentage = (challenge.submissions.count / challenge.classroom.attendances.count) * 100 %>
+                        <% percentage = ((challenge.submissions.count.to_f / challenge.classroom.attendances.count) * 100).round(2) %>
                         <div class="progress mt-4" style="height: 25px;">
                           <% if percentage == 0 %>
                             <div class="progress-bar bg-light dark-gray" role="progressbar" aria-label="Example with label" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">No Submissions Yet</div>
-                          <% elsif percentage == 100 %>
+                          <% elsif percentage >= 100 %>
                             <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100% Completed</div>
                           <% else %>
-                            <div class="progress-bar bg-warning" role="progressbar" aria-label="Example with label" style="width: <%= percentage %>%;" aria-valuenow="<%= percentage %>" aria-valuemin="0" aria-valuemax="100"><%= percentage %>% Completed</div>
+                            <div class="position-relative" style="width: 100%; height: 30px;">
+                              <div class="progress" style="height: 100%;">
+                                <div class="progress-bar bg-info" role="progressbar" aria-label="Example with label" style="width: <%= percentage %>%;" aria-valuenow="<%= percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <span class="position-absolute top-50 start-50 translate-middle dark-gray bg-transparent">
+                                <%= percentage %>% Completed
+                              </span>
+                            </div>
                           <% end %>
                         </div>
                       </div>
