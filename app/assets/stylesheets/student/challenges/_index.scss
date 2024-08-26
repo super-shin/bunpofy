@@ -248,10 +248,28 @@
 	cursor: pointer;
 	transition: transform 0.3s ease;
 	height: 42px;
+	position: relative;
 }
 
 .student-challenges-card-feedback:hover {
 	transform: scale(1.05);
+}
+
+.student-challenges-card-feedback-notification {
+	position: absolute;
+	animation: grow-shrink 1s ease-in-out infinite;
+	top: 3px;
+	right: 0px;
+}
+
+@keyframes grow-shrink {
+	0%,
+	100% {
+		transform: scale(1); /* Normal size */
+	}
+	50% {
+		transform: scale(1.3); /* Slightly bigger */
+	}
 }
 
 .student-challenges-card-feedback-disabled {

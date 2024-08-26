@@ -13,6 +13,7 @@ class Teacher::FeedbacksController < ApplicationController
     @feedback.submission = @submission
     authorize @feedback
     if @feedback.save
+      Notification.create(status: true, user_id: @feedback.user_id, notifiable: @feedback)
       redirect_to teacher_challenge_path(@submission.challenge), notice: 'Feedback submitted successfully!'
     else
       render :new

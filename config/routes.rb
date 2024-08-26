@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   namespace :student do
     resources :challenges, only: [:index, :show] do
+      resources :notifications, only: [:update]
       resources :submissions, only: [:new, :create]
     end
     resources :submissions, only: [:show] do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_15_113833) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_24_062135) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -90,6 +90,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_15_113833) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["submission_id"], name: "index_games_on_submission_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.boolean "status"
+    t.string "notifiable_type", null: false
+    t.bigint "notifiable_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -206,6 +217,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_15_113833) do
   add_foreign_key "feedbacks", "submissions"
   add_foreign_key "feedbacks", "users"
   add_foreign_key "games", "submissions"
+  add_foreign_key "notifications", "users"
   add_foreign_key "questions", "games"
   add_foreign_key "submissions", "challenges"
   add_foreign_key "submissions", "users"

@@ -6,6 +6,7 @@ class Challenge < ApplicationRecord
   has_many :submissions
   has_many :attendances, through: :classroom
   has_many :students, through: :attendances, source: :user
+  has_many :notifications, as: :notifiable
   validates :title, :directions, presence: true
 
   def photo_url
