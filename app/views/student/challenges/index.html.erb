@@ -46,7 +46,7 @@
     </div>
   </div>
   <div class="student-challenges-challenges-container d-flex">
-    <div class="d-flex student-challenges-card-container flex-wrap justify-content-between flex-grow-1">
+    <div class="student-challenges-card-container flex-wrap">
       <% @top_challenges.each_with_index do |challenge, index| %>
         <% challenge_notification = Notification.find_by(notifiable_id: challenge.id, notifiable_type: "Challenge")&.status == true %>
         <div class="student-challenges-card d-flex flex-column p-0">
