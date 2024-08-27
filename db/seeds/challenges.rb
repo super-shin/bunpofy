@@ -32,6 +32,21 @@ challenges = Challenge.create!([
   { user_id: 4, unit_id: 994, classroom_id: 7, title: "Give me ideas to lessen waste at schools.", directions: "Write a paragraph about ways to reduce waste at school. Start with a sentence introducing your main idea, like \"Here are some ideas to help reduce waste at our school.\" Then, describe a few practical actions or changes that can be made, such as recycling, using reusable items, or reducing paper use. Share why these ideas are important and how they can make a difference. End your paragraph with a sentence about how everyone can help with these ideas.", due_date: Date.new(2024, 9, 2)}
 ])
 
+current_date = Date.today
+challenges.each do |challenge|
+  timestamp_date = 
+  if challenge.due_date - 7.days > current_date
+    current_date - 2.days
+  else
+    challenge.due_date - 7.days
+  end
+  challenge.update!(
+    created_at: timestamp_date,
+    updated_at: timestamp_date
+  )
+end
+
+
 puts "Seeding Challenge Pictures..."
 # Attach photos to Challenges
 challenges[0].tap { |c| attach_photo(c, 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1723653165/CHALLENGE_3_jgkptl.jpg') }

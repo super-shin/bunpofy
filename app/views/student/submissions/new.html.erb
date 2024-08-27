@@ -3,7 +3,7 @@
     <h2 class="display-5"><%= @challenge.title %></h2>
     <p><%= @challenge.directions %></p>
   </div>
-  <div class="container mt-4 p-2" data-controller="loader">
+  <div class="container mt-4 p-2" data-controller="loader"  data-loader-email-value="<%= current_user.email %>">
     <%= simple_form_for [:student, @challenge, @submission], data: { action: "submit->loader#submitForm" } do |f| %>
       <div class="submission-input">
         <%= f.input :content, as: :text, label: 'Answer:', input_html: { style: 'min-height: 40vh;', placeholder: 'Type here...' } %>

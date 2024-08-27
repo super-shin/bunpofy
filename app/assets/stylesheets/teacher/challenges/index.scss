@@ -59,3 +59,34 @@
 	background-color: #ffffff;
 	outline: none;
 }
+.gemini-text {
+	background: linear-gradient(
+		90deg,
+		hsl(278, 100%, 48%) 0%,
+		hsl(274, 89%, 54%) -1%,
+		hsl(271, 88%, 57%) -1%,
+		hsl(268, 86%, 59%) -1%,
+		hsl(265, 85%, 61%) -2%,
+		hsl(262, 84%, 62%) -2%,
+		hsl(259, 82%, 63%) -1%,
+		hsl(256, 81%, 65%) -1%,
+		hsl(252, 79%, 66%) 0%,
+		hsl(248, 77%, 67%) 1%,
+		hsl(244, 76%, 68%) 2%,
+		hsl(239, 74%, 68%) 3%,
+		hsl(235, 74%, 67%) 5%,
+		hsl(230, 74%, 66%) 7%,
+		hsl(226, 74%, 65%) 10%,
+		hsl(222, 74%, 64%) 14%,
+		hsl(219, 74%, 63%) 18%,
+		hsl(215, 74%, 61%) 23%,
+		hsl(212, 74%, 60%) 29%,
+		hsl(209, 74%, 59%) 38%,
+		hsl(206, 74%, 57%) 51%,
+		hsl(204, 75%, 55%) 80%
+		);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	text-fill-color: transparent;
+  }

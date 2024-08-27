@@ -94,7 +94,13 @@
     <% if source == 'without' %>
       <span class="gray-pill"></span>
     <% else %>
-      <a href="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Submission Details"><i class="fa-solid fa-square-arrow-up-right dark-gray fs-5"></i></a>
+      <% if user_submissions.any? %>
+        <% user_submissions.each do |submission| %>
+          <%= link_to teacher_submission_path(submission), data: { bs_toggle: "tooltip", bs_placement: "top", bs_title: "Submission Details" } do %>
+            <i class="fa-solid fa-square-arrow-up-right dark-gray fs-5"></i>
+          <% end %>
+        <% end %>
+      <% end %>
     <% end %>
   </td>
 </tr>

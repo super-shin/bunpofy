@@ -1,0 +1,97 @@
+<div class="container mb-4">
+  <i class="fa-solid fa-arrow-left-long text-white"></i>
+  <%= link_to 'Back', teacher_challenge_path(@submission.challenge), class: 'text-white' %>
+</div>
+<div class="container bg-white d-flex align-items-center justify-content-center flex-column border border-1" style="margin-bottom: 100px;">
+  <div class="row w-100">
+    <div class="card bg-white border-0 p-4">
+      <div class="col-12">
+      </div>
+      <div class="col-12 d-flex justify-content-center align-items-center"><!--#################### header ####################-->
+        <div class="col-2 d-flex justify-content-center align-items-center ">
+          <%= cl_image_tag(@submission.user.photo.key, width: 150, height: 150, crop: "thumb", gravity: "face") %>
+        </div>
+        <div class="col-6">
+          <h1 class="display-4"><%= @submission.user.first_name %> <%= @submission.user.last_name %></h1>
+          <p class="dark-gray ms-2 mb-0"><i class="fa-solid fa-envelope yellow"></i> <%= @submission.user.email %></p>
+          <p class="dark-gray ms-2 mb-0"><i class="fa-solid fa-school-flag yellow"></i> <%= @submission.user.school %></p>
+        </div>
+        <div class="col-4 p-2 h-100 d-flex gap-2 align-items-center justify-content-center">
+          <span class="h-100 w-50 badge bg-primary rounded-5 d-flex flex-column justify-content-center align-items-center">
+            <i class="fa-solid fa-feather-pointed yellow display-5"></i>
+            <span class="display-5"><%= @submission.score %>%</span>
+          </span>
+          <span class="h-100 w-50 badge bg-primary rounded-5 d-flex flex-column justify-content-center align-items-center">
+            <% if @submission.score > 80 %>
+              <i class="fa-solid fa-ranking-star green display-5"></i>
+              <span class="fs-4 mt-3">High Score</span>
+            <% elsif @submission.score > 65 %>
+              <i class="fa-solid fa-ranking-star yellow display-5"></i>
+              <span class="fs-4 mt-3">Average</span>
+            <% else %>
+              <i class="fa-solid fa-ranking-star pale-red display-5"></i>
+              <span class="fs-4 mt-3">Low Score</span>
+            <% end %>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 my-5"><!--#################### submission ####################-->
+      <div class="card bg-white rounded-5 border-4 p-5" style="border-color: #fcd74a;">
+        <span class="display-5 text-center text-muted">"<%= @submission.content %>"</span>
+      </div>
+    </div>
+    <div class="col-12 d-flex align-items-center justify-content-start ms-5 mb-5"><!--#################### AI RESPONSE ####################-->
+      <div class="card bg-white border-0">
+        <span><img src="https://res.cloudinary.com/ddzvfukq6/image/upload/v1724114176/gemini_rkqmxj.png" alt="gemini-logo" style="width:20px;"> <small class="gemini-text mb-5">AI Improved Text</small></span>
+        <span class="text-center text-muted ps-4"><%= @ai_response && @ai_response['corrected_text'] && @ai_response['corrected_text']['jSONRESPONSE_sentence'] ? @ai_response['corrected_text']['jSONRESPONSE_sentence'] : 'No AI Response Available' %></span>
+        <% if @ai_response && @ai_response['corrected_text'] && @ai_response['corrected_text']['alternatives'] %>
+          <% alternatives = @ai_response['corrected_text']['alternatives'] %>
+          <% alternatives.uniq.each_with_index do |alt, index| %>
+            <span><img src="https://res.cloudinary.com/ddzvfukq6/image/upload/v1724114176/gemini_rkqmxj.png" alt="gemini-logo" style="width:20px;"> <small class="gemini-text mb-5">AI Alternative <%= alternatives.uniq.count == 1 ? '' : index == 0 ? '#1' : "##{index + 1}" %></small></span>
+            <div class="ps-4"><span class="fs-6 text-muted"><%= alt %></span></div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-12 mb-4"><!--#################### games ####################-->
+      <table class="table bg-white">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Game Type</th>
+            <th scope="col">Calculated Score</th>
+            <th scope="col">Question ID</th>
+            <th scope="col">Options</th>
+            <th scope="col">Student Answer</th>
+            <th scope="col">Correct Answer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% row_index = 1 %>
+          <% @submission.games.each do |game| %>
+            <% calculated_score = game.score / game.questions.count if game.questions.count > 0 %>
+            <% game.questions.each do |question| %>
+              <tr>
+                <th scope="row" class="bg-white"><%= row_index %></th>
+                <td class="bg-white"><%= game.game_type.capitalize %></td>
+                <td class="bg-white"><%= calculated_score ? calculated_score.round(2) : 'N/A' %></td>
+                <td class="bg-white"><%= question.id %></td>
+                <td class="bg-white"><%= question.options %></td>
+                <td class="bg-white"><%= question.student_answer %></td>
+                <td class="bg-white"><%= question.correct_answer %></td>
+              </tr>
+              <% row_index += 1 %>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-12 my-5"><!--#################### feedback ####################-->
+      <span class="blue"><%= @submission.challenge.user.first_name %> <%= @submission.challenge.user.last_name %> Sensei's Feedback:</span>
+      <div class="card bg-light p-5">
+        <span class="text-center text-muted">"<%= @submission.feedback ? @submission.feedback.content : 'No feedback yet.' %>"</span>
+      </div>
+    </div>
+  </div>
+</div>

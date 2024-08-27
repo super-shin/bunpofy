@@ -6,12 +6,16 @@
       <div class="col d-flex">
         <div class="col-8 align-self-end">
           <a href="<%= root_path %>">
-            <%= image_tag "logo/logo_black.svg", class: "img-fluid", style: "max-width: 200px;" %>
+            <% if current_user&.role == 'student' && !current_page?(root_path) %>
+              <%= image_tag "logo/logo_yellow.svg", class: "img-fluid", style: "max-width: 200px;" %>
+            <% else %>
+              <%= image_tag "logo/logo_black.svg", class: "img-fluid", style: "max-width: 200px;" %>
+            <% end %>
           </a>
-          <p class="mb-0">Copyright © 2024 Bunpofy. All rights reserved.</p>
+          <p class="mb-0 <%= 'text-white' if current_user&.role == 'student' && !current_page?(root_path) %>">Copyright © 2024 Bunpofy. All rights reserved.</p>
         </div>
         <div class="col align-self-start d-none d-sm-inline">
-          <h6>RESOURCES</h6>
+          <h6 class="<%= 'text-white' if current_user&.role == 'student' && !current_page?(root_path) %>">RESOURCES</h6>
           <ul class="list-unstyled">
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
@@ -21,7 +25,7 @@
         </div>
         <div class="col align-self-start d-none d-sm-inline ms-2">
           <div class="d-flex flex-column align-items-start">
-            <h6>INFORMATION</h6>
+            <h6 class="<%= 'text-white' if current_user&.role == 'student' && !current_page?(root_path) %>">INFORMATION</h6>
             <a href="tel:305-240-9671">305-240-9671</a>
             <a href="mailto:info@company.com">contact@bunpofy.me</a>
             <button class="btn btn-secondary dropdown-toggle mt-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
