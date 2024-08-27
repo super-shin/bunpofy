@@ -202,7 +202,7 @@
         <div
           <% if challenge_notification %>
             data-action="mouseover->notification#challengeNotification" 
-          data-value-challenge-id="<%= challenge.id %>" 
+          data-value-challenge-id="<%= challenge.id %>"
           data-value-notification-id="<%= Notification.find_by(notifiable_id: challenge.id, notifiable_type: "Challenge", user_id: current_user.id).id %>"
         <% end %>>
         <% if challenge_notification %>
@@ -319,3 +319,4 @@
 </div>
 </div>
 </div>
+#coment
