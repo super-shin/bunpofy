@@ -48,16 +48,16 @@
   <div class="student-challenges-challenges-container d-flex">
     <div class="d-flex student-challenges-card-container flex-wrap justify-content-between flex-grow-1">
       <% @top_challenges.each_with_index do |challenge, index| %>
-        <% challenge_notification = Notification.find_by(notifiable_id: challenge.id, notifiable_type: "Challenge")&.status == true %>
+        <% challenge_notification = Notification.find_by(notifiable_id: challenge.id, notifiable_type: "Challenge", user_id: current_user.id)&.status == true %>
         <div class="student-challenges-card d-flex flex-column p-0">
           <div
           <% if challenge_notification %>
             data-action="mouseover->notification#challengeNotification" 
             data-value-challenge-id="<%= challenge.id %>" 
-            data-value-notification-id="<%= Notification.find_by(notifiable_id: challenge.id, notifiable_type: "Challenge").id %>"
+            data-value-notification-id="<%= Notification.find_by(notifiable_id: challenge.id, notifiable_type: "Challenge", user_id: current_user.id).id %>"
           <% end %>>
           <% if challenge_notification %>
-            <span class="badge rounded-pill bg-info text-dark px-4 student-challenges-card-challenge-notification">New!</span>
+            <div class="badge rounded-pill bg-info text-dark px-4 student-challenges-card-challenge-notification" id="<%= challenge_notification %>">New!</div>
           <% end %>
           <% if challenge.photo.attached? %>
             <%= cl_image_tag challenge.photo.key, height: 200, width: "100%", class: "student-challenges-card-image" %>
@@ -197,16 +197,16 @@
       </div>
     </div>
     <% @remaining_challenges.each_with_index do |challenge, index| %>
-      <% challenge_notification = Notification.find_by(notifiable_id: challenge.id, notifiable_type: "Challenge")&.status == true %>
+      <% challenge_notification = Notification.find_by(notifiable_id: challenge.id, notifiable_type: "Challenge", user_id: current_user.id)&.status == true %>
       <div class="student-challenges-card d-flex flex-column p-0">
         <div
           <% if challenge_notification %>
             data-action="mouseover->notification#challengeNotification" 
-          data-value-challenge-id="<%= challenge.id %>" 
-          data-value-notification-id="<%= Notification.find_by(notifiable_id: challenge.id, notifiable_type: "Challenge").id %>"
+          data-value-challenge-id="<%= challenge.id %>"
+          data-value-notification-id="<%= Notification.find_by(notifiable_id: challenge.id, notifiable_type: "Challenge", user_id: current_user.id).id %>"
         <% end %>>
         <% if challenge_notification %>
-          <span class="badge rounded-pill bg-info text-dark px-4 student-challenges-card-challenge-notification">New!</span>
+          <div class="badge rounded-pill bg-info text-dark px-4 student-challenges-card-challenge-notification">New!</div>
         <% end %>
         <% if challenge.photo.attached? %>
           <%= cl_image_tag challenge.photo.key, height: 200, width: "100%", class: "student-challenges-card-image" %>
@@ -319,3 +319,4 @@
 </div>
 </div>
 </div>
+#coment
