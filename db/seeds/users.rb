@@ -125,7 +125,7 @@ class_c_images = {
 
 #Class D Student Images - Minami International School
 class_d_images = {
-  'kawaguchiryo@minami.com' => 'https://res.cloudinary.com/ddzvfukq6/image/upload/c_pad,w_100,h_100/v1724235582/4ec915e2-d3d3-4694-907a-9191ad3fa495.png',
+  'kawaguchiryo@minami.com' => 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724758211/350afe36-551e-490c-b682-147ec4fbee53.png',
   'nakanoshin@minami.com' => 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724235713/e8eb8e4c-f520-47dd-b40e-c17f9b4ddc94.png',
   'hayashikazu@minami.com' => 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724236178/fd996ec1-7950-4716-bf1b-23a24e2be377.png',
   'suzukidaiki@minami.com' => 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724236318/e809d7d1-68f9-455e-9099-f69632c6a9fc.png',
