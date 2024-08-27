@@ -233,10 +233,28 @@
 	overflow: hidden;
 	background-color: rgba(21, 20, 20, 0.95);
 	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
+	position: relative;
 }
 
 .student-challenges-card:hover {
 	box-shadow: 0px 8px 20px rgba(167, 167, 167, 0.9);
+}
+
+.student-challenges-card-challenge-notification {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	animation: grow-shrink-little 1s ease-in-out infinite;
+}
+
+@keyframes grow-shrink-little {
+	0%,
+	100% {
+		transform: scale(1); /* Normal size */
+	}
+	50% {
+		transform: scale(1.1); /* Slightly bigger */
+	}
 }
 
 .student-challenges-card-title {
@@ -258,7 +276,7 @@
 .student-challenges-card-feedback-notification {
 	position: absolute;
 	animation: grow-shrink 1s ease-in-out infinite;
-	top: 3px;
+	top: 2px;
 	right: 0px;
 }
 
