@@ -73,6 +73,9 @@ class Teacher::ChallengesController < ApplicationController
     @challenge.user = current_user
     authorize @challenge
     if @challenge.save
+      @challenge.classroom.students.each do |student| 
+        Notification.create(status: true, user_id: student.id, notifiable: @challenge)
+      end
       redirect_to teacher_challenges_path, notice: 'Challenge submitted successfully!'
     else
       render :new

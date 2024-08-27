@@ -97,6 +97,11 @@
 
 .dashboard-profile-container-title {
 	color: black;
+	font-size: 34px;
+}
+
+.dashboard-profile-text-container p {
+	font-size: 18px;
 }
 
 .dashboard-challenges-assigned-container {
@@ -138,9 +143,9 @@
 	height: 14vh;
 	flex-shrink: 1;
 	flex-grow: 1;
-	background-color: rgba(255, 255, 255, 0.8);
-	background-image: image-url(blue_sky_pattern);
-	background-size: cover;
+	background-color: rgba(255, 255, 255, 0.5);
+	background-image: image-url(blue_sky);
+	background-size: 100% 100%;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-blend-mode: overlay;
@@ -172,8 +177,8 @@
 .dashboard-btn-create {
 	display: flex;
 	align-items: center;
-	justify-content: flex-start;
-	width: 45px;
+	justify-content: center;
+	width: 125px;
 	height: 45px;
 	border: none;
 	border-radius: 15px;
@@ -186,51 +191,28 @@
 }
 
 /* plus sign */
-.sign-create-challenge {
-	width: 100%;
-	font-size: 2em;
-	color: white;
-	transition-duration: 0.3s;
+.text-create-challenge {
 	display: flex;
-	border-radius: 10px;
 	align-items: center;
 	justify-content: center;
-	margin-bottom: 5px;
-}
-/* text */
-.text-create-challenge {
-	position: absolute;
-	right: 0%;
-	width: 0%;
-	opacity: 0;
-	color: white;
+	width: 100%;
 	font-size: 1.2em;
-	font-weight: 500;
-	transition-duration: 0.3s;
-}
-/* hover effect on button width */
-.dashboard-btn-create:hover {
-	width: 125px;
+	color: white;
 	border-radius: 25px;
-	transition-duration: 0.3s;
+	font-weight: 500;
 }
 
-.dashboard-btn-create:hover .sign-create-challenge {
-	width: 30%;
-	transition-duration: 0.3s;
-	padding-left: 20px;
-	padding-right: 15px;
+.plus-create-challenge {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.6em;
+	margin-right: 3px;
+	margin-bottom: 2px;
 }
-/* hover effect button's text */
-.dashboard-btn-create:hover .text-create-challenge {
-	opacity: 1;
-	width: 70%;
-	transition-duration: 0.3s;
-	padding-right: 15px;
-}
-/* button click effect*/
-.dashboard-btn-create:active {
-	transform: translate(2px, 2px);
+
+.dashboard-btn-create:hover {
+	transform: scale(1.1);
 }
 
 /* Pie Chart */

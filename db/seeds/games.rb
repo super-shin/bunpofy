@@ -117,7 +117,7 @@ Submission.where(challenge_id: 5..11).each do |submission|
 end
 
 Submission.where(challenge_id: 5..11).each do |submission|
-  if (5..15).include?(submission.user_id)
+  if (5..10).include?(submission.user_id)
     Game.create({
       submission_id: submission.id,
       game_type: "vocab",
