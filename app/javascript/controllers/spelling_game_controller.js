@@ -54,7 +54,13 @@ export default class extends Controller {
 		const userInput = this.inputTarget.value.trim().toLowerCase();
 		if (userInput === this.randomWord.toLowerCase()) {
 			this.emptyUserArray.push(userInput);
+			this.resultsTarget.style.backgroundColor = "#1b4332";
 			this.correctSound.play();
+			const levelUpImage = document.querySelector(".grammar-game-level-up");
+			levelUpImage.classList.add("active");
+			setTimeout(() => {
+				levelUpImage.classList.remove("active");
+			}, 1500);
 			this.score += 50;
 			this.currentAttempt++;
 			this.progressBar();
@@ -85,31 +91,42 @@ export default class extends Controller {
 			} else {
 				console.error(xpSum.error);
 			}
+			const buttonText =
+				this.currentAttempt === this.maxAttempts ? "Next Challenge" : "Next";
 			resultElement.innerHTML = `
-        <div class="d-flex align-items-center justify-content-center">
+        <div class="d-flex align-items-center justify-content-center" style="margin: 0px 200px;">
           <i class="fa fa-check-circle" aria-hidden="true"></i>
           <p id="correct">
           Correct, You did great!</p>
         </div>
-        <i class="fa fa-forward fa-2x text-white" id="next-word-button"></i>
+        <button type="button" class="button-check-grammar-game ms-auto" id="next-word-button">${buttonText}</button>
       `;
 			document
 				.getElementById("next-word-button")
 				.addEventListener("click", () => {
+					this.resultsTarget.style.backgroundColor = "";
 					this.inputTarget.value = "";
 					this.generateRandomWord();
 					this.hintWord();
 				});
 		} else {
+			this.resultsTarget.style.backgroundColor = "#250902";
 			this.incorrectSound.play();
+			const brokenSwordImage = document.querySelector(
+				".grammar-game-broken-sword"
+			);
+			brokenSwordImage.classList.add("active");
+			setTimeout(() => {
+				brokenSwordImage.classList.remove("active");
+			}, 2500);
 			resultElement.innerHTML = `
-      <div class="d-flex align-items-center justify-content-center">
+      <div class="d-flex align-items-center justify-content-center" style="margin: 0px 200px;">
         <i class="fa fa-times-circle" aria-hidden="true"></i>
         <p id="incorrect">
           Incorrect, Please try again!
         </p>
       </div>
-        <i class="fa fa-rotate-right fa-2x text-white" id="try-again-button"></i>
+        <button type="button" class="button-check-grammar-game ms-auto" id="try-again-button"><i class="fa fa-rotate-right fa-2x text-white" style="font-size:20px;"></i></button>
       `;
 			document.getElementById("hint").innerHTML = "";
 			const correction = document.getElementById("hint");
@@ -117,6 +134,7 @@ export default class extends Controller {
 			document
 				.getElementById("try-again-button")
 				.addEventListener("click", () => {
+					this.resultsTarget.style.backgroundColor = "";
 					this.inputTarget.value = "";
 					resultElement.innerHTML = "";
 				});
@@ -148,22 +166,22 @@ export default class extends Controller {
 	gameOver() {
 		document.getElementById("hint").innerHTML = "";
 		const resultElement = this.resultsTarget;
-		resultElement.innerHTML = `
-      <div class="d-flex align-items-center justify-content-center">
-        <p id="congrats">
-          Congratulations on completing the game! You scored ${this.score} points.
-        </p>
-        <lord-icon
-          src="https://cdn.lordicon.com/eiwtsgei.json"
-          trigger="loop"
-          state="loop-cycle"
-          style="width:50px;height:50px">
-        </lord-icon>
-      </div>
-      <div class="firework"></div>
-      <div class="firework"></div>
-      <div class="firework"></div>
-    `;
+		// resultElement.innerHTML = `
+		//   <div class="d-flex align-items-center justify-content-center">
+		//     <p id="congrats">
+		//       Congratulations on completing the game! You scored ${this.score} points.
+		//     </p>
+		//     <lord-icon
+		//       src="https://cdn.lordicon.com/eiwtsgei.json"
+		//       trigger="loop"
+		//       state="loop-cycle"
+		//       style="width:50px;height:50px">
+		//     </lord-icon>
+		//   </div>
+		//   <div class="firework"></div>
+		//   <div class="firework"></div>
+		//   <div class="firework"></div>
+		// `;
 		this.inputTarget.disabled = true;
 		const dataToUpdate = {
 			score: this.score,

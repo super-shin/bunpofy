@@ -24,6 +24,12 @@
   data-spelling-game-incorrect-sound-value="<%= audio_path("fail.wav") %>"
   data-spelling-game-game-id-value="<%= @game_id %>"
   data-spelling-game-submission-id-value="<%= @submission_id %>">
+  <div>
+    <%= image_tag "grammar_game_level_up_clear.png", width: "90px", height: "90px", class: "grammar-game-level-up" %>
+  </div>
+  <div>
+    <%= image_tag "training.gif", width: "100px", height: "100px", class: "grammar-game-broken-sword" %>
+  </div>
   <h2 class="h1-custom">Listen and Spell</h2>
   <form class="custom-form" data-action="submit->spelling-game#correctSpelling">
     <input type="text" id="wordInput" placeholder="spell the word..." data-spelling-game-target="input">
@@ -34,7 +40,7 @@
     </i>
   </button>
   <div id="hint"></div>
-  <div class="d-flex justify-content-center align-items-center border-top botton-box-grammar-game" data-grammar-game-target="buttonElement">
-    <div data-spelling-game-target="results"></div>
+  <div class="d-flex justify-content-center align-items-center border-top botton-box-grammar-game" data-grammar-game-target="buttonElement" data-spelling-game-target="results">
+    <div></div>
   </div>
 </div>
