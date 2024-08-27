@@ -42,18 +42,71 @@ export default class extends Controller {
 	}
 
 	async callGemini() {
-		const number_sentences = this.wordsArray.length;
-		const genAI = new GoogleGenerativeAI(this.geminiKey);
-		const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-		let prompt = `
-		Create 16 simple arrays with the name of the emoji and 1 Unicode HTML Presentation Emoji in each array. For example: Elephant, 🐘
-	The emojis should all be different animals. There should only be 1 Presentation Emoji per array. The emojis all must pass this validation in javascript: match(/[\w']+|[,.!?]|[\p{Emoji_Presentation}]/gu)
-	Please format the response as a JSON array with the following structure (Dont write anything before and after "[]"):
-		[{"Sentence": "Name_of_emoji, Presentation Emoji"}, {"Sentence": "Name_of_emoji, Presentation Emoji"}, etc]
-	`;
-		let result = await model.generateContent(prompt);
-		this.correctSentencesArray = JSON.parse(result.response.text());
-		console.log(this.correctSentencesArray);
+	// 	const number_sentences = this.wordsArray.length;
+	// 	const genAI = new GoogleGenerativeAI(this.geminiKey);
+	// 	const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+	// 	let prompt = `
+	// 	Create 16 simple arrays with the name of the emoji and 1 Unicode HTML Presentation Emoji in each array. For example: Elephant, 🐘
+	// The emojis should all be different animals. There should only be 1 Presentation Emoji per array. The emojis all must pass this validation in javascript: match(/[\w']+|[,.!?]|[\p{Emoji_Presentation}]/gu)
+	// Please format the response as a JSON array with the following structure (Dont write anything before and after "[]"):
+	// 	[{"Sentence": "Name_of_emoji, Presentation Emoji"}, {"Sentence": "Name_of_emoji, Presentation Emoji"}, etc]
+	// `;
+	// 	let result = await model.generateContent(prompt);
+	// 	this.correctSentencesArray = JSON.parse(result.response.text());
+	// 	console.log(this.correctSentencesArray);
+
+    this.correctSentencesArray =
+    [
+      {
+          "Sentence": "Elephant, 🐘"
+      },
+      {
+          "Sentence": "Tiger, 🐅"
+      },
+      {
+          "Sentence": "Lion, 🦁"
+      },
+      {
+          "Sentence": "Fox, 🦊"
+      },
+      {
+          "Sentence": "Wolf, 🐺"
+      },
+      {
+          "Sentence": "Bear, 🐻"
+      },
+      {
+          "Sentence": "Giraffe, 🦒"
+      },
+      {
+          "Sentence": "Zebra, 🦓"
+      },
+      {
+          "Sentence": "Monkey, 🐒"
+      },
+      {
+          "Sentence": "Kangaroo, 🦘"
+      },
+      {
+          "Sentence": "Penguin, 🐧"
+      },
+      {
+          "Sentence": "Dolphin, 🐬"
+      },
+      {
+          "Sentence": "Whale, 🐳"
+      },
+      {
+          "Sentence": "Shark, 🦈"
+      },
+      {
+          "Sentence": "Turtle, 🐢"
+      },
+      {
+          "Sentence": "Snake, 🐍"
+      }
+  ];
+
 		this.optionsArray = this.correctSentencesArray.slice(4);
 		this.correctSentencesArray = this.correctSentencesArray.slice(0, 4);
 		this.shuffleWords(this.correctSentencesArray);
@@ -168,14 +221,13 @@ export default class extends Controller {
 	}
 
 	loadGame() {
-		let quizContainer = document.getElementById("container");
+		//let quizContainer = document.getElementById("container");
 		let randomEmoji = this.shuffleArray(this.emojisArray.slice()).slice(0, 3);
 		this.answerElementTarget.innerHTML = "";
 		this.optionElementTarget.innerHTML = "";
 		this.buttonElementTarget.innerHTML = "";
 		this.answer = this.sentenceTokenizeArray[this.currentSentenceIndex];
 		this.questionWord = this.fullWordsArray;
-		console.log(this.questionWord);
 
 		// Select the h2 element using its data attribute
 		const questionWordElement = document.querySelector(
@@ -210,10 +262,14 @@ export default class extends Controller {
 		);
 
 		randomEmoji.forEach((word) => {
+      console.log(word);
+      const matchedOption = this.optionsArray.find(option => option.Sentence.includes(word));
+      const result = matchedOption ? matchedOption.Sentence.split(', ')[0] : null;
+      console.log(result);
 			this.optionElementTarget.insertAdjacentHTML(
 				"beforeend",
 				`
-        <button class="option-div" data-action="click->vocab-game#select" data-vocab-game-target="wordElement" style="cursor:pointer" data-option="${word}">
+        <button class="option-div" id="flipCard" data-action="click->vocab-game#select" data-vocab-game-target="wordElement" style="cursor:pointer" data-option="${word}" data-back="${result}">
           <span class="emoji">${word}</span>
         </button>
         `
@@ -292,7 +348,7 @@ export default class extends Controller {
 
 		//const sentence = this.studentAnswersWord[0].Sentence;
 
-		const filteredSentence = sentence.replace(/[^a-zA-Z\s]/g, "");
+		this.filteredSentence = sentence.replace(/[^a-zA-Z\s]/g, "");
 
 		// Changes the text between Next and Next Challenge
 		this.buttonElementTarget.innerHTML = "";
@@ -309,23 +365,23 @@ export default class extends Controller {
 			`<div class="correct-sentence-container-grammar-game d-flex flex-wrap justify-content-start align-items-center p-3"><p class="mt-1">
 			<div class="correct-sentence-tooltip-grammar-game"><p>Correct Word:</p></div>
       <i class="fa-solid fa-volume-high me-1" id="audio-icon-grammar-game" data-vocab-game-target="audioElement" data-action="click->vocab-game#audio"></i>
-      ${filteredSentence}
+      ${this.filteredSentence}
       </div>`
 		);
 
 		// Reproduce the sentence audio
 		this.audio();
 
-		// Disable events of words(options)
 		this.wordElementTargets.forEach((element) => {
-			element.classList.add("disabled");
-			element.style.cursor = "default";
+      element.removeAttribute('data-action');
+			//element.classList.add("disabled");
+			//element.style.cursor = "default";
 		});
 
 		// Validate the game
 		if (this.fullSentence.join("") === this.answer.join("")) {
 			// Sum experience animation
-			this.game_xp += 100 / this.wordsArray.length;
+			this.game_xp += 50 / this.wordsArray.length;
 			const options = {
 				duration: 3,
 			};
@@ -333,7 +389,7 @@ export default class extends Controller {
 			const xpSumPlusElement = document.querySelector("#vocab-game-xp-plus");
 			let xpSum = new CountUp(
 				xpSumElement,
-				100 / this.wordsArray.length,
+				50 / this.wordsArray.length,
 				options
 			);
 			if (!xpSum.error) {
@@ -470,9 +526,47 @@ export default class extends Controller {
 					button.classList.add("incorrect");
 				}
 			});
-	}
+
+      document.querySelectorAll('.option-div:not(.correct)').forEach((card) => {
+        card.addEventListener('click', function(event) {
+            // Stop the event from propagating
+            event.stopPropagation();
+
+            // Flip the card on click
+            card.classList.add('flipped');
+
+            // Hide the emoji initially
+            const emoji = card.querySelector('.emoji');
+            if (emoji) {
+                emoji.style.visibility = 'hidden'; // Hide the emoji
+            }
+
+            // Function to reset the card
+            function resetCard() {
+                card.classList.remove('flipped');
+                document.removeEventListener('click', resetCard);
+            }
+
+            // Wait for the next click event outside the card to reset it
+            setTimeout(() => {
+                document.addEventListener('click', resetCard);
+            }, 0);
+
+            // Prevent the immediate reset if clicking on the card again
+            card.addEventListener('click', function(event) {
+                event.stopPropagation();
+            }, { once: true });
+        });
+    });
+}
 
 	next(event) {
+    document.getElementById('flipCard').addEventListener('click', function(event) {
+      event.stopPropagation(); // Prevent the immediate document click from firing
+      const card = this;
+      card.classList.remove('flipped');
+    });
+
 		if (this.currentSentenceIndex === this.correctSentencesArray.length - 1) {
 			// Go to the next Game
 			const dataToUpdate = {
