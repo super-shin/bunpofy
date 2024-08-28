@@ -2,7 +2,7 @@
   <h1 class="display-4 mt-5">Our Team</h1>
   <p class="mb-0 mt-4 text-center">Meet our team of dedicated professionals who work tirelessly to meet your needs.</p>
   <p class="text-center">We are students from the Le Wagon Tokyo Bootcamp under the Web Development Course.</p>
-  <div class="row mb-4">
+  <div class="row mb-4 about-cards">
     <% team = [
       {name: 'Shingie Taira', job: 'Project Manager', image_url: 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1724818705/shingie_uhpk2i.jpg', github: 'https://github.com/super-shin', linkedin: 'https://www.linkedin.com/in/shingietaira/'},
       {name: 'Pedro Kogawa', job: 'Lead Developer', image_url: 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1724818902/ce2e0be9-ecbe-4eb6-9ef8-30b16dd40324.png', github: 'https://github.com/pedrokogawa', linkedin: 'https://www.linkedin.com/in/pedro-kogawa-4a8b87112/'},
@@ -10,7 +10,7 @@
       {name: 'Rei Zhang', job: 'Lead Developer', image_url: 'https://res.cloudinary.com/ddzvfukq6/image/upload/v1724758211/350afe36-551e-490c-b682-147ec4fbee53.png', github: 'https://github.com/Mauoser', linkedin: 'https://www.linkedin.com/in/zenrei/'}
     ] %>
     <% team.each do |member| %>
-      <div class="col-12 col-md-6 col-lg-3 my-4 d-flex justify-content-center">
+      <div class="col-12 col-md-6 col-lg-3 my-4 d-flex justify-content-center about-card">
         <div class="card shadow d-flex flex-column bg-white border-0 p-4" style="min-height: 400px; min-width: 300px;">
           <div class="card-body d-flex flex-column justify-content-between text-center">
             <img src="<%= member[:image_url] %>" alt="<%= member[:name] %>" class="card-img-top rounded-circle mx-auto" style="width: 120px; height: 120px; object-fit: cover;">
