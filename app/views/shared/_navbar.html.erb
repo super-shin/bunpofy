@@ -58,8 +58,8 @@
         <%= image_tag "logo/logo_yellow.svg", alt: "bunpofy", class: "logo", style: "width: 160px;" %>
       </a>
       <div class="d-flex gap-4 text-white fs-6" style="font-weight: 200;">
-        <a class="nav-link d-none d-sm-inline" href="#">About</a>
-        <a class="nav-link d-none d-sm-inline" href="#">Contact Us</a>
+        <%= link_to 'About', about_path, class: 'nav-link d-none d-sm-inline' %>
+        <a class="nav-link d-none d-sm-inline" href="/about#contact-us">Contact Us</a>
         <a class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal" style="cursor: pointer;">Login</a>
         <a class="nav-link nav-button rounded-pill px-3 text-dark" href="<%= new_user_registration_path %>"> Sign Up</a>
       </div>
