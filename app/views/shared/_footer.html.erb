@@ -17,10 +17,10 @@
         <div class="col align-self-start d-none d-sm-inline">
           <h6 class="<%= 'text-white' if current_user&.role == 'student' && !current_page?(root_path) %>">RESOURCES</h6>
           <ul class="list-unstyled">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">FAQs</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/about#contact-us">Contact Us</a></li>
+            <li><a href="/#faqs">FAQs</a></li>
           </ul>
         </div>
         <div class="col align-self-start d-none d-sm-inline ms-2">
