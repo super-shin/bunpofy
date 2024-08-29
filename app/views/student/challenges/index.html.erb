@@ -84,11 +84,11 @@
                 </div>
               <% end %>
             </div>
-            <div class="modal fade" id="feedbackModal<%= index %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="--bs-modal-width: 36vw;">
+            <div class="modal fade" id="feedbackModal<%= index %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content student-challenges-modal-content">
                   <div class="modal-header">
-                    <h1 class="modal-title fs-5 student-challenges-card-feedback-name" id="exampleModalLabel"><%= challenge.user.first_name %> Sensei's Feedback</h1>
+                    <h1 class="modal-title fs-5 student-challenges-card-feedback-name" id="exampleModalLabel"><%= challenge.user.last_name %>'s Feedback</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body student-challenges-card-feedback-content-conteiner">
@@ -226,11 +226,11 @@
                 <%= image_tag "warning.png", height: 15, width: 15, class: "student-challenges-card-feedback-notification" %>
               <% end %>
             </div>
-            <div class="modal fade" id="feedbackModal-remaining-challenges<%= index %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="--bs-modal-width: 36vw;">
+            <div class="modal fade" id="feedbackModal-remaining-challenges<%= index %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content student-challenges-modal-content">
                   <div class="modal-header">
-                    <h1 class="modal-title fs-5 student-challenges-card-feedback-name" id="exampleModalLabel"><%= challenge.user.first_name %> Sensei's Feedback</h1>
+                    <h1 class="modal-title fs-5 student-challenges-card-feedback-name" id="exampleModalLabel"><%= challenge.user.last_name %>'s Feedback</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body student-challenges-card-feedback-content-container">
