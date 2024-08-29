@@ -98,7 +98,7 @@ User.create!([
   { email: 'uchidareiko@minami.com', password: '123456', first_name: 'Reiko', last_name: 'Uchida', role: 'student', school: 'Minami International School' },
   { email: 'takashimi@minami.com', password: '123456', first_name: 'Shimi', last_name: 'Takashi', role: 'student', school: 'Minami International School' },
   { email: 'kanemimiyu@minami.com', password: '123456', first_name: 'Miyu', last_name: 'Kanemi', role: 'student', school: 'Minami International School' },
-  { email: 'kawaguchiryo@minami.com', password: '123456', first_name: 'Rei', last_name: 'Zhang', role: 'student', school: 'Minami International School' },
+  { email: 'zhangrei@minami.com', password: '123456', first_name: 'Rei', last_name: 'Zhang', role: 'student', school: 'Minami International School' },
   { email: 'yamaguchiriko@minami.com', password: '123456', first_name: 'Riko', last_name: 'Yamaguchi', role: 'student', school: 'Minami International School' },
   { email: 'okunomiku@minami.com', password: '123456', first_name: 'Miku', last_name: 'Okuno', role: 'student', school: 'Minami International School' }
 ])
@@ -125,7 +125,7 @@ class_c_images = {
 
 #Class D Student Images - Minami International School
 class_d_images = {
-  'kawaguchiryo@minami.com' => 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724758211/350afe36-551e-490c-b682-147ec4fbee53.png',
+  'zhangrei@minami.com' => 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724758211/350afe36-551e-490c-b682-147ec4fbee53.png',
   'nakanoshin@minami.com' => 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724235713/e8eb8e4c-f520-47dd-b40e-c17f9b4ddc94.png',
   'hayashikazu@minami.com' => 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724236178/fd996ec1-7950-4716-bf1b-23a24e2be377.png',
   'suzukidaiki@minami.com' => 'https://res.cloudinary.com/ddzvfukq6/image/upload/t_100x100/v1724236318/e809d7d1-68f9-455e-9099-f69632c6a9fc.png',

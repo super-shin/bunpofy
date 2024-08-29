@@ -20,7 +20,7 @@ export default class extends Controller {
 
     // Access the email value
     const userEmail = this.emailValue;
-    const delay = userEmail === "kawaguchiryo@minami.com" ? 4000 : 0;
+    const delay = userEmail === "zhangrei@minami.com" ? 4000 : 0;
 
     setTimeout(() => {
       event.target.submit();

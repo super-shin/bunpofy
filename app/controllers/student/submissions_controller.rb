@@ -19,7 +19,7 @@ class Student::SubmissionsController < ApplicationController
   def create
     @submission = @challenge.submissions.build(submission_params)
     @submission.user = current_user
-    if @submission.user.email == 'kawaguchiryo@minami.com'
+    if @submission.user.email == 'zhangrei@minami.com'
       @submission.ai_response = pitch_response
     else
       @submission.ai_response = generate(@submission.content)
