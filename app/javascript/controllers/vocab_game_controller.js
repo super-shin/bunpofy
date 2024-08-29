@@ -42,70 +42,69 @@ export default class extends Controller {
 	}
 
 	async callGemini() {
-	// 	const number_sentences = this.wordsArray.length;
-	// 	const genAI = new GoogleGenerativeAI(this.geminiKey);
-	// 	const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-	// 	let prompt = `
-	// 	Create 16 simple arrays with the name of the emoji and 1 Unicode HTML Presentation Emoji in each array. For example: Elephant, 🐘
-	// The emojis should all be different animals. There should only be 1 Presentation Emoji per array. The emojis all must pass this validation in javascript: match(/[\w']+|[,.!?]|[\p{Emoji_Presentation}]/gu)
-	// Please format the response as a JSON array with the following structure (Dont write anything before and after "[]"):
-	// 	[{"Sentence": "Name_of_emoji, Presentation Emoji"}, {"Sentence": "Name_of_emoji, Presentation Emoji"}, etc]
-	// `;
-	// 	let result = await model.generateContent(prompt);
-	// 	this.correctSentencesArray = JSON.parse(result.response.text());
-	// 	console.log(this.correctSentencesArray);
+		// 	const number_sentences = this.wordsArray.length;
+		// 	const genAI = new GoogleGenerativeAI(this.geminiKey);
+		// 	const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+		// 	let prompt = `
+		// 	Create 16 simple arrays with the name of the emoji and 1 Unicode HTML Presentation Emoji in each array. For example: Elephant, 🐘
+		// The emojis should all be different animals. There should only be 1 Presentation Emoji per array. The emojis all must pass this validation in javascript: match(/[\w']+|[,.!?]|[\p{Emoji_Presentation}]/gu)
+		// Please format the response as a JSON array with the following structure (Dont write anything before and after "[]"):
+		// 	[{"Sentence": "Name_of_emoji, Presentation Emoji"}, {"Sentence": "Name_of_emoji, Presentation Emoji"}, etc]
+		// `;
+		// 	let result = await model.generateContent(prompt);
+		// 	this.correctSentencesArray = JSON.parse(result.response.text());
+		// 	console.log(this.correctSentencesArray);
 
-    this.correctSentencesArray =
-    [
-      {
-          "Sentence": "Elephant, 🐘"
-      },
-      {
-          "Sentence": "Tiger, 🐅"
-      },
-      {
-          "Sentence": "Lion, 🦁"
-      },
-      {
-          "Sentence": "Fox, 🦊"
-      },
-      {
-          "Sentence": "Wolf, 🐺"
-      },
-      {
-          "Sentence": "Bear, 🐻"
-      },
-      {
-          "Sentence": "Giraffe, 🦒"
-      },
-      {
-          "Sentence": "Zebra, 🦓"
-      },
-      {
-          "Sentence": "Monkey, 🐒"
-      },
-      {
-          "Sentence": "Kangaroo, 🦘"
-      },
-      {
-          "Sentence": "Penguin, 🐧"
-      },
-      {
-          "Sentence": "Dolphin, 🐬"
-      },
-      {
-          "Sentence": "Whale, 🐳"
-      },
-      {
-          "Sentence": "Shark, 🦈"
-      },
-      {
-          "Sentence": "Turtle, 🐢"
-      },
-      {
-          "Sentence": "Snake, 🐍"
-      }
-  ];
+		this.correctSentencesArray = [
+			{
+				Sentence: "Elephant, 🐘",
+			},
+			{
+				Sentence: "Tiger, 🐅",
+			},
+			{
+				Sentence: "Lion, 🦁",
+			},
+			{
+				Sentence: "Fox, 🦊",
+			},
+			{
+				Sentence: "Wolf, 🐺",
+			},
+			{
+				Sentence: "Bear, 🐻",
+			},
+			{
+				Sentence: "Giraffe, 🦒",
+			},
+			{
+				Sentence: "Zebra, 🦓",
+			},
+			{
+				Sentence: "Monkey, 🐒",
+			},
+			{
+				Sentence: "Kangaroo, 🦘",
+			},
+			{
+				Sentence: "Penguin, 🐧",
+			},
+			{
+				Sentence: "Dolphin, 🐬",
+			},
+			{
+				Sentence: "Whale, 🐳",
+			},
+			{
+				Sentence: "Shark, 🦈",
+			},
+			{
+				Sentence: "Turtle, 🐢",
+			},
+			{
+				Sentence: "Snake, 🐍",
+			},
+		];
 
 		this.optionsArray = this.correctSentencesArray.slice(4);
 		this.correctSentencesArray = this.correctSentencesArray.slice(0, 4);
@@ -262,10 +261,14 @@ export default class extends Controller {
 		);
 
 		randomEmoji.forEach((word) => {
-      console.log(word);
-      const matchedOption = this.optionsArray.find(option => option.Sentence.includes(word));
-      const result = matchedOption ? matchedOption.Sentence.split(', ')[0] : null;
-      console.log(result);
+			console.log(word);
+			const matchedOption = this.optionsArray.find((option) =>
+				option.Sentence.includes(word)
+			);
+			const result = matchedOption
+				? matchedOption.Sentence.split(", ")[0]
+				: null;
+			console.log(result);
 			this.optionElementTarget.insertAdjacentHTML(
 				"beforeend",
 				`
@@ -373,7 +376,7 @@ export default class extends Controller {
 		this.audio();
 
 		this.wordElementTargets.forEach((element) => {
-      element.removeAttribute('data-action');
+			element.removeAttribute("data-action");
 			//element.classList.add("disabled");
 			//element.style.cursor = "default";
 		});
@@ -527,45 +530,51 @@ export default class extends Controller {
 				}
 			});
 
-      document.querySelectorAll('.option-div:not(.correct)').forEach((card) => {
-        card.addEventListener('click', function(event) {
-            // Stop the event from propagating
-            event.stopPropagation();
+		document.querySelectorAll(".option-div:not(.correct)").forEach((card) => {
+			card.addEventListener("click", function (event) {
+				// Stop the event from propagating
+				event.stopPropagation();
 
-            // Flip the card on click
-            card.classList.add('flipped');
+				// Flip the card on click
+				card.classList.add("flipped");
 
-            // Hide the emoji initially
-            const emoji = card.querySelector('.emoji');
-            if (emoji) {
-                emoji.style.visibility = 'hidden'; // Hide the emoji
-            }
+				// Hide the emoji initially
+				const emoji = card.querySelector(".emoji");
+				if (emoji) {
+					emoji.style.visibility = "hidden"; // Hide the emoji
+				}
 
-            // Function to reset the card
-            function resetCard() {
-                card.classList.remove('flipped');
-                document.removeEventListener('click', resetCard);
-            }
+				// Function to reset the card
+				function resetCard() {
+					card.classList.remove("flipped");
+					document.removeEventListener("click", resetCard);
+				}
 
-            // Wait for the next click event outside the card to reset it
-            setTimeout(() => {
-                document.addEventListener('click', resetCard);
-            }, 0);
+				// Wait for the next click event outside the card to reset it
+				setTimeout(() => {
+					document.addEventListener("click", resetCard);
+				}, 0);
 
-            // Prevent the immediate reset if clicking on the card again
-            card.addEventListener('click', function(event) {
-                event.stopPropagation();
-            }, { once: true });
-        });
-    });
-}
+				// Prevent the immediate reset if clicking on the card again
+				card.addEventListener(
+					"click",
+					function (event) {
+						event.stopPropagation();
+					},
+					{ once: true }
+				);
+			});
+		});
+	}
 
 	next(event) {
-    document.getElementById('flipCard').addEventListener('click', function(event) {
-      event.stopPropagation(); // Prevent the immediate document click from firing
-      const card = this;
-      card.classList.remove('flipped');
-    });
+		document
+			.getElementById("flipCard")
+			.addEventListener("click", function (event) {
+				event.stopPropagation(); // Prevent the immediate document click from firing
+				const card = this;
+				card.classList.remove("flipped");
+			});
 
 		if (this.currentSentenceIndex === this.correctSentencesArray.length - 1) {
 			// Go to the next Game
@@ -636,7 +645,7 @@ export default class extends Controller {
 			shuriken.classList.remove("active");
 			whiteFlash.classList.remove("active");
 			levelUpMessage.classList.add("active");
-			levelNumber.innerText = `${parseInt(this.levelNumber) + 1}`;
+			levelNumber.innerText = `7`;
 		}, 2100);
 
 		setTimeout(() => {
