@@ -11,7 +11,7 @@ class Student::GamesController < ApplicationController
     # Get the ActiveRecord relation of words associated with the unit
     @words_relation = @game.submission.challenge.unit.words
     # Sample 5 unique words
-    if (current_user.last_name == "Kawaguchi")
+    if (current_user.last_name == "Zhang")
       @words_array = ["elephant", "giraffe"]
       @words_array_spelling_en = ["rabbit", "elephant"]
       @words_array_spelling_jp = ["兎 (うさぎ)", " 象 (ぞう, **zō**)"]
