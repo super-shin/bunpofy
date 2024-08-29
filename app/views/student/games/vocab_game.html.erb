@@ -242,7 +242,7 @@
       </div>
       <div class="shuriken-grammar-game"></div>
       <div class="white-flash-grammar-game"></div>
-      <p class="level-pentagon-number-grammar-game"><%= @level %></p>
+      <p class="level-pentagon-number-grammar-game">6</p>
     </div>
     <div id="game-element" class="d-none">
       <div>
@@ -282,12 +282,11 @@
         </div>
       </div>
       <h2 class="text-center mt-3" style="color:white" data-vocab-game-target="questionWord">Choose The Correct Word</h2>
-
       <div class="container d-flex justify-content-center mt-3" style="height: 550px; width: 1000px;"><%=  %>
         <div class="m-3" data-controller="vocab-game" data-value-submission-id="<%= @submission_id %>" data-value-game-id="<%= @game_id %>" data-value-key="<%= @api_key %>" data-value-words-array="<%= @words_array.to_json %>" data-value-audio-success="<%= audio_path("success.wav") %>" data-value-audio-fail="<%= audio_path("fail.wav") %> "data-value-audio-cut="<%= audio_path("cut.mp3") %>" data-value-level-number="<%= @level %>" data-value-experience="<%= @experience  %>">
           <div class="div" data-vocab-game-target="answerElement">
           </div>
-          <div class="button-container options-container" data-vocab-game-target="optionElement">
+          <div class="button-container options-container" data-vocab-game-target="optionElement" style="margin-top: 0px !important;">
           </div>
           <div class="d-flex align-items-center border-top botton-box-vocab-game" data-vocab-game-target="buttonElement">
           </div>

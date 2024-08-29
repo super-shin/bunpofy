@@ -12,6 +12,7 @@
 
 .level-pentagon-title-grammar-game.active {
 	opacity: 1;
+	text-shadow: 0 0 5px #00ffff7f, 0 0 10px #00ffff77, 0 0 15px #00ffff82;
 }
 
 .shuriken-grammar-game {
@@ -44,6 +45,7 @@
 	background-color: white;
 	z-index: 20;
 	opacity: 1;
+	box-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000;
 }
 
 .white-flash-grammar-game.active {
@@ -256,8 +258,8 @@
 }
 
 .options-container {
-	margin-top: 30px;
-	width: 550px;
+	margin-top: 30px !important;
+	width: 550px !important;
 }
 .botton-box-grammar-game {
 	position: absolute;
