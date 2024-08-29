@@ -48,7 +48,7 @@ class Student::GamesController < ApplicationController
             student_answer: question[:student_answer]
           )
         end
-      # Create a new question if no matching question is found
+      # Create a new question if no matching question is foundd
       else
         params[:questions].each do |question|
           @game.questions.create(
